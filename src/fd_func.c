@@ -5,10 +5,10 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:51:15 2015 romaric
-** Last update Tue May  5 17:21:16 2015 romaric
+** Last update Tue May  5 18:43:23 2015 Thibaut Lopez
 */
 
-#include "users.h"
+#include "server.h"
 
 void	set_fd(int s, t_bf *bf, t_user *user)
 {

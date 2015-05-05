@@ -5,11 +5,10 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:38:34 2015 romaric
-** Last update Tue May  5 17:14:07 2015 romaric
+** Last update Tue May  5 18:40:33 2015 Thibaut Lopez
 */
 
-#include <signal.h>
-#include "users.h"
+#include "server.h"
 
 static int	quit_sig = 0;
 

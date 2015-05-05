@@ -5,10 +5,10 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 17:47:45 2015 romaric
-** Last update Tue May  5 17:47:51 2015 romaric
+** Last update Tue May  5 18:30:22 2015 Thibaut Lopez
 */
 
-#include "users.h"
+#include "utils.h"
 
 int	my_strstr(char **tab, char *str)
 {

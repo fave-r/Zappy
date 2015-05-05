@@ -1,11 +1,11 @@
 /*
 ** cb.h for cb in /home/lopez_t/Zappy/src/CircularBuffer
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <lopez_t@epitech.net>
-** 
+**
 ** Started on  Tue May  5 14:14:46 2015 Thibaut Lopez
-** Last update Tue May  5 14:28:40 2015 Thibaut Lopez
+** Last update Tue May  5 17:16:25 2015 romaric
 */
 
 #ifndef	CB_H
@@ -39,5 +39,6 @@ int	cbchr(t_cb *, void *);
 char	*get_line_cb(t_cb *);
 int	read_cb(t_cb *, int);
 int	write_cb(t_cb *, int);
+void	*xmalloc(size_t n);
 
 #endif

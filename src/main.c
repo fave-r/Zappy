@@ -5,17 +5,14 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Tue May  5 15:03:47 2015 romaric
+** Last update Tue May  5 17:05:04 2015 romaric
 */
 
-#include "server.h"
+#include "users.h"
 
 void		unit_user_free(t_user *user)
 {
   close(user->fd);
-  free(user->nick);
-  free(user->username);
-  free(user->realname);
   free_cb(&user->cb);
   free_cb(&user->wr);
   if (user->prev != NULL)
@@ -25,7 +22,7 @@ void		unit_user_free(t_user *user)
   free(user);
 }
 
-void		check_client(t_user **user, t_bf *bf, t_chan *chans)
+void		check_client(t_user **user, t_bf *bf)
 {
   t_user	*tmp;
 
@@ -34,8 +31,8 @@ void		check_client(t_user **user, t_bf *bf, t_chan *chans)
     {
       if (cb_taken(&tmp->wr) > 0 && FD_ISSET(tmp->fd, &bf->wbf))
 	write_cb(&tmp->wr, tmp->fd);
-      if (FD_ISSET(tmp->fd, &bf->rbf))
-	read_com(tmp, chans);
+      //if (FD_ISSET(tmp->fd, &bf->rbf))
+	//read_com(tmp, chans);
       if (tmp->tokill == 1)
 	{
 	  *user = (tmp == *user) ? (*user)->next : *user;

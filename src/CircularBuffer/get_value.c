@@ -1,14 +1,14 @@
 /*
-** get_value.c for get_value in /home/lopez_t/PSU_2014_myirc/utils/CircularBuffer
+** get_value.c for get_value in /home/lopez_t/Zappy/src/CircularBuffer
 ** 
 ** Made by Thibaut Lopez
 ** Login   <lopez_t@epitech.net>
 ** 
-** Started on  Wed Apr  8 17:00:32 2015 Thibaut Lopez
-** Last update Wed Apr  8 17:21:42 2015 Thibaut Lopez
+** Started on  Tue May  5 14:18:51 2015 Thibaut Lopez
+** Last update Tue May  5 14:22:52 2015 Thibaut Lopez
 */
 
-#include "my_irc.h"
+#include "cb.h"
 
 int	cb_taken(t_cb *cb)
 {

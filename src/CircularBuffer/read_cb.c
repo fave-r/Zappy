@@ -5,10 +5,10 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri Apr 10 10:17:56 2015 Thibaut Lopez
-** Last update Sun Apr 12 19:05:50 2015 Thibaut Lopez
+** Last update Tue May  5 14:35:12 2015 Thibaut Lopez
 */
 
-#include "my_irc.h"
+#include "cb.h"
 
 void	*flush_cb(t_cb *cb)
 {
@@ -16,6 +16,19 @@ void	*flush_cb(t_cb *cb)
   cb->beg = 0;
   cb->end = 0;
   return (NULL);
+}
+
+int	cbchr(t_cb *cb, void *c)
+{
+  int	i;
+
+  i = cb->beg;
+  while (i % cb->cap != cb->end &&
+	 memcmp((char *)cb->buff + (i % cb->cap) * cb->sz, c, cb->sz) != 0)
+    i++;
+  if (i % cb->cap == cb->end)
+    return (-1);
+  return (i - cb->beg);
 }
 
 char	*get_line_cb(t_cb *cb)
@@ -26,13 +39,13 @@ char	*get_line_cb(t_cb *cb)
   str = NULL;
   if ((ret = cbchr(cb, "\r")) != -1 || (ret = cbchr(cb, "\n")) != -1)
     {
-      str = get_cb(ret + 1, cb);
+      str = get_cb(cb, ret + 1);
       str[ret] = 0;
     }
   return (str);
 }
 
-char	*read_cb(t_cb *cb, int fd)
+int	read_cb(t_cb *cb, int fd)
 {
   int	rl;
   char	*str;
@@ -40,12 +53,10 @@ char	*read_cb(t_cb *cb, int fd)
   str = xmalloc(500 * sizeof(char));
   rl = read(fd, str, 499);
   str[rl] = 0;
-  if (str != NULL && rl > 0)
-    if (fill_cb(str, rl, cb) == 1)
-      return (flush_cb(cb));
-  if (str != NULL)
-    free(str);
-  return (get_line_cb(cb));
+  if (rl > 0)
+    fill_cb(cb, str, rl);
+  free(str);
+  return (rl);
 }
 
 int	write_cb(t_cb *cb, int fd)
@@ -53,10 +64,10 @@ int	write_cb(t_cb *cb, int fd)
   int	wl;
   char	*str;
 
-  if ((str = get_cb(cb_taken(cb), cb)) == NULL)
+  if ((str = get_cb(cb, cb_taken(cb))) == NULL)
     return (0);
   wl = write(fd, str, strlen(str));
-  fill_cb(str + wl, strlen(str) - wl, cb);
+  fill_cb(cb, str + wl, strlen(str) - wl);
   free(str);
   return (0);
 }

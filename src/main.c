@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Wed May  6 10:17:43 2015 Thibaut Lopez
+** Last update Wed May  6 18:20:39 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -49,38 +49,35 @@ void		check_client(t_user **user, t_bf *bf)
     }
 }
 
-t_zap		*init_val()
+void		init_val(t_zap *data)
 {
-  t_zap		*data;
-
-  data = malloc(sizeof(t_zap));
   data->port = -1;
   data->length = -1;
   data->width = -1;
   data->team = NULL;
   data->count = -1;
   data->delay = -1;
-  return (data);
 }
 
 int			main(int ac, char **av)
 {
   int			s;
   t_user		*user;
-  t_zap			*data;
+  t_zap			data;
 
   (void)ac;
-  data = init_val();
-  if (parse_com(av, data) != 0)
+  init_val(&data);
+  if (parse_com(av, &data) != 0)
     return (1);
   if ((s = init_socket()) == -1)
     return (1);
-  if (init_bind(s, &data->port) == -1)
+  if (init_bind(s, &data.port) == -1)
     return (clean_return(s, "Couldn't bind"));
   if (listen(s, 42) == -1)
     return (clean_return(s, "Couldn't listen"));
   handle_fds(s, &user);
   data_free(&user);
   close(s);
+  sfree(data.team);
   return (0);
 }

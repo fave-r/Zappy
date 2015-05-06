@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Tue May  5 18:45:31 2015 Thibaut Lopez
+** Last update Wed May  6 10:14:23 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -17,6 +17,28 @@
 #include <arpa/inet.h>
 #include <signal.h>
 #include "cb.h"
+
+typedef	enum e_state
+  {
+    P = 0,
+    X,
+    Y,
+    N,
+    C,
+    T,
+    NONE = -1
+  }	e_state;
+
+typedef struct	s_zap
+{
+  int		port;
+  /* type	*map */
+  int		length;
+  int		width;
+  char		**team;
+  int		count;
+  int		delay;
+}		t_zap;
 
 typedef struct	s_user
 {
@@ -44,5 +66,13 @@ void		new_client(int, t_user **, int *);
 void		check_client(t_user **, t_bf *);
 int		handle_fds(int, t_user **);
 void		data_free(t_user **);
+
+int		set_port(t_zap *, char *, e_state *);
+int		set_x(t_zap *, char *, e_state *);
+int		set_y(t_zap *, char *, e_state *);
+int		set_team(t_zap *, char *, e_state *);
+int		set_count(t_zap *, char *, e_state *);
+int		set_delay(t_zap *, char *, e_state *);
+int		parse_com(char **, t_zap *);
 
 #endif

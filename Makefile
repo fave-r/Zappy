@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Tue May  5 14:40:23 2015 romaric
-## Last update Tue May  5 18:45:16 2015 Thibaut Lopez
+## Last update Wed May  6 10:18:52 2015 Thibaut Lopez
 ##
 
 CC=		gcc
@@ -14,12 +14,13 @@ RM=		rm -f
 
 INCLUDES=	-I ./includes
 
-CFLAGS=		-W -Wall -Wextra
+CFLAGS=		-W -Wall -Wextra -g3
 
 S_NAME=		zappy
 
 U_SRC=		src/utils/common_func.c				\
 		src/utils/str.c					\
+		src/utils/sstr.c				\
 		src/utils/stwt.c				\
 		src/utils/xfunction.c				\
                 src/utils/CircularBuffer/circular_buffer.c	\
@@ -29,7 +30,9 @@ U_SRC=		src/utils/common_func.c				\
 S_SRC=		src/x_tcp.c					\
 		src/fd_func.c					\
 		src/main.c					\
-		src/while_serv.c
+		src/while_serv.c				\
+		src/parser.c					\
+		src/setter.c
 
 U_OBJ=		$(U_SRC:.c=.o)
 

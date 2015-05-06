@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 18:07:00 2015 Thibaut Lopez
-** Last update Tue May  5 18:46:11 2015 Thibaut Lopez
+** Last update Wed May  6 09:54:11 2015 Thibaut Lopez
 */
 
 #ifndef	UTILS_H
@@ -34,6 +34,10 @@ int		find_ptr(t_com *, char *);
 int		my_strtol(char *);
 int		my_strstr(char **, char *);
 char		*my_strcat(char *, char *);
+void		sfree(char **);
+int		sstrlen(char **);
+char		**sstrcat(char **, char *);
+void		putsstr(int, char **);
 char		**stwt(char *, char *);
 
 #endif

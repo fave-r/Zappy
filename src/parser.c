@@ -5,19 +5,59 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 16:43:22 2015 Thibaut Lopez
-** Last update Tue May  5 19:26:30 2015 Thibaut Lopez
+** Last update Wed May  6 10:44:59 2015 Thibaut Lopez
 */
 
-enum e_parser
-  {
-    P = 0,
-    X,
-    Y,
-    N,
-    C,
-    T,
-    NONE
-  };
+#include "server.h"
+
+int		set_team(t_zap *data, char *arg, e_state *state)
+{
+  (void)state;
+  data->team = sstrcat(data->team, xstrdup(arg));
+  return (0);
+}
+
+int		base_value(t_zap *data)
+{
+  if (data->port == -1)
+    data->port = 6667;
+  if (data->length == -1)
+    data->length = 100;
+  if (data->width == -1)
+    data->width = 100;
+  if (data->team == NULL || sstrlen(data->team) < 2)
+    {
+      if (data->team != NULL)
+	sfree(data->team);
+      data->team = stwt("TeamA:TeamB", ":");
+    }
+  if (data->count == -1)
+    data->count = 20;
+  if (data->delay == -1)
+    data->delay = 0;
+  printf("Information about the server:\n\
+Port: %d\n\
+Map of %dx%d cells\n\
+Player max per team: %d\n\
+Delay for each action: %d\n\
+Name of each team\n",
+	 data->port, data->length, data->width, data->count, data->delay);
+  putsstr(1, data->team);
+  return (0);
+}
+
+int		pars_error(char *arg, char **map, t_com *func)
+{
+  free(map);
+  free(func);
+  if (arg[0] == '-')
+    {
+      fprintf(stderr, "Error: option %s not recognized.\n", arg);
+      return (-1);
+    }
+  fprintf(stderr, "Error: %s value without definition flag before.\n", arg);
+  return (-1);
+}
 
 char		**map_state()
 {
@@ -28,7 +68,7 @@ char		**map_state()
   i = 0;
   while (i < 6)
     {
-      map[i] = map[i] + (6 * sizeof(char *)) + i * 3 * sizeof(char);
+      map[i] = (char *)map + (7 * sizeof(char *)) + i * 3 * sizeof(char);
       i++;
     }
   strcpy(map[0], "-p");
@@ -66,29 +106,33 @@ t_com		*map_func()
   func[4].ptr = set_count;
   func[5].ptr = set_delay;
   func[6].ptr = NULL;
+  return (func);
 }
 
-int		parse_com(char **argv)
+int		parse_com(char **argv, t_zap *data)
 {
   int		i;
-  e_parser	state;
+  e_state	state;
   char		**map;
+  t_com		*func;
 
-  i = 1;
+  i = 0;
   state = NONE;
   map = map_state();
-  while (argv[i] != NULL)
+  func = map_func();
+  while (argv[++i] != NULL)
     {
       if (argv[i][0] == '-')
 	{
 	  if ((state = my_strstr(map, argv[i])) == NONE)
-	    return (i);
+	    return (pars_error(argv[i], map, func));
 	}
       else if (state == NONE)
-	return (i);
-      
-      i++;
+	return (pars_error(argv[i], map, func));
+      else if (func[find_ptr(func, map[state])].ptr(data, argv[i], &state) == -1)
+	return (-1);
     }
   free(map);
-  return (0);
+  free(func);
+  return (base_value(data));
 }

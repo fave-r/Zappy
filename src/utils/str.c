@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 17:47:45 2015 romaric
-** Last update Tue May  5 18:30:22 2015 Thibaut Lopez
+** Last update Wed May  6 09:50:02 2015 Thibaut Lopez
 */
 
 #include "utils.h"

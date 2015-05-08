@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Zappy graphic protocol for commands and replies</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <table width="100%">
+      <tr>
+	<td width="50%" align="center">
+	  <form action="index.php" method="GET">
+	    <select name="com" onchange="this.form.submit()">
+	      <option value="" selected>-- Server command --</option>
+	      <option value="0">Welcome message</option>
+	      <option value="1">Map size</option>
+	      <option value="2">Cell information</option>
+	      <option value="3">Team names</option>
+	      <option value="4">New player notification</option>
+	      <option value="5">Player position</option>
+	      <option value="6">Player level</option>
+	      <option value="7">Player inventory</option>
+	      <option value="8">Player expel</option>
+	      <option value="9">Player broadcast</option>
+	      <option value="10">Player cast begin</option>
+	      <option value="11">Player cast end</option>
+	      <option value="12">Player laying egg</option>
+	      <option value="13">Player throwing</option>
+	      <option value="14">Player looting</option>
+	      <option value="15">Player starving</option>
+	      <option value="16">Egg layed</option>
+	      <option value="17">Egg hatching</option>
+	      <option value="18">Player connected to an egg</option>
+	      <option value="19">Hatched egg starving</option>
+	      <option value="20">Time notification</option>
+	      <option value="21">End of game</option>
+	      <option value="22">Server message</option>
+	      <option value="23">Unknown command</option>
+	      <option value="24">Bad parameter</option>
+	    </select>
+	  </form>
+	</td>
+	<td width="50%" align="center">
+	  <form action="index.php" method="GET">
+	    <select name="com" onchange="this.form.submit()">
+	      <option value="-1" selected>-- Graphic interface command --</option>
+	      <option value="0">GRAPHIC message</option>
+	      <option value="1">Map size</option>
+	      <option value="2">Cell information</option>
+	      <option value="3">Entire map information</option>
+	      <option value="4">Team names</option>
+	      <option value="5">Player position</option>
+	      <option value="6">Player level</option>	
+	      <option value="7">Player inventory</option>
+	      <option value="8">Ask time</option>
+	      <option value="9">Modify time</option>
+	    </select>
+	  </form>
+	</td>
+      </tr>
+    </table>
+    <hr />
+    <h1>Zappy protocol for command and replies</h1>
+    <br />
+    <p>The "Zappy" is a project made by Léo Thevenet, Clément Jean, Swann Polydor, Thibaut Lopez, Arnaud Lhomme and Romaric Fave.</p>
+    <p>It's a game where a various number of AIs connected to the Zappy server have to team up in order to collect food and minerals for leveling up their team. When a team has reached the max level (level 8), they win. Each IA start at level 1, and must follow the chart below in order to increase their rank :</p>
+  </body>
+</html>

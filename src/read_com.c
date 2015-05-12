@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:51:04 2015 romaric
-** Last update Tue May 12 19:09:37 2015 Thibaut Lopez
+** Last update Tue May 12 19:20:11 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -60,18 +60,17 @@ int		read_com(t_user *usr, t_zap *data)
 
   ret = 0;
   if (read_cb(&usr->cb, usr->fd) <= 0)
-    return (-1);
+    {
+      usr->tokill = 1;
+      return (-1);
+    }
   com = ptr_to_function();
   while ((gnl = get_line_cb(&usr->cb)) != NULL)
     {
-      printf("%s\n", gnl);
       if ((tok = stwt(gnl, " \t\n\r")) == NULL)
 	return (0);
-      i = find_ptr(com, tok[0]);
-      if (i != -1)
-	ret = com[i].ptr(tok, data, usr);
-      else
-	my_other(tok, data, usr);
+      ret = ((i = find_ptr(com, tok[0])) != -1) ?
+	com[i].ptr(tok, data, usr) : my_other(tok, data, usr);
       free(tok);
       free(gnl);
     }

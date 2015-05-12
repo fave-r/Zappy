@@ -5,18 +5,19 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Tue May 12 17:13:26 2015 Thibaut Lopez
+** Last update Tue May 12 17:44:12 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
-void	truc(char *team, t_zap *data, t_user *usr)
+void	send_client_info(char *team, t_zap *data, t_user *usr)
 {
   char	tmp[512];
 
   bzero(tmp, 512);
-  sprintf("%d\n%d %d\n", data->count - count_in_team(team, usr),
-	  usr->x, usr->y);
+  sprintf(tmp, "%d\n%d %d\n",
+	  data->count - count_in_team(team, usr), usr->x, usr->y);
+  fill_cb(&usr->wr, tmp, strlen(tmp));
 }
 
 int	my_other(char **com, t_zap *data, t_user *usr)
@@ -43,5 +44,6 @@ int	my_other(char **com, t_zap *data, t_user *usr)
   usr->inv.phiras = 0;
   usr->inv.thystame = 0;
   usr->level = 1;
+  send_client_info(data->team[i], data, usr);
   return (0);
 }

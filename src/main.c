@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Tue May 12 14:56:01 2015 romaric
+** Last update Tue May 12 19:00:45 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -35,15 +35,15 @@ void		write_separate(t_user **user, t_bf *bf)
     }
 }
 
-void		check_client(t_user **user, t_bf *bf)
+void		check_client(t_user **user, t_bf *bf, t_zap *data)
 {
   t_user	*tmp;
 
   tmp = *user;
   while (tmp != NULL)
     {
-      //if (FD_ISSET(tmp->fd, &bf->rbf))
-      //read_com(tmp, chans);
+      if (FD_ISSET(tmp->fd, &bf->rbf))
+	read_com(tmp, data);
       if (tmp->tokill == 1)
 	{
 	  *user = (tmp == *user) ? (*user)->next : *user;
@@ -78,7 +78,7 @@ int			main(int ac, char **av)
     return (clean_return(s, "Couldn't bind"));
   if (listen(s, 42) == -1)
     return (clean_return(s, "Couldn't listen"));
-  handle_fds(s, &user);
+  handle_fds(s, &user, &data);
   data_free(&user);
   close(s);
   sfree(data.team);

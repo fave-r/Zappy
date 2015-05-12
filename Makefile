@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Tue May  5 14:40:23 2015 romaric
-## Last update Tue May 12 17:19:57 2015 romaric
+## Last update Tue May 12 19:09:07 2015 Thibaut Lopez
 ##
 
 CC=		gcc
@@ -27,13 +27,28 @@ U_SRC=		src/utils/common_func.c				\
                 src/utils/CircularBuffer/get_value.c		\
                 src/utils/CircularBuffer/read_cb.c
 
-S_SRC=		src/data.c					\
+S_SRC=		src/command_func.c				\
+		src/data.c					\
 		src/fd_func.c					\
 		src/main.c					\
 		src/parser.c					\
+		src/read_com.c					\
 		src/setter.c					\
 		src/while_serv.c				\
 		src/x_tcp.c					\
+		src/client/my_avance.c				\
+		src/client/my_broadcast.c			\
+		src/client/my_connect_nbr.c			\
+		src/client/my_droite.c				\
+		src/client/my_expulse.c				\
+		src/client/my_fork.c				\
+		src/client/my_gauche.c				\
+		src/client/my_incantation.c			\
+		src/client/my_inventaire.c			\
+		src/client/my_other.c				\
+		src/client/my_pose.c				\
+		src/client/my_prend.c				\
+		src/client/my_voir.c				\
 		src/graphic/my_bct.c				\
 		src/graphic/my_ebo.c				\
 		src/graphic/my_edi.c				\
@@ -60,8 +75,7 @@ S_SRC=		src/data.c					\
 		src/graphic/my_smg.c				\
 		src/graphic/my_sst.c				\
 		src/graphic/my_suc.c				\
-		src/graphic/my_tna.c				\
-		src/command_func.c
+		src/graphic/my_tna.c
 
 U_OBJ=		$(U_SRC:.c=.o)
 

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Tue May 12 17:19:30 2015 romaric
+** Last update Tue May 12 19:03:57 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -89,8 +89,9 @@ int		init_bind(int, int *);
 int		init_connect(int, int, char *);
 void		set_fd(int, t_bf *, t_user *);
 void		new_client(int, t_user **, int *);
-void		check_client(t_user **, t_bf *);
-int		handle_fds(int, t_user **);
+void		check_client(t_user **, t_bf *, t_zap *);
+int		handle_fds(int, t_user **, t_zap *);
+int		read_com(t_user *, t_zap *);
 void		data_free(t_user **);
 
 int		set_port(t_zap *, char *, e_state *);
@@ -102,6 +103,20 @@ int		set_delay(t_zap *, char *, e_state *);
 int		parse_com(char **, t_zap *);
 int		base_value(t_zap *);
 void		init_val(t_zap *);
-int		count_in_team(char *team_name, t_user *user);
+
+int		count_in_team(char *, t_user *);
+int		my_avance(char **, t_zap *, t_user *);
+int		my_broadcast(char **, t_zap *, t_user *);
+int		my_connect_nbr(char **, t_zap *, t_user *);
+int		my_droite(char **, t_zap *, t_user *);
+int		my_expulse(char **, t_zap *, t_user *);
+int		my_fork(char **, t_zap *, t_user *);
+int		my_gauche(char **, t_zap *, t_user *);
+int		my_incantation(char **, t_zap *, t_user *);
+int		my_inventaire(char **, t_zap *, t_user *);
+int		my_other(char **, t_zap *, t_user *);
+int		my_pose(char **, t_zap *, t_user *);
+int		my_prend(char **, t_zap *, t_user *);
+int		my_voir(char **, t_zap *, t_user *);
 
 #endif

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:38:34 2015 romaric
-** Last update Tue May  5 18:40:33 2015 Thibaut Lopez
+** Last update Tue May 12 18:36:28 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -27,7 +27,7 @@ void		init_handle(int *bool, t_user **user
   *user = NULL;
 }
 
-int			handle_fds(int s, t_user **user)
+int			handle_fds(int s, t_user **user, t_zap *data)
 {
   t_bf			bf;
   int			bool;
@@ -45,7 +45,7 @@ int			handle_fds(int s, t_user **user)
 	    {
 	      if (FD_ISSET(s, &bf.rbf))
 		new_client(s, user, &nb_client);
-	      check_client(user, &bf);
+	      check_client(user, &bf, data);
 	    }
 	}
     }

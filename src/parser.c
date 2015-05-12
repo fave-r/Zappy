@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 16:43:22 2015 Thibaut Lopez
-** Last update Wed May  6 18:23:30 2015 Thibaut Lopez
+** Last update Tue May 12 10:39:50 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -14,34 +14,6 @@ int		set_team(t_zap *data, char *arg, e_state *state)
 {
   (void)state;
   data->team = sstrcat(data->team, xstrdup(arg));
-  return (0);
-}
-
-int		base_value(t_zap *data)
-{
-  if (data->port == -1)
-    data->port = 6667;
-  if (data->length == -1)
-    data->length = 100;
-  if (data->width == -1)
-    data->width = 100;
-  if (data->team == NULL || sstrlen(data->team) < 2)
-    {
-      if (data->team != NULL)
-	sfree(data->team);
-      data->team = xmalloc(3 * sizeof(char *));
-      data->team[0] = xstrdup("TeamA");
-      data->team[1] = xstrdup("TeamB");
-      data->team[2] = NULL;
-    }
-  if (data->count == -1)
-    data->count = 20;
-  if (data->delay == -1)
-    data->delay = 0;
-  printf("Information about the server:\nPort: %d\nMap of %dx%d cells\n\
-Player max per team: %d\nDelay for each action: %d\nName of each team\n",
-	 data->port, data->length, data->width, data->count, data->delay);
-  putsstr(1, data->team);
   return (0);
 }
 

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Wed May  6 18:20:39 2015 Thibaut Lopez
+** Last update Tue May 12 10:40:05 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -47,16 +47,6 @@ void		check_client(t_user **user, t_bf *bf)
       else
 	tmp = tmp->next;
     }
-}
-
-void		init_val(t_zap *data)
-{
-  data->port = -1;
-  data->length = -1;
-  data->width = -1;
-  data->team = NULL;
-  data->count = -1;
-  data->delay = -1;
 }
 
 int			main(int ac, char **av)

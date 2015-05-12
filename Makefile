@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Tue May  5 14:40:23 2015 romaric
-## Last update Wed May  6 10:46:12 2015 Thibaut Lopez
+## Last update Tue May 12 10:56:15 2015 Thibaut Lopez
 ##
 
 CC=		gcc
@@ -32,7 +32,8 @@ S_SRC=		src/x_tcp.c					\
 		src/main.c					\
 		src/while_serv.c				\
 		src/parser.c					\
-		src/setter.c
+		src/setter.c					\
+		src/data.c
 
 U_OBJ=		$(U_SRC:.c=.o)
 

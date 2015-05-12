@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Wed May  6 10:14:23 2015 Thibaut Lopez
+** Last update Tue May 12 10:57:11 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -29,10 +29,21 @@ typedef	enum e_state
     NONE = -1
   }	e_state;
 
+typedef struct	s_content
+{
+  uint16_t	food;
+  uint16_t	linemate;
+  uint16_t	deraumere;
+  uint16_t	sibur;
+  uint16_t	mendiane;
+  uint16_t	phiras;
+  uint16_t	thystame;
+}		t_content;
+
 typedef struct	s_zap
 {
   int		port;
-  /* type	*map */
+  t_content	**map;
   int		length;
   int		width;
   char		**team;
@@ -74,5 +85,7 @@ int		set_team(t_zap *, char *, e_state *);
 int		set_count(t_zap *, char *, e_state *);
 int		set_delay(t_zap *, char *, e_state *);
 int		parse_com(char **, t_zap *);
+int		base_value(t_zap *);
+void		init_val(t_zap *);
 
 #endif

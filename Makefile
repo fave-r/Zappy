@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Tue May  5 14:40:23 2015 romaric
-## Last update Tue May 12 10:56:15 2015 Thibaut Lopez
+## Last update Tue May 12 14:34:09 2015 Thibaut Lopez
 ##
 
 CC=		gcc
@@ -27,13 +27,40 @@ U_SRC=		src/utils/common_func.c				\
                 src/utils/CircularBuffer/get_value.c		\
                 src/utils/CircularBuffer/read_cb.c
 
-S_SRC=		src/x_tcp.c					\
+S_SRC=		src/data.c					\
 		src/fd_func.c					\
 		src/main.c					\
-		src/while_serv.c				\
 		src/parser.c					\
 		src/setter.c					\
-		src/data.c
+		src/while_serv.c				\
+		src/x_tcp.c					\
+		src/graphic/my_bct.c				\
+		src/graphic/my_ebo.c				\
+		src/graphic/my_edi.c				\
+		src/graphic/my_eht.c				\
+		src/graphic/my_enw.c				\
+		src/graphic/my_graphic.c			\
+		src/graphic/my_mct.c				\
+		src/graphic/my_msz.c				\
+		src/graphic/my_pbc.c				\
+		src/graphic/my_pdi.c				\
+		src/graphic/my_pdr.c				\
+		src/graphic/my_pex.c				\
+		src/graphic/my_pfk.c				\
+		src/graphic/my_pgt.c				\
+		src/graphic/my_pic.c				\
+		src/graphic/my_pie.c				\
+		src/graphic/my_pin.c				\
+		src/graphic/my_plv.c				\
+		src/graphic/my_pnw.c				\
+		src/graphic/my_ppo.c				\
+		src/graphic/my_sbp.c				\
+		src/graphic/my_seg.c				\
+		src/graphic/my_sgt.c				\
+		src/graphic/my_smg.c				\
+		src/graphic/my_sst.c				\
+		src/graphic/my_suc.c				\
+		src/graphic/my_tna.c
 
 U_OBJ=		$(U_SRC:.c=.o)
 

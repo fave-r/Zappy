@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 10:39:02 2015 Thibaut Lopez
-** Last update Tue May 12 10:56:57 2015 Thibaut Lopez
+** Last update Tue May 12 11:10:42 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -23,19 +23,26 @@ void	init_map(t_zap *data)
       j = -1;
       while (++j < data->length)
 	{
-	  data->map[i][j].food = 0;
-	  data->map[i][j].linemate = 0;
-	  data->map[i][j].deraumere = 0;
-	  data->map[i][j].sibur = 0;
-	  data->map[i][j].mendiane = 0;
-	  data->map[i][j].phiras = 0;
-	  data->map[i][j].thystame = 0;
+	  data->map[i][j].food = rand() % 10;
+	  data->map[i][j].linemate = rand() % 8;
+	  data->map[i][j].deraumere = rand() % 8;
+	  data->map[i][j].sibur = rand() % 6;
+	  data->map[i][j].mendiane = rand() % 5;
+	  data->map[i][j].phiras = rand() % 4;
+	  data->map[i][j].thystame = rand() % 2;
 	}
     }
   printf("Information about the server:\nPort: %d\nMap of %dx%d cells\n\
 Player max per team: %d\nDelay for each action: %d\nName of each team\n",
 	 data->port, data->length, data->width, data->count, data->delay);
   putsstr(1, data->team);
+  i = -1;
+  while (++i < data->width)
+    {
+      j = -1;
+      while (++j < data->width)
+	printf("%d %d %d %d %d %d %d\n", data->map[i][j].food, data->map[i][j].linemate, data->map[i][j].deraumere, data->map[i][j].sibur, data->map[i][j].mendiane, data->map[i][j].phiras, data->map[i][j].thystame);
+    }
 }
 
 int	base_value(t_zap *data)

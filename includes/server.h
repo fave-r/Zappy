@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Tue May 12 10:57:11 2015 Thibaut Lopez
+** Last update Tue May 12 11:11:30 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -16,6 +16,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <signal.h>
+#include <time.h>
 #include "cb.h"
 
 typedef	enum e_state

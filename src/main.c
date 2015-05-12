@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Tue May 12 10:40:05 2015 Thibaut Lopez
+** Last update Tue May 12 11:05:39 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -56,6 +56,7 @@ int			main(int ac, char **av)
   t_zap			data;
 
   (void)ac;
+  srand(time(NULL));
   init_val(&data);
   if (parse_com(av, &data) != 0)
     return (1);

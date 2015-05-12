@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:51:15 2015 romaric
-** Last update Tue May  5 18:43:23 2015 Thibaut Lopez
+** Last update Tue May 12 15:05:17 2015 romaric
 */
 
 #include "server.h"
@@ -62,4 +62,5 @@ void			new_client(int fd, t_user **user, int *nbclient)
     push_back(user, new);
   else
     *user = new;
+  fill_cb(&new->wr, "BIENVENUE\n", strlen("BIENVENUE\n"));
 }

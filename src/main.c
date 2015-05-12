@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Tue May 12 11:05:39 2015 Thibaut Lopez
+** Last update Tue May 12 14:56:01 2015 romaric
 */
 
 #include "server.h"
@@ -22,7 +22,7 @@ void		unit_user_free(t_user *user)
   free(user);
 }
 
-void		check_client(t_user **user, t_bf *bf)
+void		write_separate(t_user **user, t_bf *bf)
 {
   t_user	*tmp;
 
@@ -31,8 +31,19 @@ void		check_client(t_user **user, t_bf *bf)
     {
       if (cb_taken(&tmp->wr) > 0 && FD_ISSET(tmp->fd, &bf->wbf))
 	write_cb(&tmp->wr, tmp->fd);
+      tmp = tmp->next;
+    }
+}
+
+void		check_client(t_user **user, t_bf *bf)
+{
+  t_user	*tmp;
+
+  tmp = *user;
+  while (tmp != NULL)
+    {
       //if (FD_ISSET(tmp->fd, &bf->rbf))
-	//read_com(tmp, chans);
+      //read_com(tmp, chans);
       if (tmp->tokill == 1)
 	{
 	  *user = (tmp == *user) ? (*user)->next : *user;
@@ -47,6 +58,7 @@ void		check_client(t_user **user, t_bf *bf)
       else
 	tmp = tmp->next;
     }
+  write_separate(user, bf);
 }
 
 int			main(int ac, char **av)

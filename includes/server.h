@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Tue May 12 16:49:21 2015 Thibaut Lopez
+** Last update Tue May 12 17:19:30 2015 romaric
 */
 
 #ifndef	ZAPPY_H
@@ -37,7 +37,7 @@ typedef enum	e_dir
     SOUTH,
     WEST
   }		e_dir;
-   
+
 typedef struct	s_content
 {
   uint16_t	food;
@@ -102,5 +102,6 @@ int		set_delay(t_zap *, char *, e_state *);
 int		parse_com(char **, t_zap *);
 int		base_value(t_zap *);
 void		init_val(t_zap *);
+int		count_in_team(char *team_name, t_user *user);
 
 #endif

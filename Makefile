@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Tue May  5 14:40:23 2015 romaric
-## Last update Tue May 12 14:34:09 2015 Thibaut Lopez
+## Last update Tue May 12 17:19:57 2015 romaric
 ##
 
 CC=		gcc
@@ -60,7 +60,8 @@ S_SRC=		src/data.c					\
 		src/graphic/my_smg.c				\
 		src/graphic/my_sst.c				\
 		src/graphic/my_suc.c				\
-		src/graphic/my_tna.c
+		src/graphic/my_tna.c				\
+		src/command_func.c
 
 U_OBJ=		$(U_SRC:.c=.o)
 

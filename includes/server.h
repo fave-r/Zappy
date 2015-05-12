@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Tue May 12 11:11:30 2015 Thibaut Lopez
+** Last update Tue May 12 16:49:21 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -19,7 +19,7 @@
 #include <time.h>
 #include "cb.h"
 
-typedef	enum e_state
+typedef	enum	e_state
   {
     P = 0,
     X,
@@ -28,8 +28,16 @@ typedef	enum e_state
     C,
     T,
     NONE = -1
-  }	e_state;
+  }		e_state;
 
+typedef enum	e_dir
+  {
+    NORTH = 0,
+    EAST,
+    SOUTH,
+    WEST
+  }		e_dir;
+   
 typedef struct	s_content
 {
   uint16_t	food;
@@ -59,6 +67,12 @@ typedef struct	s_user
   t_cb		cb;
   t_cb		wr;
   int		tokill;
+  int		x;
+  int		y;
+  e_dir		dir;
+  t_content	inv;
+  char		*team;
+  uint16_t	level;
   struct s_user	*next;
   struct s_user	*prev;
 }		t_user;

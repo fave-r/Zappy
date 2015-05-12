@@ -1,11 +1,11 @@
 /*
 ** data.c for data in /home/lopez_t/Zappy/src
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <lopez_t@epitech.net>
-** 
+**
 ** Started on  Tue May 12 10:39:02 2015 Thibaut Lopez
-** Last update Tue May 12 11:10:42 2015 Thibaut Lopez
+** Last update Tue May 12 11:18:12 2015 romaric
 */
 
 #include "server.h"

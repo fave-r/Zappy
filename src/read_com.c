@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:51:04 2015 romaric
-** Last update Tue May 12 19:20:11 2015 Thibaut Lopez
+** Last update Wed May 13 18:16:43 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -69,7 +69,7 @@ int		read_com(t_user *usr, t_zap *data)
     {
       if ((tok = stwt(gnl, " \t\n\r")) == NULL)
 	return (0);
-      ret = ((i = find_ptr(com, tok[0])) != -1) ?
+      ret = ((i = find_ptr(com, tok[0])) != -1 && usr->team != NULL) ?
 	com[i].ptr(tok, data, usr) : my_other(tok, data, usr);
       free(tok);
       free(gnl);

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:12:11 2015 romaric
-** Last update Wed May 13 13:59:36 2015 Thibaut Lopez
+** Last update Thu May 14 01:49:29 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -21,7 +21,7 @@ int		count_in_team(char *team_name, t_user *user)
   i = 0;
   while (tmp != NULL)
     {
-      if (tmp->team != NULL)
+      if (tmp->type == AI)
 	{
 	  if (strcmp(tmp->team, team_name) == 0)
 	    i++;
@@ -40,7 +40,7 @@ t_user		*in_this_cell(int x, int y, t_user *user)
     tmp = tmp->prev;
   while (tmp != NULL)
     {
-      if (tmp->x == x && tmp->y == y)
+      if (tmp->type == AI && tmp->x == x && tmp->y == y)
 	return (tmp);
       tmp = tmp->next;
     }

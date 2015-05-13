@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:51:15 2015 romaric
-** Last update Wed May 13 18:13:25 2015 Thibaut Lopez
+** Last update Thu May 14 01:15:56 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -57,11 +57,8 @@ void			new_client(int fd, t_user **user, int *nbclient)
   new->tokill = 0;
   init_cb(&new->cb, 4096, sizeof(char));
   init_cb(&new->wr, 4096, sizeof(char));
-  new->x = -1;
-  new->y = -1;
-  new->dir = NORTH;
+  new->type = UNKNOWN;
   new->team = NULL;
-  new->level = -1;
   printf("new client\n");
   if (*user != NULL)
     push_back(user, new);

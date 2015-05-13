@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Mon Apr  6 17:09:17 2015 Thibaut Lopez
-** Last update Tue May  5 18:27:09 2015 Thibaut Lopez
+** Last update Thu May 14 01:28:33 2015 Thibaut Lopez
 */
 
 #include "utils.h"
@@ -19,6 +19,8 @@ int		find_ptr(t_com *com, char *str)
   while (com[j].com != NULL)
     {
       len = strlen(com[j].com);
+      if (len == 0)
+	return (j);
       if (len <= strlen(str) && strncmp(str, com[j].com, len) == 0)
 	return (j);
       j++;

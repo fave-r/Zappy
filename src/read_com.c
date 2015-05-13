@@ -5,10 +5,52 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:51:04 2015 romaric
-** Last update Wed May 13 18:54:34 2015 Thibaut Lopez
+** Last update Thu May 14 01:37:27 2015 Thibaut Lopez
 */
 
 #include "server.h"
+
+t_com		*unknown_funcs()
+{
+  t_com		*ptrs;
+
+  ptrs = xmalloc(3 * sizeof(t_com));
+  ptrs[0].com = "GRAPHIC";
+  ptrs[0].ptr = my_graphic;
+  ptrs[1].com = "";
+  ptrs[1].ptr = my_other;
+  ptrs[2].com = NULL;
+  ptrs[2].ptr = NULL;
+  return (ptrs);
+}
+
+t_com		*graphic_funcs()
+{
+  t_com		*ptrs;
+
+  ptrs = xmalloc(10 * sizeof(t_com));
+  ptrs[0].com = "msz";
+  ptrs[0].ptr = my_msz;
+  ptrs[1].com = "bct";
+  ptrs[1].ptr = my_bct;
+  ptrs[2].com = "mct";
+  ptrs[2].ptr = my_mct;
+  ptrs[3].com = "tna";
+  ptrs[3].ptr = my_tna;
+  ptrs[4].com = "ppo";
+  ptrs[4].ptr = my_ppo;
+  ptrs[5].com = "plv";
+  ptrs[5].ptr = my_plv;
+  ptrs[6].com = "pin";
+  ptrs[6].ptr = my_pin;
+  ptrs[7].com = "sgt";
+  ptrs[7].ptr = my_sgt;
+  ptrs[8].com = "sst";
+  ptrs[8].ptr = my_sst;
+  ptrs[9].com = NULL;
+  ptrs[9].ptr = NULL;
+  return (ptrs);
+}
 
 void		assign_ptrs(t_com *ptrs)
 {
@@ -25,13 +67,16 @@ void		assign_ptrs(t_com *ptrs)
   ptrs[10].ptr = my_prend;
   ptrs[11].ptr = my_voir;
   ptrs[12].ptr = NULL;
-
 }
 
-t_com		*ptr_to_function()
+t_com		*ptr_to_function(e_clt type)
 {
   t_com		*ptrs;
 
+  if (type == UNKNOWN)
+    return (unknown_funcs());
+  else if (type == GRAPHIC)
+    return (graphic_funcs());
   ptrs = xmalloc(13 * sizeof(t_com));
   ptrs[0].com = "avance";
   ptrs[1].com = "broadcast";
@@ -64,13 +109,14 @@ int		read_com(t_user *usr, t_zap *data)
       usr->tokill = 1;
       return (-1);
     }
-  com = ptr_to_function();
+  com = ptr_to_function(usr->type);
   while ((gnl = get_line_cb(&usr->cb)) != NULL)
     {
-      if ((tok = stwt(gnl, " \t\n\r", 2)) == NULL)
+      if ((tok = stwt(gnl, " \t\n\r", usr->type)) == NULL)
 	return (0);
-      ret = ((i = find_ptr(com, tok[0])) != -1 && usr->team != NULL) ?
-	com[i].ptr(tok, data, usr) : my_other(tok, data, usr);
+      putsstr(1, tok);
+      if ((i = find_ptr(com, tok[0])) != -1)
+	ret = com[i].ptr(tok, data, usr);
       free(tok);
       free(gnl);
     }

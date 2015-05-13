@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Wed May 13 15:26:48 2015 Thibaut Lopez
+** Last update Thu May 14 01:31:48 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -38,6 +38,13 @@ typedef enum	e_dir
     SOUTH,
     WEST
   }		e_dir;
+
+typedef enum	e_clt
+  {
+    UNKNOWN = 1,
+    AI = 2,
+    GRAPHIC = 3
+  }		e_clt;
 
 typedef struct	s_pair
 {
@@ -74,6 +81,7 @@ typedef struct	s_user
   t_cb		cb;
   t_cb		wr;
   int		tokill;
+  e_clt		type;
   int		x;
   int		y;
   e_dir		dir;
@@ -122,9 +130,19 @@ int		my_fork(char **, t_zap *, t_user *);
 int		my_gauche(char **, t_zap *, t_user *);
 int		my_incantation(char **, t_zap *, t_user *);
 int		my_inventaire(char **, t_zap *, t_user *);
-int		my_other(char **, t_zap *, t_user *);
 int		my_pose(char **, t_zap *, t_user *);
 int		my_prend(char **, t_zap *, t_user *);
+int		my_graphic(char **, t_zap *, t_user *);
+int		my_other(char **, t_zap *, t_user *);
+int		my_msz(char **, t_zap *, t_user *);
+int		my_bct(char **, t_zap *, t_user *);
+int		my_mct(char **, t_zap *, t_user *);
+int		my_tna(char **, t_zap *, t_user *);
+int		my_ppo(char **, t_zap *, t_user *);
+int		my_plv(char **, t_zap *, t_user *);
+int		my_pin(char **, t_zap *, t_user *);
+int		my_sgt(char **, t_zap *, t_user *);
+int		my_sst(char **, t_zap *, t_user *);
 void		north_gofo(t_pair *, int);
 void		north_gole(t_pair *, int);
 void		east_gofo(t_pair *, int);

@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 18:33:45 2015 Thibaut Lopez
-** Last update Tue May  5 18:33:45 2015 Thibaut Lopez
+** Last update Wed May 13 18:53:20 2015 Thibaut Lopez
 */
 
 #include "utils.h"
@@ -31,30 +31,50 @@ int	skip_word(char *str, char *delim, int nb_word)
   return (i);
 }
 
-int	lenword(char *str, int *nb_letters, char *delim)
+int	lenword(char *str, int *nb_letters, char *delim, int nb_word)
 {
+  int	save;
   int	len;
 
+  save = *nb_letters;
   len = 0;
-  while (str != NULL && (str = skip_delim(str, delim))[0] != 0)
+  while (str != NULL && (str = skip_delim(str, delim))[0] != 0
+	 && (nb_word == -1 || len < nb_word))
     {
       len++;
       *nb_letters += (skip_word(str, delim, len) + 1) * sizeof(char);
       str += skip_word(str, delim, len);
     }
+  if (str[0] != 0)
+    *nb_letters = save;
   return (len);
 }
 
-char	**stwt(char *str, char *delim)
+void	word_limitation(char **ret, char *str, char *delim)
 {
   int	i;
-  int	nb_word;
+  int	len;
+
+  if ((skip_delim(str, delim))[0] != 0)
+    {
+      i = 0;
+      while (ret[i + 1] != NULL)
+	i++;
+      len = strlen(ret[i]) + strlen(str);
+      strcpy(ret[i] + strlen(ret[i]), str);
+      ret[i][len] = 0;
+    }
+}
+
+char	**stwt(char *str, char *delim, int nb_word)
+{
+  int	i;
   int	nb_letters;
   char	**ret;
   char	*cur;
 
-  nb_letters = 0;
-  if ((nb_word = lenword(str, &nb_letters, delim)) == 0)
+  nb_letters = strlen(str);
+  if ((nb_word = lenword(str, &nb_letters, delim, nb_word)) == 0)
     return (NULL);
   ret = xmalloc((nb_word + 1) * sizeof(char *) + nb_letters);
   nb_letters = 0;
@@ -71,5 +91,6 @@ char	**stwt(char *str, char *delim)
       cur += nb_letters + 1;
     }
   ret[i] = NULL;
+  word_limitation(ret, str, delim);
   return (ret);
 }

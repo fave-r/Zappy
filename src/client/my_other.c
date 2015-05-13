@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Wed May 13 14:12:45 2015 Thibaut Lopez
+** Last update Wed May 13 15:39:04 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -43,7 +43,7 @@ int	my_other(char **com, t_zap *data, t_user *usr)
   usr->inv.mendiane = 0;
   usr->inv.phiras = 0;
   usr->inv.thystame = 0;
-  usr->level = 1;
+  usr->level = 7;
   send_client_info(data->team[i], data, usr);
   return (0);
 }

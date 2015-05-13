@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Wed May 13 14:08:33 2015 Thibaut Lopez
+** Last update Wed May 13 15:26:48 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -125,10 +125,14 @@ int		my_inventaire(char **, t_zap *, t_user *);
 int		my_other(char **, t_zap *, t_user *);
 int		my_pose(char **, t_zap *, t_user *);
 int		my_prend(char **, t_zap *, t_user *);
-void		north_cone(t_pair *, t_user *);
-void		east_cone(t_pair *, t_user *);
-void		south_cone(t_pair *, t_user *);
-void		west_cone(t_pair *, t_user *);
+void		north_gofo(t_pair *, int);
+void		north_gole(t_pair *, int);
+void		east_gofo(t_pair *, int);
+void		east_gole(t_pair *, int);
+void		south_gofo(t_pair *, int);
+void		south_gole(t_pair *, int);
+void		west_gofo(t_pair *, int);
+void		west_gole(t_pair *, int);
 int		my_voir(char **, t_zap *, t_user *);
 
 #endif

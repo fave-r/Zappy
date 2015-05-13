@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 10:39:02 2015 Thibaut Lopez
-** Last update Tue May 12 11:18:12 2015 romaric
+** Last update Wed May 13 10:20:10 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -36,13 +36,6 @@ void	init_map(t_zap *data)
 Player max per team: %d\nDelay for each action: %d\nName of each team\n",
 	 data->port, data->length, data->width, data->count, data->delay);
   putsstr(1, data->team);
-  i = -1;
-  while (++i < data->width)
-    {
-      j = -1;
-      while (++j < data->width)
-	printf("%d %d %d %d %d %d %d\n", data->map[i][j].food, data->map[i][j].linemate, data->map[i][j].deraumere, data->map[i][j].sibur, data->map[i][j].mendiane, data->map[i][j].phiras, data->map[i][j].thystame);
-    }
 }
 
 int	base_value(t_zap *data)

@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Tue May  5 14:40:23 2015 romaric
-## Last update Tue May 12 19:09:07 2015 Thibaut Lopez
+## Last update Wed May 13 13:58:12 2015 Thibaut Lopez
 ##
 
 CC=		gcc
@@ -36,6 +36,8 @@ S_SRC=		src/command_func.c				\
 		src/setter.c					\
 		src/while_serv.c				\
 		src/x_tcp.c					\
+		src/client/cone_x.c				\
+		src/client/cone_y.c				\
 		src/client/my_avance.c				\
 		src/client/my_broadcast.c			\
 		src/client/my_connect_nbr.c			\

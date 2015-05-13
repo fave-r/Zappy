@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Tue May 12 19:03:57 2015 Thibaut Lopez
+** Last update Wed May 13 14:01:13 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -37,6 +37,12 @@ typedef enum	e_dir
     SOUTH,
     WEST
   }		e_dir;
+
+typedef struct	s_pair
+{
+  int		f;
+  int		s;
+}		t_pair;
 
 typedef struct	s_content
 {
@@ -105,6 +111,7 @@ int		base_value(t_zap *);
 void		init_val(t_zap *);
 
 int		count_in_team(char *, t_user *);
+t_user		*in_this_cell(int, int, t_user *);
 int		my_avance(char **, t_zap *, t_user *);
 int		my_broadcast(char **, t_zap *, t_user *);
 int		my_connect_nbr(char **, t_zap *, t_user *);
@@ -117,6 +124,10 @@ int		my_inventaire(char **, t_zap *, t_user *);
 int		my_other(char **, t_zap *, t_user *);
 int		my_pose(char **, t_zap *, t_user *);
 int		my_prend(char **, t_zap *, t_user *);
+void		north_cone(t_pair *, t_user *);
+void		east_cone(t_pair *, t_user *);
+void		south_cone(t_pair *, t_user *);
+void		west_cone(t_pair *, t_user *);
 int		my_voir(char **, t_zap *, t_user *);
 
 #endif

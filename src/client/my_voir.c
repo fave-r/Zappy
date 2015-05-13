@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Wed May 13 14:03:16 2015 Thibaut Lopez
+** Last update Wed May 13 14:10:13 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -56,6 +56,8 @@ int		my_voir(char **com, t_zap *data, t_user *usr)
   fill_cb(&usr->wr, "{", 1);
   while (i < 16)
     {
+      cone[i].f = S_MOD(cone[i].f, data->width);
+      cone[i].s = S_MOD(cone[i].s, data->length);
       if (i > 0)
 	fill_cb(&usr->wr, ",", 1);
       if (in_this_cell(cone[i].f, cone[i].s, usr) != NULL)

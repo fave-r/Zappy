@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Wed May 13 10:21:08 2015 Thibaut Lopez
+** Last update Wed May 13 14:12:45 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -16,7 +16,7 @@ void	send_client_info(char *team, t_zap *data, t_user *usr)
 
   bzero(tmp, 512);
   sprintf(tmp, "%d\n%d %d\n",
-	  data->count - count_in_team(team, usr), usr->x, usr->y);
+	  data->count - count_in_team(team, usr), data->length, data->width);
   fill_cb(&usr->wr, tmp, strlen(tmp));
 }
 

@@ -5,11 +5,12 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Wed May 13 14:01:13 2015 Thibaut Lopez
+** Last update Wed May 13 14:08:33 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
 #define	ZAPPY_H
+#define	S_MOD(a, b)	(((a) < 0) ? (a) + (b) : (a) % (b))
 
 #include <sys/socket.h>
 #include <netdb.h>

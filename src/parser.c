@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 16:43:22 2015 Thibaut Lopez
-** Last update Tue May 12 10:39:50 2015 Thibaut Lopez
+** Last update Thu May 14 15:16:21 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -100,7 +100,8 @@ int		parse_com(char **argv, t_zap *data)
 	}
       else if (state == NONE)
 	return (pars_error(argv[i], map, func));
-      else if (func[find_ptr(func, map[state])].ptr(data, argv[i], &state) == -1)
+      else if (func[find_ptr(func, map[state])].
+	       ptr(data, argv[i], &state) == -1)
 	return (-1);
     }
   free(map);

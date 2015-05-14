@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Thu May 14 01:50:09 2015 Thibaut Lopez
+** Last update Thu May 14 15:16:48 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -33,7 +33,7 @@ int	my_other(char **com, t_zap *data, t_user *usr)
   usr->team = data->team[i];
   usr->x = rand() % data->length;
   usr->y = rand() % data->width;
-  usr->dir = rand() % 4; 
+  usr->dir = rand() % 4;
   usr->inv.food = 10;
   usr->inv.linemate = 0;
   usr->inv.deraumere = 0;

@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Wed May 13 15:36:51 2015 Thibaut Lopez
+** Last update Thu May 14 15:11:38 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -43,7 +43,7 @@ void		analyse_cell(t_content **cnt, t_pair *cone, t_user *usr)
   if (cnt[cone->f][cone->s].phiras > 0)
     fill_cb(&usr->wr, " phiras", 7);
   if (cnt[cone->f][cone->s].thystame > 0)
-    fill_cb(&usr->wr, " thystame", 8);
+    fill_cb(&usr->wr, " thystame", 9);
 }
 
 void		vert_view(int i, t_user *usr, t_pair *cone, t_zap *data)

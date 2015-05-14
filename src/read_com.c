@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:51:04 2015 romaric
-** Last update Thu May 14 01:37:27 2015 Thibaut Lopez
+** Last update Thu May 14 15:15:33 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -114,7 +114,6 @@ int		read_com(t_user *usr, t_zap *data)
     {
       if ((tok = stwt(gnl, " \t\n\r", usr->type)) == NULL)
 	return (0);
-      putsstr(1, tok);
       if ((i = find_ptr(com, tok[0])) != -1)
 	ret = com[i].ptr(tok, data, usr);
       free(tok);

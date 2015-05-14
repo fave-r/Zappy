@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Thu May 14 12:20:41 2015 Thibaut Lopez
+** Last update Thu May 14 15:09:25 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -130,10 +130,26 @@ int		my_fork(char **, t_zap *, t_user *);
 int		my_gauche(char **, t_zap *, t_user *);
 int		my_incantation(char **, t_zap *, t_user *);
 int		my_inventaire(char **, t_zap *, t_user *);
+t_com		*ptrs_get();
 int		my_pose(char **, t_zap *, t_user *);
+int		get_sibur(t_content *, uint16_t **);
+int		get_mendiane(t_content *, uint16_t **);
+int		get_phiras(t_content *, uint16_t **);
+int		get_thystame(t_content *, uint16_t **);
 int		my_prend(char **, t_zap *, t_user *);
+void		north_gofo(t_pair *, int);
+void		north_gole(t_pair *, int);
+void		east_gofo(t_pair *, int);
+void		east_gole(t_pair *, int);
+void		south_gofo(t_pair *, int);
+void		south_gole(t_pair *, int);
+void		west_gofo(t_pair *, int);
+void		west_gole(t_pair *, int);
+int		my_voir(char **, t_zap *, t_user *);
+
 int		my_graphic(char **, t_zap *, t_user *);
 int		my_other(char **, t_zap *, t_user *);
+
 int		my_msz(char **, t_zap *, t_user *);
 int		my_bct(char **, t_zap *, t_user *);
 int		my_send_bct(t_zap *, t_user *, int, int);
@@ -145,14 +161,5 @@ int		my_pin(char **, t_zap *, t_user *);
 int		my_sgt(char **, t_zap *, t_user *);
 int		my_sst(char **, t_zap *, t_user *);
 int		my_pnw(t_user *, t_user *);
-void		north_gofo(t_pair *, int);
-void		north_gole(t_pair *, int);
-void		east_gofo(t_pair *, int);
-void		east_gole(t_pair *, int);
-void		south_gofo(t_pair *, int);
-void		south_gole(t_pair *, int);
-void		west_gofo(t_pair *, int);
-void		west_gole(t_pair *, int);
-int		my_voir(char **, t_zap *, t_user *);
 
 #endif

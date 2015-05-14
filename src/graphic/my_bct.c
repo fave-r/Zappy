@@ -5,15 +5,35 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Thu May 14 01:34:42 2015 Thibaut Lopez
+** Last update Thu May 14 12:20:23 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
-int	my_bct(char **com, t_zap *data, t_user *usr)
+int		my_send_bct(t_zap *data, t_user *usr, int x, int y)
 {
-  (void)com;
-  (void)data;
-  (void)usr;
+  t_content	cnt;
+  char		tmp[150];
+
+  cnt = data->map[x][y];
+  bzero(tmp, 150);
+  sprintf(tmp, "bct %d %d %d %d %d %d %d %d %d\n", x, y,
+	  (int)cnt.food, (int)cnt.linemate, (int)cnt.deraumere,
+	  (int)cnt.sibur, (int)cnt.mendiane, (int)cnt.phiras, (int)cnt.thystame);
+  fill_cb(&usr->wr, tmp, strlen(tmp));
   return (0);
+}
+
+int		my_bct(char **com, t_zap *data, t_user *usr)
+{
+  int	x;
+  int	y;
+
+  if (sstrlen(com) < 3)
+    return (0);
+  if ((x = my_strtol(com[1])) < 0 || x >= data->length)
+    return (0);
+  if ((y = my_strtol(com[2])) < 0 || y >= data->width)
+    return (0);
+  return (my_send_bct(data, usr, x, y));
 }

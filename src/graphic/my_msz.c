@@ -5,15 +5,23 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Thu May 14 01:34:50 2015 Thibaut Lopez
+** Last update Thu May 14 11:08:09 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
+int	my_send_msz(t_zap *data, t_user *usr)
+{
+  char	tmp[50];
+
+  bzero(tmp, 50);
+  sprintf(tmp, "msz %d %d\n", data->length, data->width);
+  fill_cb(&usr->wr, tmp, strlen(tmp));
+  return (0);
+}
+
 int	my_msz(char **com, t_zap *data, t_user *usr)
 {
   (void)com;
-  (void)data;
-  (void)usr;
-  return (0);
+  return (my_send_msz(data, usr));
 }

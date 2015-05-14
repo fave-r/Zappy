@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 14:18:39 2015 Thibaut Lopez
-** Last update Tue May  5 14:26:39 2015 Thibaut Lopez
+** Last update Thu May 14 12:39:12 2015 Thibaut Lopez
 */
 
 #include "cb.h"
@@ -52,7 +52,7 @@ void	extend_cb(t_cb *cb, int new)
   void	*buff;
   int	len;
 
-  if (cb->cap <= new)
+  if (cb->cap >= new)
     return ;
   len = cb_taken(cb);
   buff = xmalloc((new + 51) * cb->sz);
@@ -75,7 +75,7 @@ void	extend_cb(t_cb *cb, int new)
 void	fill_cb(t_cb *cb, void *to_add, int len)
 {
   if (cb_available(cb) < len)
-    extend_cb(cb, len);
+    extend_cb(cb, cb->cap + len);
   if (len < cb->cap - cb->end)
     memcpy(cb_end(cb), to_add, (len * cb->sz));
   else

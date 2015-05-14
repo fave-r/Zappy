@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Thu May 14 15:11:38 2015 Thibaut Lopez
+** Last update Thu May 14 19:19:41 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -50,20 +50,20 @@ void		vert_view(int i, t_user *usr, t_pair *cone, t_zap *data)
 {
   int		j;
 
-  gole[usr->dir](cone, i);
+  gole[GET_DIR(usr)](cone, i);
   j = i;
   while (j != -i)
     {
       cone->f = S_MOD(cone->f, data->width);
       cone->s = S_MOD(cone->s, data->length);
       analyse_cell(data->map, cone, usr);
-      gole[usr->dir](cone, -1);
+      gole[GET_DIR(usr)](cone, -1);
       j--;
     }
   cone->f = S_MOD(cone->f, data->width);
   cone->s = S_MOD(cone->s, data->length);
   analyse_cell(data->map, cone, usr);
-  gole[usr->dir](cone, -i);
+  gole[GET_DIR(usr)](cone, -i);
 }
 
 int		my_voir(char **com, t_zap *data, t_user *usr)
@@ -72,16 +72,16 @@ int		my_voir(char **com, t_zap *data, t_user *usr)
   t_pair	cone;
 
   (void)com;
-  cone.f = usr->x;
-  cone.s = usr->y;
+  cone.f = GET_X(usr);
+  cone.s = GET_Y(usr);
   fill_cb(&usr->wr, "{", 1);
   i = 0;
-  while (i < usr->level)
+  while (i < GET_LVL(usr))
     {
       if (i > 0)
 	fill_cb(&usr->wr, ",", 1);
       vert_view(i, usr, &cone, data);
-      gofo[usr->dir](&cone, 1);
+      gofo[GET_DIR(usr)](&cone, 1);
       i++;
     }
   fill_cb(&usr->wr, "}\n", 2);

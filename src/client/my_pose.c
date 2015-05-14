@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Thu May 14 15:15:09 2015 Thibaut Lopez
+** Last update Thu May 14 19:17:31 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -68,8 +68,8 @@ int		my_pose(char **com, t_zap *data, t_user *usr)
       fill_cb(&usr->wr, "ko\n", 3);
       return (0);
     }
-  ptr[i].ptr(&(usr->inv), &inv);
-  ptr[i].ptr(&(data->map[usr->x][usr->y]), &cell);
+  ptr[i].ptr(&(GET_INV(usr)), &inv);
+  ptr[i].ptr(&(data->map[GET_X(usr)][GET_Y(usr)]), &cell);
   free(ptr);
   fill_cb(&usr->wr, (*inv > 0) ? "ok\n" : "ko\n", 3);
   if (*inv > 0)

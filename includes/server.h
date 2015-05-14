@@ -5,12 +5,18 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Thu May 14 15:09:25 2015 Thibaut Lopez
+** Last update Thu May 14 19:12:36 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
 #define	ZAPPY_H
 #define	S_MOD(a, b)	(((a) < 0) ? (a) + (b) : (a) % (b))
+#define	GET_X(u)	((u)->plr->x)
+#define	GET_Y(u)	((u)->plr->y)
+#define	GET_DIR(u)	((u)->plr->dir)
+#define	GET_INV(u)	((u)->plr->inv)
+#define	GET_TEAM(u)	((u)->plr->team)
+#define	GET_LVL(u)	((u)->plr->level)
 
 #include <sys/socket.h>
 #include <netdb.h>
@@ -74,6 +80,16 @@ typedef struct	s_zap
   int		delay;
 }		t_zap;
 
+typedef struct	s_plr
+{
+  int		x;
+  int		y;
+  e_dir		dir;
+  t_content	inv;
+  char		*team;
+  uint16_t	level;
+}		t_plr;
+
 typedef struct	s_user
 {
   int		fd;
@@ -82,12 +98,7 @@ typedef struct	s_user
   t_cb		wr;
   int		tokill;
   e_clt		type;
-  int		x;
-  int		y;
-  e_dir		dir;
-  t_content	inv;
-  char		*team;
-  uint16_t	level;
+  t_plr		*plr;
   struct s_user	*next;
   struct s_user	*prev;
 }		t_user;

@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 18:07:00 2015 Thibaut Lopez
-** Last update Fri May 15 13:59:25 2015 Thibaut Lopez
+** Last update Fri May 15 15:39:54 2015 Thibaut Lopez
 */
 
 #ifndef	UTILS_H
@@ -32,6 +32,12 @@ typedef struct	s_pair
   int		s;
 }		t_pair;
 
+typedef struct	s_que
+{
+  t_tv		e;
+  struct s_que	*next;
+}		t_que;
+
 int		xopen(const char *, int);
 ssize_t		xread(int, void *, size_t);
 void		*xmalloc(size_t);
@@ -45,5 +51,8 @@ int		sstrlen(char **);
 char		**sstrcat(char **, char *);
 void		putsstr(int, char **);
 char		**stwt(char *, char *, int);
+void		push_q(t_que **, t_tv);
+void		pop_q(t_que **);
+t_tv		front_q(t_que *);
 
 #endif

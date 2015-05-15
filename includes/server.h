@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Fri May 15 14:20:19 2015 Thibaut Lopez
+** Last update Fri May 15 14:28:09 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -25,7 +25,6 @@
 #include <arpa/inet.h>
 #include <signal.h>
 #include <time.h>
-#include <sys/time.h>
 #include "cb.h"
 
 typedef	enum	e_state
@@ -54,7 +53,6 @@ typedef enum	e_clt
     GRAPHIC = 3
   }		e_clt;
 
-typedef	struct	timeval	t_tv;
 
 typedef struct	s_content
 {

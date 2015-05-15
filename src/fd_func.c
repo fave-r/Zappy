@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:51:15 2015 romaric
-** Last update Thu May 14 19:06:15 2015 Thibaut Lopez
+** Last update Fri May 15 14:16:56 2015 Thibaut Lopez
 */
 
 #include "server.h"

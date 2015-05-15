@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 18:07:00 2015 Thibaut Lopez
-** Last update Wed May 13 18:44:38 2015 Thibaut Lopez
+** Last update Fri May 15 13:59:25 2015 Thibaut Lopez
 */
 
 #ifndef	UTILS_H
@@ -25,6 +25,12 @@ typedef struct	s_com
   char		*com;
   int		(*ptr)();
 }		t_com;
+
+typedef struct	s_pair
+{
+  int		f;
+  int		s;
+}		t_pair;
 
 int		xopen(const char *, int);
 ssize_t		xread(int, void *, size_t);

@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 18:07:00 2015 Thibaut Lopez
-** Last update Fri May 15 15:39:54 2015 Thibaut Lopez
+** Last update Fri May 15 15:43:35 2015 Thibaut Lopez
 */
 
 #ifndef	UTILS_H
@@ -19,6 +19,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <limits.h>
+#include <sys/time.h>
 
 typedef struct	s_com
 {
@@ -31,6 +32,8 @@ typedef struct	s_pair
   int		f;
   int		s;
 }		t_pair;
+
+typedef struct	timeval	t_tv;
 
 typedef struct	s_que
 {

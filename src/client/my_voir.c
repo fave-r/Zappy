@@ -5,12 +5,12 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Fri May 15 15:37:43 2015 Thibaut Lopez
+** Last update Fri May 15 15:44:31 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
-static void	(*gofo[4])(t_pair *, int) =
+void		(*gofo[4])(t_pair *, int) =
 {
   north_gofo,
   east_gofo,

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Fri May 15 14:28:09 2015 Thibaut Lopez
+** Last update Fri May 15 15:45:38 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -52,7 +52,6 @@ typedef enum	e_clt
     AI = 2,
     GRAPHIC = 3
   }		e_clt;
-
 
 typedef struct	s_content
 {
@@ -105,6 +104,8 @@ typedef struct	s_bf
   fd_set	rbf;
   fd_set	wbf;
 }		t_bf;
+
+void		(*gofo[4])(t_pair *, int);
 
 int		clean_return(int, char *);
 int		init_socket(void);

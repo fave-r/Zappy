@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Fri May 15 15:44:31 2015 Thibaut Lopez
+** Last update Fri May 15 19:53:23 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -28,8 +28,16 @@ static void	(*gole[4])(t_pair *, int) =
 
 void		analyse_cell(t_content **cnt, t_pair *cone, t_user *usr)
 {
-  if (in_this_cell(cone->f, cone->s, usr) != NULL)
-    fill_cb(&usr->wr, " player", 7);
+  t_user	*tmp;
+
+  tmp = usr;
+  while (tmp != NULL && tmp->prev != NULL)
+    tmp = tmp->prev;
+  while ((tmp = in_this_cell(cone->f, cone->s, tmp)) != NULL)
+    {
+      fill_cb(&usr->wr, " player", 7);
+      tmp = tmp->next;
+    }
   if (cnt[cone->f][cone->s].food > 0)
     fill_cb(&usr->wr, " nourriture", 11);
   if (cnt[cone->f][cone->s].linemate > 0)

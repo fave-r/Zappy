@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:12:11 2015 romaric
-** Last update Thu May 14 19:20:30 2015 Thibaut Lopez
+** Last update Fri May 15 19:55:07 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -33,16 +33,11 @@ int		count_in_team(char *team_name, t_user *user)
 
 t_user		*in_this_cell(int x, int y, t_user *user)
 {
-  t_user	*tmp;
-
-  tmp = user;
-  while (tmp->prev != NULL)
-    tmp = tmp->prev;
-  while (tmp != NULL)
+  while (user != NULL)
     {
-      if (tmp->type == AI && GET_X(tmp) == x && GET_Y(tmp) == y)
-	return (tmp);
-      tmp = tmp->next;
+      if (user->type == AI && GET_X(user) == x && GET_Y(user) == y)
+	return (user);
+      user = user->next;
     }
   return (NULL);
 }

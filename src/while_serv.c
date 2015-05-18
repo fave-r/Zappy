@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:38:34 2015 romaric
-** Last update Tue May 12 18:36:28 2015 Thibaut Lopez
+** Last update Mon May 18 17:45:41 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -32,8 +32,11 @@ int			handle_fds(int s, t_user **user, t_zap *data)
   t_bf			bf;
   int			bool;
   int			nb_client;
+  t_tv			tv;
 
   init_handle(&bool, user, &nb_client);
+  tv.tv_sec = 0;
+  tv.tv_usec = 5000;
   while (bool != -1)
     {
       if (quit_sig == 1)
@@ -41,7 +44,7 @@ int			handle_fds(int s, t_user **user, t_zap *data)
       else
       	{
 	  set_fd(s, &bf, *user);
-	  if ((bool = select(s + nb_client, &bf.rbf, &bf.wbf, NULL, NULL)) != -1)
+	  if ((bool = select(s + nb_client, &bf.rbf, &bf.wbf, NULL, &tv)) != -1)
 	    {
 	      if (FD_ISSET(s, &bf.rbf))
 		new_client(s, user, &nb_client);

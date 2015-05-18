@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Mon May 18 17:46:46 2015 Thibaut Lopez
+** Last update Mon May 18 18:16:13 2015 romaric
 */
 
 #include "server.h"
@@ -50,7 +50,6 @@ int		check_food(t_user *usr, t_zap *data)
       add_tv(&time, (126000000 / data->delay));
       if (cmp_tv(&tmp, &time) == 1 || cmp_tv(&tmp, &time) == 0)
 	{
-	  printf("il mange\n");
 	  usr->plr->inv.food -= 1;
 	  usr->plr->time = tv;
 	  if (usr->plr->inv.food  == 0)
@@ -74,6 +73,7 @@ void		check_client(t_user **user, t_bf *bf, t_zap *data)
 	read_com(tmp, data);
       if (tmp->tokill == 1)
 	{
+	  dprintf(tmp->fd, "mort\n");
 	  *user = (tmp == *user) ? (*user)->next : *user;
 	  if (tmp->next == NULL)
 	    {

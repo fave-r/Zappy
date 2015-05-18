@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Tue May 12 19:00:45 2015 Thibaut Lopez
+** Last update Mon May 18 11:41:54 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -30,7 +30,7 @@ void		write_separate(t_user **user, t_bf *bf)
   while (tmp != NULL)
     {
       if (cb_taken(&tmp->wr) > 0 && FD_ISSET(tmp->fd, &bf->wbf))
-	write_cb(&tmp->wr, tmp->fd);
+	write_cb(&tmp->wr, tmp->fd, &tmp->queue);
       tmp = tmp->next;
     }
 }

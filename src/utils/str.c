@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 17:47:45 2015 romaric
-** Last update Wed May  6 09:50:02 2015 Thibaut Lopez
+** Last update Mon May 18 11:10:45 2015 Thibaut Lopez
 */
 
 #include "utils.h"
@@ -47,4 +47,14 @@ char	*my_strcat(char *s1, char *s2)
     ret[i + j] = s2[j];
   ret[i + j] = 0;
   return (ret);
+}
+
+int	my_strchr(char *str, char c)
+{
+  int	i;
+
+  i = 0;
+  while (str[i] != c && str[i] != 0)
+    i++;
+  return ((str[i] == 0) ? -1 : i);
 }

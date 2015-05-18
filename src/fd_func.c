@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:51:15 2015 romaric
-** Last update Fri May 15 14:16:56 2015 Thibaut Lopez
+** Last update Mon May 18 11:42:26 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -57,6 +57,7 @@ void			new_client(int fd, t_user **user, int *nbclient)
   new->tokill = 0;
   init_cb(&new->cb, 4096, sizeof(char));
   init_cb(&new->wr, 4096, sizeof(char));
+  new->queue = NULL;
   new->type = UNKNOWN;
   new->plr = NULL;
   printf("new client\n");

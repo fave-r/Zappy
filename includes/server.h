@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Fri May 15 15:45:38 2015 Thibaut Lopez
+** Last update Mon May 18 11:41:32 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -91,6 +91,7 @@ typedef struct	s_user
   int		fd;
   char		*ip;
   t_cb		cb;
+  t_que		*queue;
   t_cb		wr;
   int		tokill;
   e_clt		type;

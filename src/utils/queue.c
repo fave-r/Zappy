@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 15 14:41:50 2015 Thibaut Lopez
-** Last update Fri May 15 15:39:45 2015 Thibaut Lopez
+** Last update Mon May 18 11:31:00 2015 Thibaut Lopez
 */
 
 #include "utils.h"
@@ -38,7 +38,35 @@ void	pop_q(t_que **q)
     free(tmp);
 }
 
-t_tv	front_q(t_que *q)
+t_tv	*front_q(t_que *q)
 {
-  return (q->e);
+  if (q == NULL)
+    return (NULL);
+  return (&q->e);
+}
+
+t_tv	*add_tv(t_tv *tv, int to_add)
+{
+  tv->tv_usec += to_add % 1000000;
+  tv->tv_sec += to_add / 1000000;
+  return (tv);
+}
+
+int	cmp_tv(t_tv *t1, t_tv *t2)
+{
+  if (t1 == NULL && t2 == NULL)
+    return (0);
+  if (t1 == NULL)
+    return (-1);
+  if (t2 == NULL)
+    return (1);
+  if (t1->tv_sec > t2->tv_sec)
+    return (-1);
+  if (t1->tv_sec < t2->tv_sec)
+    return (1);
+  if (t1->tv_usec > t2->tv_usec)
+    return (-1);
+  if (t1->tv_usec < t2->tv_usec)
+    return (1);
+  return (0);
 }

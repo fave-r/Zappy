@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Tue May  5 14:40:23 2015 romaric
-## Last update Wed May 13 13:58:12 2015 Thibaut Lopez
+## Last update Mon May 18 11:44:39 2015 Thibaut Lopez
 ##
 
 CC=		gcc
@@ -19,6 +19,7 @@ CFLAGS=		-W -Wall -Wextra -g3
 S_NAME=		zappy
 
 U_SRC=		src/utils/common_func.c				\
+		src/utils/queue.c				\
 		src/utils/str.c					\
 		src/utils/sstr.c				\
 		src/utils/stwt.c				\

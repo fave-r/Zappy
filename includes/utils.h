@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 18:07:00 2015 Thibaut Lopez
-** Last update Mon May 18 11:38:54 2015 Thibaut Lopez
+** Last update Mon May 18 12:57:10 2015 Thibaut Lopez
 */
 
 #ifndef	UTILS_H
@@ -55,7 +55,7 @@ int		sstrlen(char **);
 char		**sstrcat(char **, char *);
 void		putsstr(int, char **);
 char		**stwt(char *, char *, int);
-void		push_q(t_que **, t_tv);
+void		push_q(t_que **, t_tv *);
 void		pop_q(t_que **);
 t_tv		*front_q(t_que *);
 t_tv		*add_tv(t_tv *, int);

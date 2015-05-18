@@ -5,18 +5,18 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 15 14:41:50 2015 Thibaut Lopez
-** Last update Mon May 18 11:31:00 2015 Thibaut Lopez
+** Last update Mon May 18 13:04:03 2015 Thibaut Lopez
 */
 
 #include "utils.h"
 
-void	push_q(t_que **q, t_tv tv)
+void	push_q(t_que **q, t_tv *tv)
 {
   t_que	*new;
   t_que	*tmp;
 
   new = xmalloc(sizeof(t_que));
-  new->e = tv;
+  new->e = *tv;
   new->next = NULL;
   tmp = *q;
   while (tmp != NULL && tmp->next != NULL)
@@ -60,13 +60,13 @@ int	cmp_tv(t_tv *t1, t_tv *t2)
     return (-1);
   if (t2 == NULL)
     return (1);
-  if (t1->tv_sec > t2->tv_sec)
-    return (-1);
   if (t1->tv_sec < t2->tv_sec)
-    return (1);
-  if (t1->tv_usec > t2->tv_usec)
     return (-1);
+  if (t1->tv_sec > t2->tv_sec)
+    return (1);
   if (t1->tv_usec < t2->tv_usec)
+    return (-1);
+  if (t1->tv_usec > t2->tv_usec)
     return (1);
   return (0);
 }

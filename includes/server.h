@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Mon May 18 11:41:32 2015 Thibaut Lopez
+** Last update Mon May 18 11:53:43 2015 romaric
 */
 
 #ifndef	ZAPPY_H
@@ -96,6 +96,7 @@ typedef struct	s_user
   int		tokill;
   e_clt		type;
   t_plr		*plr;
+  int		nb_ncom;
   struct s_user	*next;
   struct s_user	*prev;
 }		t_user;
@@ -171,5 +172,7 @@ int		my_pin(char **, t_zap *, t_user *);
 int		my_sgt(char **, t_zap *, t_user *);
 int		my_sst(char **, t_zap *, t_user *);
 int		my_pnw(t_user *, t_user *);
+
+void		check_com(t_com *com, t_user *usr, int *ret, t_zap *data);
 
 #endif

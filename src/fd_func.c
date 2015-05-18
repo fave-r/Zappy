@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:51:15 2015 romaric
-** Last update Mon May 18 11:42:26 2015 Thibaut Lopez
+** Last update Mon May 18 11:54:09 2015 romaric
 */
 
 #include "server.h"
@@ -60,6 +60,7 @@ void			new_client(int fd, t_user **user, int *nbclient)
   new->queue = NULL;
   new->type = UNKNOWN;
   new->plr = NULL;
+  new->nb_ncom = 0;
   printf("new client\n");
   if (*user != NULL)
     push_back(user, new);

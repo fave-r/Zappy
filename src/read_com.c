@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:51:04 2015 romaric
-** Last update Thu May 14 15:15:33 2015 Thibaut Lopez
+** Last update Mon May 18 11:49:20 2015 romaric
 */
 
 #include "server.h"
@@ -97,10 +97,7 @@ t_com		*ptr_to_function(e_clt type)
 
 int		read_com(t_user *usr, t_zap *data)
 {
-  char		*gnl;
-  char		**tok;
   t_com		*com;
-  int		i;
   int		ret;
 
   ret = 0;
@@ -110,15 +107,7 @@ int		read_com(t_user *usr, t_zap *data)
       return (-1);
     }
   com = ptr_to_function(usr->type);
-  while ((gnl = get_line_cb(&usr->cb)) != NULL)
-    {
-      if ((tok = stwt(gnl, " \t\n\r", usr->type)) == NULL)
-	return (0);
-      if ((i = find_ptr(com, tok[0])) != -1)
-	ret = com[i].ptr(tok, data, usr);
-      free(tok);
-      free(gnl);
-    }
+  check_com(com, usr, &ret, data);
   free(com);
   return (ret);
 }

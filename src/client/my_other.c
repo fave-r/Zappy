@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Fri May 15 14:19:24 2015 Thibaut Lopez
+** Last update Mon May 18 11:38:48 2015 romaric
 */
 
 #include "server.h"
@@ -50,7 +50,7 @@ int	my_other(char **com, t_zap *data, t_user *usr)
     i++;
   if (data->team[i] == NULL ||
       count_in_team(data->team[i], usr) == data->count)
-    return (0);
+    return (-1);
   usr->plr = player_info(data->team[i], data->length, data->width);
   usr->type = AI;
   send_client_info(data->team[i], data, usr);

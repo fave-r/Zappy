@@ -5,11 +5,12 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 18:07:00 2015 Thibaut Lopez
-** Last update Mon May 18 12:57:10 2015 Thibaut Lopez
+** Last update Mon May 18 16:14:44 2015 Thibaut Lopez
 */
 
 #ifndef	UTILS_H
 #define	UTILS_H
+#define ABS(nb)		(((nb) < 0) ? ((nb) * -1) : (nb))
 
 #include <sys/types.h>
 #include <sys/stat.h>

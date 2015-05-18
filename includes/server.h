@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Mon May 18 14:33:57 2015 romaric
+** Last update Mon May 18 16:13:59 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -18,7 +18,6 @@
 #define	GET_TEAM(u)	((u)->plr->team)
 #define	GET_LVL(u)	((u)->plr->level)
 #define	GET_TIME(u)	((u)->plr->time)
-#define ABS(nb)		(((nb) < 0) ? ((nb) * -1) : (nb))
 
 #include <sys/socket.h>
 #include <netdb.h>

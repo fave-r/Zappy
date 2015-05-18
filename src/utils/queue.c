@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 15 14:41:50 2015 Thibaut Lopez
-** Last update Mon May 18 13:04:03 2015 Thibaut Lopez
+** Last update Mon May 18 16:12:33 2015 Thibaut Lopez
 */
 
 #include "utils.h"
@@ -47,7 +47,10 @@ t_tv	*front_q(t_que *q)
 
 t_tv	*add_tv(t_tv *tv, int to_add)
 {
-  tv->tv_usec += to_add % 1000000;
+  int	sign;
+
+  sign = (to_add < 0) ? -1 : 1;
+  tv->tv_usec += (ABS(to_add) % 1000000) * sign;
   tv->tv_sec += to_add / 1000000;
   return (tv);
 }

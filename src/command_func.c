@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:12:11 2015 romaric
-** Last update Mon May 18 18:22:53 2015 Thibaut Lopez
+** Last update Tue May 19 16:53:47 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -61,13 +61,15 @@ int		find_nb(t_user *player)
 
   nbr = 0;
   tmp = player;
-  while (tmp->prev != NULL)
+  while (tmp != NULL)
     {
-      if (tmp->type == AI && tmp != player)
-	nbr++;
-      tmp = tmp->prev;
+      if (tmp->type == AI && GET_NB(tmp) == nbr)
+	{
+	  nbr++;
+	  tmp = player;
+	}
+      else
+	tmp = tmp->next;
     }
-  if (tmp->type == AI && tmp != player)
-    nbr++;
-  return (0);
+  return (nbr);
 }

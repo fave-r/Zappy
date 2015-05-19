@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon May 18 11:16:04 2015 romaric
-** Last update Tue May 19 10:42:46 2015 Thibaut Lopez
+** Last update Tue May 19 16:32:13 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -15,7 +15,7 @@ int	send_prend(t_user *usr, int item, t_content *cnt)
   char	tmp[256];
   int	nbr;
 
-  nbr = find_nb(usr);
+  nbr = GET_NB(usr);
   bzero(tmp, 256);
   sprintf(tmp, "pgt #%d %d\n\
 pin #%d %d %d %d %d %d %d %d %d %d\n\
@@ -35,7 +35,7 @@ int	send_pose(t_user *usr, int item, t_content *cnt)
   char	tmp[256];
   int	nbr;
 
-  nbr = find_nb(usr);
+  nbr = GET_NB(usr);
   bzero(tmp, 256);
   sprintf(tmp, "%d %d\n\
 pin #%d %d %d %d %d %d %d %d %d %d\n\

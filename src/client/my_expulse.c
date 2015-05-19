@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Tue May 19 15:04:29 2015 Thibaut Lopez
+** Last update Tue May 19 16:32:28 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -18,7 +18,7 @@ int     my_go(t_zap *data, t_user *tmp, t_user *usr, int *bool)
   if (++(*bool) == 1)
     {
       bzero(str, 20);
-      sprintf(str, "pex #%d\n", find_nb(usr));
+      sprintf(str, "pex #%d\n", GET_NB(usr));
       fill_cb(&usr->wr, str, strlen(str));
     }
   pos.f = GET_X(tmp);
@@ -26,7 +26,7 @@ int     my_go(t_zap *data, t_user *tmp, t_user *usr, int *bool)
   gofo[GET_DIR(usr)](&pos, 1);
   GET_X(tmp) = S_MOD(pos.f, data->length);
   GET_Y(tmp) = S_MOD(pos.s, data->width);
-  sprintf(str, "ppo #%d %d %d %d\n", find_nb(tmp),
+  sprintf(str, "ppo #%d %d %d %d\n", GET_NB(tmp),
           GET_X(tmp), GET_Y(tmp), GET_DIR(tmp));
   send_to_graphic(str, usr);
   bzero(str, 20);

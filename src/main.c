@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Tue May 19 11:08:03 2015 Thibaut Lopez
+** Last update Tue May 19 16:49:21 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -55,7 +55,7 @@ void		send_death(t_user *usr)
   char		str[25];
 
   dprintf(usr->fd, "mort\n");
-  sprintf(str, "pdi #%d\n", find_nb(usr));
+  sprintf(str, "pdi #%d\n", GET_NB(usr));
   send_to_graphic(str, usr);
 }
 
@@ -70,7 +70,8 @@ void		check_client(t_user **user, t_bf *bf, t_zap *data)
 	read_com(tmp, data);
       if (tmp->tokill == 1)
 	{
-	  send_death(tmp);
+	  if (tmp->type == AI)
+	    send_death(tmp);
 	  *user = (tmp == *user) ? (*user)->next : *user;
 	  if (tmp->next == NULL)
 	    {

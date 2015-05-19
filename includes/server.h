@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Tue May 19 11:38:25 2015 romaric
+** Last update Tue May 19 16:41:53 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -17,6 +17,7 @@
 #define	GET_INV(u)	((u)->plr->inv)
 #define	GET_TEAM(u)	((u)->plr->team)
 #define	GET_LVL(u)	((u)->plr->level)
+#define	GET_NB(u)	((u)->plr->nb)
 #define	GET_TIME(u)	((u)->plr->time)
 
 #include <sys/socket.h>
@@ -83,6 +84,7 @@ typedef struct	s_plr
   t_content	inv;
   char		*team;
   uint16_t	level;
+  int		nb;
   t_tv		time;
 }		t_plr;
 

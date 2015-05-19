@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Tue May 19 11:08:50 2015 Thibaut Lopez
+** Last update Tue May 19 11:38:25 2015 romaric
 */
 
 #ifndef	ZAPPY_H
@@ -178,5 +178,7 @@ int		my_pin(char **, t_zap *, t_user *);
 int		my_sgt(char **, t_zap *, t_user *);
 int		my_sst(char **, t_zap *, t_user *);
 int		my_pnw(t_user *, t_user *);
+
+int		get_direction(t_user *src, t_user *dest, t_zap *data);
 
 #endif

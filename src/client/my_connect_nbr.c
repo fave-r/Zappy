@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Thu May 14 19:14:42 2015 Thibaut Lopez
+** Last update Tue May 19 18:04:34 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -14,7 +14,8 @@ int	my_connect_nbr(char **com, t_zap *data, t_user *usr)
 {
   char	tmp[10];
 
-  (void)com;
+  if (sstrlen(com) != 1)
+    return (-1);
   bzero(tmp, 10);
   sprintf(tmp, "%d\n", data->count - count_in_team(GET_TEAM(usr), usr));
   fill_cb(&usr->wr, tmp, strlen(tmp));

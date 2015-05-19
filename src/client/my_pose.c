@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Tue May 19 10:41:30 2015 Thibaut Lopez
+** Last update Tue May 19 18:15:12 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -61,12 +61,12 @@ int		my_pose(char **com, t_zap *data, t_user *usr)
   t_tv		now;
 
   gettimeofday(&now, NULL);
-  if (sstrlen(com) != 2 || (ptr = ptrs_get()) == NULL ||
+  if ((ptr = ptrs_get()) == NULL || sstrlen(com) != 2 ||
       (i = find_ptr(ptr, com[1])) == -1)
     {
       free(ptr);
       fill_cb(&usr->wr, "ko\n", 3);
-      return (0);
+      return ((sstrlen(com) != 2) ? -1 : 0);
     }
   ptr[i].ptr(&(GET_INV(usr)), &inv);
   ptr[i].ptr(&(data->map[GET_X(usr)][GET_Y(usr)]), &cell);

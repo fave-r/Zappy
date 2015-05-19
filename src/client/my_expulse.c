@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Tue May 19 17:58:35 2015 Thibaut Lopez
+** Last update Tue May 19 18:06:42 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -35,13 +35,14 @@ int     my_go(t_zap *data, t_user *tmp, t_user *usr, int *bool)
   return (0);
 }
 
-int		my_expulse(__attribute__((unused)) char **com,
-			   t_zap *data, t_user *usr)
+int		my_expulse(char **com, t_zap *data, t_user *usr)
 {
   t_user	*tmp;
   t_tv		now;
   int		bool;
 
+  if (sstrlen(com) != 1)
+    return (-1);
   gettimeofday(&now, NULL);
   bool = 0;
   tmp = usr;

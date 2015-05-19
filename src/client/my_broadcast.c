@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Tue May 19 14:47:24 2015 Thibaut Lopez
+** Last update Tue May 19 18:10:51 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -25,12 +25,10 @@ t_pair		get_closest(t_user *src, t_user *dest, t_zap *data)
   dirs[1].s = sign.s * (data->width - ABS(dirs[0].s));
   dirs[2].f = sign.f * (data->length - ABS(dirs[0].f));
   dirs[2].s = dirs[0].s;
-  printf("v1(%d, %d), v2(%d, %d), v3(%d, %d)\n", dirs[0].f, dirs[0].s, dirs[1].f, dirs[1].s, dirs[2].f, dirs[2].s);
   p[0] = ABS(dirs[0].f) + ABS(dirs[0].s);
   p[1] = ABS(dirs[1].f) + ABS(dirs[1].s);
   p[2] = ABS(dirs[2].f) + ABS(dirs[2].s);
   i = (p[0] < p[1]) ? (p[0] < p[2]) ? 0 : 2 : (p[1] < p[2]) ? 1 : 2;
-  printf("vf(%d, %d)\n", dirs[i].f, dirs[i].s);
   return (dirs[i]);
 }
 
@@ -79,7 +77,7 @@ int		my_broadcast(char **com, t_zap *data, t_user *usr)
   t_user	*tmp;
 
   if (sstrlen(com) != 2)
-    return (0);
+    return (-1);
   gettimeofday(&now, NULL);
   tmp = usr;
   while (tmp != NULL && tmp->prev != NULL)

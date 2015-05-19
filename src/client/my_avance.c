@@ -5,18 +5,19 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Tue May 19 17:58:41 2015 Thibaut Lopez
+** Last update Tue May 19 18:02:48 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
-int	my_avance(__attribute__((unused))char **com,
-		  t_zap *data, t_user *usr)
+int	my_avance(char **com, t_zap *data, t_user *usr)
 {
   t_pair	pos;
   t_tv		now;
   char		tmp[100];
 
+  if (sstrlen(com) != 1)
+    return (-1);
   gettimeofday(&now, NULL);
   pos.f = GET_X(usr);
   pos.s = GET_Y(usr);

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon May 18 11:16:04 2015 romaric
-** Last update Tue May 19 16:32:13 2015 Thibaut Lopez
+** Last update Tue May 19 18:02:06 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -64,7 +64,7 @@ void	check_com(t_com *com, t_user *usr, int *ret, t_zap *data)
 	  return;
 	}
       if ((i = find_ptr(com, tok[0])) != -1
-	  &&  (*ret = com[i].ptr(tok, data, usr)) != -1)
+	  && (*ret = com[i].ptr(tok, data, usr)) != -1)
 	usr->nb_ncom = 0;
       else
 	{

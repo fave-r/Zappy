@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Mon May 18 13:07:20 2015 Thibaut Lopez
+** Last update Tue May 19 18:10:06 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -80,7 +80,8 @@ int		my_voir(char **com, t_zap *data, t_user *usr)
   t_pair	cone;
   t_tv		now;
 
-  (void)com;
+  if (sstrlen(com) != 1)
+    return (-1);
   gettimeofday(&now, NULL);
   cone.f = GET_X(usr);
   cone.s = GET_Y(usr);

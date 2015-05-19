@@ -5,18 +5,19 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Tue May 19 17:58:16 2015 Thibaut Lopez
+** Last update Tue May 19 18:03:24 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
-int	my_droite(__attribute__((unused)) char **com
-		  , __attribute((unused)) t_zap *data
+int	my_droite(char **com, __attribute((unused)) t_zap *data
 		  , t_user *usr)
 {
   t_tv		now;
   char		tmp[100];
 
+  if (sstrlen(com) != 1)
+    return (-1);
   gettimeofday(&now, NULL);
   GET_DIR(usr) = S_MOD((int)(GET_DIR(usr) + 1), 4);
   fill_cb(&usr->wr, "ok\n", 3);

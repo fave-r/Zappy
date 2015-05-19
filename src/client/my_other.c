@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Tue May 19 16:47:12 2015 Thibaut Lopez
+** Last update Tue May 19 17:59:31 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -61,7 +61,7 @@ int		my_other(char **com, t_zap *data, t_user *usr)
   usr->type = AI;
   send_client_info(data->team[i], data, usr);
   sprintf(str, "pnw #%d %d %d %d %d %s\n", GET_NB(usr),
-	  GET_X(usr), GET_Y(usr), GET_DIR(usr), GET_LVL(usr), GET_TEAM(usr));
+	  GET_X(usr), GET_Y(usr), GET_DIR(usr) + 1, GET_LVL(usr), GET_TEAM(usr));
   send_to_graphic(str, usr);
   return (0);
 }

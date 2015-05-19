@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Mon May 18 17:18:15 2015 Thibaut Lopez
+** Last update Tue May 19 14:47:24 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -69,9 +69,7 @@ int		get_direction(t_user *src, t_user *dest, t_zap *data)
   dirs[5] = S_MOD(dirs[4] + 1, 4);
   dirs[6] = S_MOD(dirs[5] + 1, 4);
   dirs[7] = S_MOD(dirs[6] + 1, 4);
-  int	tmp = get_dir(dir, dirs);
-  printf("%d\n\n", tmp);
-  return (tmp);
+  return (get_dir(dir, dirs));
 }
 
 int		my_broadcast(char **com, t_zap *data, t_user *usr)
@@ -90,7 +88,6 @@ int		my_broadcast(char **com, t_zap *data, t_user *usr)
     {
       if (tmp != usr && tmp->type == AI)
 	{
-	  printf("src: %d, dest: %d\n", GET_DIR(usr), GET_DIR(tmp));
 	  sprintf(str, "message %d,%s\n", get_direction(usr, tmp, data), com[1]);
 	  fill_cb(&tmp->wr, str, strlen(str));
 	  push_q(&tmp->queue, add_tv(&now, 7000000 / data->delay));

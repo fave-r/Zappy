@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:51:15 2015 romaric
-** Last update Mon May 18 11:54:09 2015 romaric
+** Last update Tue May 19 11:08:38 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -67,4 +67,16 @@ void			new_client(int fd, t_user **user, int *nbclient)
   else
     *user = new;
   fill_cb(&new->wr, "BIENVENUE\n", strlen("BIENVENUE\n"));
+}
+
+void		unit_user_free(t_user *user)
+{
+  close(user->fd);
+  free_cb(&user->cb);
+  free_cb(&user->wr);
+  if (user->prev != NULL)
+    user->prev->next = user->next;
+  if (user->next != NULL)
+    user->next->prev = user->prev;
+  free(user);
 }

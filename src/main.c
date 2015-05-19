@@ -5,22 +5,10 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Mon May 18 18:16:13 2015 romaric
+** Last update Tue May 19 11:08:03 2015 Thibaut Lopez
 */
 
 #include "server.h"
-
-void		unit_user_free(t_user *user)
-{
-  close(user->fd);
-  free_cb(&user->cb);
-  free_cb(&user->wr);
-  if (user->prev != NULL)
-    user->prev->next = user->next;
-  if (user->next != NULL)
-    user->next->prev = user->prev;
-  free(user);
-}
 
 void		write_separate(t_user **user, t_bf *bf)
 {
@@ -62,6 +50,15 @@ int		check_food(t_user *usr, t_zap *data)
   return (0);
 }
 
+void		send_death(t_user *usr)
+{
+  char		str[25];
+
+  dprintf(usr->fd, "mort\n");
+  sprintf(str, "pdi #%d\n", find_nb(usr));
+  send_to_graphic(str, usr);
+}
+
 void		check_client(t_user **user, t_bf *bf, t_zap *data)
 {
   t_user	*tmp;
@@ -73,7 +70,7 @@ void		check_client(t_user **user, t_bf *bf, t_zap *data)
 	read_com(tmp, data);
       if (tmp->tokill == 1)
 	{
-	  dprintf(tmp->fd, "mort\n");
+	  send_death(tmp);
 	  *user = (tmp == *user) ? (*user)->next : *user;
 	  if (tmp->next == NULL)
 	    {

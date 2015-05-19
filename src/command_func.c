@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:12:11 2015 romaric
-** Last update Fri May 15 19:55:07 2015 Thibaut Lopez
+** Last update Mon May 18 18:22:53 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -40,4 +40,34 @@ t_user		*in_this_cell(int x, int y, t_user *user)
       user = user->next;
     }
   return (NULL);
+}
+
+void		send_to_graphic(char *com, t_user *usr)
+{
+  while (usr != NULL && usr->prev != NULL)
+    usr = usr->prev;
+  while (usr != NULL)
+    {
+      if (usr->type == GRAPHIC)
+	fill_cb(&usr->wr, com, strlen(com));
+      usr = usr->next;
+    }
+}
+
+int		find_nb(t_user *player)
+{
+  t_user	*tmp;
+  int		nbr;
+
+  nbr = 0;
+  tmp = player;
+  while (tmp->prev != NULL)
+    {
+      if (tmp->type == AI && tmp != player)
+	nbr++;
+      tmp = tmp->prev;
+    }
+  if (tmp->type == AI && tmp != player)
+    nbr++;
+  return (0);
 }

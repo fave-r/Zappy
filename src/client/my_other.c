@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Mon May 18 11:38:48 2015 romaric
+** Last update Tue May 19 10:55:10 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -44,6 +44,7 @@ t_plr	*player_info(char *team, int length, int width)
 int	my_other(char **com, t_zap *data, t_user *usr)
 {
   int	i;
+  char	tmp[256];
 
   i = 0;
   while (data->team[i] != NULL && strcmp(data->team[i], com[0]) != 0)
@@ -54,5 +55,8 @@ int	my_other(char **com, t_zap *data, t_user *usr)
   usr->plr = player_info(data->team[i], data->length, data->width);
   usr->type = AI;
   send_client_info(data->team[i], data, usr);
+  sprintf(tmp, "pnw #%d %d %d %d %d %s\n", find_nb(usr),
+	  GET_X(usr), GET_Y(usr), GET_DIR(usr), GET_LVL(usr), GET_TEAM(usr));
+  send_to_graphic(tmp, usr);
   return (0);
 }

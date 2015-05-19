@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Mon May 18 16:13:59 2015 Thibaut Lopez
+** Last update Tue May 19 11:08:50 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -115,8 +115,10 @@ int		init_bind(int, int *);
 int		init_connect(int, int, char *);
 void		set_fd(int, t_bf *, t_user *);
 void		new_client(int, t_user **, int *);
+void		unit_user_free(t_user *);
 void		check_client(t_user **, t_bf *, t_zap *);
 int		handle_fds(int, t_user **, t_zap *);
+void		check_com(t_com *, t_user *, int *, t_zap *);
 int		read_com(t_user *, t_zap *);
 void		data_free(t_user **);
 
@@ -132,6 +134,8 @@ void		init_val(t_zap *);
 
 int		count_in_team(char *, t_user *);
 t_user		*in_this_cell(int, int, t_user *);
+void		send_to_graphic(char *, t_user *);
+int		find_nb(t_user *);
 int		my_avance(char **, t_zap *, t_user *);
 int		my_broadcast(char **, t_zap *, t_user *);
 int		my_connect_nbr(char **, t_zap *, t_user *);
@@ -142,11 +146,13 @@ int		my_gauche(char **, t_zap *, t_user *);
 int		my_incantation(char **, t_zap *, t_user *);
 int		my_inventaire(char **, t_zap *, t_user *);
 t_com		*ptrs_get();
+int		send_pose(t_user *, int, t_content *);
 int		my_pose(char **, t_zap *, t_user *);
 int		get_sibur(t_content *, uint16_t **);
 int		get_mendiane(t_content *, uint16_t **);
 int		get_phiras(t_content *, uint16_t **);
 int		get_thystame(t_content *, uint16_t **);
+int		send_prend(t_user *, int, t_content *);
 int		my_prend(char **, t_zap *, t_user *);
 void		north_gofo(t_pair *, int);
 void		north_gole(t_pair *, int);
@@ -172,7 +178,5 @@ int		my_pin(char **, t_zap *, t_user *);
 int		my_sgt(char **, t_zap *, t_user *);
 int		my_sst(char **, t_zap *, t_user *);
 int		my_pnw(t_user *, t_user *);
-
-void		check_com(t_com *com, t_user *usr, int *ret, t_zap *data);
 
 #endif

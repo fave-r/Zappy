@@ -5,10 +5,50 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon May 18 11:16:04 2015 romaric
-** Last update Mon May 18 11:49:01 2015 romaric
+** Last update Tue May 19 10:42:46 2015 Thibaut Lopez
 */
 
 #include "server.h"
+
+int	send_prend(t_user *usr, int item, t_content *cnt)
+{
+  char	tmp[256];
+  int	nbr;
+
+  nbr = find_nb(usr);
+  bzero(tmp, 256);
+  sprintf(tmp, "pgt #%d %d\n\
+pin #%d %d %d %d %d %d %d %d %d %d\n\
+bct %d %d %d %d %d %d %d %d %d\n",
+	  nbr, item, nbr, GET_X(usr), GET_Y(usr), GET_INV(usr).food,
+	  GET_INV(usr).linemate, GET_INV(usr).deraumere, GET_INV(usr).sibur,
+	  GET_INV(usr).mendiane, GET_INV(usr).phiras, GET_INV(usr).thystame,
+	  GET_X(usr), GET_Y(usr), cnt->food, cnt->linemate, cnt->deraumere,
+	  cnt->sibur, cnt->mendiane, cnt->phiras, cnt->thystame
+	  );
+  send_to_graphic(tmp, usr);
+  return (0);
+}
+
+int	send_pose(t_user *usr, int item, t_content *cnt)
+{
+  char	tmp[256];
+  int	nbr;
+
+  nbr = find_nb(usr);
+  bzero(tmp, 256);
+  sprintf(tmp, "%d %d\n\
+pin #%d %d %d %d %d %d %d %d %d %d\n\
+bct %d %d %d %d %d %d %d %d %d\n",
+	  nbr, item, nbr, GET_X(usr), GET_Y(usr), GET_INV(usr).food,
+	  GET_INV(usr).linemate, GET_INV(usr).deraumere, GET_INV(usr).sibur,
+	  GET_INV(usr).mendiane, GET_INV(usr).phiras, GET_INV(usr).thystame,
+	  GET_X(usr), GET_Y(usr), cnt->food, cnt->linemate, cnt->deraumere,
+	  cnt->sibur, cnt->mendiane, cnt->phiras, cnt->thystame
+	  );
+  send_to_graphic(tmp, usr);
+  return (0);
+}
 
 void	check_com(t_com *com, t_user *usr, int *ret, t_zap *data)
 {

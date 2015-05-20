@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Tue May 19 16:49:21 2015 Thibaut Lopez
+** Last update Wed May 20 10:46:02 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -107,6 +107,6 @@ int			main(int ac, char **av)
   handle_fds(s, &user, &data);
   data_free(&user);
   close(s);
-  sfree(data.team);
+  free_zap(&data);
   return (0);
 }

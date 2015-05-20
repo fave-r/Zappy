@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:51:15 2015 romaric
-** Last update Tue May 19 16:33:35 2015 Thibaut Lopez
+** Last update Wed May 20 10:41:23 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -74,6 +74,10 @@ void		unit_user_free(t_user *user)
   close(user->fd);
   free_cb(&user->cb);
   free_cb(&user->wr);
+  while (user->queue != NULL)
+    pop_q(&user->queue);
+  if (user->type == AI)
+    free(user->plr);
   if (user->prev != NULL)
     user->prev->next = user->next;
   if (user->next != NULL)

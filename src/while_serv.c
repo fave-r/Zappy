@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:38:34 2015 romaric
-** Last update Mon May 18 17:45:41 2015 Thibaut Lopez
+** Last update Wed May 20 10:43:45 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -65,6 +65,10 @@ void		data_free(t_user **data)
       close(tmp->fd);
       free_cb(&tmp->cb);
       free_cb(&tmp->wr);
+      while (tmp->queue != NULL)
+	pop_q(&tmp->queue);
+      if (tmp->type == AI)
+	free(tmp->plr);
       tmp = tmp->next;
       free(tmp->prev);
     }

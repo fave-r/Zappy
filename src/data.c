@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 10:39:02 2015 Thibaut Lopez
-** Last update Wed May 13 10:20:10 2015 Thibaut Lopez
+** Last update Wed May 20 10:46:47 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -71,4 +71,18 @@ void	init_val(t_zap *data)
   data->team = NULL;
   data->count = -1;
   data->delay = -1;
+}
+
+void	free_zap(t_zap *data)
+{
+  int	i;
+
+  i = 0;
+  while (i < data->width)
+    {
+      free(data->map[i]);
+      i++;
+    }
+  free(data->map);
+  sfree(data->team);
 }

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Tue May 19 16:41:53 2015 Thibaut Lopez
+** Last update Wed May 20 10:46:34 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -133,6 +133,7 @@ int		set_delay(t_zap *, char *, e_state *);
 int		parse_com(char **, t_zap *);
 int		base_value(t_zap *);
 void		init_val(t_zap *);
+void		free_zap(t_zap *);
 
 int		count_in_team(char *, t_user *);
 t_user		*in_this_cell(int, int, t_user *);

@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Thu May 14 11:28:52 2015 Thibaut Lopez
+** Last update Wed May 20 16:30:30 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -15,7 +15,8 @@ int	my_mct(char **com, t_zap *data, t_user *usr)
   int	x;
   int	y;
 
-  (void)com;
+  if (sstrlen(com) != 1)
+    return (0);
   y = 0;
   while (y < data->width)
     {

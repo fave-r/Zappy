@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Thu May 14 12:19:50 2015 Thibaut Lopez
+** Last update Wed May 20 16:34:36 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -14,7 +14,8 @@ int		my_graphic(char **com, t_zap *data, t_user *usr)
 {
   t_user	*tmp;
 
-  (void)com;
+  if (sstrlen(com) != 1)
+    return (0);
   my_msz(com, data, usr);
   my_sgt(com, data, usr);
   my_mct(com, data, usr);

@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 15 14:41:50 2015 Thibaut Lopez
-** Last update Mon May 18 16:12:33 2015 Thibaut Lopez
+** Last update Thu May 21 16:48:43 2015 Thibaut Lopez
 */
 
 #include "utils.h"
@@ -15,6 +15,8 @@ void	push_q(t_que **q, t_tv *tv)
   t_que	*new;
   t_que	*tmp;
 
+  if (tv == NULL)
+    return ;
   new = xmalloc(sizeof(t_que));
   new->e = *tv;
   new->next = NULL;

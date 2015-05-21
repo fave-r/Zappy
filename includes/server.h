@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Wed May 20 16:32:20 2015 Thibaut Lopez
+** Last update Thu May 21 16:50:06 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -137,7 +137,7 @@ void		free_zap(t_zap *);
 
 int		count_in_team(char *, t_user *);
 t_user		*in_this_cell(int, int, t_user *);
-void		send_to_graphic(char *, t_user *);
+void		send_to_graphic(char *, t_user *, t_tv *);
 int		find_nb(t_user *);
 int		my_avance(char **, t_zap *, t_user *);
 int		my_broadcast(char **, t_zap *, t_user *);
@@ -149,13 +149,13 @@ int		my_gauche(char **, t_zap *, t_user *);
 int		my_incantation(char **, t_zap *, t_user *);
 int		my_inventaire(char **, t_zap *, t_user *);
 t_com		*ptrs_get();
-int		send_pose(t_user *, int, t_content *);
+int		send_pose(t_user *, int, t_content *, t_tv *);
 int		my_pose(char **, t_zap *, t_user *);
 int		get_sibur(t_content *, uint16_t **);
 int		get_mendiane(t_content *, uint16_t **);
 int		get_phiras(t_content *, uint16_t **);
 int		get_thystame(t_content *, uint16_t **);
-int		send_prend(t_user *, int, t_content *);
+int		send_prend(t_user *, int, t_content *, t_tv *);
 int		my_prend(char **, t_zap *, t_user *);
 void		north_gofo(t_pair *, int);
 void		north_gole(t_pair *, int);
@@ -183,6 +183,6 @@ int		my_sgt(char **, t_zap *, t_user *);
 int		my_sst(char **, t_zap *, t_user *);
 int		my_pnw(t_user *, t_user *);
 
-int		get_direction(t_user *src, t_user *dest, t_zap *data);
+int		get_direction(t_user *, t_user *, t_zap *);
 
 #endif

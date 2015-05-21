@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Tue May 19 18:15:31 2015 Thibaut Lopez
+** Last update Thu May 21 17:07:06 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -60,5 +60,5 @@ int	my_prend(char **com, t_zap *data, t_user *usr)
       (*inv)++;
     }
   push_q(&usr->queue, add_tv(&now, 7000000 / data->delay));
-  return (send_prend(usr, i, &data->map[GET_X(usr)][GET_Y(usr)]));
+  return (send_prend(usr, i, &data->map[GET_X(usr)][GET_Y(usr)], &now));
 }

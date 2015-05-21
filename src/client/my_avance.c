@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Tue May 19 18:02:48 2015 Thibaut Lopez
+** Last update Thu May 21 16:50:25 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -28,6 +28,6 @@ int	my_avance(char **com, t_zap *data, t_user *usr)
   push_q(&usr->queue, add_tv(&now, 7000000 / data->delay));
   sprintf(tmp, "ppo #%d %d %d %d\n", GET_NB(usr),
 	  GET_X(usr), GET_Y(usr), GET_DIR(usr) + 1);
-  send_to_graphic(tmp, usr);
+  send_to_graphic(tmp, usr, &now);
   return (0);
 }

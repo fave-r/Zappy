@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:12:11 2015 romaric
-** Last update Tue May 19 16:53:47 2015 Thibaut Lopez
+** Last update Thu May 21 16:44:35 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -42,14 +42,17 @@ t_user		*in_this_cell(int x, int y, t_user *user)
   return (NULL);
 }
 
-void		send_to_graphic(char *com, t_user *usr)
+void		send_to_graphic(char *com, t_user *usr, t_tv *when)
 {
   while (usr != NULL && usr->prev != NULL)
     usr = usr->prev;
   while (usr != NULL)
     {
       if (usr->type == GRAPHIC)
-	fill_cb(&usr->wr, com, strlen(com));
+	{
+	  fill_cb(&usr->wr, com, strlen(com));
+	  push_q(&usr->queue, when);
+	}
       usr = usr->next;
     }
 }

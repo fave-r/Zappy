@@ -5,12 +5,12 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon May 18 11:16:04 2015 romaric
-** Last update Thu May 21 15:53:18 2015 Thibaut Lopez
+** Last update Thu May 21 16:49:40 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
-int	send_prend(t_user *usr, int item, t_content *cnt)
+int	send_prend(t_user *usr, int item, t_content *cnt, t_tv *tv)
 {
   char	tmp[256];
   int	nbr;
@@ -26,11 +26,11 @@ bct %d %d %d %d %d %d %d %d %d\n",
 	  GET_X(usr), GET_Y(usr), cnt->food, cnt->linemate, cnt->deraumere,
 	  cnt->sibur, cnt->mendiane, cnt->phiras, cnt->thystame
 	  );
-  send_to_graphic(tmp, usr);
+  send_to_graphic(tmp, usr, tv);
   return (0);
 }
 
-int	send_pose(t_user *usr, int item, t_content *cnt)
+int	send_pose(t_user *usr, int item, t_content *cnt, t_tv *tv)
 {
   char	tmp[256];
   int	nbr;
@@ -46,7 +46,7 @@ bct %d %d %d %d %d %d %d %d %d\n",
 	  GET_X(usr), GET_Y(usr), cnt->food, cnt->linemate, cnt->deraumere,
 	  cnt->sibur, cnt->mendiane, cnt->phiras, cnt->thystame
 	  );
-  send_to_graphic(tmp, usr);
+  send_to_graphic(tmp, usr, tv);
   return (0);
 }
 

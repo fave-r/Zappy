@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:38:34 2015 romaric
-** Last update Wed May 20 10:43:45 2015 Thibaut Lopez
+** Last update Thu May 21 17:11:36 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -36,7 +36,7 @@ int			handle_fds(int s, t_user **user, t_zap *data)
 
   init_handle(&bool, user, &nb_client);
   tv.tv_sec = 0;
-  tv.tv_usec = 5000;
+  tv.tv_usec = 50000;
   while (bool != -1)
     {
       if (quit_sig == 1)

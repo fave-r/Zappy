@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Wed May 20 10:46:02 2015 Thibaut Lopez
+** Last update Thu May 21 15:56:31 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -66,7 +66,8 @@ void		check_client(t_user **user, t_bf *bf, t_zap *data)
   tmp = *user;
   while (tmp != NULL)
     {
-      if (check_food(tmp, data) != -1 && FD_ISSET(tmp->fd, &bf->rbf))
+      if (check_food(tmp, data) != -1 &&
+	  (FD_ISSET(tmp->fd, &bf->rbf) || cb_taken(&tmp->cb) > 0))
 	read_com(tmp, data);
       if (tmp->tokill == 1)
 	{

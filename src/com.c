@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon May 18 11:16:04 2015 romaric
-** Last update Tue May 19 18:02:06 2015 Thibaut Lopez
+** Last update Thu May 21 15:53:18 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -56,7 +56,7 @@ void	check_com(t_com *com, t_user *usr, int *ret, t_zap *data)
   char	*gnl;
   char	**tok;
 
-  while ((gnl = get_line_cb(&usr->cb)) != NULL)
+  while (usr->queue == NULL && (gnl = get_line_cb(&usr->cb)) != NULL)
     {
       if ((tok = stwt(gnl, " \t\n\r", usr->type)) == NULL)
 	{

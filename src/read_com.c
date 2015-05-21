@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:51:04 2015 romaric
-** Last update Mon May 18 11:49:20 2015 romaric
+** Last update Thu May 21 16:02:13 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -101,7 +101,7 @@ int		read_com(t_user *usr, t_zap *data)
   int		ret;
 
   ret = 0;
-  if (read_cb(&usr->cb, usr->fd) <= 0)
+  if (cb_taken(&usr->cb) == 0 && read_cb(&usr->cb, usr->fd) <= 0)
     {
       usr->tokill = 1;
       return (-1);

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Thu May 21 16:50:06 2015 Thibaut Lopez
+** Last update Thu May 21 18:40:42 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -74,6 +74,7 @@ typedef struct	s_zap
   char		**team;
   int		count;
   int		delay;
+  t_que		*end;
 }		t_zap;
 
 typedef struct	s_plr

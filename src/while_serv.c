@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:38:34 2015 romaric
-** Last update Thu May 21 17:11:36 2015 Thibaut Lopez
+** Last update Thu May 21 19:29:25 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -14,7 +14,7 @@ static int	quit_sig = 0;
 
 void		signal_quit(__attribute__((unused))int signo)
 {
-  quit_sig = 1;
+  quit_sig = -1;
   write(1, "\n", 1);
 }
 
@@ -27,30 +27,37 @@ void		init_handle(int *bool, t_user **user
   *user = NULL;
 }
 
+int			end_game(t_zap *data, t_user **user)
+{
+  (void)data;
+  (void)user;
+  return (-1);
+}
+
 int			handle_fds(int s, t_user **user, t_zap *data)
 {
   t_bf			bf;
   int			bool;
   int			nb_client;
   t_tv			tv;
+  t_tv			now;
 
   init_handle(&bool, user, &nb_client);
   tv.tv_sec = 0;
   tv.tv_usec = 50000;
   while (bool != -1)
     {
-      if (quit_sig == 1)
-      	bool = -1;
-      else
-      	{
-	  set_fd(s, &bf, *user);
-	  if ((bool = select(s + nb_client, &bf.rbf, &bf.wbf, NULL, &tv)) != -1)
-	    {
-	      if (FD_ISSET(s, &bf.rbf))
-		new_client(s, user, &nb_client);
-	      check_client(user, &bf, data);
-	    }
+      set_fd(s, &bf, *user);
+      if ((bool = select(s + nb_client, &bf.rbf, &bf.wbf, NULL, &tv)) != -1)
+	{
+	  if (FD_ISSET(s, &bf.rbf))
+	    new_client(s, user, &nb_client);
+	  check_client(user, &bf, data);
 	}
+      bool = quit_sig;
+      gettimeofday(&now, NULL);
+      if (front_q(data->end) != NULL && cmp_tv(front_q(data->end), &now) <= 0)
+	bool = end_game(data, user);
     }
   return (0);
 }

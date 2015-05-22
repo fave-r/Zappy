@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Fri May 22 13:40:21 2015 Thibaut Lopez
+** Last update Fri May 22 18:19:35 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -18,8 +18,8 @@
 #define	GET_TEAM(u)	((u)->plr->team)
 #define	GET_LVL(u)	((u)->plr->level)
 #define	GET_NB(u)	((u)->plr->nb)
-#define	IS_CASTING(u)	((u)->plr->is_casting)
 #define	GET_TIME(u)	((u)->plr->time)
+#define	IS_CASTING(u)	(!(GET_TIME(u).tv_sec == 0 && GET_TIME(u).tv_usec == 0))
 
 #include <sys/socket.h>
 #include <netdb.h>
@@ -139,6 +139,7 @@ void		init_val(t_zap *);
 void		free_zap(t_zap *);
 
 int		count_in_team(char *, t_user *);
+int		team_winning(t_user *, char *);
 t_user		*in_this_cell(int, int, t_user *);
 void		send_to_graphic(char *, t_user *, t_tv *);
 int		find_nb(t_user *);
@@ -149,6 +150,7 @@ int		my_droite(char **, t_zap *, t_user *);
 int		my_expulse(char **, t_zap *, t_user *);
 int		my_fork(char **, t_zap *, t_user *);
 int		my_gauche(char **, t_zap *, t_user *);
+int		check_this_case(t_user *, t_zap *, int);
 int		my_incantation(char **, t_zap *, t_user *);
 int		my_inventaire(char **, t_zap *, t_user *);
 t_com		*ptrs_get();

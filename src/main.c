@@ -5,23 +5,10 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Thu May 21 16:47:22 2015 Thibaut Lopez
+** Last update Fri May 22 18:16:51 2015 Thibaut Lopez
 */
 
 #include "server.h"
-
-void		write_separate(t_user **user, t_bf *bf)
-{
-  t_user	*tmp;
-
-  tmp = *user;
-  while (tmp != NULL)
-    {
-      if (cb_taken(&tmp->wr) > 0 && FD_ISSET(tmp->fd, &bf->wbf))
-	write_cb(&tmp->wr, tmp->fd, &tmp->queue);
-      tmp = tmp->next;
-    }
-}
 
 int		check_food(t_user *usr, t_zap *data)
 {
@@ -50,42 +37,83 @@ int		check_food(t_user *usr, t_zap *data)
   return (0);
 }
 
-void		send_death(t_user *usr)
+void		send_death(t_user **user, t_user **tmp)
 {
   char		str[25];
 
-  dprintf(usr->fd, "mort\n");
-  sprintf(str, "pdi #%d\n", GET_NB(usr));
-  send_to_graphic(str, usr, NULL);
+  if ((*tmp)->type == AI)
+    {
+      dprintf((*tmp)->fd, "mort\n");
+      sprintf(str, "pdi #%d\n", GET_NB(*tmp));
+      send_to_graphic(str, *tmp, NULL);
+    }
+  *user = (*tmp == *user) ? (*user)->next : *user;
+  if ((*tmp)->next == NULL)
+    {
+      unit_user_free(*tmp);
+      *tmp = NULL;
+    }
+  else
+    {
+      *tmp = (*tmp)->next;
+      unit_user_free((*tmp)->prev);
+    }
+}
+
+void		cast_result(t_zap *data, t_user **user, t_user *tmp, t_tv *now)
+{
+  int		check;
+  t_user	*cur;
+  char		str[50];
+
+  check = check_this_case(tmp, data, 1);
+  cur = *user;
+  while ((cur = in_this_cell(GET_X(tmp), GET_Y(tmp), cur)) != NULL)
+    {
+      if (cmp_tv(&GET_TIME(cur), &GET_TIME(tmp)) == 0)
+	{
+	  GET_TIME(cur).tv_sec = 0;
+	  GET_TIME(cur).tv_usec = 0;
+	  if (check == 1)
+	    GET_LVL(cur)++;
+	}
+      bzero(str, 50);
+      sprintf(str, "niveau actuel : %d\n", GET_LVL(cur));
+      fill_cb(&cur->wr, str, strlen(str));
+      push_q(&cur->queue, now);
+      cur = cur->next;
+    }
+  if (team_winning(tmp, GET_TEAM(tmp)) == 1)
+    push_q(&data->end, now);
 }
 
 void		check_client(t_user **user, t_bf *bf, t_zap *data)
 {
   t_user	*tmp;
+  t_tv		now;
 
   tmp = *user;
+  gettimeofday(&now, NULL);
   while (tmp != NULL)
     {
       if (check_food(tmp, data) != -1 &&
 	  (FD_ISSET(tmp->fd, &bf->rbf) || cb_taken(&tmp->cb) > 0))
 	read_com(tmp, data);
+      if (tmp->type == AI && IS_CASTING(tmp) &&
+	  cmp_tv(&GET_TIME(tmp), &now) <= 0)
+	cast_result(data, user, tmp, &now);
       if (tmp->tokill == 1)
-	{
-	  if (tmp->type == AI)
-	    send_death(tmp);
-	  *user = (tmp == *user) ? (*user)->next : *user;
-	  if (tmp->next == NULL)
-	    {
-	      unit_user_free(tmp);
-	      tmp = NULL;
-	    }
-	  else
-	    unit_user_free((tmp = tmp->next)->prev);
-	}
+	send_death(user, &tmp);
       else
 	tmp = tmp->next;
     }
-  write_separate(user, bf);
+  tmp = *user;
+  while (tmp != NULL)
+    {
+      if (cb_taken(&tmp->wr) > 0 && FD_ISSET(tmp->fd, &bf->wbf))
+	write_cb(&tmp->wr, tmp->fd, &tmp->queue);
+      tmp = tmp->next;
+    }
 }
 
 int			main(int ac, char **av)

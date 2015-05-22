@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:12:11 2015 romaric
-** Last update Thu May 21 16:44:35 2015 Thibaut Lopez
+** Last update Fri May 22 18:17:35 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -29,6 +29,23 @@ int		count_in_team(char *team_name, t_user *user)
       tmp = tmp->next;
     }
   return (i);
+}
+
+int		team_winning(t_user *usr, char *team)
+{
+  int		nb;
+
+  nb = 0;
+  while (usr != NULL && usr->prev != NULL)
+    usr = usr->prev;
+  while (usr != NULL)
+    {
+      if (usr->type == AI &&
+	  strcmp(GET_TEAM(usr), team) == 0 && GET_LVL(usr) == 8)
+	nb++;
+      usr = usr->next;
+    }
+  return ((nb == count_in_team(team, usr)) ? 1 : 0);
 }
 
 t_user		*in_this_cell(int x, int y, t_user *user)

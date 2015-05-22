@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Tue May  5 14:40:23 2015 romaric
-## Last update Mon May 18 11:52:27 2015 romaric
+## Last update Fri May 22 19:53:25 2015 romaric
 ##
 
 CC=		gcc
@@ -53,6 +53,7 @@ S_SRC=		src/command_func.c				\
 		src/client/my_pose.c				\
 		src/client/my_prend.c				\
 		src/client/my_voir.c				\
+		src/client/func_level.c				\
 		src/graphic/my_bct.c				\
 		src/graphic/my_ebo.c				\
 		src/graphic/my_edi.c				\

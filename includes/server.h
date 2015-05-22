@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Fri May 22 18:19:35 2015 Thibaut Lopez
+** Last update Fri May 22 19:52:24 2015 romaric
 */
 
 #ifndef	ZAPPY_H
@@ -189,5 +189,10 @@ int		my_sst(char **, t_zap *, t_user *);
 int		my_pnw(t_user *, t_user *);
 
 int		get_direction(t_user *, t_user *, t_zap *);
+int		check_nb_in_cell(int is_casting, t_user *usr);
+int		level_4(t_content *cont, t_user *usr, int is_casting);
+int		level_5(t_content *cont, t_user *usr, int is_casting);
+int		level_6(t_content *cont, t_user *usr, int is_casting);
+int		level_7(t_content *cont, t_user *usr, int is_casting);
 
 #endif

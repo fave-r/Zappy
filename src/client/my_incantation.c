@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Thu May 21 20:31:28 2015 romaric
+** Last update Fri May 22 13:24:48 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -27,9 +27,15 @@ int	level_3(t_content *cont, t_user *usr)
 
 int	check_this_case(t_user *usr, t_zap *data)
 {
-  int	(*ptr[8])(t_content*, t_user*);
+  int	(*ptr[7])(t_content*, t_user*);
 
   ptr[0] = level_1;
+  ptr[1] = level_2;
+  ptr[2] = level_3;
+  ptr[3] = level_4;
+  ptr[4] = level_5;
+  ptr[5] = level_6;
+  ptr[6] = level_7;
 }
 
 int	my_incantation(__attribute__((unused)) char **com

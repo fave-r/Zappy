@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Thu May 21 17:06:03 2015 Thibaut Lopez
+** Last update Mon May 25 14:37:05 2015 romaric
 */
 
 #include "server.h"
@@ -23,6 +23,8 @@ int	send_expulse(int *bool, t_user *usr, t_user *tmp, t_tv *tv)
   bzero(str, 100);
   sprintf(str, "ppo #%d %d %d %d\n", GET_NB(tmp),
           GET_X(tmp), GET_Y(tmp), GET_DIR(tmp) + 1);
+  GET_CAST(tmp).tv_usec = 0;
+  GET_CAST(tmp).tv_sec = 0;
   send_to_graphic(str, usr, tv);
   return (0);
 }

@@ -1,0 +1,101 @@
+while_serv.c:      if (front_q(data->end) != NULL && cmp_tv(front_q(data->end), &now) <= 0)
+main.c:      add_tv(&time, (126000000 / data->delay));
+main.c:    push_q(&data->end, now);
+graphic/my_mct.c:  while (y < data->width)
+graphic/my_mct.c:      while (x < data->length)
+graphic/my_sst.c:  data->delay = nb;
+graphic/my_sgt.c:  sprintf(tmp, "sgt %d\n", data->delay);
+graphic/my_bct.c:  cnt = data->map[x][y];
+graphic/my_bct.c:  if ((x = my_strtol(com[1])) < 0 || x >= data->length)
+graphic/my_bct.c:  if ((y = my_strtol(com[2])) < 0 || y >= data->width)
+graphic/my_msz.c:  sprintf(tmp, "msz %d %d\n", data->length, data->width);
+graphic/my_tna.c:  while (data->team[i] != NULL)
+graphic/my_tna.c:      fill_cb(&usr->wr, data->team[i], strlen(data->team[i]));
+data.c:  data->map = xmalloc(data->width * sizeof(t_content *));
+data.c:  while (++i < data->width)
+data.c:      data->map[i] = malloc(data->length * sizeof(t_content));
+data.c:      while (++j < data->length)
+data.c:	  data->map[i][j].food = rand() % 10;
+data.c:	  data->map[i][j].linemate = rand() % 8;
+data.c:	  data->map[i][j].deraumere = rand() % 8;
+data.c:	  data->map[i][j].sibur = rand() % 6;
+data.c:	  data->map[i][j].mendiane = rand() % 5;
+data.c:	  data->map[i][j].phiras = rand() % 4;
+data.c:	  data->map[i][j].thystame = rand() % 2;
+data.c:	 data->port, data->length, data->width, data->count, data->delay);
+data.c:  putsstr(1, data->team);
+data.c:  if (data->port == -1)
+data.c:    data->port = 6667;
+data.c:  if (data->length == -1)
+data.c:    data->length = 100;
+data.c:  if (data->width == -1)
+data.c:    data->width = 100;
+data.c:  if (data->team == NULL || sstrlen(data->team) < 2)
+data.c:      if (data->team != NULL)
+data.c:	sfree(data->team);
+data.c:      data->team = xmalloc(3 * sizeof(char *));
+data.c:      data->team[0] = xstrdup("TeamA");
+data.c:      data->team[1] = xstrdup("TeamB");
+data.c:      data->team[2] = NULL;
+data.c:  if (data->count == -1)
+data.c:    data->count = 20;
+data.c:  if (data->delay == -1)
+data.c:    data->delay = 100;
+data.c:  data->end = NULL;
+data.c:  data->port = -1;
+data.c:  data->length = -1;
+data.c:  data->width = -1;
+data.c:  data->team = NULL;
+data.c:  data->count = -1;
+data.c:  data->delay = -1;
+data.c:  while (i < data->width)
+data.c:      free(data->map[i]);
+data.c:  free(data->map);
+data.c:  sfree(data->team);
+setter.c:  if (data->port == -1)
+setter.c:      if ((data->port = my_strtol(arg)) == -1)
+setter.c:  if (data->length == -1)
+setter.c:      if ((data->length = my_strtol(arg)) == -1)
+setter.c:  if (data->width == -1)
+setter.c:      if ((data->width = my_strtol(arg)) == -1)
+setter.c:  if (data->count == -1)
+setter.c:      if ((data->count = my_strtol(arg)) == -1)
+setter.c:  if (data->delay == -1)
+setter.c:      if ((data->delay = my_strtol(arg)) == -1)
+client/my_gauche.c:  push_q(&usr->queue, add_tv(&now, 7000000 / data->delay));
+client/my_incantation.c:  return (ptr[GET_LVL(usr) - 1](&data->map[GET_X(usr)][GET_Y(usr)],
+client/my_incantation.c:  add_tv(&now, 300000000 / data->delay);
+client/my_broadcast.c:  dirs[1].s = sign.s * (data->width - ABS(dirs[0].s));
+client/my_broadcast.c:  dirs[2].f = sign.f * (data->length - ABS(dirs[0].f));
+client/my_broadcast.c:	  push_q(&tmp->queue, add_tv(&now, 7000000 / data->delay));
+client/my_broadcast.c:	  add_tv(&now, -(7000000 / data->delay));
+client/my_broadcast.c:  push_q(&usr->queue, add_tv(&now, 7000000 / data->delay));
+client/my_voir.c:      cone->f = S_MOD(cone->f, data->width);
+client/my_voir.c:      cone->s = S_MOD(cone->s, data->length);
+client/my_voir.c:      analyse_cell(data->map, cone, usr);
+client/my_voir.c:  cone->f = S_MOD(cone->f, data->width);
+client/my_voir.c:  cone->s = S_MOD(cone->s, data->length);
+client/my_voir.c:  analyse_cell(data->map, cone, usr);
+client/my_voir.c:  push_q(&usr->queue, add_tv(&now, 7000000 / data->delay));
+client/my_droite.c:  push_q(&usr->queue, add_tv(&now, 7000000 / data->delay));
+client/my_avance.c:  GET_X(usr) = S_MOD(pos.f, data->length);
+client/my_avance.c:  GET_Y(usr) = S_MOD(pos.s, data->width);
+client/my_avance.c:  push_q(&usr->queue, add_tv(&now, 7000000 / data->delay));
+client/my_prend.c:  ptr[i].ptr(&(data->map[GET_X(usr)][GET_Y(usr)]), &cell);
+client/my_prend.c:  push_q(&usr->queue, add_tv(&now, 7000000 / data->delay));
+client/my_prend.c:  return (send_prend(usr, i, &data->map[GET_X(usr)][GET_Y(usr)], &now));
+client/my_other.c:	  data->count - count_in_team(team, usr), data->length, data->width);
+client/my_other.c:  while (data->team[i] != NULL && strcmp(data->team[i], com[0]) != 0)
+client/my_other.c:  if (data->team[i] == NULL ||
+client/my_other.c:      count_in_team(data->team[i], usr) == data->count)
+client/my_other.c:  usr->plr = player_info(data->team[i], data->length, data->width);
+client/my_other.c:  send_client_info(data->team[i], data, usr);
+client/my_expulse.c:  GET_X(tmp) = S_MOD(pos.f, data->length);
+client/my_expulse.c:  GET_Y(tmp) = S_MOD(pos.s, data->width);
+client/my_expulse.c:  add_tv(&now, 7000000 / data->delay);
+client/my_connect_nbr.c:  sprintf(tmp, "%d\n", data->count - count_in_team(GET_TEAM(usr), usr));
+client/my_pose.c:  ptr[i].ptr(&(data->map[GET_X(usr)][GET_Y(usr)]), &cell);
+client/my_pose.c:  push_q(&usr->queue, add_tv(&now, 7000000 / data->delay));
+client/my_pose.c:  return (send_pose(usr, i, &data->map[GET_X(usr)][GET_Y(usr)], &now));
+client/my_inventaire.c:  push_q(&usr->queue, add_tv(&now, 7000000 / data->delay));
+parser.c:  data->team = sstrcat(data->team, xstrdup(arg));

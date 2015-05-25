@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Mon May 25 14:02:26 2015 Thibaut Lopez
+** Last update Mon May 25 14:53:28 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -83,8 +83,9 @@ void		cast_result(t_zap *data, t_user **user, t_user *tmp, t_tv *now)
       push_q(&cur->queue, now);
       cur = cur->next;
     }
-  if (team_winning(tmp, GET_TEAM(tmp)) == 1)
+  if ((check = team_winning(tmp, GET_TEAM(tmp))) == 1)
     push_q(&data->end, now);
+  data->winner = (check == 1) ? GET_TEAM(tmp) : NULL;
 }
 
 void		check_client(t_user **user, t_bf *bf, t_zap *data)

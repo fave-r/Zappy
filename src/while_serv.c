@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:38:34 2015 romaric
-** Last update Mon May 25 13:49:09 2015 Thibaut Lopez
+** Last update Mon May 25 14:48:53 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -29,8 +29,22 @@ void		init_handle(int *bool, t_user **user
 
 int			end_game(t_zap *data, t_user **user)
 {
-  (void)data;
-  (void)user;
+  t_user		*tmp;
+  char			str[256];
+
+  bzero(str, 256);
+  sprintf(str, "seg %s\n", data->winner);
+  tmp = *user;
+  while (tmp != NULL)
+    {
+      if (tmp->type != UNKNOWN)
+	{
+	  fill_cb(&tmp->wr, str, strlen(str));
+	  while (cb_taken(&tmp->wr) > 0)
+	    write_cb(&tmp->wr, tmp->fd, NULL);
+	}
+      tmp = tmp->next;
+    }
   return (-1);
 }
 

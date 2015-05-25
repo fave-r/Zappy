@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri Apr 10 10:17:56 2015 Thibaut Lopez
-** Last update Thu May 21 15:35:11 2015 Thibaut Lopez
+** Last update Mon May 25 14:52:14 2015 Thibaut Lopez
 */
 
 #include "cb.h"
@@ -66,13 +66,13 @@ int	write_cb(t_cb *cb, int fd, t_que **queue)
   t_tv	now;
 
   gettimeofday(&now, NULL);
-  if (cmp_tv(front_q(*queue), &now) <= 0)
+  if (queue == NULL || cmp_tv(front_q(*queue), &now) <= 0)
     {
       if ((str = get_line_cb(cb)) == NULL)
 	return (0);
       str[strlen(str)] = '\n';
       wl = write(fd, str, strlen(str));
-      if (wl == (int)strlen(str))
+      if (queue != NULL && wl == (int)strlen(str))
 	pop_q(queue);
       fill_cb(cb, str + wl, strlen(str) - wl);
       free(str);

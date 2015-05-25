@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Tue May  5 14:40:23 2015 romaric
-## Last update Mon May 25 18:16:25 2015 Thibaut Lopez
+## Last update Mon May 25 18:58:18 2015 romaric
 ##
 
 CC=		gcc
@@ -54,6 +54,7 @@ S_SRC=		src/command_func.c				\
 		src/client/my_prend.c				\
 		src/client/my_voir.c				\
 		src/client/func_level.c				\
+		src/client/inc_to_graphic.c			\
 		src/graphic/my_bct.c				\
 		src/graphic/my_graphic.c			\
 		src/graphic/my_mct.c				\

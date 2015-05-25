@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Mon May 25 17:38:56 2015 Thibaut Lopez
+** Last update Mon May 25 19:00:23 2015 romaric
 */
 
 #include "server.h"
@@ -68,21 +68,27 @@ void		cast_result(t_zap *data, t_user **user, t_user *tmp, t_tv *now)
 
   check = check_this_case(tmp, data, 1);
   cur = *user;
+  bzero(str, 50);
+  sprintf(str, "pie %d %d 1", GET_X(*user), GET_Y(*user));
+  send_to_graphic(str, (*user), NULL);
   while ((cur = in_this_cell(GET_X(tmp), GET_Y(tmp), cur)) != NULL)
     {
-      if (cmp_tv(&GET_CAST(cur), &GET_CAST(tmp)) == 0)
-	{
-	  GET_CAST(cur).tv_sec = 0;
-	  GET_CAST(cur).tv_usec = 0;
-	  if (check == 1)
-	    GET_LVL(cur)++;
-	}
-      bzero(str, 50);
-      sprintf(str, "niveau actuel : %d\n", GET_LVL(cur));
-      fill_cb(&cur->wr, str, strlen(str));
-      push_q(&cur->queue, now);
+      /* if (cmp_tv(&GET_CAST(cur), &GET_CAST(tmp)) == 0) */
+      /* 	{ */
+      /* 	  GET_CAST(cur).tv_sec = 0; */
+      /* 	  GET_CAST(cur).tv_usec = 0; */
+      /* 	  if (check == 1) */
+      /* 	    GET_LVL(cur)++; */
+      /* 	} */
+      /* send_user_inc(cur); */
+      /* bzero(str, 50); */
+      /* sprintf(str, "niveau actuel : %d\n", GET_LVL(cur)); */
+      /* fill_cb(&cur->wr, str, strlen(str)); */
+      /* push_q(&cur->queue, now); */
+      cast_loop(cur, tmp, check, now);
       cur = cur->next;
     }
+  send_inc_to_graph((*user), data);
   if ((check = team_winning(tmp, GET_TEAM(tmp))) == 1)
     push_q(&data->end, now);
   data->winner = (check == 1) ? GET_TEAM(tmp) : NULL;

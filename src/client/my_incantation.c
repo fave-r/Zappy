@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Mon May 25 13:47:38 2015 Thibaut Lopez
+** Last update Mon May 25 18:29:47 2015 romaric
 */
 
 #include "server.h"
@@ -70,6 +70,7 @@ int		my_incantation(char **com, t_zap *data, t_user *usr)
       return (-1);
     }
   tmp = usr;
+  send_elev_in(usr);
   while (tmp->prev != NULL)
     tmp = tmp->prev;
   while ((tmp = in_this_cell(GET_X(usr), GET_Y(usr), tmp)) != NULL)

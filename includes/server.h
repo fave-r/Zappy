@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Mon May 25 18:17:08 2015 Thibaut Lopez
+** Last update Mon May 25 18:57:47 2015 romaric
 */
 
 #ifndef	ZAPPY_H
@@ -198,5 +198,8 @@ int		level_4(t_content *cont, t_user *usr, int is_casting);
 int		level_5(t_content *cont, t_user *usr, int is_casting);
 int		level_6(t_content *cont, t_user *usr, int is_casting);
 int		level_7(t_content *cont, t_user *usr, int is_casting);
+void		send_inc_to_graph(t_user *usr, t_zap *data);
+void		cast_loop(t_user *cur, t_user *tmp, int check, t_tv *now);
+void		send_elev_in(t_user *usr);
 
 #endif

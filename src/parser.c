@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 16:43:22 2015 Thibaut Lopez
-** Last update Thu May 14 15:16:21 2015 Thibaut Lopez
+** Last update Mon May 25 16:29:16 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -13,7 +13,10 @@
 int		set_team(t_zap *data, char *arg, e_state *state)
 {
   (void)state;
-  data->team = sstrcat(data->team, xstrdup(arg));
+  if (strlen(arg) < 200)
+    data->team = sstrcat(data->team, xstrdup(arg));
+  else
+    fprintf(stderr, "Warning: %s: Team name too long\n", arg);
   return (0);
 }
 

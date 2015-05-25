@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Mon May 25 14:53:28 2015 Thibaut Lopez
+** Last update Mon May 25 16:35:09 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -123,18 +123,19 @@ int			main(int ac, char **av)
   t_user		*user;
   t_zap			data;
 
-  (void)ac;
   srand(time(NULL));
-  init_val(&data);
-  if (parse_com(av, &data) != 0)
-    return (1);
   if ((s = init_socket()) == -1)
     return (1);
   if (init_bind(s, &data.port) == -1)
     return (clean_return(s, "Couldn't bind"));
   if (listen(s, 42) == -1)
     return (clean_return(s, "Couldn't listen"));
-  handle_fds(s, &user, &data);
+  init_val(&data);
+  if (ac == 1)
+    printf("Note on usage: ./zappy [-p port] [-x length] \
+[-y width] [-n team_name ...] [-c client_per_team] [-t delay]\n");
+  if (parse_com(av, &data) == 0)
+    handle_fds(s, &user, &data);
   data_free(&user);
   close(s);
   free_zap(&data);

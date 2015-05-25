@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:51:04 2015 romaric
-** Last update Thu May 21 16:02:13 2015 Thibaut Lopez
+** Last update Mon May 25 17:30:42 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -28,7 +28,7 @@ t_com		*graphic_funcs()
 {
   t_com		*ptrs;
 
-  ptrs = xmalloc(10 * sizeof(t_com));
+  ptrs = xmalloc(11 * sizeof(t_com));
   ptrs[0].com = "msz";
   ptrs[0].ptr = my_msz;
   ptrs[1].com = "bct";
@@ -47,8 +47,10 @@ t_com		*graphic_funcs()
   ptrs[7].ptr = my_sgt;
   ptrs[8].com = "sst";
   ptrs[8].ptr = my_sst;
-  ptrs[9].com = NULL;
-  ptrs[9].ptr = NULL;
+  ptrs[9].com = "";
+  ptrs[9].ptr = my_suc;
+  ptrs[10].com = NULL;
+  ptrs[10].ptr = NULL;
   return (ptrs);
 }
 

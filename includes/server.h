@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Mon May 25 17:34:04 2015 Thibaut Lopez
+** Last update Mon May 25 18:17:08 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -185,6 +185,7 @@ int		my_tna(char **, t_zap *, t_user *);
 int		my_ppo(char **, t_zap *, t_user *);
 int		my_plv(char **, t_zap *, t_user *);
 int		my_pin(char **, t_zap *, t_user *);
+int		my_sbp(t_user *);
 int		my_send_sgt(t_zap *, t_user *);
 int		my_sgt(char **, t_zap *, t_user *);
 int		my_sst(char **, t_zap *, t_user *);

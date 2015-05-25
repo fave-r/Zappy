@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Wed May 20 16:32:03 2015 Thibaut Lopez
+** Last update Mon May 25 18:14:37 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -23,6 +23,6 @@ int	my_send_sgt(t_zap *data, t_user *usr)
 int	my_sgt(char **com, t_zap *data, t_user *usr)
 {
   if (sstrlen(com) != 1)
-    return (0);
+    return (my_sbp(usr));
   return (my_send_sgt(data, usr));
 }

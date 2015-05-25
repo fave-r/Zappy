@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Fri May 22 19:52:24 2015 romaric
+** Last update Mon May 25 13:48:18 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -19,7 +19,8 @@
 #define	GET_LVL(u)	((u)->plr->level)
 #define	GET_NB(u)	((u)->plr->nb)
 #define	GET_TIME(u)	((u)->plr->time)
-#define	IS_CASTING(u)	(!(GET_TIME(u).tv_sec == 0 && GET_TIME(u).tv_usec == 0))
+#define	GET_CAST(u)	((u)->plr->cast)
+#define	IS_CASTING(u)	(!(GET_CAST(u).tv_sec == 0 && GET_CAST(u).tv_usec == 0))
 
 #include <sys/socket.h>
 #include <netdb.h>
@@ -87,8 +88,8 @@ typedef struct	s_plr
   char		*team;
   uint16_t	level;
   int		nb;
-  int		is_casting;
   t_tv		time;
+  t_tv		cast;
 }		t_plr;
 
 typedef struct	s_user

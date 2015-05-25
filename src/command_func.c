@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:12:11 2015 romaric
-** Last update Fri May 22 18:17:35 2015 Thibaut Lopez
+** Last update Mon May 25 13:30:59 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -16,7 +16,7 @@ int		count_in_team(char *team_name, t_user *user)
   int		i;
 
   tmp = user;
-  while (tmp->prev != NULL)
+  while (tmp != NULL && tmp->prev != NULL)
     tmp = tmp->prev;
   i = 0;
   while (tmp != NULL)
@@ -33,19 +33,21 @@ int		count_in_team(char *team_name, t_user *user)
 
 int		team_winning(t_user *usr, char *team)
 {
+  t_user	*tmp;
   int		nb;
 
+  tmp = usr;
   nb = 0;
-  while (usr != NULL && usr->prev != NULL)
-    usr = usr->prev;
-  while (usr != NULL)
+  while (tmp != NULL && tmp->prev != NULL)
+    tmp = tmp->prev;
+  while (tmp != NULL)
     {
-      if (usr->type == AI &&
-	  strcmp(GET_TEAM(usr), team) == 0 && GET_LVL(usr) == 8)
+      if (tmp->type == AI &&
+	  strcmp(GET_TEAM(tmp), team) == 0 && GET_LVL(tmp) == 8)
 	nb++;
-      usr = usr->next;
+      tmp = tmp->next;
     }
-  return ((nb == count_in_team(team, usr)) ? 1 : 0);
+  return ((nb != 0 && nb == count_in_team(team, usr)) ? 1 : 0);
 }
 
 t_user		*in_this_cell(int x, int y, t_user *user)

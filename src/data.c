@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 10:39:02 2015 Thibaut Lopez
-** Last update Wed May 20 10:46:47 2015 Thibaut Lopez
+** Last update Mon May 25 13:16:34 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -60,6 +60,7 @@ int	base_value(t_zap *data)
   if (data->delay == -1)
     data->delay = 100;
   init_map(data);
+  data->end = NULL;
   return (0);
 }
 

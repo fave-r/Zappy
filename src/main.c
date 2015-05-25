@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Fri May 22 18:16:51 2015 Thibaut Lopez
+** Last update Mon May 25 14:02:26 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -19,15 +19,15 @@ int		check_food(t_user *usr, t_zap *data)
   if (usr->type == AI)
     {
       gettimeofday(&tv, NULL);
-      timersub(&tv, &usr->plr->time, &tmp);
+      timersub(&tv, &GET_TIME(usr), &tmp);
       time.tv_usec = 0;
       time.tv_sec = 0;
       add_tv(&time, (126000000 / data->delay));
       if (cmp_tv(&tmp, &time) == 1 || cmp_tv(&tmp, &time) == 0)
 	{
-	  usr->plr->inv.food -= 1;
-	  usr->plr->time = tv;
-	  if (usr->plr->inv.food  == 0)
+	  GET_INV(usr).food -= 1;
+	  GET_TIME(usr) = tv;
+	  if (GET_INV(usr).food  == 0)
 	    {
 	      usr->tokill = 1;
 	      return (-1);
@@ -70,10 +70,10 @@ void		cast_result(t_zap *data, t_user **user, t_user *tmp, t_tv *now)
   cur = *user;
   while ((cur = in_this_cell(GET_X(tmp), GET_Y(tmp), cur)) != NULL)
     {
-      if (cmp_tv(&GET_TIME(cur), &GET_TIME(tmp)) == 0)
+      if (cmp_tv(&GET_CAST(cur), &GET_CAST(tmp)) == 0)
 	{
-	  GET_TIME(cur).tv_sec = 0;
-	  GET_TIME(cur).tv_usec = 0;
+	  GET_CAST(cur).tv_sec = 0;
+	  GET_CAST(cur).tv_usec = 0;
 	  if (check == 1)
 	    GET_LVL(cur)++;
 	}
@@ -100,7 +100,7 @@ void		check_client(t_user **user, t_bf *bf, t_zap *data)
 	  (FD_ISSET(tmp->fd, &bf->rbf) || cb_taken(&tmp->cb) > 0))
 	read_com(tmp, data);
       if (tmp->type == AI && IS_CASTING(tmp) &&
-	  cmp_tv(&GET_TIME(tmp), &now) <= 0)
+	  cmp_tv(&GET_TIME(tmp), &now) >= 0)
 	cast_result(data, user, tmp, &now);
       if (tmp->tokill == 1)
 	send_death(user, &tmp);

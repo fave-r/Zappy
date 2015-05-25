@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Thu May 21 17:06:23 2015 Thibaut Lopez
+** Last update Mon May 25 13:44:44 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -38,6 +38,8 @@ t_plr		*player_info(char *team, int length, int width)
   plr->inv.thystame = 0;
   plr->level = 1;
   gettimeofday(&plr->time, NULL);
+  plr->cast.tv_sec = 0;
+  plr->cast.tv_usec = 0;
   return (plr);
 }
 

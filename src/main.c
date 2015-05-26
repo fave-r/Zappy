@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Mon May 25 19:00:23 2015 romaric
+** Last update Tue May 26 12:55:15 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -69,7 +69,7 @@ void		cast_result(t_zap *data, t_user **user, t_user *tmp, t_tv *now)
   check = check_this_case(tmp, data, 1);
   cur = *user;
   bzero(str, 50);
-  sprintf(str, "pie %d %d 1", GET_X(*user), GET_Y(*user));
+  sprintf(str, "pie %d %d 1\n", GET_X(tmp), GET_Y(tmp));
   send_to_graphic(str, (*user), NULL);
   while ((cur = in_this_cell(GET_X(tmp), GET_Y(tmp), cur)) != NULL)
     {
@@ -88,7 +88,7 @@ void		cast_result(t_zap *data, t_user **user, t_user *tmp, t_tv *now)
       cast_loop(cur, tmp, check, now);
       cur = cur->next;
     }
-  send_inc_to_graph((*user), data);
+  send_inc_to_graph(tmp, data);
   if ((check = team_winning(tmp, GET_TEAM(tmp))) == 1)
     push_q(&data->end, now);
   data->winner = (check == 1) ? GET_TEAM(tmp) : NULL;

@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 10:39:02 2015 Thibaut Lopez
-** Last update Mon May 25 14:43:25 2015 Thibaut Lopez
+** Last update Tue May 26 15:06:46 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -40,12 +40,12 @@ Player max per team: %d\nDelay for each action: %d\nName of each team\n",
 
 int	base_value(t_zap *data)
 {
-  if (data->port == -1)
-    data->port = 6667;
-  if (data->length == -1)
-    data->length = 100;
-  if (data->width == -1)
-    data->width = 100;
+  int	i;
+  int	c;
+
+  data->port = (data->port == -1) ? 6667 : data->port;
+  data->length = (data->length == -1) ? 100 : data->length;
+  data->width = (data->width == -1) ? 100 : data->width;
   if (data->team == NULL || sstrlen(data->team) < 2)
     {
       if (data->team != NULL)
@@ -55,24 +55,29 @@ int	base_value(t_zap *data)
       data->team[1] = xstrdup("TeamB");
       data->team[2] = NULL;
     }
-  if (data->count == -1)
-    data->count = 20;
-  if (data->delay == -1)
-    data->delay = 100;
+  data->count = (data->count == -1) ? 20 : data->count;
+  c = sstrlen(data->team);
+  data->counts = xmalloc(c * sizeof(int));
+  i = -1;
+  while (++i < c)
+    data->counts[i] = data->count;
+  data->delay = (data->delay == -1) ? 100 : data->delay;
   init_map(data);
-  data->end = NULL;
-  data->winner = NULL;
   return (0);
 }
 
 void	init_val(t_zap *data)
 {
   data->port = -1;
+  data->map = NULL;
   data->length = -1;
   data->width = -1;
   data->team = NULL;
   data->count = -1;
+  data->counts = NULL;
   data->delay = -1;
+  data->end = NULL;
+  data->winner = NULL;
 }
 
 void	free_zap(t_zap *data)

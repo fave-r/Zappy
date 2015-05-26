@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Mon May 25 18:57:47 2015 romaric
+** Last update Tue May 26 14:27:40 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -75,6 +75,7 @@ typedef struct	s_zap
   int		width;
   char		**team;
   int		count;
+  int		*counts;
   int		delay;
   t_que		*end;
   char		*winner;
@@ -139,6 +140,9 @@ int		parse_com(char **, t_zap *);
 int		base_value(t_zap *);
 void		init_val(t_zap *);
 void		free_zap(t_zap *);
+void		send_inc_to_graph(t_user *, t_zap *);
+void		cast_loop(t_user *, t_user *, int, t_tv *);
+void		send_elev_in(t_user *);
 
 int		count_in_team(char *, t_user *);
 int		team_winning(t_user *, char *);
@@ -146,6 +150,7 @@ t_user		*in_this_cell(int, int, t_user *);
 void		send_to_graphic(char *, t_user *, t_tv *);
 int		find_nb(t_user *);
 int		my_avance(char **, t_zap *, t_user *);
+int		get_direction(t_user *, t_user *, t_zap *);
 int		my_broadcast(char **, t_zap *, t_user *);
 int		my_connect_nbr(char **, t_zap *, t_user *);
 int		my_droite(char **, t_zap *, t_user *);
@@ -153,6 +158,11 @@ int		my_expulse(char **, t_zap *, t_user *);
 int		my_fork(char **, t_zap *, t_user *);
 int		my_gauche(char **, t_zap *, t_user *);
 int		check_this_case(t_user *, t_zap *, int);
+int		check_nb_in_cell(int, t_user *);
+int		level_4(t_content *, t_user *, int);
+int		level_5(t_content *, t_user *, int);
+int		level_6(t_content *, t_user *, int);
+int		level_7(t_content *, t_user *, int);
 int		my_incantation(char **, t_zap *, t_user *);
 int		my_inventaire(char **, t_zap *, t_user *);
 t_com		*ptrs_get();
@@ -191,15 +201,5 @@ int		my_sgt(char **, t_zap *, t_user *);
 int		my_sst(char **, t_zap *, t_user *);
 int		my_suc(char **, t_zap *, t_user *);
 int		my_pnw(t_user *, t_user *);
-
-int		get_direction(t_user *, t_user *, t_zap *);
-int		check_nb_in_cell(int is_casting, t_user *usr);
-int		level_4(t_content *cont, t_user *usr, int is_casting);
-int		level_5(t_content *cont, t_user *usr, int is_casting);
-int		level_6(t_content *cont, t_user *usr, int is_casting);
-int		level_7(t_content *cont, t_user *usr, int is_casting);
-void		send_inc_to_graph(t_user *usr, t_zap *data);
-void		cast_loop(t_user *cur, t_user *tmp, int check, t_tv *now);
-void		send_elev_in(t_user *usr);
 
 #endif

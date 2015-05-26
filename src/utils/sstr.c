@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Wed May  6 09:49:44 2015 Thibaut Lopez
-** Last update Wed May  6 10:35:16 2015 Thibaut Lopez
+** Last update Tue May 26 14:14:48 2015 Thibaut Lopez
 */
 
 #include "utils.h"
@@ -53,6 +53,20 @@ char	**sstrcat(char **str, char *ad)
   if (str != NULL)
     sfree(str);
   return (ret);
+}
+
+int	sstrchr(char **tab, char *str)
+{
+  int	i;
+
+  i = 0;
+  while (tab != NULL && tab[i] != NULL)
+    {
+      if (strcmp(tab[i], str) == 0)
+	return (i);
+      i++;
+    }
+  return (-1);
 }
 
 void	putsstr(int fd, char **str)

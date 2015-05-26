@@ -5,18 +5,20 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Mon May 25 14:10:49 2015 Thibaut Lopez
+** Last update Tue May 26 15:11:42 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
 void		send_client_info(char *team, t_zap *data, t_user *usr)
 {
+  int		count;
   char		tmp[512];
 
+  count = data->counts[sstrchr(data->team, team)];
   bzero(tmp, 512);
   sprintf(tmp, "%d\n%d %d\n",
-	  data->count - count_in_team(team, usr), data->length, data->width);
+	  count - count_in_team(team, usr), data->length, data->width);
   fill_cb(&usr->wr, tmp, strlen(tmp));
 }
 

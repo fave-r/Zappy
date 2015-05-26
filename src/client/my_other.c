@@ -5,24 +5,24 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Tue May 26 15:11:42 2015 Thibaut Lopez
+** Last update Tue May 26 18:14:10 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
-void		send_client_info(char *team, t_zap *data, t_user *usr)
+void		send_client_info(t_team *team, t_zap *data, t_user *usr)
 {
   int		count;
   char		tmp[512];
 
-  count = data->counts[sstrchr(data->team, team)];
+  count = GET_TEAM(usr)->count;
   bzero(tmp, 512);
   sprintf(tmp, "%d\n%d %d\n",
 	  count - count_in_team(team, usr), data->length, data->width);
   fill_cb(&usr->wr, tmp, strlen(tmp));
 }
 
-t_plr		*player_info(char *team, int length, int width)
+t_plr		*player_info(t_team *team, int length, int width)
 {
   t_plr		*plr;
 
@@ -47,25 +47,24 @@ t_plr		*player_info(char *team, int length, int width)
 
 int		my_other(char **com, t_zap *data, t_user *usr)
 {
-  int		i;
+  t_team	*cur;
   char		str[256];
   t_user	*tmp;
 
-  i = 0;
-  while (data->team[i] != NULL && strcmp(data->team[i], com[0]) != 0)
-    i++;
-  if (data->team[i] == NULL ||
-      count_in_team(data->team[i], usr) == data->count)
+  cur = data->teams;
+  while (cur != NULL && strcmp(cur->name, com[0]) != 0)
+    cur = cur->next;
+  if (cur == NULL || count_in_team(cur, usr) == data->count)
     return (-1);
-  usr->plr = player_info(data->team[i], data->length, data->width);
+  usr->plr = player_info(cur, data->length, data->width);
   tmp = usr;
   while (tmp != NULL && tmp->prev != NULL)
     tmp = tmp->prev;
   GET_NB(usr) = find_nb(tmp);
   usr->type = AI;
-  send_client_info(data->team[i], data, usr);
-  sprintf(str, "pnw #%d %d %d %d %d %s\n", GET_NB(usr),
-	  GET_X(usr), GET_Y(usr), GET_DIR(usr) + 1, GET_LVL(usr), GET_TEAM(usr));
+  send_client_info(cur, data, usr);
+  sprintf(str, "pnw #%d %d %d %d %d %s\n", GET_NB(usr), GET_X(usr),
+	  GET_Y(usr), GET_DIR(usr) + 1, GET_LVL(usr), GET_TEAM(usr)->name);
   send_to_graphic(str, usr, NULL);
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Tue May 19 18:10:06 2015 Thibaut Lopez
+** Last update Tue May 26 18:39:39 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -96,6 +96,6 @@ int		my_voir(char **com, t_zap *data, t_user *usr)
       i++;
     }
   fill_cb(&usr->wr, "}\n", 2);
-  push_q(&usr->queue, add_tv(&now, 7000000 / data->delay));
+  push_q(&usr->queue, add_tv(&now, 7000000 / data->delay), clone_tv);
   return (0);
 }

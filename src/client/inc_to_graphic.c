@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon May 25 17:31:52 2015 romaric
-** Last update Mon May 25 19:04:06 2015 romaric
+** Last update Tue May 26 18:39:57 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -43,7 +43,7 @@ void		cast_loop(t_user *cur, t_user *tmp, int check, t_tv *now)
   bzero(str, 50);
   sprintf(str, "niveau actuel : %d\n", GET_LVL(cur));
   fill_cb(&cur->wr, str, strlen(str));
-  push_q(&cur->queue, now);
+  push_q(&cur->queue, now, clone_tv);
 }
 
 void		send_elev_in(t_user *usr)

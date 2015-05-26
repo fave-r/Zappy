@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:38:34 2015 romaric
-** Last update Mon May 25 17:36:44 2015 Thibaut Lopez
+** Last update Tue May 26 18:10:47 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -33,7 +33,7 @@ int			end_game(t_zap *data, t_user **user)
   char			str[256];
 
   bzero(str, 256);
-  sprintf(str, "seg %s\n", data->winner);
+  sprintf(str, "seg %s\n", data->winner->name);
   tmp = *user;
   while (tmp != NULL)
     {
@@ -65,10 +65,7 @@ int			handle_fds(int s, t_user **user, t_zap *data)
       if ((bool = select(s + nb_client, &bf.rbf, &bf.wbf, NULL, &tv)) != -1)
 	{
 	  if (FD_ISSET(s, &bf.rbf))
-	    {
-	      printf("%d\n", data->port);
-	      new_client(s, user, &nb_client);
-	    }
+	    new_client(s, user, &nb_client);
 	  check_client(user, &bf, data);
 	}
       bool = quit_sig;

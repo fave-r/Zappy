@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Tue May 19 18:05:52 2015 Thibaut Lopez
+** Last update Tue May 26 18:38:53 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -32,6 +32,6 @@ sibur %d, mendiane %d, phiras %d, thystame %d}\n",
 	  (int)cnt.phiras,
 	  (int)cnt.thystame);
   fill_cb(&usr->wr, tmp, strlen(tmp));
-  push_q(&usr->queue, add_tv(&now, 7000000 / data->delay));
+  push_q(&usr->queue, add_tv(&now, 7000000 / data->delay), clone_tv);
   return (0);
 }

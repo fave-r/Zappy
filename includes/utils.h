@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 18:07:00 2015 Thibaut Lopez
-** Last update Tue May 26 14:15:07 2015 Thibaut Lopez
+** Last update Tue May 26 18:36:32 2015 Thibaut Lopez
 */
 
 #ifndef	UTILS_H
@@ -38,7 +38,7 @@ typedef struct	timeval	t_tv;
 
 typedef struct	s_que
 {
-  t_tv		e;
+  void		*e;
   struct s_que	*next;
 }		t_que;
 
@@ -57,9 +57,10 @@ char		**sstrcat(char **, char *);
 void		putsstr(int, char **);
 int		sstrchr(char **, char *);
 char		**stwt(char *, char *, int);
-void		push_q(t_que **, t_tv *);
+void		push_q(t_que **, void *, void *(*)(void *));
 void		pop_q(t_que **);
-t_tv		*front_q(t_que *);
+void		*front_q(t_que *);
+void		*clone_tv(void *);
 t_tv		*add_tv(t_tv *, int);
 int		cmp_tv(t_tv *, t_tv *);
 

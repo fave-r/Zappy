@@ -5,20 +5,20 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 15 14:41:50 2015 Thibaut Lopez
-** Last update Thu May 21 16:48:43 2015 Thibaut Lopez
+** Last update Tue May 26 18:41:54 2015 Thibaut Lopez
 */
 
 #include "utils.h"
 
-void	push_q(t_que **q, t_tv *tv)
+void	push_q(t_que **q, void *e, void *(*clone)(void *))
 {
   t_que	*new;
   t_que	*tmp;
 
-  if (tv == NULL)
+  if (e == NULL)
     return ;
   new = xmalloc(sizeof(t_que));
-  new->e = *tv;
+  new->e = clone(e);
   new->next = NULL;
   tmp = *q;
   while (tmp != NULL && tmp->next != NULL)
@@ -37,41 +37,15 @@ void	pop_q(t_que **q)
   if (*q != NULL)
     *q = (*q)->next;
   if (tmp != NULL)
-    free(tmp);
+    {
+      free(tmp->e);
+      free(tmp);
+    }
 }
 
-t_tv	*front_q(t_que *q)
+void	*front_q(t_que *q)
 {
   if (q == NULL)
     return (NULL);
-  return (&q->e);
-}
-
-t_tv	*add_tv(t_tv *tv, int to_add)
-{
-  int	sign;
-
-  sign = (to_add < 0) ? -1 : 1;
-  tv->tv_usec += (ABS(to_add) % 1000000) * sign;
-  tv->tv_sec += to_add / 1000000;
-  return (tv);
-}
-
-int	cmp_tv(t_tv *t1, t_tv *t2)
-{
-  if (t1 == NULL && t2 == NULL)
-    return (0);
-  if (t1 == NULL)
-    return (-1);
-  if (t2 == NULL)
-    return (1);
-  if (t1->tv_sec < t2->tv_sec)
-    return (-1);
-  if (t1->tv_sec > t2->tv_sec)
-    return (1);
-  if (t1->tv_usec < t2->tv_usec)
-    return (-1);
-  if (t1->tv_usec > t2->tv_usec)
-    return (1);
-  return (0);
+  return (q->e);
 }

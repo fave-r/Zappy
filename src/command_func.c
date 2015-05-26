@@ -5,12 +5,12 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:12:11 2015 romaric
-** Last update Mon May 25 13:30:59 2015 Thibaut Lopez
+** Last update Tue May 26 18:36:55 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
-int		count_in_team(char *team_name, t_user *user)
+int		count_in_team(t_team *team_name, t_user *user)
 {
   t_user	*tmp;
   int		i;
@@ -21,17 +21,14 @@ int		count_in_team(char *team_name, t_user *user)
   i = 0;
   while (tmp != NULL)
     {
-      if (tmp->type == AI)
-	{
-	  if (strcmp(GET_TEAM(tmp), team_name) == 0)
-	    i++;
-	}
+      if (tmp->type == AI && GET_TEAM(tmp) == team_name)
+	i++;
       tmp = tmp->next;
     }
   return (i);
 }
 
-int		team_winning(t_user *usr, char *team)
+int		team_winning(t_user *usr, t_team *team)
 {
   t_user	*tmp;
   int		nb;
@@ -42,8 +39,7 @@ int		team_winning(t_user *usr, char *team)
     tmp = tmp->prev;
   while (tmp != NULL)
     {
-      if (tmp->type == AI &&
-	  strcmp(GET_TEAM(tmp), team) == 0 && GET_LVL(tmp) == 8)
+      if (tmp->type == AI && GET_TEAM(tmp) == team && GET_LVL(tmp) == 8)
 	nb++;
       tmp = tmp->next;
     }
@@ -70,7 +66,7 @@ void		send_to_graphic(char *com, t_user *usr, t_tv *when)
       if (usr->type == GRAPHIC)
 	{
 	  fill_cb(&usr->wr, com, strlen(com));
-	  push_q(&usr->queue, when);
+	  push_q(&usr->queue, when, clone_tv);
 	}
       usr = usr->next;
     }

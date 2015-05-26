@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Tue May  5 14:40:23 2015 romaric
-## Last update Mon May 25 18:58:18 2015 romaric
+## Last update Tue May 26 18:40:36 2015 Thibaut Lopez
 ##
 
 CC=		gcc
@@ -23,21 +23,23 @@ U_SRC=		src/utils/common_func.c				\
 		src/utils/str.c					\
 		src/utils/sstr.c				\
 		src/utils/stwt.c				\
+		src/utils/tv.c					\
 		src/utils/xfunction.c				\
                 src/utils/CircularBuffer/circular_buffer.c	\
                 src/utils/CircularBuffer/get_value.c		\
                 src/utils/CircularBuffer/read_cb.c
 
 S_SRC=		src/command_func.c				\
+		src/com.c					\
 		src/data.c					\
 		src/fd_func.c					\
 		src/main.c					\
 		src/parser.c					\
 		src/read_com.c					\
 		src/setter.c					\
+		src/team.c					\
 		src/while_serv.c				\
 		src/x_tcp.c					\
-		src/com.c					\
 		src/client/cone_x.c				\
 		src/client/cone_y.c				\
 		src/client/my_avance.c				\

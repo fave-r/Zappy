@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Tue May 26 14:27:40 2015 Thibaut Lopez
+** Last update Tue May 26 18:10:08 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -67,18 +67,25 @@ typedef struct	s_content
   uint16_t	thystame;
 }		t_content;
 
+typedef struct	s_team
+{
+  char		*name;
+  int		count;
+  t_que		*eggs;
+  struct s_team	*next;
+}		t_team;
+
 typedef struct	s_zap
 {
   int		port;
   t_content	**map;
   int		length;
   int		width;
-  char		**team;
   int		count;
-  int		*counts;
+  t_team	*teams;
   int		delay;
   t_que		*end;
-  char		*winner;
+  t_team	*winner;
 }		t_zap;
 
 typedef struct	s_plr
@@ -87,7 +94,7 @@ typedef struct	s_plr
   int		y;
   e_dir		dir;
   t_content	inv;
-  char		*team;
+  t_team	*team;
   uint16_t	level;
   int		nb;
   t_tv		time;
@@ -129,6 +136,12 @@ int		handle_fds(int, t_user **, t_zap *);
 void		check_com(t_com *, t_user *, int *, t_zap *);
 int		read_com(t_user *, t_zap *);
 void		data_free(t_user **);
+void		put_team(t_team *, int);
+int		team_len(t_team *);
+t_team		*team_cat(t_team *, char *);
+void		team_free(t_team *);
+t_team		*base_team();
+void		team_counts(t_team *, int);
 
 int		set_port(t_zap *, char *, e_state *);
 int		set_x(t_zap *, char *, e_state *);
@@ -144,8 +157,8 @@ void		send_inc_to_graph(t_user *, t_zap *);
 void		cast_loop(t_user *, t_user *, int, t_tv *);
 void		send_elev_in(t_user *);
 
-int		count_in_team(char *, t_user *);
-int		team_winning(t_user *, char *);
+int		count_in_team(t_team *, t_user *);
+int		team_winning(t_user *, t_team *);
 t_user		*in_this_cell(int, int, t_user *);
 void		send_to_graphic(char *, t_user *, t_tv *);
 int		find_nb(t_user *);

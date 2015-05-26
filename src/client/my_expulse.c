@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Mon May 25 14:37:05 2015 romaric
+** Last update Tue May 26 18:38:24 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -65,10 +65,10 @@ int		my_expulse(char **com, t_zap *data, t_user *usr)
 	{
 	  my_go(data, tmp, usr);
 	  send_expulse(&bool, usr, tmp, &now);
-	  push_q(&tmp->queue, &now);
+	  push_q(&tmp->queue, &now, clone_tv);
 	}
     }
   fill_cb(&usr->wr, (bool == 0) ? "ko\n" : "ok\n", 3);
-  push_q(&usr->queue, &now);
+  push_q(&usr->queue, &now, clone_tv);
   return (0);
 }

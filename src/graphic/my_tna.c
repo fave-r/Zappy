@@ -5,27 +5,27 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Mon May 25 18:15:16 2015 Thibaut Lopez
+** Last update Tue May 26 16:58:06 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
-int	my_send_tna(t_zap *data, t_user *usr)
+int		my_send_tna(t_zap *data, t_user *usr)
 {
-  int	i;
+  t_team	*cur;
 
-  i = 0;
-  while (data->team[i] != NULL)
+  cur = data->teams;
+  while (cur != NULL)
     {
       fill_cb(&usr->wr, "tna ", 4);
-      fill_cb(&usr->wr, data->team[i], strlen(data->team[i]));
+      fill_cb(&usr->wr, cur->name, strlen(cur->name));
       fill_cb(&usr->wr, "\n", 1);
-      i++;
+      cur = cur->next;
     }
   return (0);
 }
 
-int	my_tna(char **com, t_zap *data, t_user *usr)
+int		my_tna(char **com, t_zap *data, t_user *usr)
 {
   if (sstrlen(com) != 1)
     return (my_sbp(usr));

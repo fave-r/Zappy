@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Tue May 26 18:10:08 2015 Thibaut Lopez
+** Last update Wed May 27 11:22:32 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -66,6 +66,12 @@ typedef struct	s_content
   uint16_t	phiras;
   uint16_t	thystame;
 }		t_content;
+
+typedef struct	s_egg
+{
+  t_pair	pos;
+  t_tv		hatch;
+}		t_egg;
 
 typedef struct	s_team
 {
@@ -140,6 +146,7 @@ void		put_team(t_team *, int);
 int		team_len(t_team *);
 t_team		*team_cat(t_team *, char *);
 void		team_free(t_team *);
+void		*clone_egg(void *);
 t_team		*base_team();
 void		team_counts(t_team *, int);
 

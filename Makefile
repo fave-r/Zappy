@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Tue May  5 14:40:23 2015 romaric
-## Last update Tue May 26 18:40:36 2015 Thibaut Lopez
+## Last update Wed May 27 10:55:51 2015 Thibaut Lopez
 ##
 
 CC=		gcc
@@ -29,7 +29,8 @@ U_SRC=		src/utils/common_func.c				\
                 src/utils/CircularBuffer/get_value.c		\
                 src/utils/CircularBuffer/read_cb.c
 
-S_SRC=		src/command_func.c				\
+S_SRC=		src/base_team.c					\
+		src/command_func.c				\
 		src/com.c					\
 		src/data.c					\
 		src/fd_func.c					\

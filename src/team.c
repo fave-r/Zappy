@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 26 16:24:34 2015 Thibaut Lopez
-** Last update Tue May 26 18:26:19 2015 Thibaut Lopez
+** Last update Wed May 27 11:23:22 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -57,17 +57,6 @@ t_team		*team_cat(t_team *teams, char *team)
   return (teams);
 }
 
-t_team		*team_by_name(t_team *teams, char *team)
-{
-  while (teams != NULL)
-    {
-      if (strcmp(teams->name, team) == 0)
-	return (teams);
-      teams = teams->next;
-    }
-  return (NULL);
-}
-
 void		team_free(t_team *teams)
 {
   t_team	*to_free;
@@ -81,32 +70,16 @@ void		team_free(t_team *teams)
     }
 }
 
-t_team		*base_team()
+void		*clone_egg(void *to_clone)
 {
-  t_team	*teama;
-  t_team	*teamb;
+  t_egg		*egg;
+  t_egg		*new;
 
-  teama = xmalloc(sizeof(t_team));
-  teamb = xmalloc(sizeof(t_team));
-  teama->name = xstrdup("TeamA");
-  teama->count = -1;
-  teama->eggs = NULL;
-  teama->next = teamb;
-  teamb->name = xstrdup("TeamB");
-  teamb->count = -1;
-  teamb->eggs = NULL;
-  teamb->next = NULL;
-  return (teama);
-}
-
-void		team_counts(t_team *teams, int count)
-{
-  t_team	*cur;
-
-  cur = teams;
-  while (cur != NULL)
-    {
-      cur->count = count;
-      cur = cur->next;
-    }
+  egg = (t_egg *)to_clone;
+  new = xmalloc(sizeof(t_egg));
+  new->pos.f = egg->pos.f;
+  new->pos.s = egg->pos.s;
+  new->hatch.tv_sec = egg->hatch.tv_sec;
+  new->hatch.tv_usec = egg->hatch.tv_usec;
+  return (new);
 }

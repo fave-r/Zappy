@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Tue May 26 18:39:39 2015 Thibaut Lopez
+** Last update Wed May 27 18:41:15 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -62,12 +62,16 @@ void		vert_view(int i, t_user *usr, t_pair *cone, t_zap *data)
   j = i;
   while (j != -i)
     {
+      if (j != i)
+	fill_cb(&usr->wr, ",", 1);
       cone->f = S_MOD(cone->f, data->width);
       cone->s = S_MOD(cone->s, data->length);
       analyse_cell(data->map, cone, usr);
       gole[GET_DIR(usr)](cone, -1);
       j--;
     }
+  if (j != i)
+    fill_cb(&usr->wr, ",", 1);
   cone->f = S_MOD(cone->f, data->width);
   cone->s = S_MOD(cone->s, data->length);
   analyse_cell(data->map, cone, usr);
@@ -87,7 +91,7 @@ int		my_voir(char **com, t_zap *data, t_user *usr)
   cone.s = GET_Y(usr);
   fill_cb(&usr->wr, "{", 1);
   i = 0;
-  while (i < GET_LVL(usr))
+  while (i < GET_LVL(usr) + 1)
     {
       if (i > 0)
 	fill_cb(&usr->wr, ",", 1);

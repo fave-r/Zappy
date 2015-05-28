@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 10:39:02 2015 Thibaut Lopez
-** Last update Tue May 26 18:07:33 2015 Thibaut Lopez
+** Last update Thu May 28 14:15:21 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -36,6 +36,7 @@ void	init_map(t_zap *data)
 Player max per team: %d\nDelay for each action: %d\nName of each team\n",
 	 data->port, data->length, data->width, data->count, data->delay);
   put_team(data->teams, 1);
+  printf("(Time waiting for a graphic response: %f)\n", data->asking);
 }
 
 int	base_value(t_zap *data)
@@ -52,6 +53,7 @@ int	base_value(t_zap *data)
   data->count = (data->count == -1) ? 20 : data->count;
   team_counts(data->teams, data->count);
   data->delay = (data->delay == -1) ? 100 : data->delay;
+  data->asking = (data->asking == -1) ? 1.5 : data->asking;
   init_map(data);
   return (0);
 }
@@ -67,6 +69,7 @@ void	init_val(t_zap *data)
   data->delay = -1;
   data->end = NULL;
   data->winner = NULL;
+  data->asking = -1;
 }
 
 void	free_zap(t_zap *data)

@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 18:07:00 2015 Thibaut Lopez
-** Last update Tue May 26 18:36:32 2015 Thibaut Lopez
+** Last update Thu May 28 14:18:55 2015 Thibaut Lopez
 */
 
 #ifndef	UTILS_H
@@ -19,6 +19,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <float.h>
 #include <limits.h>
 #include <sys/time.h>
 
@@ -48,6 +49,7 @@ void		*xmalloc(size_t);
 char		*xstrdup(const char *);
 int		find_ptr(t_com *, char *);
 int		my_strtol(char *);
+float		my_strtof(char *);
 int		my_strstr(char **, char *);
 char		*my_strcat(char *, char *);
 int		my_strchr(char *, char);

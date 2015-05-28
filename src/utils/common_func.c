@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Mon Apr  6 17:09:17 2015 Thibaut Lopez
-** Last update Thu May 14 01:28:33 2015 Thibaut Lopez
+** Last update Thu May 28 14:21:23 2015 Thibaut Lopez
 */
 
 #include "utils.h"
@@ -30,13 +30,26 @@ int		find_ptr(t_com *com, char *str)
 
 int		my_strtol(char *nbr)
 {
-  long	ret;
-  char	*err;
+  long		ret;
+  char		*err;
 
   ret = strtol(nbr, &err, 10);
   if (err[0] != 0)
     return (-1);
   if (ret > INT_MAX || ret < 0)
+    return (-1);
+  return (ret);
+}
+
+float		my_strtof(char *nbr)
+{
+  float		ret;
+  char		*err;
+
+  ret = strtof(nbr, &err);
+  if (err[0] != 0)
+    return (-1);
+  if (ret == FLT_MAX || ret < 0)
     return (-1);
   return (ret);
 }

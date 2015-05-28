@@ -5,10 +5,28 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Wed May 27 18:28:34 2015 Thibaut Lopez
+** Last update Thu May 28 13:21:43 2015 Thibaut Lopez
 */
 
 #include "server.h"
+
+void		send_new_player(t_user *usr, int is_hatching)
+{
+  t_tv		now;
+  char		str[256];
+
+  gettimeofday(&now, NULL);
+  bzero(str, 256);
+  sprintf(str, "pnw #%d %d %d %d %d %s\n", GET_NB(usr), GET_X(usr),
+	  GET_Y(usr), GET_DIR(usr) + 1, GET_LVL(usr), GET_TEAM(usr)->name);
+  send_to_graphic(str, usr, &now);
+  if (is_hatching != -1)
+    {
+      bzero(str, 256);
+      sprintf(str, "eht #%d\n", is_hatching);
+      send_to_graphic(str, usr, front_q(usr->queue));
+    }
+}
 
 void		send_client_info(t_team *team, t_zap *data, t_user *usr)
 {
@@ -49,6 +67,8 @@ int	hatching_egg(t_pair *pos, t_user *usr, t_zap *data, t_team *cur)
 {
   t_tv	now;
   t_egg	*frt;
+  char	tmp[16];
+  int	nb;
 
   frt = front_q(cur->eggs);
   gettimeofday(&now, NULL);
@@ -56,28 +76,32 @@ int	hatching_egg(t_pair *pos, t_user *usr, t_zap *data, t_team *cur)
     {
       pos->f = rand() % data->length;
       pos->s = rand() % data->width;
-      return (0);
+      return (-1);
     }
   pos->f = frt->pos.f;
   pos->s = frt->pos.s;
+  bzero(tmp, 16);
+  nb = frt->nb;
+  sprintf(tmp, "ebo #%d\n", nb);
+  send_to_graphic(tmp, usr, &now);
   push_q(&usr->queue, &frt->hatch, clone_tv);
   pop_q(&cur->eggs);
-  return (0);
+  return (nb);
 }
 
 int		my_other(char **com, t_zap *data, t_user *usr)
 {
   t_team	*cur;
-  char		str[256];
   t_user	*tmp;
   t_pair	pos;
+  int		is_hatching;
 
   cur = data->teams;
   while (cur != NULL && strcmp(cur->name, com[0]) != 0)
     cur = cur->next;
   if (cur == NULL || count_in_team(cur, usr) == cur->count)
     return (-1);
-  hatching_egg(&pos, usr, data, cur);
+  is_hatching = hatching_egg(&pos, usr, data, cur);
   usr->plr = player_info(cur, &pos);
   tmp = usr;
   while (tmp != NULL && tmp->prev != NULL)
@@ -85,8 +109,6 @@ int		my_other(char **com, t_zap *data, t_user *usr)
   GET_NB(usr) = find_nb(tmp);
   usr->type = AI;
   send_client_info(cur, data, usr);
-  sprintf(str, "pnw #%d %d %d %d %d %s\n", GET_NB(usr), GET_X(usr),
-	  GET_Y(usr), GET_DIR(usr) + 1, GET_LVL(usr), GET_TEAM(usr)->name);
-  send_to_graphic(str, usr, NULL);
+  send_new_player(usr, is_hatching);
   return (0);
 }

@@ -5,20 +5,28 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Wed May 27 17:38:30 2015 Thibaut Lopez
+** Last update Thu May 28 12:56:56 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
 int	my_fork(char **com, t_zap *data, t_user *usr)
 {
+  char	tmp[128];
   t_tv	now;
   t_egg	egg;
 
   if (sstrlen(com) != 1)
     return (-1);
   gettimeofday(&now, NULL);
+  egg.nb = find_egg_nb(data->teams);
+  bzero(tmp, 128);
+  sprintf(tmp, "pfk #%d\n", GET_NB(usr));
+  send_to_graphic(tmp, usr, &now);
   add_tv(&now, 42000000 / data->delay);
+  bzero(tmp, 128);
+  sprintf(tmp, "enw #%d #%d %d %d\n", egg.nb, GET_NB(usr), GET_X(usr), GET_Y(usr));
+  send_to_graphic(tmp, usr, &now);
   egg.pos.f = GET_X(usr);
   egg.pos.s = GET_Y(usr);
   egg.hatch.tv_sec = now.tv_sec;

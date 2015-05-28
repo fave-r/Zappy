@@ -5,46 +5,10 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:12:11 2015 romaric
-** Last update Tue May 26 18:36:55 2015 Thibaut Lopez
+** Last update Thu May 28 11:14:00 2015 Thibaut Lopez
 */
 
 #include "server.h"
-
-int		count_in_team(t_team *team_name, t_user *user)
-{
-  t_user	*tmp;
-  int		i;
-
-  tmp = user;
-  while (tmp != NULL && tmp->prev != NULL)
-    tmp = tmp->prev;
-  i = 0;
-  while (tmp != NULL)
-    {
-      if (tmp->type == AI && GET_TEAM(tmp) == team_name)
-	i++;
-      tmp = tmp->next;
-    }
-  return (i);
-}
-
-int		team_winning(t_user *usr, t_team *team)
-{
-  t_user	*tmp;
-  int		nb;
-
-  tmp = usr;
-  nb = 0;
-  while (tmp != NULL && tmp->prev != NULL)
-    tmp = tmp->prev;
-  while (tmp != NULL)
-    {
-      if (tmp->type == AI && GET_TEAM(tmp) == team && GET_LVL(tmp) == 8)
-	nb++;
-      tmp = tmp->next;
-    }
-  return ((nb != 0 && nb == count_in_team(team, usr)) ? 1 : 0);
-}
 
 t_user		*in_this_cell(int x, int y, t_user *user)
 {
@@ -88,6 +52,35 @@ int		find_nb(t_user *player)
 	}
       else
 	tmp = tmp->next;
+    }
+  return (nbr);
+}
+
+int		find_egg_nb(t_team *teams)
+{
+  t_team	*tmp;
+  t_que		*eggs;
+  t_egg		*egg;
+  int		nbr;
+
+  nbr = 0;
+  tmp = teams;
+  while (tmp != NULL)
+    {
+      eggs = tmp->eggs;
+      while (eggs != NULL)
+	{
+	  egg = front_q(eggs);
+	  if (egg->nb == nbr)
+	    {
+	      nbr++;
+	      tmp = teams;
+	      eggs = tmp->eggs;
+	    }
+	  else
+	    eggs = eggs->next;
+	}
+      tmp = tmp->next;
     }
   return (nbr);
 }

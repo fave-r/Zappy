@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Thu May 28 10:40:06 2015 Thibaut Lopez
+** Last update Thu May 28 11:14:48 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -69,6 +69,7 @@ typedef struct	s_content
 
 typedef struct	s_egg
 {
+  int		nb;
   t_pair	pos;
   t_tv		hatch;
 }		t_egg;
@@ -169,6 +170,7 @@ int		team_winning(t_user *, t_team *);
 t_user		*in_this_cell(int, int, t_user *);
 void		send_to_graphic(char *, t_user *, t_tv *);
 int		find_nb(t_user *);
+int		find_egg_nb(t_team *);
 int		my_avance(char **, t_zap *, t_user *);
 int		get_direction(t_user *, t_user *, t_zap *);
 int		my_broadcast(char **, t_zap *, t_user *);

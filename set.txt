@@ -1,0 +1,26 @@
+stn N
+set team name
+
+spp #n X Y
+set player position
+
+spi #n q q q q q q q
+set player inventory
+
+spl #n L
+set player level
+
+spk #n
+set player killing
+
+sep #e X Y
+set egg position
+
+sek #e
+set egg killing
+
+sct X Y q q q q q q q
+set content
+
+sms X Y
+set map size

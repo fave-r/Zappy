@@ -1,25 +1,3 @@
-stn N
-set team name
-
-spp #n X Y
-set player position
-
-spi #n q q q q q q q
-set player inventory
-
-spl #n L
-set player level
-
-spk #n
-set player killing
-
-sct X Y q q q q q q q
-set content
-
-sms X Y
-set map size
-
-
 ast
 asking server time
 
@@ -40,12 +18,19 @@ asking player level
 apk
 asking player killing
 
+aep
+asking egg position
+
+aek
+asking egg killing
+
 act
 asking content
 
 ams
 asking map size
 
+---------------------------------------------------------
 
 apr
 asking positive response

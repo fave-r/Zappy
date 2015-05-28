@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Wed May 27 11:22:32 2015 Thibaut Lopez
+** Last update Thu May 28 10:40:06 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -53,7 +53,7 @@ typedef enum	e_clt
   {
     UNKNOWN = 1,
     AI = 2,
-    GRAPHIC = 3
+    GRAPHIC = -1
   }		e_clt;
 
 typedef struct	s_content

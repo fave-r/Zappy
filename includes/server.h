@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Thu May 28 14:10:13 2015 Thibaut Lopez
+** Last update Fri May 29 10:39:02 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -71,6 +71,7 @@ typedef struct	s_content
 typedef struct	s_egg
 {
   int		nb;
+  int		dad;
   t_pair	pos;
   t_tv		hatch;
 }		t_egg;

@@ -5,10 +5,34 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Wed May 20 16:34:36 2015 Thibaut Lopez
+** Last update Fri May 29 11:13:30 2015 Thibaut Lopez
 */
 
 #include "server.h"
+
+void		my_enw(t_zap *data, t_user *usr)
+{
+  t_team	*tmp;
+  t_que		*eggs;
+  t_egg		*egg;
+  char		str[64];
+
+  tmp = data->teams;
+  while (tmp != NULL)
+    {
+      eggs = tmp->eggs;
+      while (eggs != NULL)
+	{
+	  egg = front_q(eggs);
+	  bzero(str, 64);
+	  sprintf(str, "enw #%d #%d %d %d\n",
+		  egg->nb, egg->dad, egg->pos.f, egg->pos.s);
+	  fill_cb(&usr->wr, str, strlen(str));
+	  eggs = eggs->next;
+	}
+      tmp = tmp->next;
+    }
+}
 
 int		my_graphic(char **com, t_zap *data, t_user *usr)
 {
@@ -29,6 +53,7 @@ int		my_graphic(char **com, t_zap *data, t_user *usr)
 	my_pnw(usr, tmp);
       tmp = tmp->next;
     }
+  my_enw(data, usr);
   usr->type = GRAPHIC;
   return (0);
 }

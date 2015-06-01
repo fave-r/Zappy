@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Mon Jun  1 16:42:36 2015 Thibaut Lopez
+** Last update Mon Jun  1 18:33:38 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -27,6 +27,7 @@
 #include <arpa/inet.h>
 #include <signal.h>
 #include <time.h>
+#include <math.h>
 #include "cb.h"
 
 typedef	enum	e_state
@@ -160,6 +161,7 @@ void		check_client(t_user **, t_bf *, t_zap *);
 int		manage_server(t_user **, t_zap *);
 int		handle_fds(int, t_user **, t_zap *);
 t_com		*graphic_funcs();
+int		count_type(t_user *, e_clt);
 t_com		*ptr_to_function(e_clt);
 int		read_com(t_user *, t_zap *);
 void		data_free(t_user **);
@@ -170,6 +172,8 @@ void		team_free(t_team *);
 void		*clone_egg(void *);
 t_team		*base_team();
 void		team_counts(t_team *, int);
+void		alert_graphic(char *, t_user *);
+void		find_ask(t_ask *, float);
 
 int		set_port(t_zap *, char *, e_state *);
 int		set_x(t_zap *, char *, e_state *);

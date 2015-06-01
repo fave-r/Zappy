@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Mon Jun  1 11:28:59 2015 Thibaut Lopez
-** Last update Mon Jun  1 16:48:00 2015 Thibaut Lopez
+** Last update Mon Jun  1 18:19:53 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -34,21 +34,28 @@ int		check_food(t_user *usr, t_zap *data)
   return (0);
 }
 
-int			end_game(t_zap *data, t_user **user)
+int		check_asking(t_user *usr, t_zap *data)
 {
-  t_user		*tmp;
-
+  (void)usr;
   (void)data;
+  return (0);
+}
+
+int		end_game(t_zap *data, t_user **user)
+{
+  t_user	*tmp;
+
   tmp = *user;
   while (tmp != NULL)
     {
       if (tmp->type == GRAPHIC)
-	  fill_cb(&tmp->wr, "aeg\n", 4);
+	fill_cb(&tmp->wr, "aeg\n", 4);
       if (tmp->type != UNKNOWN)
 	while (cb_taken(&tmp->wr) > 0)
 	  write_cb(&tmp->wr, tmp->fd, NULL);
       tmp = (tmp->type == AI) ? unit_user_free(tmp) : tmp->next;
     }
+  find_ask(&data->end_game, data->asking);
   return (0);
 }
 
@@ -61,22 +68,16 @@ int		manage_server(t_user **user, t_zap *data)
   while (tmp != NULL)
     {
       if (tmp->type == AI)
-	{
-	  check_food(tmp, data);
-	  if (tmp->tokill == 1)
-	    send_death(user, &tmp, data);
-	  else
-	    tmp = tmp->next;
-	}
+	check_food(tmp, data);
       else if (tmp->type == GRAPHIC)
-	{
-	  /* Asking check */
-	  tmp = tmp->next;
-	}
+	check_asking(tmp, data);
+      if (tmp->tokill == 1)
+	send_death(user, &tmp, data);
       else
 	tmp = tmp->next;
     }
   gettimeofday(&now, NULL);
-  return ((front_q(data->end) != NULL &&
-	   cmp_tv(front_q(data->end), &now) <= 0) ? end_game(data, user) : 0);
+  if (front_q(data->end) != NULL && cmp_tv(front_q(data->end), &now) <= 0)
+    return (end_game(data, user));
+  return (0);
 }

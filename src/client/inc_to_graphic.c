@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon May 25 17:31:52 2015 romaric
-** Last update Fri May 29 14:14:49 2015 Thibaut Lopez
+** Last update Mon Jun  1 16:58:10 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -23,7 +23,6 @@ void		send_inc_to_graph(t_user *usr, t_zap *data)
 	  , cnt->thystame);
   send_to_graphic(tmp, usr, NULL);
 }
-
 
 void		cast_loop(t_user *cur, t_user *tmp, int check, t_tv *now)
 {

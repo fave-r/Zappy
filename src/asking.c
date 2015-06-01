@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 28 13:49:58 2015 Thibaut Lopez
-** Last update Fri May 29 14:17:47 2015 Thibaut Lopez
+** Last update Mon Jun  1 18:32:41 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -39,4 +39,16 @@ void		alert_graphic(char *com, t_user *usr)
 	fill_cb(&cur->wr, com, strlen(com));
       cur = cur->next;
     }
+}
+
+void		find_ask(t_ask *ask, float asking)
+{
+  time_t	sec;
+  suseconds_t	usec;
+
+  sec = floorf(asking);
+  usec = (asking - sec) * 1000000;
+  gettimeofday(&ask->wait, NULL);
+  ask->wait.tv_sec += sec;
+  ask->wait.tv_usec += usec;
 }

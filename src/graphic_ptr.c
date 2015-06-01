@@ -5,12 +5,12 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 14:54:42 2015 Thibaut Lopez
-** Last update Fri May 29 17:09:16 2015 Thibaut Lopez
+** Last update Mon Jun  1 18:28:19 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
-void	graphic_bonus(t_com *ptrs)
+void		graphic_bonus(t_com *ptrs)
 {
   ptrs[9].com = "stn";
   ptrs[9].ptr = my_stn;
@@ -38,7 +38,7 @@ void	graphic_bonus(t_com *ptrs)
   ptrs[20].ptr = my_anr;
 }
 
-void	graphic_ptrs(t_com *ptrs)
+void		graphic_ptrs(t_com *ptrs)
 {
   ptrs[0].ptr = my_msz;
   ptrs[1].ptr = my_bct;
@@ -53,9 +53,9 @@ void	graphic_ptrs(t_com *ptrs)
   ptrs[22].ptr = NULL;
 }
 
-t_com	*graphic_funcs()
+t_com		*graphic_funcs()
 {
-  t_com	*ptrs;
+  t_com		*ptrs;
 
   ptrs = xmalloc(23 * sizeof(t_com));
   ptrs[0].com = "msz";
@@ -72,4 +72,22 @@ t_com	*graphic_funcs()
   graphic_ptrs(ptrs);
   graphic_bonus(ptrs);
   return (ptrs);
+}
+
+int		count_type(t_user *usr, e_clt type)
+{
+  int		c;
+  t_user	*tmp;
+
+  c = 0;
+  tmp = usr;
+  while (tmp != NULL && tmp->prev != NULL)
+    tmp = tmp->prev;
+  while (tmp != NULL)
+    {
+      if (tmp->type == type)
+	c++;
+      tmp = tmp->next;
+    }
+  return (c);
 }

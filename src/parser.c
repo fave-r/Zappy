@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 16:43:22 2015 Thibaut Lopez
-** Last update Thu May 28 14:17:35 2015 Thibaut Lopez
+** Last update Mon Jun  1 16:57:40 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -97,7 +97,6 @@ int		parse_com(char **argv, t_zap *data)
   func = map_func();
   while (argv[++i] != NULL)
     {
-      printf("%s && %d\n", argv[i], state);
       if (argv[i][0] == '-')
 	{
 	  if ((state = my_strstr(map, argv[i])) == NONE)

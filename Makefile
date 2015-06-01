@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Tue May  5 14:40:23 2015 romaric
-## Last update Mon Jun  1 13:09:11 2015 Thibaut Lopez
+## Last update Mon Jun  1 18:34:50 2015 Thibaut Lopez
 ##
 
 CC=		gcc
@@ -14,7 +14,7 @@ RM=		rm -f
 
 INCLUDES=	-I ./includes
 
-CFLAGS=		-W -Wall -Wextra -g3
+CFLAGS=		-W -Wall -Wextra -g3 -lm
 
 S_NAME=		zappy
 

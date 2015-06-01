@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Tue May 26 18:39:15 2015 Thibaut Lopez
+** Last update Mon Jun  1 16:54:30 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -53,7 +53,7 @@ int	my_prend(char **com, t_zap *data, t_user *usr)
   ptr[i].ptr(&(GET_INV(usr)), &inv);
   ptr[i].ptr(&(data->map[GET_X(usr)][GET_Y(usr)]), &cell);
   free(ptr);
-  fill_cb(&usr->wr, (*cell > 0) ? "ok\n" : "2ko\n", 3);
+  fill_cb(&usr->wr, (*cell > 0) ? "ok\n" : "ko\n", 3);
   if (*cell > 0)
     {
       (*cell)--;

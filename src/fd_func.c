@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:51:15 2015 romaric
-** Last update Mon Jun  1 10:59:54 2015 Thibaut Lopez
+** Last update Mon Jun  1 15:27:54 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -69,29 +69,13 @@ void			new_client(int fd, t_user **user, int *nbclient)
   fill_cb(&new->wr, "BIENVENUE\n", strlen("BIENVENUE\n"));
 }
 
-void		data_free(t_user **data)
+t_user		*unit_user_free(t_user *user)
 {
-  t_user	*tmp;
+  t_user	*next;
 
-  tmp = *data;
-  while (tmp != NULL && tmp->next != NULL)
-    {
-      close(tmp->fd);
-      free_cb(&tmp->cb);
-      free_cb(&tmp->wr);
-      while (tmp->queue != NULL)
-	pop_q(&tmp->queue);
-      if (tmp->type == AI)
-	free(tmp->info);
-      tmp = tmp->next;
-      free(tmp->prev);
-    }
-  if (tmp != NULL)
-    free(tmp);
-}
-
-void		unit_user_free(t_user *user)
-{
+  if (user == NULL)
+    return (NULL);
+  next = user->next;
   close(user->fd);
   free_cb(&user->cb);
   free_cb(&user->wr);
@@ -99,9 +83,22 @@ void		unit_user_free(t_user *user)
     pop_q(&user->queue);
   if (user->type == AI)
     free(user->info);
+  else if (user->type == GRAPHIC)
+    while (user->info != NULL)
+      pop_q((t_que **)&user->info);
   if (user->prev != NULL)
     user->prev->next = user->next;
   if (user->next != NULL)
     user->next->prev = user->prev;
   free(user);
+  return (next);
+}
+
+void		data_free(t_user **data)
+{
+  t_user	*tmp;
+
+  tmp = *data;
+  while (tmp != NULL)
+    tmp = unit_user_free(tmp);
 }

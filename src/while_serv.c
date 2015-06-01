@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:38:34 2015 romaric
-** Last update Mon Jun  1 11:05:33 2015 Thibaut Lopez
+** Last update Mon Jun  1 16:51:03 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -18,45 +18,14 @@ void		signal_quit(__attribute__((unused))int signo)
   write(1, "\n", 1);
 }
 
-void		init_handle(int *bool, t_user **user
-			    ,  int *nb)
+void		init_handle(int *bool, t_user **user, int *nb, t_tv *tv)
 {
   signal(SIGINT, signal_quit);
   *nb = 1;
   *bool = 0;
   *user = NULL;
-}
-
-int			end_game(t_zap *data, t_user **user)
-{
-  t_user		*tmp;
-  char			str[256];
-
-  bzero(str, 256);
-  sprintf(str, "seg %s\n", data->winner->name);
-  tmp = *user;
-  while (tmp != NULL)
-    {
-      if (tmp->type != UNKNOWN)
-	{
-	  fill_cb(&tmp->wr, str, strlen(str));
-	  while (cb_taken(&tmp->wr) > 0)
-	    write_cb(&tmp->wr, tmp->fd, NULL);
-	}
-      tmp = tmp->next;
-    }
-  return (-1);
-}
-
-int			is_only_graphic(t_user *usr)
-{
-  while (usr != NULL)
-    {
-      if (usr->type == AI)
-	return (1);
-      usr = usr->next;
-    }
-  return (0);
+  tv->tv_sec = 0;
+  tv->tv_usec = 50000;
 }
 
 int			handle_fds(int s, t_user **user, t_zap *data)
@@ -65,25 +34,18 @@ int			handle_fds(int s, t_user **user, t_zap *data)
   int			bool;
   int			nb_client;
   t_tv			tv;
-  t_tv			now;
 
-  init_handle(&bool, user, &nb_client);
-  tv.tv_sec = 0;
-  tv.tv_usec = 50000;
+  init_handle(&bool, user, &nb_client, &tv);
   while (bool != -1)
     {
       set_fd(s, &bf, *user);
-      if ((bool = select(s + nb_client, &bf.rbf, &bf.wbf, NULL,
-			 (is_only_graphic(*user) == 0) ? NULL : &tv)) != -1)
+      if ((bool = select(s + nb_client, &bf.rbf, &bf.wbf, NULL, &tv)) != -1)
 	{
 	  if (FD_ISSET(s, &bf.rbf))
 	    new_client(s, user, &nb_client);
 	  check_client(user, &bf, data);
 	}
-      bool = quit_sig;
-      gettimeofday(&now, NULL);
-      if (front_q(data->end) != NULL && cmp_tv(front_q(data->end), &now) <= 0)
-	bool = end_game(data, user);
+      bool = (quit_sig == -1) ? quit_sig : manage_server(user, data);
     }
   return (0);
 }

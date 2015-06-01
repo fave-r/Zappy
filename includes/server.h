@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Mon Jun  1 11:04:12 2015 Thibaut Lopez
+** Last update Mon Jun  1 16:42:36 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -89,6 +89,14 @@ typedef struct	s_team
   struct s_team	*next;
 }		t_team;
 
+typedef struct	s_ask
+{
+  t_tv		wait;
+  e_rsp		res;
+  void		(*ok)();
+  char		(*ko)();
+}		t_ask;
+
 typedef struct	s_zap
 {
   int		port;
@@ -101,6 +109,7 @@ typedef struct	s_zap
   t_que		*end;
   t_team	*winner;
   float		asking;
+  t_ask		end_game;
 }		t_zap;
 
 typedef struct	s_plr
@@ -114,14 +123,6 @@ typedef struct	s_plr
   t_tv		time;
   t_tv		cast;
 }		t_plr;
-
-typedef struct	s_ig
-{
-  t_tv		wait;
-  e_rsp		res;
-  char		*ok;
-  char		*ko;
-}		t_ig;
 
 typedef struct	s_user
 {
@@ -153,8 +154,10 @@ int		init_bind(int, int *);
 int		init_connect(int, int, char *);
 void		set_fd(int, t_bf *, t_user *);
 void		new_client(int, t_user **, int *);
-void		unit_user_free(t_user *);
+t_user		*unit_user_free(t_user *);
+void		send_death(t_user **, t_user **, t_zap *);
 void		check_client(t_user **, t_bf *, t_zap *);
+int		manage_server(t_user **, t_zap *);
 int		handle_fds(int, t_user **, t_zap *);
 t_com		*graphic_funcs();
 t_com		*ptr_to_function(e_clt);
@@ -225,6 +228,7 @@ void		west_gole(t_pair *, int);
 int		my_voir(char **, t_zap *, t_user *);
 
 int		my_graphic(char **, t_zap *, t_user *);
+void		my_reset(t_user *, t_zap *);
 int		my_other(char **, t_zap *, t_user *);
 
 int		my_msz(char **, t_zap *, t_user *);

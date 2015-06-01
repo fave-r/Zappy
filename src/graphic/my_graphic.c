@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Fri May 29 17:37:55 2015 Thibaut Lopez
+** Last update Mon Jun  1 16:33:00 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -58,4 +58,15 @@ int		my_graphic(char **com, t_zap *data, t_user *usr)
   usr->nb = find_nb(usr, GRAPHIC);
   usr->type = GRAPHIC;
   return (0);
+}
+
+void		my_reset(t_user *usr, t_zap *data)
+{
+  char		**com;
+
+  com = malloc(2 * sizeof(char *));
+  com[0] = "GRAPHIC";
+  com[1] = NULL;
+  my_graphic(com, data, usr);
+  free(com);
 }

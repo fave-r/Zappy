@@ -5,37 +5,10 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Fri May 29 14:26:43 2015 Thibaut Lopez
+** Last update Mon Jun  1 15:25:24 2015 Thibaut Lopez
 */
 
 #include "server.h"
-
-int		check_food(t_user *usr, t_zap *data)
-{
-  t_tv		tv;
-  t_tv		tmp;
-  t_tv		time;
-
-  if (usr->type == AI)
-    {
-      gettimeofday(&tv, NULL);
-      timersub(&tv, &GET_TIME(usr), &tmp);
-      time.tv_usec = 0;
-      time.tv_sec = 0;
-      add_tv(&time, (126000000 / data->delay));
-      if (cmp_tv(&tmp, &time) == 1 || cmp_tv(&tmp, &time) == 0)
-	{
-	  GET_INV(usr).food -= 1;
-	  GET_TIME(usr) = tv;
-	  if (GET_INV(usr).food  == 0)
-	    {
-	      usr->tokill = 1;
-	      return (-1);
-	    }
-	}
-    }
-  return (0);
-}
 
 void		send_death(t_user **user, t_user **tmp, t_zap *data)
 {
@@ -50,16 +23,7 @@ void		send_death(t_user **user, t_user **tmp, t_zap *data)
       send_to_graphic(str, *tmp, NULL);
     }
   *user = (*tmp == *user) ? (*user)->next : *user;
-  if ((*tmp)->next == NULL)
-    {
-      unit_user_free(*tmp);
-      *tmp = NULL;
-    }
-  else
-    {
-      *tmp = (*tmp)->next;
-      unit_user_free((*tmp)->prev);
-    }
+  *tmp = unit_user_free(*tmp);
 }
 
 void		cast_result(t_zap *data, t_user **user, t_user *tmp, t_tv *now)
@@ -93,8 +57,7 @@ void		check_client(t_user **user, t_bf *bf, t_zap *data)
   gettimeofday(&now, NULL);
   while (tmp != NULL)
     {
-      if (check_food(tmp, data) != -1 &&
-	  (FD_ISSET(tmp->fd, &bf->rbf) || cb_taken(&tmp->cb) > 0))
+      if (FD_ISSET(tmp->fd, &bf->rbf) || cb_taken(&tmp->cb) > 0)
 	read_com(tmp, data);
       if (tmp->type == AI && IS_CASTING(tmp) &&
 	  cmp_tv(&GET_TIME(tmp), &now) >= 0)

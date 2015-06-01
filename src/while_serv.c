@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:38:34 2015 romaric
-** Last update Tue May 26 18:10:47 2015 Thibaut Lopez
+** Last update Mon Jun  1 11:05:33 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -48,6 +48,17 @@ int			end_game(t_zap *data, t_user **user)
   return (-1);
 }
 
+int			is_only_graphic(t_user *usr)
+{
+  while (usr != NULL)
+    {
+      if (usr->type == AI)
+	return (1);
+      usr = usr->next;
+    }
+  return (0);
+}
+
 int			handle_fds(int s, t_user **user, t_zap *data)
 {
   t_bf			bf;
@@ -62,7 +73,8 @@ int			handle_fds(int s, t_user **user, t_zap *data)
   while (bool != -1)
     {
       set_fd(s, &bf, *user);
-      if ((bool = select(s + nb_client, &bf.rbf, &bf.wbf, NULL, &tv)) != -1)
+      if ((bool = select(s + nb_client, &bf.rbf, &bf.wbf, NULL,
+			 (is_only_graphic(*user) == 0) ? NULL : &tv)) != -1)
 	{
 	  if (FD_ISSET(s, &bf.rbf))
 	    new_client(s, user, &nb_client);
@@ -74,25 +86,4 @@ int			handle_fds(int s, t_user **user, t_zap *data)
 	bool = end_game(data, user);
     }
   return (0);
-}
-
-void		data_free(t_user **data)
-{
-  t_user	*tmp;
-
-  tmp = *data;
-  while (tmp != NULL && tmp->next != NULL)
-    {
-      close(tmp->fd);
-      free_cb(&tmp->cb);
-      free_cb(&tmp->wr);
-      while (tmp->queue != NULL)
-	pop_q(&tmp->queue);
-      if (tmp->type == AI)
-	free(tmp->plr);
-      tmp = tmp->next;
-      free(tmp->prev);
-    }
-  if (tmp != NULL)
-    free(tmp);
 }

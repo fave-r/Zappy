@@ -5,96 +5,76 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:51:04 2015 romaric
-** Last update Mon May 25 17:30:42 2015 Thibaut Lopez
+** Last update Fri May 29 14:35:45 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
-t_com		*unknown_funcs()
+int	send_prend(t_user *usr, int item, t_content *cnt, t_tv *tv)
 {
-  t_com		*ptrs;
+  char	tmp[256];
+  int	nbr;
 
-  ptrs = xmalloc(3 * sizeof(t_com));
-  ptrs[0].com = "GRAPHIC";
-  ptrs[0].ptr = my_graphic;
-  ptrs[1].com = "";
-  ptrs[1].ptr = my_other;
-  ptrs[2].com = NULL;
-  ptrs[2].ptr = NULL;
-  return (ptrs);
+  nbr = usr->nb;
+  bzero(tmp, 256);
+  sprintf(tmp, "pgt #%d %d\n\
+pin #%d %d %d %d %d %d %d %d %d %d\n\
+bct %d %d %d %d %d %d %d %d %d\n",
+	  nbr, item, nbr, GET_X(usr), GET_Y(usr), GET_INV(usr).food,
+	  GET_INV(usr).linemate, GET_INV(usr).deraumere, GET_INV(usr).sibur,
+	  GET_INV(usr).mendiane, GET_INV(usr).phiras, GET_INV(usr).thystame,
+	  GET_X(usr), GET_Y(usr), cnt->food, cnt->linemate, cnt->deraumere,
+	  cnt->sibur, cnt->mendiane, cnt->phiras, cnt->thystame
+	  );
+  send_to_graphic(tmp, usr, tv);
+  return (0);
 }
 
-t_com		*graphic_funcs()
+int	send_pose(t_user *usr, int item, t_content *cnt, t_tv *tv)
 {
-  t_com		*ptrs;
+  char	tmp[256];
+  int	nbr;
 
-  ptrs = xmalloc(11 * sizeof(t_com));
-  ptrs[0].com = "msz";
-  ptrs[0].ptr = my_msz;
-  ptrs[1].com = "bct";
-  ptrs[1].ptr = my_bct;
-  ptrs[2].com = "mct";
-  ptrs[2].ptr = my_mct;
-  ptrs[3].com = "tna";
-  ptrs[3].ptr = my_tna;
-  ptrs[4].com = "ppo";
-  ptrs[4].ptr = my_ppo;
-  ptrs[5].com = "plv";
-  ptrs[5].ptr = my_plv;
-  ptrs[6].com = "pin";
-  ptrs[6].ptr = my_pin;
-  ptrs[7].com = "sgt";
-  ptrs[7].ptr = my_sgt;
-  ptrs[8].com = "sst";
-  ptrs[8].ptr = my_sst;
-  ptrs[9].com = "";
-  ptrs[9].ptr = my_suc;
-  ptrs[10].com = NULL;
-  ptrs[10].ptr = NULL;
-  return (ptrs);
+  nbr = usr->nb;
+  bzero(tmp, 256);
+  sprintf(tmp, "%d %d\n\
+pin #%d %d %d %d %d %d %d %d %d %d\n\
+bct %d %d %d %d %d %d %d %d %d\n",
+	  nbr, item, nbr, GET_X(usr), GET_Y(usr), GET_INV(usr).food,
+	  GET_INV(usr).linemate, GET_INV(usr).deraumere, GET_INV(usr).sibur,
+	  GET_INV(usr).mendiane, GET_INV(usr).phiras, GET_INV(usr).thystame,
+	  GET_X(usr), GET_Y(usr), cnt->food, cnt->linemate, cnt->deraumere,
+	  cnt->sibur, cnt->mendiane, cnt->phiras, cnt->thystame
+	  );
+  send_to_graphic(tmp, usr, tv);
+  return (0);
 }
 
-void		assign_ptrs(t_com *ptrs)
+void	check_com(t_com *com, t_user *usr, int *ret, t_zap *data)
 {
-  ptrs[0].ptr = my_avance;
-  ptrs[1].ptr = my_broadcast;
-  ptrs[2].ptr = my_connect_nbr;
-  ptrs[3].ptr = my_droite;
-  ptrs[4].ptr = my_expulse;
-  ptrs[5].ptr = my_fork;
-  ptrs[6].ptr = my_gauche;
-  ptrs[7].ptr = my_incantation;
-  ptrs[8].ptr = my_inventaire;
-  ptrs[9].ptr = my_pose;
-  ptrs[10].ptr = my_prend;
-  ptrs[11].ptr = my_voir;
-  ptrs[12].ptr = NULL;
-}
+  int	i;
+  char	*gnl;
+  char	**tok;
 
-t_com		*ptr_to_function(e_clt type)
-{
-  t_com		*ptrs;
-
-  if (type == UNKNOWN)
-    return (unknown_funcs());
-  else if (type == GRAPHIC)
-    return (graphic_funcs());
-  ptrs = xmalloc(13 * sizeof(t_com));
-  ptrs[0].com = "avance";
-  ptrs[1].com = "broadcast";
-  ptrs[2].com = "connect_nbr";
-  ptrs[3].com = "droite";
-  ptrs[4].com = "expulse";
-  ptrs[5].com = "fork";
-  ptrs[6].com = "gauche";
-  ptrs[7].com = "incantation";
-  ptrs[8].com = "inventaire";
-  ptrs[9].com = "pose";
-  ptrs[10].com = "prend";
-  ptrs[11].com = "voir";
-  ptrs[12].com = NULL;
-  assign_ptrs(ptrs);
-  return (ptrs);
+  while (usr->queue == NULL && (gnl = get_line_cb(&usr->cb)) != NULL)
+    {
+      if ((tok = stwt(gnl, " \t\n\r", usr->type)) == NULL)
+	{
+	  *ret = 0;
+	  return;
+	}
+      if ((i = find_ptr(com, tok[0])) != -1
+	  && (*ret = com[i].ptr(tok, data, usr)) != -1)
+	usr->nb_ncom = 0;
+      else
+	{
+	  usr->nb_ncom += 1;
+	  if (usr->nb_ncom == 10)
+	    usr->tokill = 1;
+	}
+      free(tok);
+      free(gnl);
+    }
 }
 
 int		read_com(t_user *usr, t_zap *data)

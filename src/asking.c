@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 28 13:49:58 2015 Thibaut Lopez
-** Last update Thu May 28 14:22:42 2015 Thibaut Lopez
+** Last update Fri May 29 14:17:47 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -24,4 +24,19 @@ int	set_asking(t_zap *data, char *arg, e_state *state)
     }
   *state = NONE;
   return (0);
+}
+
+void		alert_graphic(char *com, t_user *usr)
+{
+  t_user	*cur;
+
+  cur = usr;
+  while (cur != NULL && cur->prev != NULL)
+    cur = cur->prev;
+  while (cur != NULL)
+    {
+      if (cur->type == GRAPHIC && cur != usr)
+	fill_cb(&cur->wr, com, strlen(com));
+      cur = cur->next;
+    }
 }

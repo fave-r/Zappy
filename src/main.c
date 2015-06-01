@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Thu May 28 13:24:04 2015 Thibaut Lopez
+** Last update Fri May 29 14:26:43 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -44,7 +44,7 @@ void		send_death(t_user **user, t_user **tmp, t_zap *data)
   if ((*tmp)->type == AI)
     {
       dprintf((*tmp)->fd, "mort\n");
-      sprintf(str, "pdi #%d\n", GET_NB(*tmp));
+      sprintf(str, "pdi #%d\n", (*tmp)->nb);
       if (GET_TEAM(*tmp)->count > data->count)
 	GET_TEAM(*tmp)->count--;
       send_to_graphic(str, *tmp, NULL);
@@ -122,8 +122,8 @@ int			main(int ac, char **av)
   srand(time(NULL));
   init_val(&data);
   if (ac == 1)
-    printf("Note on usage: ./zappy [-p port] [-x length] \
-[-y width] [-n team_name ...] [-c client_per_team] [-t delay]\n");
+    printf("Note on usage: ./zappy [-p port] [-x length] [-y width] \
+[-n team_name ...] [-c client_per_team] [-t delay] [-a asking delay]\n");
   if (parse_com(av, &data) != 0)
     return (1);
   if ((s = init_socket()) == -1)

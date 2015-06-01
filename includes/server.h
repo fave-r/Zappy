@@ -5,21 +5,20 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Fri May 29 10:39:02 2015 Thibaut Lopez
+** Last update Mon Jun  1 11:04:12 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
 #define	ZAPPY_H
 #define	S_MOD(a, b)	(((a) < 0) ? (a) + (b) : (a) % (b))
-#define	GET_X(u)	((u)->plr->x)
-#define	GET_Y(u)	((u)->plr->y)
-#define	GET_DIR(u)	((u)->plr->dir)
-#define	GET_INV(u)	((u)->plr->inv)
-#define	GET_TEAM(u)	((u)->plr->team)
-#define	GET_LVL(u)	((u)->plr->level)
-#define	GET_NB(u)	((u)->plr->nb)
-#define	GET_TIME(u)	((u)->plr->time)
-#define	GET_CAST(u)	((u)->plr->cast)
+#define	GET_X(u)	(((t_plr *)(u)->info)->x)
+#define	GET_Y(u)	(((t_plr *)(u)->info)->y)
+#define	GET_DIR(u)	(((t_plr *)(u)->info)->dir)
+#define	GET_INV(u)	(((t_plr *)(u)->info)->inv)
+#define	GET_TEAM(u)	(((t_plr *)(u)->info)->team)
+#define	GET_LVL(u)	(((t_plr *)(u)->info)->level)
+#define	GET_TIME(u)	(((t_plr *)(u)->info)->time)
+#define	GET_CAST(u)	(((t_plr *)(u)->info)->cast)
 #define	IS_CASTING(u)	(!(GET_CAST(u).tv_sec == 0 && GET_CAST(u).tv_usec == 0))
 
 #include <sys/socket.h>
@@ -56,6 +55,12 @@ typedef enum	e_clt
     AI = 2,
     GRAPHIC = -1
   }		e_clt;
+
+typedef enum	e_rsp
+  {
+    APR = 0,
+    ANR = 1
+  }		e_rsp;
 
 typedef struct	s_content
 {
@@ -106,10 +111,17 @@ typedef struct	s_plr
   t_content	inv;
   t_team	*team;
   uint16_t	level;
-  int		nb;
   t_tv		time;
   t_tv		cast;
 }		t_plr;
+
+typedef struct	s_ig
+{
+  t_tv		wait;
+  e_rsp		res;
+  char		*ok;
+  char		*ko;
+}		t_ig;
 
 typedef struct	s_user
 {
@@ -120,7 +132,8 @@ typedef struct	s_user
   t_cb		wr;
   int		tokill;
   e_clt		type;
-  t_plr		*plr;
+  void		*info;
+  int		nb;
   int		nb_ncom;
   struct s_user	*next;
   struct s_user	*prev;
@@ -143,7 +156,8 @@ void		new_client(int, t_user **, int *);
 void		unit_user_free(t_user *);
 void		check_client(t_user **, t_bf *, t_zap *);
 int		handle_fds(int, t_user **, t_zap *);
-void		check_com(t_com *, t_user *, int *, t_zap *);
+t_com		*graphic_funcs();
+t_com		*ptr_to_function(e_clt);
 int		read_com(t_user *, t_zap *);
 void		data_free(t_user **);
 void		put_team(t_team *, int);
@@ -173,7 +187,7 @@ int		count_in_team(t_team *, t_user *);
 int		team_winning(t_user *, t_team *);
 t_user		*in_this_cell(int, int, t_user *);
 void		send_to_graphic(char *, t_user *, t_tv *);
-int		find_nb(t_user *);
+int		find_nb(t_user *, e_clt);
 int		find_egg_nb(t_team *);
 int		my_avance(char **, t_zap *, t_user *);
 int		get_direction(t_user *, t_user *, t_zap *);
@@ -227,5 +241,17 @@ int		my_sgt(char **, t_zap *, t_user *);
 int		my_sst(char **, t_zap *, t_user *);
 int		my_suc(char **, t_zap *, t_user *);
 int		my_pnw(t_user *, t_user *);
+int		my_stn(char **, t_zap *, t_user *);
+int		my_spp(char **, t_zap *, t_user *);
+int		my_spi(char **, t_zap *, t_user *);
+int		my_spl(char **, t_zap *, t_user *);
+int		my_spk(char **, t_zap *, t_user *);
+int		my_sep(char **, t_zap *, t_user *);
+int		my_sek(char **, t_zap *, t_user *);
+int		my_sct(char **, t_zap *, t_user *);
+int		my_sms(char **, t_zap *, t_user *);
+int		my_agt(char **, t_zap *, t_user *);
+int		my_apr(char **, t_zap *, t_user *);
+int		my_anr(char **, t_zap *, t_user *);
 
 #endif

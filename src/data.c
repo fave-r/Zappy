@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 10:39:02 2015 Thibaut Lopez
-** Last update Thu May 28 14:15:21 2015 Thibaut Lopez
+** Last update Fri May 29 14:28:33 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -42,8 +42,8 @@ Player max per team: %d\nDelay for each action: %d\nName of each team\n",
 int	base_value(t_zap *data)
 {
   data->port = (data->port == -1) ? 6667 : data->port;
-  data->length = (data->length == -1) ? 100 : data->length;
-  data->width = (data->width == -1) ? 100 : data->width;
+  data->length = (data->length == -1) ? 50 : data->length;
+  data->width = (data->width == -1) ? 50 : data->width;
   if (data->teams == NULL || team_len(data->teams) < 2)
     {
       if (data->teams != NULL)

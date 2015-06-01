@@ -1,39 +1,57 @@
+agt
+agt A
+asking get time
+
 ast
+ast #G
 asking server time
 
 aeg
+aeg #G
 asking end game
 
 atn
+atn #G
 asking team name
+
 app
+app #G
 asking player position
 
 api
+api #G
 asking player inventory
 
 apl
+apl #G
 asking player level
 
 apk
+apk #G
 asking player killing
 
 aep
+aep #G
 asking egg position
 
 aek
+aek #G
 asking egg killing
 
 act
+act #G
 asking content
 
 ams
+ams #G
 asking map size
 
 ---------------------------------------------------------
 
 apr
+apr #G
 asking positive response
 
 anr
+anr #G
 asking negative response

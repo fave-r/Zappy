@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Tue May  5 14:40:23 2015 romaric
-## Last update Thu May 28 13:56:48 2015 Thibaut Lopez
+## Last update Fri May 29 17:18:03 2015 Thibaut Lopez
 ##
 
 CC=		gcc
@@ -32,11 +32,12 @@ U_SRC=		src/utils/common_func.c				\
 S_SRC=		src/asking.c					\
 		src/base_team.c					\
 		src/command_func.c				\
-		src/com.c					\
 		src/data.c					\
 		src/fd_func.c					\
+		src/graphic_ptr.c				\
 		src/main.c					\
 		src/parser.c					\
+		src/ptrs_to_function.c				\
 		src/read_com.c					\
 		src/setter.c					\
 		src/team.c					\
@@ -59,17 +60,29 @@ S_SRC=		src/asking.c					\
 		src/client/my_voir.c				\
 		src/client/func_level.c				\
 		src/client/inc_to_graphic.c			\
+		src/graphic/my_agt.c				\
+		src/graphic/my_anr.c				\
+		src/graphic/my_apr.c				\
 		src/graphic/my_bct.c				\
 		src/graphic/my_graphic.c			\
 		src/graphic/my_mct.c				\
 		src/graphic/my_msz.c				\
-		src/graphic/my_plv.c				\
 		src/graphic/my_pin.c				\
+		src/graphic/my_plv.c				\
 		src/graphic/my_pnw.c				\
 		src/graphic/my_ppo.c				\
 		src/graphic/my_sbp.c				\
+		src/graphic/my_sct.c				\
+		src/graphic/my_sek.c				\
+		src/graphic/my_sep.c				\
 		src/graphic/my_sgt.c				\
+		src/graphic/my_sms.c				\
+		src/graphic/my_spi.c				\
+		src/graphic/my_spk.c				\
+		src/graphic/my_spl.c				\
+		src/graphic/my_spp.c				\
 		src/graphic/my_sst.c				\
+		src/graphic/my_stn.c				\
 		src/graphic/my_suc.c				\
 		src/graphic/my_tna.c
 

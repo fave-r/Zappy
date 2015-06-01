@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:51:15 2015 romaric
-** Last update Wed May 20 10:41:23 2015 Thibaut Lopez
+** Last update Mon Jun  1 10:59:54 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -59,7 +59,7 @@ void			new_client(int fd, t_user **user, int *nbclient)
   init_cb(&new->wr, 4096, sizeof(char));
   new->queue = NULL;
   new->type = UNKNOWN;
-  new->plr = NULL;
+  new->info = NULL;
   new->nb_ncom = 0;
   printf("new client\n");
   if (*user != NULL)
@@ -67,6 +67,27 @@ void			new_client(int fd, t_user **user, int *nbclient)
   else
     *user = new;
   fill_cb(&new->wr, "BIENVENUE\n", strlen("BIENVENUE\n"));
+}
+
+void		data_free(t_user **data)
+{
+  t_user	*tmp;
+
+  tmp = *data;
+  while (tmp != NULL && tmp->next != NULL)
+    {
+      close(tmp->fd);
+      free_cb(&tmp->cb);
+      free_cb(&tmp->wr);
+      while (tmp->queue != NULL)
+	pop_q(&tmp->queue);
+      if (tmp->type == AI)
+	free(tmp->info);
+      tmp = tmp->next;
+      free(tmp->prev);
+    }
+  if (tmp != NULL)
+    free(tmp);
 }
 
 void		unit_user_free(t_user *user)
@@ -77,7 +98,7 @@ void		unit_user_free(t_user *user)
   while (user->queue != NULL)
     pop_q(&user->queue);
   if (user->type == AI)
-    free(user->plr);
+    free(user->info);
   if (user->prev != NULL)
     user->prev->next = user->next;
   if (user->next != NULL)

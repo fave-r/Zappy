@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Fri May 29 11:13:30 2015 Thibaut Lopez
+** Last update Fri May 29 17:37:55 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -54,6 +54,8 @@ int		my_graphic(char **com, t_zap *data, t_user *usr)
       tmp = tmp->next;
     }
   my_enw(data, usr);
+  my_agt(com, data, usr);
+  usr->nb = find_nb(usr, GRAPHIC);
   usr->type = GRAPHIC;
   return (0);
 }

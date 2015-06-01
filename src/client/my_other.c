@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Thu May 28 13:21:43 2015 Thibaut Lopez
+** Last update Fri May 29 18:11:03 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -17,7 +17,7 @@ void		send_new_player(t_user *usr, int is_hatching)
 
   gettimeofday(&now, NULL);
   bzero(str, 256);
-  sprintf(str, "pnw #%d %d %d %d %d %s\n", GET_NB(usr), GET_X(usr),
+  sprintf(str, "pnw #%d %d %d %d %d %s\n", usr->nb, GET_X(usr),
 	  GET_Y(usr), GET_DIR(usr) + 1, GET_LVL(usr), GET_TEAM(usr)->name);
   send_to_graphic(str, usr, &now);
   if (is_hatching != -1)
@@ -102,11 +102,11 @@ int		my_other(char **com, t_zap *data, t_user *usr)
   if (cur == NULL || count_in_team(cur, usr) == cur->count)
     return (-1);
   is_hatching = hatching_egg(&pos, usr, data, cur);
-  usr->plr = player_info(cur, &pos);
+  usr->info = player_info(cur, &pos);
   tmp = usr;
   while (tmp != NULL && tmp->prev != NULL)
     tmp = tmp->prev;
-  GET_NB(usr) = find_nb(tmp);
+  usr->nb = find_nb(tmp, AI);
   usr->type = AI;
   send_client_info(cur, data, usr);
   send_new_player(usr, is_hatching);

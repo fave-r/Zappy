@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:12:11 2015 romaric
-** Last update Fri May 29 11:07:40 2015 Thibaut Lopez
+** Last update Fri May 29 14:20:52 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -36,7 +36,7 @@ void		send_to_graphic(char *com, t_user *usr, t_tv *when)
     }
 }
 
-int		find_nb(t_user *player)
+int		find_nb(t_user *player, e_clt type)
 {
   t_user	*tmp;
   int		nbr;
@@ -45,7 +45,7 @@ int		find_nb(t_user *player)
   tmp = player;
   while (tmp != NULL)
     {
-      if (tmp->type == AI && GET_NB(tmp) == nbr)
+      if (tmp->type == type && tmp->nb == nbr)
 	{
 	  nbr++;
 	  tmp = player;

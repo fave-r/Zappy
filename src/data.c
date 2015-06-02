@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 10:39:02 2015 Thibaut Lopez
-** Last update Tue Jun  2 16:50:13 2015 Thibaut Lopez
+** Last update Tue Jun  2 17:58:30 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -53,7 +53,7 @@ int	base_value(t_zap *data)
   data->count = (data->count == -1) ? 20 : data->count;
   team_counts(data->teams, data->count);
   data->delay = (data->delay == -1) ? 100 : data->delay;
-  data->asking = (data->asking == -1) ? 1.5 : data->asking;
+  data->asking = (data->asking == -1) ? 7.5 : data->asking;
   init_map(data);
   return (0);
 }

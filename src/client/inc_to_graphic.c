@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon May 25 17:31:52 2015 romaric
-** Last update Mon Jun  1 16:58:10 2015 Thibaut Lopez
+** Last update Tue Jun  2 11:19:28 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -34,7 +34,7 @@ void		cast_loop(t_user *cur, t_user *tmp, int check, t_tv *now)
       GET_CAST(cur).tv_sec = 0;
       GET_CAST(cur).tv_usec = 0;
       if (check == 1)
-	GET_LVL(cur)++;
+	GET_LVL(cur) = 8;
     }
   bzero(tr, 100);
   sprintf(tr, "plv #%d %d\n", cur->nb, GET_LVL(cur));

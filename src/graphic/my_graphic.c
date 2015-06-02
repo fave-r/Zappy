@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Mon Jun  1 16:33:00 2015 Thibaut Lopez
+** Last update Tue Jun  2 11:45:22 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -69,4 +69,15 @@ void		my_reset(t_user *usr, t_zap *data)
   com[1] = NULL;
   my_graphic(com, data, usr);
   free(com);
+}
+
+void		my_endgame(t_user *usr, t_zap *data)
+{
+  char		tmp[256];
+
+  bzero(tmp, 256);
+  sprintf(tmp, "seg %s\n", data->winner->name);
+  fill_cb(&usr->wr, tmp, strlen(tmp));
+  while (cb_taken(&usr->wr) > 0)
+    write_cb(&usr->wr, usr->fd, NULL);
 }

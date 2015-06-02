@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Mon Jun  1 15:25:24 2015 Thibaut Lopez
+** Last update Tue Jun  2 16:38:46 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -60,7 +60,7 @@ void		check_client(t_user **user, t_bf *bf, t_zap *data)
       if (FD_ISSET(tmp->fd, &bf->rbf) || cb_taken(&tmp->cb) > 0)
 	read_com(tmp, data);
       if (tmp->type == AI && IS_CASTING(tmp) &&
-	  cmp_tv(&GET_TIME(tmp), &now) >= 0)
+	  cmp_tv(&GET_CAST(tmp), &now) >= 0)
 	cast_result(data, user, tmp, &now);
       if (tmp->tokill == 1)
 	send_death(user, &tmp, data);

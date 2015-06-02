@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Mon Jun  1 11:28:59 2015 Thibaut Lopez
-** Last update Mon Jun  1 18:19:53 2015 Thibaut Lopez
+** Last update Tue Jun  2 16:46:14 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -34,13 +34,6 @@ int		check_food(t_user *usr, t_zap *data)
   return (0);
 }
 
-int		check_asking(t_user *usr, t_zap *data)
-{
-  (void)usr;
-  (void)data;
-  return (0);
-}
-
 int		end_game(t_zap *data, t_user **user)
 {
   t_user	*tmp;
@@ -53,8 +46,19 @@ int		end_game(t_zap *data, t_user **user)
       if (tmp->type != UNKNOWN)
 	while (cb_taken(&tmp->wr) > 0)
 	  write_cb(&tmp->wr, tmp->fd, NULL);
-      tmp = (tmp->type == AI) ? unit_user_free(tmp) : tmp->next;
+      if (tmp->type == AI)
+	{
+	  if (*user == tmp)
+	    *user = (*user)->next;
+	  tmp = unit_user_free(tmp);
+	}
+      else
+	tmp = tmp->next;
     }
+  while (data->end != NULL)
+    pop_q(&data->end);
+  if (count_type(*user, GRAPHIC) == 0)
+    return (1);
   find_ask(&data->end_game, data->asking);
   return (0);
 }
@@ -63,6 +67,7 @@ int		manage_server(t_user **user, t_zap *data)
 {
   t_user	*tmp;
   t_tv		now;
+  t_ask		*ask;
 
   tmp = *user;
   while (tmp != NULL)
@@ -70,7 +75,12 @@ int		manage_server(t_user **user, t_zap *data)
       if (tmp->type == AI)
 	check_food(tmp, data);
       else if (tmp->type == GRAPHIC)
-	check_asking(tmp, data);
+	{
+	  ask = front_q((t_que *)tmp->info);
+	  check_asking(tmp, data, ask);
+	  if (ask != NULL && ask->wait.tv_sec == 0 && ask->wait.tv_usec == 0)
+	    pop_q((t_que **)&tmp->info);
+	}
       if (tmp->tokill == 1)
 	send_death(user, &tmp, data);
       else
@@ -79,5 +89,5 @@ int		manage_server(t_user **user, t_zap *data)
   gettimeofday(&now, NULL);
   if (front_q(data->end) != NULL && cmp_tv(front_q(data->end), &now) <= 0)
     return (end_game(data, user));
-  return (0);
+  return (check_asking(*user, data, &data->end_game));
 }

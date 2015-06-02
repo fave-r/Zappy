@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 10:39:02 2015 Thibaut Lopez
-** Last update Mon Jun  1 16:56:14 2015 Thibaut Lopez
+** Last update Tue Jun  2 11:44:29 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -72,9 +72,9 @@ void	init_val(t_zap *data)
   data->asking = -1;
   data->end_game.wait.tv_sec = 0;
   data->end_game.wait.tv_usec = 0;
-  data->end_game.res = APR;
+  data->end_game.res = ANR;
   data->end_game.ok = my_reset;
-  data->end_game.ko = NULL;
+  data->end_game.ko = my_endgame;
 }
 
 void	free_zap(t_zap *data)
@@ -89,6 +89,4 @@ void	free_zap(t_zap *data)
     }
   free(data->map);
   team_free(data->teams);
-  while (data->end != NULL)
-    pop_q(&data->end);
 }

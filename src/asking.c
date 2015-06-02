@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 28 13:49:58 2015 Thibaut Lopez
-** Last update Mon Jun  1 18:32:41 2015 Thibaut Lopez
+** Last update Tue Jun  2 11:30:08 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -51,4 +51,32 @@ void		find_ask(t_ask *ask, float asking)
   gettimeofday(&ask->wait, NULL);
   ask->wait.tv_sec += sec;
   ask->wait.tv_usec += usec;
+}
+
+int		check_asking(t_user *usr, t_zap *data, t_ask *ask)
+{
+  t_tv		now;
+  t_user	*tmp;
+
+  gettimeofday(&now, NULL);
+  if (ask == NULL || (ask->wait.tv_sec == 0 && ask->wait.tv_usec == 0) ||
+      cmp_tv(&ask->wait, &now) > 0)
+    return (0);
+  tmp = usr;
+  while (tmp != NULL && tmp->prev != NULL)
+    tmp = tmp->prev;
+  while (tmp != NULL)
+    {
+      if (tmp->type == GRAPHIC)
+	{
+	  if (ask->res == APR)
+	    ask->ok(tmp, data);
+	  else
+	    ask->ko(tmp, data);
+	}
+      tmp = tmp->next;
+    }
+  ask->wait.tv_sec = 0;
+  ask->wait.tv_usec = 0;
+  return (ask->res);
 }

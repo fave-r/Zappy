@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Mon May 25 18:29:47 2015 romaric
+** Last update Tue Jun  2 16:48:08 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -62,8 +62,6 @@ int		my_incantation(char **com, t_zap *data, t_user *usr)
   t_user	*tmp;
   t_tv		now;
 
-  gettimeofday(&now, NULL);
-  add_tv(&now, 300000000 / data->delay);
   if (sstrlen(com) != 1 || check_this_case(usr, data, 0) == 0)
     {
       fill_cb(&usr->wr, "ko\n", 3);
@@ -73,6 +71,8 @@ int		my_incantation(char **com, t_zap *data, t_user *usr)
   send_elev_in(usr);
   while (tmp->prev != NULL)
     tmp = tmp->prev;
+  gettimeofday(&now, NULL);
+  add_tv(&now, 300000000 / data->delay);
   while ((tmp = in_this_cell(GET_X(usr), GET_Y(usr), tmp)) != NULL)
     {
       if (GET_LVL(usr) == GET_LVL(tmp) && !IS_CASTING(tmp))

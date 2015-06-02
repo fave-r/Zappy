@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Mon Jun  1 18:33:38 2015 Thibaut Lopez
+** Last update Tue Jun  2 11:45:56 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -95,7 +95,7 @@ typedef struct	s_ask
   t_tv		wait;
   e_rsp		res;
   void		(*ok)();
-  char		(*ko)();
+  void		(*ko)();
 }		t_ask;
 
 typedef struct	s_zap
@@ -174,6 +174,7 @@ t_team		*base_team();
 void		team_counts(t_team *, int);
 void		alert_graphic(char *, t_user *);
 void		find_ask(t_ask *, float);
+int		check_asking(t_user *, t_zap *, t_ask *);
 
 int		set_port(t_zap *, char *, e_state *);
 int		set_x(t_zap *, char *, e_state *);
@@ -233,6 +234,7 @@ int		my_voir(char **, t_zap *, t_user *);
 
 int		my_graphic(char **, t_zap *, t_user *);
 void		my_reset(t_user *, t_zap *);
+void		my_endgame(t_user *, t_zap *);
 int		my_other(char **, t_zap *, t_user *);
 
 int		my_msz(char **, t_zap *, t_user *);

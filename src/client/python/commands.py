@@ -3,6 +3,8 @@
 
 import sys
 import socket
+import re
+from transfer import *
 
 def avance(socket):
  msg = "avance\n"
@@ -36,14 +38,13 @@ def inventaire(socket, inv):
  update_inventory(rep, inv)
 
 def update_inventory(msg, inv):
- msg = msg.replace("{", "").replace('}', '').split(',');
- inv[0][1] = numberOf(msg, "nourriture")
- inv[1][1] = numberOf(msg, "linemate")
- inv[2][1] = numberOf(msg, "deraumere")
- inv[3][1] = numberOf(msg, "sibur")
- inv[4][1] = numberOf(msg, "mendiane")
- inv[5][1] = numberOf(msg, "phiras")
- inv[6][1] = numberOf(msg, "thystame")
+ tab = re.findall(r'\d+', msg)
+ i = 0
+ while i < 7:
+  tmp = list(inv[i])
+  tmp[1] = int(tab[i])
+  inv[i] = tuple(tmp)
+  i += 1
 
 def prend(socket, objet):
  msg = "prend " + objet + "\n"
@@ -73,30 +74,12 @@ def connect_nbr(socket):
  msg = "connect_nbr\n"
  return sendCommand(socket, msg)
 
-
-def sendCommand(socket, msg):
- print (msg)
- msg = msg.encode()
- socket.send(msg)
- rep = socket.recv(1024).decode()
- print (rep)
- if (rep == "mort\n"):
-  socket.close()
-  sys.exit(0)
- return rep
-
-
 def numberOf(cmd, to_find):
  ret = 0
  try:
   cmd.index(to_find)
   ret = 1
   return ret
-#  while cmd.index(to_find):
-#   begin = cmd[0:cmd.index(to_find)]
-#   end = cmd[cmd.index(to_find) + len(to_find):]
-#   cmd = begin + end
-#   ++ret
  except SyntaxError: 
   return ret
  except ValueError: 
@@ -118,8 +101,7 @@ def creatObject(cmd):
 
 def move(case, socket):
  if case == 0:
-  case += 1
-  #return
+  return
  avance(socket)
  pos_actu = 2
  coef = 4

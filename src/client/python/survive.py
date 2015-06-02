@@ -3,10 +3,12 @@
 
 import sys
 from commands import *
+import ia
 
 def survivor(socket, foodNeeded, inv):
  if inv[0][1] > foodNeeded:
   print ("Mode survie terminée")
+  ia.begin_ia(socket)
   return
 
  print ("Mode survie commencée")
@@ -25,12 +27,12 @@ def survivor(socket, foodNeeded, inv):
    rep = prend(socket, "nourriture")
    if rep == "ko\n":
     avance(socket)
-    survivor(socker, foodNeeded, inv)
+    return survivor(socket, foodNeeded, inv)
    else:
     inventaire(socket, inv)
     print (inv)
-    survivor(socket, foodNeeded, inv)
+    return survivor(socket, foodNeeded, inv)
   i += 1
 
  avance(socket)
- survivor(socket, foodNeeded, inv)
+ return survivor(socket, foodNeeded, inv)

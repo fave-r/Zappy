@@ -6,7 +6,7 @@ import socket
 from survive import *
 
 inv = [
-        ("nourriture", 10),
+        ("nourriture", 0),
         ("linemate", 0),
         ("deraumere", 0),
         ("sibur", 0),
@@ -16,4 +16,6 @@ inv = [
       ]
 
 def begin_ia(socket):
- survivor(socket, inv[0][1] + 20, inv)
+ inventaire(socket, inv)
+ if (int(inv[0][1]) <= 10):
+  survivor(socket, int(inv[0][1] + 20), inv)

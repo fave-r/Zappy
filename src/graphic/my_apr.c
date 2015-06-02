@@ -5,14 +5,15 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Fri May 29 17:16:40 2015 Thibaut Lopez
+** Last update Tue Jun  2 18:28:15 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
 int	my_apr(char **com, t_zap *data, t_user *usr)
 {
-  (void)com;
+  if (sstrlen(com) > 3)
+    return (my_sbp(usr));
   (void)data;
   (void)usr;
   return (0);

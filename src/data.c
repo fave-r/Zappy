@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 10:39:02 2015 Thibaut Lopez
-** Last update Tue Jun  2 11:44:29 2015 Thibaut Lopez
+** Last update Tue Jun  2 16:50:13 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -72,7 +72,7 @@ void	init_val(t_zap *data)
   data->asking = -1;
   data->end_game.wait.tv_sec = 0;
   data->end_game.wait.tv_usec = 0;
-  data->end_game.res = ANR;
+  data->end_game.res = APR;
   data->end_game.ok = my_reset;
   data->end_game.ko = my_endgame;
 }

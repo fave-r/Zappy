@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 28 13:49:58 2015 Thibaut Lopez
-** Last update Tue Jun  2 11:30:08 2015 Thibaut Lopez
+** Last update Tue Jun  2 19:53:29 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -59,8 +59,7 @@ int		check_asking(t_user *usr, t_zap *data, t_ask *ask)
   t_user	*tmp;
 
   gettimeofday(&now, NULL);
-  if (ask == NULL || (ask->wait.tv_sec == 0 && ask->wait.tv_usec == 0) ||
-      cmp_tv(&ask->wait, &now) > 0)
+  if (ask == NULL || !IS_ASKING(ask) || cmp_tv(&ask->wait, &now) > 0)
     return (0);
   tmp = usr;
   while (tmp != NULL && tmp->prev != NULL)

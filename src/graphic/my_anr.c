@@ -5,15 +5,14 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Tue Jun  2 18:36:26 2015 Thibaut Lopez
+** Last update Tue Jun  2 19:54:41 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
 int	aeg_response(t_zap *data, t_user *usr)
 {
-  if (data->end_game.wait.tv_sec == 0 &&
-      data->end_game.wait.tv_usec == 0)
+  if (!IS_ASKING(&data->end_game))
     return (my_sbp(usr));
   data->end_game.res |= ANR;
   return (0);

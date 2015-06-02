@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Mon Jun  1 11:28:59 2015 Thibaut Lopez
-** Last update Tue Jun  2 16:46:14 2015 Thibaut Lopez
+** Last update Tue Jun  2 19:54:04 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -78,7 +78,7 @@ int		manage_server(t_user **user, t_zap *data)
 	{
 	  ask = front_q((t_que *)tmp->info);
 	  check_asking(tmp, data, ask);
-	  if (ask != NULL && ask->wait.tv_sec == 0 && ask->wait.tv_usec == 0)
+	  if (ask != NULL && !IS_ASKING(ask))
 	    pop_q((t_que **)&tmp->info);
 	}
       if (tmp->tokill == 1)

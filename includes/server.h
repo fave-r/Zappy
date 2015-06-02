@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Tue Jun  2 11:45:56 2015 Thibaut Lopez
+** Last update Tue Jun  2 19:52:48 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -20,6 +20,7 @@
 #define	GET_TIME(u)	(((t_plr *)(u)->info)->time)
 #define	GET_CAST(u)	(((t_plr *)(u)->info)->cast)
 #define	IS_CASTING(u)	(!(GET_CAST(u).tv_sec == 0 && GET_CAST(u).tv_usec == 0))
+#define	IS_ASKING(a)	(!((a)->wait.tv_sec == 0 && (a)->wait.tv_usec == 0))
 
 #include <sys/socket.h>
 #include <netdb.h>
@@ -95,6 +96,7 @@ typedef struct	s_ask
   t_tv		wait;
   e_rsp		res;
   void		(*ok)();
+  void		(*changes)();
   void		(*ko)();
 }		t_ask;
 

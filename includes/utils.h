@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 18:07:00 2015 Thibaut Lopez
-** Last update Wed Jun  3 15:18:32 2015 Thibaut Lopez
+** Last update Wed Jun  3 18:46:39 2015 Thibaut Lopez
 */
 
 #ifndef	UTILS_H
@@ -50,7 +50,7 @@ char		*xstrdup(const char *);
 int		find_ptr(t_com *, char *);
 int		my_strtol(char *);
 float		my_strtof(char *);
-char		*strflat(char **, char *);
+char		*strflat(char **, char *, int, int);
 int		my_strstr(char **, char *);
 char		*my_strcat(char *, char *);
 int		my_strchr(char *, char);
@@ -64,6 +64,7 @@ char		**stwt(char *, char *, int);
 void		push_q(t_que **, void *, void *(*)(void *));
 void		pop_q(t_que **);
 void		*front_q(t_que *);
+int		q_len(t_que *);
 void		*clone_tv(void *);
 t_tv		*add_tv(t_tv *, int);
 int		cmp_tv(t_tv *, t_tv *);

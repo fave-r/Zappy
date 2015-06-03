@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Wed Jun  3 18:32:10 2015 Thibaut Lopez
+** Last update Wed Jun  3 18:55:49 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -79,7 +79,7 @@ int		my_stn(char **com, t_zap *data, t_user *usr)
   if (count_type(usr, GRAPHIC) == 1)
     gettimeofday(&ask.wait, NULL);
   push_q((t_que **)&usr->info, &ask, clone_ask);
-  str = strflat(com, " ");
+  str = strflat(com, " ", usr->nb, q_len((t_que *)usr->info) - 1);
   str[0] = 'a';
   alert_graphic(str, usr);
   free(str);

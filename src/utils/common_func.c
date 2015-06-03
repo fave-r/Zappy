@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Mon Apr  6 17:09:17 2015 Thibaut Lopez
-** Last update Wed Jun  3 17:45:05 2015 Thibaut Lopez
+** Last update Wed Jun  3 18:47:18 2015 Thibaut Lopez
 */
 
 #include "utils.h"
@@ -60,7 +60,7 @@ int	flatlen(char **tab, char *sep)
   int	len;
 
   i = 0;
-  len = 2;
+  len = 2 + (2 * strlen(sep)) + 18;
   while (tab[i] != NULL)
     {
       len += strlen(tab[i]);
@@ -70,28 +70,24 @@ int	flatlen(char **tab, char *sep)
   return (len);
 }
 
-char	*strflat(char **tab, char *sep)
+char	*strflat(char **tab, char *sep, int ig, int ask_nb)
 {
   char	*new;
-  char	*cur;
   int	i;
+  int	len;
 
   if (tab == NULL)
     return (NULL);
-  new = xmalloc(flatlen(tab, sep) * sizeof(char));
-  cur = new;
-  i = 0;
+  len = flatlen(tab, sep);
+  new = xmalloc(len * sizeof(char));
+  bzero(new, len);
+  sprintf(new, "%s%s#%d%s#%d%s", tab[0], sep, ig, sep, ask_nb, sep);
+  i = 1;
   while (tab[i] != NULL)
     {
-      strcpy(cur, tab[i]);
-      cur += strlen(tab[i]);
-      if (tab[++i] != NULL)
-	{
-	  strcpy(cur, sep);
-	  cur += strlen(sep);
-	}
+      sprintf(new + strlen(new), "%s%s", tab[i],
+	      (tab[i + 1] == NULL) ? "\n" : sep);
+      i++;
     }
-  cur[0] = '\n';
-  cur[1] = 0;
   return (new);
 }

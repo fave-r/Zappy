@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 15 14:41:50 2015 Thibaut Lopez
-** Last update Tue May 26 18:41:54 2015 Thibaut Lopez
+** Last update Wed Jun  3 18:45:23 2015 Thibaut Lopez
 */
 
 #include "utils.h"
@@ -48,4 +48,17 @@ void	*front_q(t_que *q)
   if (q == NULL)
     return (NULL);
   return (q->e);
+}
+
+int	q_len(t_que *q)
+{
+  int	i;
+
+  i = 0;
+  while (q != NULL)
+    {
+      i++;
+      q = q->next;
+    }
+  return (i);
 }

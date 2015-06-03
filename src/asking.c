@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 28 13:49:58 2015 Thibaut Lopez
-** Last update Wed Jun  3 10:10:06 2015 Thibaut Lopez
+** Last update Wed Jun  3 16:43:36 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -51,9 +51,10 @@ void		find_ask(t_ask *ask, float asking)
   gettimeofday(&ask->wait, NULL);
   ask->wait.tv_sec += sec;
   ask->wait.tv_usec += usec;
+  ask->res = APR;
 }
 
-int		check_asking(t_user *usr, t_zap *data, t_ask *ask)
+int		check_asking(t_user **usr, t_zap *data, t_ask *ask)
 {
   t_tv		now;
   t_user	*tmp;
@@ -62,10 +63,8 @@ int		check_asking(t_user *usr, t_zap *data, t_ask *ask)
   if (ask == NULL || !IS_ASKING(ask) || cmp_tv(&ask->wait, &now) > 0)
     return (0);
   if (ask->res == APR)
-    ask->changes(data);
-  tmp = usr;
-  while (tmp != NULL && tmp->prev != NULL)
-    tmp = tmp->prev;
+    ask->changes(usr, data, ask);
+  tmp = *usr;
   while (tmp != NULL)
     {
       if (tmp->type == GRAPHIC)
@@ -80,4 +79,21 @@ int		check_asking(t_user *usr, t_zap *data, t_ask *ask)
   ask->wait.tv_sec = 0;
   ask->wait.tv_usec = 0;
   return (ask->res);
+}
+
+void		*clone_ask(void *to_clone)
+{
+  t_ask		*ask;
+  t_ask		*new;
+
+  ask = (t_ask *)to_clone;
+  new = xmalloc(sizeof(t_ask));
+  new->wait.tv_sec = ask->wait.tv_sec;
+  new->wait.tv_usec = ask->wait.tv_usec;
+  new->res = ask->res;
+  new->args = ask->args;
+  new->ok = ask->ok;
+  new->changes = ask->changes;
+  new->ko = ask->ko;
+  return ((void *)new);
 }

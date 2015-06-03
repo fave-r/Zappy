@@ -1,4 +1,4 @@
-stn N
+stn N [N]
 set team name
 
 spp #n X Y

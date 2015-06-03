@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Wed May 27 10:54:50 2015 Thibaut Lopez
-** Last update Thu May 28 11:06:05 2015 Thibaut Lopez
+** Last update Wed Jun  3 15:55:35 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -74,4 +74,11 @@ int		team_winning(t_user *usr, t_team *team)
       tmp = tmp->next;
     }
   return ((nb != 0 && nb == count_in_team(team, usr)) ? 1 : 0);
+}
+
+t_team		*team_by_name(t_team *teams, char *name)
+{
+  while (teams != NULL && strcmp(teams->name, name) != 0)
+    teams = teams->next;
+  return (teams);
 }

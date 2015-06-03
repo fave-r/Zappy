@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Mon Jun  1 11:28:59 2015 Thibaut Lopez
-** Last update Wed Jun  3 10:01:01 2015 Thibaut Lopez
+** Last update Wed Jun  3 16:44:30 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -75,7 +75,7 @@ int		manage_server(t_user **user, t_zap *data)
       else if (tmp->type == GRAPHIC)
 	{
 	  ask = front_q((t_que *)tmp->info);
-	  check_asking(tmp, data, ask);
+	  check_asking(user, data, ask);
 	  if (ask != NULL && !IS_ASKING(ask))
 	    pop_q((t_que **)&tmp->info);
 	}
@@ -87,5 +87,5 @@ int		manage_server(t_user **user, t_zap *data)
   gettimeofday(&now, NULL);
   if (front_q(data->end) != NULL && cmp_tv(front_q(data->end), &now) <= 0)
     return (end_game(data, user));
-  return (check_asking(*user, data, &data->end_game));
+  return (check_asking(user, data, &data->end_game));
 }

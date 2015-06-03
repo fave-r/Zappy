@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 10:39:02 2015 Thibaut Lopez
-** Last update Wed Jun  3 10:10:32 2015 Thibaut Lopez
+** Last update Wed Jun  3 14:04:30 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -73,6 +73,7 @@ void	init_val(t_zap *data)
   data->end_game.wait.tv_sec = 0;
   data->end_game.wait.tv_usec = 0;
   data->end_game.res = APR;
+  data->end_game.args = NULL;
   data->end_game.ok = my_reset;
   data->end_game.changes = my_reset_map;
   data->end_game.ko = my_endgame;

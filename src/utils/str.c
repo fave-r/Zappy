@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 17:47:45 2015 romaric
-** Last update Mon May 18 11:10:45 2015 Thibaut Lopez
+** Last update Wed Jun  3 15:16:08 2015 Thibaut Lopez
 */
 
 #include "utils.h"
@@ -57,4 +57,22 @@ int	my_strchr(char *str, char c)
   while (str[i] != c && str[i] != 0)
     i++;
   return ((str[i] == 0) ? -1 : i);
+}
+
+char	**sstrdup(char **tab)
+{
+  int	i;
+  char	**new;
+
+  if (tab == NULL)
+    return (NULL);
+  new = xmalloc((sstrlen(tab) + 1) * sizeof(char *));
+  i = 0;
+  while (tab[i] != NULL)
+    {
+      new[i] = xstrdup(tab[i]);
+      i++;
+    }
+  new[i] = NULL;
+  return (new);
 }

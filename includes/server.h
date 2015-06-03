@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Wed Jun  3 10:37:28 2015 Thibaut Lopez
+** Last update Wed Jun  3 17:24:54 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -95,6 +95,7 @@ typedef struct	s_ask
 {
   t_tv		wait;
   e_rsp		res;
+  char		**args;
   void		(*ok)();
   void		(*changes)();
   void		(*ko)();
@@ -174,9 +175,11 @@ void		team_free(t_team *);
 void		*clone_egg(void *);
 t_team		*base_team();
 void		team_counts(t_team *, int);
+t_team		*team_by_name(t_team *, char *);
 void		alert_graphic(char *, t_user *);
 void		find_ask(t_ask *, float);
-int		check_asking(t_user *, t_zap *, t_ask *);
+int		check_asking(t_user **, t_zap *, t_ask *);
+void		*clone_ask(void *);
 
 int		set_port(t_zap *, char *, e_state *);
 int		set_x(t_zap *, char *, e_state *);
@@ -237,13 +240,14 @@ int		my_voir(char **, t_zap *, t_user *);
 int		my_graphic(char **, t_zap *, t_user *);
 void		my_reset(t_user *, t_zap *);
 void		my_endgame(t_user *, t_zap *);
-void		my_reset_map(t_zap *);
+void		my_reset_map(t_user **, t_zap *, t_ask *);
 int		my_other(char **, t_zap *, t_user *);
 
 int		my_msz(char **, t_zap *, t_user *);
 int		my_bct(char **, t_zap *, t_user *);
 int		my_send_bct(t_zap *, t_user *, int, int);
 int		my_mct(char **, t_zap *, t_user *);
+int		my_send_tna(t_zap *, t_user *);
 int		my_tna(char **, t_zap *, t_user *);
 int		my_ppo(char **, t_zap *, t_user *);
 int		my_plv(char **, t_zap *, t_user *);
@@ -263,6 +267,7 @@ int		my_sep(char **, t_zap *, t_user *);
 int		my_sek(char **, t_zap *, t_user *);
 int		my_sct(char **, t_zap *, t_user *);
 int		my_sms(char **, t_zap *, t_user *);
+int		my_srs(char **, t_zap *, t_user *);
 int		my_agt(char **, t_zap *, t_user *);
 t_ask		*get_asking(t_user *, int, int);
 int		my_apr(char **, t_zap *, t_user *);

@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Wed Jun  3 10:15:38 2015 Thibaut Lopez
+** Last update Wed Jun  3 16:43:02 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -82,11 +82,13 @@ void		my_endgame(t_user *usr, t_zap *data)
     write_cb(&usr->wr, usr->fd, NULL);
 }
 
-void		my_reset_map(t_zap *data)
+void		my_reset_map(t_user **usr, t_zap *data, t_ask *ask)
 {
   int	i;
   int	j;
 
+  (void)usr;
+  (void)ask;
   i = -1;
   while (++i < data->width)
     {

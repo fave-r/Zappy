@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Wed Jun  3 17:52:06 2015 Thibaut Lopez
+** Last update Wed Jun  3 18:32:10 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -23,12 +23,12 @@ void		delete_team(t_team *team, t_user **usr, t_zap *data)
       else
 	tmp = tmp->next;
     }
-  if (data->teams == team)
-    data->teams = data->teams->next;
   prev = data->teams;
   while (prev != NULL && prev != team && prev->next != team)
     prev = prev->next;
   prev->next = team->next;
+  if (data->teams == team)
+    data->teams = data->teams->next;
   free(team->name);
   free(team);
 }
@@ -68,17 +68,19 @@ int		my_stn(char **com, t_zap *data, t_user *usr)
   t_ask		ask;
 
   if ((sstrlen(com) != 2 && sstrlen(com) != 3) ||
-      (sstrlen(com) == 3 && team_by_name(data->teams, com[2]) != NULL))
+      (team_by_name(data->teams, com[1]) != NULL && team_len(data->teams) == 2)
+      || (sstrlen(com) == 3 && team_by_name(data->teams, com[2]) != NULL))
     return (my_sbp(usr));
   ask.args = sstrdup(com + 1);
   ask.ok = stn_ok;
   ask.changes = stn_data;
   ask.ko = stn_ko;
   find_ask(&ask, data->asking);
+  if (count_type(usr, GRAPHIC) == 1)
+    gettimeofday(&ask.wait, NULL);
   push_q((t_que **)&usr->info, &ask, clone_ask);
   str = strflat(com, " ");
   str[0] = 'a';
-  printf("%s\n", str);
   alert_graphic(str, usr);
   free(str);
   return (0);

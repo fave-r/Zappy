@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Mon Jun  1 11:28:59 2015 Thibaut Lopez
-** Last update Tue Jun  2 19:54:04 2015 Thibaut Lopez
+** Last update Wed Jun  3 10:01:01 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -36,29 +36,27 @@ int		check_food(t_user *usr, t_zap *data)
 
 int		end_game(t_zap *data, t_user **user)
 {
+  char		str[256];
   t_user	*tmp;
 
+  bzero(str, 256);
+  sprintf(str, "seg %s\naeg\n", data->winner->name);
   tmp = *user;
   while (tmp != NULL)
     {
       if (tmp->type == GRAPHIC)
-	fill_cb(&tmp->wr, "aeg\n", 4);
+	fill_cb(&tmp->wr, str, strlen(str));
       if (tmp->type != UNKNOWN)
 	while (cb_taken(&tmp->wr) > 0)
 	  write_cb(&tmp->wr, tmp->fd, NULL);
-      if (tmp->type == AI)
-	{
-	  if (*user == tmp)
-	    *user = (*user)->next;
-	  tmp = unit_user_free(tmp);
-	}
-      else
-	tmp = tmp->next;
+      if (tmp->type == AI && *user == tmp)
+	*user = (*user)->next;
+      tmp = (tmp->type == AI) ? unit_user_free(tmp) : tmp->next;
     }
   while (data->end != NULL)
     pop_q(&data->end);
   if (count_type(*user, GRAPHIC) == 0)
-    return (1);
+    return (0);
   find_ask(&data->end_game, data->asking);
   return (0);
 }

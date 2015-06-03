@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Tue Jun  2 11:45:22 2015 Thibaut Lopez
+** Last update Wed Jun  3 10:15:38 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -80,4 +80,31 @@ void		my_endgame(t_user *usr, t_zap *data)
   fill_cb(&usr->wr, tmp, strlen(tmp));
   while (cb_taken(&usr->wr) > 0)
     write_cb(&usr->wr, usr->fd, NULL);
+}
+
+void		my_reset_map(t_zap *data)
+{
+  int	i;
+  int	j;
+
+  i = -1;
+  while (++i < data->width)
+    {
+      j = -1;
+      while (++j < data->length)
+	{
+	  data->map[i][j].food = rand() % 10;
+	  data->map[i][j].linemate = rand() % 8;
+	  data->map[i][j].deraumere = rand() % 8;
+	  data->map[i][j].sibur = rand() % 6;
+	  data->map[i][j].mendiane = rand() % 5;
+	  data->map[i][j].phiras = rand() % 4;
+	  data->map[i][j].thystame = rand() % 2;
+	}
+    }
+  printf("Information about the server:\nPort: %d\nMap of %dx%d cells\n\
+Player max per team: %d\nDelay for each action: %d\nName of each team\n",
+	 data->port, data->length, data->width, data->count, data->delay);
+  put_team(data->teams, 1);
+  printf("(Time waiting for a graphic response: %f)\n", data->asking);
 }

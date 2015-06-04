@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 28 13:49:58 2015 Thibaut Lopez
-** Last update Wed Jun  3 16:43:36 2015 Thibaut Lopez
+** Last update Thu Jun  4 10:56:25 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -78,6 +78,8 @@ int		check_asking(t_user **usr, t_zap *data, t_ask *ask)
     }
   ask->wait.tv_sec = 0;
   ask->wait.tv_usec = 0;
+  if (ask->args != NULL)
+    sfree(ask->args);
   return (ask->res);
 }
 

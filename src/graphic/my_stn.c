@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Wed Jun  3 18:55:49 2015 Thibaut Lopez
+** Last update Thu Jun  4 10:56:27 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -47,7 +47,6 @@ void		stn_data(t_user **usr, t_zap *data, t_ask *ask)
     }
   else
     delete_team(team, usr, data);
-  sfree(ask->args);
 }
 
 void		stn_ok(t_user *usr, t_zap *data)

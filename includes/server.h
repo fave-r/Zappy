@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Wed Jun  3 17:24:54 2015 Thibaut Lopez
+** Last update Thu Jun  4 11:21:55 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -188,6 +188,8 @@ int		set_team(t_zap *, char *, e_state *);
 int		set_count(t_zap *, char *, e_state *);
 int		set_delay(t_zap *, char *, e_state *);
 int		set_asking(t_zap *, char *, e_state *);
+t_user		*get_by_nb(t_user *, int, e_clt);
+t_egg		*get_egg_by_nb(t_team *, int);
 int		parse_com(char **, t_zap *);
 int		base_value(t_zap *);
 void		init_val(t_zap *);
@@ -249,8 +251,11 @@ int		my_send_bct(t_zap *, t_user *, int, int);
 int		my_mct(char **, t_zap *, t_user *);
 int		my_send_tna(t_zap *, t_user *);
 int		my_tna(char **, t_zap *, t_user *);
+int		my_send_ppo(t_user *, t_user *);
 int		my_ppo(char **, t_zap *, t_user *);
+int		my_send_plv(t_user *, t_user *);
 int		my_plv(char **, t_zap *, t_user *);
+int		my_send_pin(t_user *, t_user *);
 int		my_pin(char **, t_zap *, t_user *);
 int		my_sbp(t_user *);
 int		my_send_sgt(t_zap *, t_user *);

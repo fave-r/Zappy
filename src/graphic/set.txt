@@ -1,10 +1,10 @@
 stn N [N]
 set team name
 
-spp #n X Y
+spp #n X Y O
 set player position
 
-spi #n q q q q q q q
+spi #n X Y q q q q q q q
 set player inventory
 
 spl #n L
@@ -24,3 +24,6 @@ set content
 
 sms X Y
 set map size
+
+srs
+set reset

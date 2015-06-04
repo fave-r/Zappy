@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Tue May  5 14:40:23 2015 romaric
-## Last update Wed Jun  3 14:39:23 2015 Thibaut Lopez
+## Last update Thu Jun  4 09:24:44 2015 Thibaut Lopez
 ##
 
 CC=		gcc
@@ -34,6 +34,7 @@ S_SRC=		src/asking.c					\
 		src/command_func.c				\
 		src/data.c					\
 		src/fd_func.c					\
+		src/getter.c					\
 		src/graphic_ptr.c				\
 		src/main.c					\
 		src/manage.c					\

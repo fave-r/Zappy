@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 10:39:02 2015 Thibaut Lopez
-** Last update Wed Jun  3 14:04:30 2015 Thibaut Lopez
+** Last update Thu Jun  4 18:54:09 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -19,7 +19,7 @@ void	init_map(t_zap *data)
   i = -1;
   while (++i < data->width)
     {
-      data->map[i] = malloc(data->length * sizeof(t_content));
+      data->map[i] = xmalloc(data->length * sizeof(t_content));
       j = -1;
       while (++j < data->length)
 	{

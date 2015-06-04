@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Thu Jun  4 17:50:53 2015 Thibaut Lopez
+** Last update Thu Jun  4 18:43:29 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -27,23 +27,7 @@ void		sct_data(t_user **usr, t_zap *data, t_ask *ask)
 
 void		sct_ok(t_ask *ask, t_user *usr, t_zap *data)
 {
-  t_user	*tmp;
-  char		**com;
-
-  (void)data;
-  com = xmalloc(2 * sizeof(char *));
-  com[0] = "mct";
-  com[1] = NULL;
-  tmp = usr;
-  while (tmp != NULL && tmp->prev != NULL)
-    tmp = tmp->prev;
-  while (tmp != NULL)
-    {
-      if (tmp->type == AI)
-	my_send_bct(data, usr, my_strtol(ask->args[0]), my_strtol(ask->args[1]));
-      tmp = tmp->next;
-    }
-  free(com);
+  my_send_bct(data, usr, my_strtol(ask->args[0]), my_strtol(ask->args[1]));
 }
 
 void		sct_ko(t_ask *ask, t_user *usr, t_zap *data)

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Thu Jun  4 11:21:55 2015 Thibaut Lopez
+** Last update Thu Jun  4 19:14:10 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -245,9 +245,11 @@ void		my_endgame(t_user *, t_zap *);
 void		my_reset_map(t_user **, t_zap *, t_ask *);
 int		my_other(char **, t_zap *, t_user *);
 
+int		my_send_msz(t_zap *, t_user *);
 int		my_msz(char **, t_zap *, t_user *);
 int		my_bct(char **, t_zap *, t_user *);
 int		my_send_bct(t_zap *, t_user *, int, int);
+int		my_send_mct(t_zap *, t_user *);
 int		my_mct(char **, t_zap *, t_user *);
 int		my_send_tna(t_zap *, t_user *);
 int		my_tna(char **, t_zap *, t_user *);

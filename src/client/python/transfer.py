@@ -3,9 +3,11 @@
 
 import sys
 import socket
+import ia
 
 def sendCommand(socket, msg):
- print (msg)
+ print(ia.id_cli)
+ print ("{} : {}".format(ia.id_cli, msg))
  msg = msg.encode()
  socket.send(msg)
  return recvCommand(socket)

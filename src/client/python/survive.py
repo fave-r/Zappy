@@ -8,7 +8,7 @@ import ia
 def survivor(socket, foodNeeded, inv):
  if inv[0][1] > foodNeeded:
   print ("Mode survie terminée")
-  ia.begin_ia(socket)
+  ia.begin_ia(socket, ia.id_cli)
   return
 
  print ("Mode survie commencée")
@@ -17,7 +17,7 @@ def survivor(socket, foodNeeded, inv):
 
  i = 0
  j = len(v)
- print (v[i][1][1])
+
  while i < j:
   if v[i][1][1] > 0:
    if i != 0 and v[2][1][1] > 0:
@@ -30,7 +30,6 @@ def survivor(socket, foodNeeded, inv):
     return survivor(socket, foodNeeded, inv)
    else:
     inventaire(socket, inv)
-    print (inv)
     return survivor(socket, foodNeeded, inv)
   i += 1
 

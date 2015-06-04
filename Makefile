@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Tue May  5 14:40:23 2015 romaric
-## Last update Thu Jun  4 09:24:44 2015 Thibaut Lopez
+## Last update Thu Jun  4 17:34:01 2015 Thibaut Lopez
 ##
 
 CC=		gcc
@@ -75,8 +75,6 @@ S_SRC=		src/asking.c					\
 		src/graphic/my_ppo.c				\
 		src/graphic/my_sbp.c				\
 		src/graphic/my_sct.c				\
-		src/graphic/my_sek.c				\
-		src/graphic/my_sep.c				\
 		src/graphic/my_sgt.c				\
 		src/graphic/my_sms.c				\
 		src/graphic/my_spi.c				\

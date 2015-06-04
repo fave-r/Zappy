@@ -13,12 +13,6 @@ set player level
 spk #n
 set player killing
 
-sep #e X Y
-set egg position
-
-sek #e
-set egg killing
-
 sct X Y q q q q q q q
 set content
 

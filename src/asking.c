@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 28 13:49:58 2015 Thibaut Lopez
-** Last update Thu Jun  4 10:56:25 2015 Thibaut Lopez
+** Last update Thu Jun  4 17:24:51 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -70,9 +70,9 @@ int		check_asking(t_user **usr, t_zap *data, t_ask *ask)
       if (tmp->type == GRAPHIC)
 	{
 	  if (ask->res == APR)
-	    ask->ok(tmp, data);
+	    ask->ok(ask, tmp, data);
 	  else
-	    ask->ko(tmp, data);
+	    ask->ko(ask, tmp, data);
 	}
       tmp = tmp->next;
     }

@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Thu Jun  4 11:08:12 2015 Thibaut Lopez
+** Last update Thu Jun  4 17:53:46 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -25,27 +25,20 @@ void		spi_data(t_user **usr, t_zap *data, t_ask *ask)
   GET_INV(tmp).thystame = my_strtol(ask->args[9]);
 }
 
-void		spi_ok(t_user *usr, t_zap *data)
+void		spi_ok(t_ask *ask, t_user *usr, t_zap *data)
 {
   t_user	*tmp;
 
   (void)data;
-  fill_cb(&usr->wr, "apr\n", 4);
-  tmp = usr;
-  while (tmp != NULL && tmp->prev != NULL)
-    tmp = tmp->prev;
-  while (tmp != NULL)
-    {
-      if (tmp->type == AI)
-	my_send_pin(usr, tmp);
-      tmp = tmp->next;
-    }
+  tmp = get_by_nb(usr, my_strtol(ask->args[0] + 1), AI);
+  my_send_pin(usr, tmp);
 }
 
-void		spi_ko(t_user *usr, t_zap *data)
+void		spi_ko(t_ask *ask, t_user *usr, t_zap *data)
 {
+  (void)ask;
+  (void)usr;
   (void)data;
-  fill_cb(&usr->wr, "anr\n", 4);
 }
 
 int		check_spi(char **com, t_zap *data, t_user *usr)

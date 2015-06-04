@@ -5,20 +5,10 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 14:54:42 2015 Thibaut Lopez
-** Last update Wed Jun  3 14:38:11 2015 Thibaut Lopez
+** Last update Thu Jun  4 17:02:51 2015 Thibaut Lopez
 */
 
 #include "server.h"
-
-void		graphic_ask(t_com *ptrs)
-{
-  ptrs[19].com = "agt";
-  ptrs[19].ptr = my_agt;
-  ptrs[20].com = "apr";
-  ptrs[20].ptr = my_apr;
-  ptrs[21].com = "anr";
-  ptrs[21].ptr = my_anr;
-}
 
 void		graphic_bonus(t_com *ptrs)
 {
@@ -32,17 +22,18 @@ void		graphic_bonus(t_com *ptrs)
   ptrs[12].ptr = my_spl;
   ptrs[13].com = "spk";
   ptrs[13].ptr = my_spk;
-  ptrs[14].com = "sep";
-  ptrs[14].ptr = my_sep;
-  ptrs[15].com = "sek";
-  ptrs[15].ptr = my_sek;
-  ptrs[16].com = "sct";
-  ptrs[16].ptr = my_sct;
-  ptrs[17].com = "sms";
-  ptrs[17].ptr = my_sms;
-  ptrs[18].com = "srs";
-  ptrs[18].ptr = my_srs;
-  graphic_ask(ptrs);
+  ptrs[14].com = "sct";
+  ptrs[14].ptr = my_sct;
+  ptrs[15].com = "sms";
+  ptrs[15].ptr = my_sms;
+  ptrs[16].com = "srs";
+  ptrs[16].ptr = my_srs;
+  ptrs[17].com = "agt";
+  ptrs[17].ptr = my_agt;
+  ptrs[18].com = "apr";
+  ptrs[18].ptr = my_apr;
+  ptrs[19].com = "anr";
+  ptrs[19].ptr = my_anr;
 }
 
 void		graphic_ptrs(t_com *ptrs)
@@ -56,15 +47,15 @@ void		graphic_ptrs(t_com *ptrs)
   ptrs[6].ptr = my_pin;
   ptrs[7].ptr = my_sgt;
   ptrs[8].ptr = my_sst;
-  ptrs[22].ptr = my_suc;
-  ptrs[23].ptr = NULL;
+  ptrs[20].ptr = my_suc;
+  ptrs[21].ptr = NULL;
 }
 
 t_com		*graphic_funcs()
 {
   t_com		*ptrs;
 
-  ptrs = xmalloc(24 * sizeof(t_com));
+  ptrs = xmalloc(22 * sizeof(t_com));
   ptrs[0].com = "msz";
   ptrs[1].com = "bct";
   ptrs[2].com = "mct";
@@ -74,8 +65,8 @@ t_com		*graphic_funcs()
   ptrs[6].com = "pin";
   ptrs[7].com = "sgt";
   ptrs[8].com = "sst";
-  ptrs[22].com = "";
-  ptrs[23].com = NULL;
+  ptrs[20].com = "";
+  ptrs[21].com = NULL;
   graphic_ptrs(ptrs);
   graphic_bonus(ptrs);
   return (ptrs);

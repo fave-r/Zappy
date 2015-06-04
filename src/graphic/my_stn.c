@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Thu Jun  4 10:56:27 2015 Thibaut Lopez
+** Last update Thu Jun  4 17:31:32 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -49,15 +49,15 @@ void		stn_data(t_user **usr, t_zap *data, t_ask *ask)
     delete_team(team, usr, data);
 }
 
-void		stn_ok(t_user *usr, t_zap *data)
+void		stn_ok(t_ask *ask, t_user *usr, t_zap *data)
 {
-  fill_cb(&usr->wr, "apr\n", 4);
+  (void)ask;
   my_send_tna(data, usr);
 }
 
-void		stn_ko(t_user *usr, t_zap *data)
+void		stn_ko(t_ask *ask, t_user *usr, t_zap *data)
 {
-  fill_cb(&usr->wr, "anr\n", 4);
+  (void)ask;
   my_send_tna(data, usr);
 }
 

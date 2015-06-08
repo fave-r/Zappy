@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:38:34 2015 romaric
-** Last update Tue Jun  2 16:16:57 2015 Thibaut Lopez
+** Last update Mon Jun  8 13:58:34 2015 romaric
 */
 
 #include "server.h"
@@ -46,7 +46,6 @@ int			handle_fds(int s, t_user **user, t_zap *data)
 	  check_client(user, &bf, data);
 	}
       bool = (quit_sig != 0) ? quit_sig : manage_server(user, data);
-
     }
   return (0);
 }

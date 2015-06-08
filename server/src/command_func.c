@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:12:11 2015 romaric
-** Last update Thu Jun  4 09:20:05 2015 Thibaut Lopez
+** Last update Mon Jun  8 11:55:22 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -83,4 +83,26 @@ int		find_egg_nb(t_team *teams)
       tmp = tmp->next;
     }
   return (nbr);
+}
+
+void		fill_cell(int x, int y, t_content **map, t_zap *data)
+{
+  if (x < data->length && y < data->width)
+    {
+      map[x][y].food = data->map[x][y].food;
+      map[x][y].linemate = data->map[x][y].linemate;
+      map[x][y].deraumere = data->map[x][y].deraumere;
+      map[x][y].sibur = data->map[x][y].sibur;
+      map[x][y].mendiane = data->map[x][y].mendiane;
+      map[x][y].phiras = data->map[x][y].phiras;
+      map[x][y].thystame = data->map[x][y].thystame;
+      return ;
+    }
+  map[x][y].food = rand() % 10;
+  map[x][y].linemate = rand() % 8;
+  map[x][y].deraumere = rand() % 8;
+  map[x][y].sibur = rand() % 6;
+  map[x][y].mendiane = rand() % 5;
+  map[x][y].phiras = rand() % 4;
+  map[x][y].thystame = rand() % 2;
 }

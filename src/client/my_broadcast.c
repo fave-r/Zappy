@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Tue May 26 18:37:50 2015 Thibaut Lopez
+** Last update Mon Jun  8 10:55:01 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -70,6 +70,17 @@ int		get_direction(t_user *src, t_user *dest, t_zap *data)
   return (get_dir(dir, dirs));
 }
 
+void		broadcast_graphic(t_user *usr, char *msg, t_tv *tv)
+{
+  char		*tmp;
+
+  tmp = xmalloc((16 + strlen(msg)) * sizeof(char));
+  bzero(tmp, 16 + strlen(msg));
+  sprintf(tmp, "pbc #%d %s\n", usr->nb, msg);
+  send_to_graphic(tmp, usr, tv);
+  free(tmp);
+}
+
 int		my_broadcast(char **com, t_zap *data, t_user *usr)
 {
   char		str[100];
@@ -79,6 +90,7 @@ int		my_broadcast(char **com, t_zap *data, t_user *usr)
   if (sstrlen(com) != 2)
     return (-1);
   gettimeofday(&now, NULL);
+  add_tv(&now, 7000000 / data->delay);
   tmp = usr;
   while (tmp != NULL && tmp->prev != NULL)
     tmp = tmp->prev;
@@ -88,12 +100,12 @@ int		my_broadcast(char **com, t_zap *data, t_user *usr)
 	{
 	  sprintf(str, "message %d,%s\n", get_direction(usr, tmp, data), com[1]);
 	  fill_cb(&tmp->wr, str, strlen(str));
-	  push_q(&tmp->queue, add_tv(&now, 7000000 / data->delay), clone_tv);
-	  add_tv(&now, -(7000000 / data->delay));
+	  push_q(&tmp->queue, &now, clone_tv);
 	}
       tmp = tmp->next;
     }
   fill_cb(&usr->wr, "ok\n", 3);
-  push_q(&usr->queue, add_tv(&now, 7000000 / data->delay), clone_tv);
+  push_q(&usr->queue, &now, clone_tv);
+  broadcast_graphic(usr, com[1], &now);
   return (0);
 }

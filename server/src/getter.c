@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu Jun  4 09:15:55 2015 Thibaut Lopez
-** Last update Thu Jun  4 09:27:42 2015 Thibaut Lopez
+** Last update Mon Jun  8 17:43:07 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -13,7 +13,7 @@
 t_user	*get_by_nb(t_user *usr, int nb, e_clt type)
 {
   while (usr != NULL && usr->prev != NULL)
-    usr = usr->next;
+    usr = usr->prev;
   while (usr != NULL)
     {
       if (usr->type == type && usr->nb == nb)

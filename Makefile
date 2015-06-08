@@ -1,18 +1,18 @@
 ##
-## Makefile for makefile in /home/thibaut.lopez/Corewar
+## Makefile for zappy in /home/fave_r/rendu/Zappy
 ##
-## Made by Thibaut Lopez
-## Login   <thibaut.lopez@epitech.net>
+## Made by romaric
+## Login   <fave_r@epitech.net>
 ##
-## Started on  Sun Feb 23 20:34:38 2014 Thibaut Lopez
-## Last update Mon Jun  8 13:18:53 2015 Thibaut Lopez
+## Started on  Mon Jun  8 13:24:05 2015 romaric
+## Last update Mon Jun  8 13:24:09 2015 romaric
 ##
 
 SRV_N=		server/
 
 IG_N=		clients/graphic/
 
-all:		
+all:
 		make -C $(SRV_N)
 		make -C $(IG_N)
 clean:

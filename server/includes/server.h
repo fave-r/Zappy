@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Thu Jun  4 19:14:10 2015 Thibaut Lopez
+** Last update Mon Jun  8 11:55:35 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -204,6 +204,7 @@ t_user		*in_this_cell(int, int, t_user *);
 void		send_to_graphic(char *, t_user *, t_tv *);
 int		find_nb(t_user *, e_clt);
 int		find_egg_nb(t_team *);
+void		fill_cell(int, int, t_content **, t_zap *);
 int		my_avance(char **, t_zap *, t_user *);
 int		get_direction(t_user *, t_user *, t_zap *);
 int		my_broadcast(char **, t_zap *, t_user *);

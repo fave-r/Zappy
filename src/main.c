@@ -5,19 +5,22 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Wed Jun  3 09:31:16 2015 Thibaut Lopez
+** Last update Mon Jun  8 10:30:31 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
 void		send_death(t_user **user, t_user **tmp, t_zap *data)
 {
-  char		str[25];
+  char		str[50];
 
   if ((*tmp)->type == AI)
     {
       dprintf((*tmp)->fd, "mort\n");
+      bzero(str, 50);
       sprintf(str, "pdi #%d\n", (*tmp)->nb);
+      if (check_nb_in_cell(1, *tmp) == 1)
+	sprintf(str + strlen(str), "pie %d %d %d\n", GET_X(*tmp), GET_Y(*tmp), 0);
       if (GET_TEAM(*tmp)->count > data->count)
 	GET_TEAM(*tmp)->count--;
       send_to_graphic(str, *tmp, NULL);

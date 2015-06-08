@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Fri May 22 13:37:47 2015 romaric
-** Last update Mon May 25 18:16:42 2015 romaric
+** Last update Mon Jun  8 10:39:02 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -69,7 +69,7 @@ int		check_nb_in_cell(int is_casting, t_user *usr)
       if ((is_casting == 0 && GET_LVL(usr) == GET_LVL(tmp) &&
 	   !IS_CASTING(tmp)) ||
 	  (is_casting == 1 && GET_LVL(usr) == GET_LVL(tmp) &&
-	   cmp_tv(&GET_CAST(usr), &GET_CAST(tmp)) == 0))
+	   IS_CASTING(tmp) && cmp_tv(&GET_CAST(usr), &GET_CAST(tmp)) == 0))
 	  i++;
       tmp = tmp->next;
     }

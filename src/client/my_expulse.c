@@ -5,22 +5,22 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Fri May 29 14:14:02 2015 Thibaut Lopez
+** Last update Mon Jun  8 10:34:07 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
 int	send_expulse(int *bool, t_user *usr, t_user *tmp, t_tv *tv)
 {
-  char          str[100];
+  char          str[256];
 
   if (++(*bool) == 1)
     {
-      bzero(str, 20);
+      bzero(str, 128);
       sprintf(str, "pex #%d\n", usr->nb);
       send_to_graphic(str, usr, tv);
     }
-  bzero(str, 100);
+  bzero(str, 256);
   sprintf(str, "ppo #%d %d %d %d\n", tmp->nb,
           GET_X(tmp), GET_Y(tmp), GET_DIR(tmp) + 1);
   GET_CAST(tmp).tv_usec = 0;
@@ -29,17 +29,23 @@ int	send_expulse(int *bool, t_user *usr, t_user *tmp, t_tv *tv)
   return (0);
 }
 
-int     my_go(t_zap *data, t_user *tmp, t_user *usr)
+int     my_go(t_zap *data, t_user *tmp, t_user *usr, t_tv *tv)
 {
   t_pair        pos;
-  char          str[20];
+  char          str[128];
 
+  if (check_nb_in_cell(1, tmp) == 1)
+    {
+      bzero(str, 128);
+      sprintf(str, "pie %d %d %d\n", GET_X(tmp), GET_Y(tmp), 0);
+      send_to_graphic(str, tmp, tv);
+    }
   pos.f = GET_X(tmp);
   pos.s = GET_Y(tmp);
   gofo[GET_DIR(usr)](&pos, 1);
   GET_X(tmp) = S_MOD(pos.f, data->length);
   GET_Y(tmp) = S_MOD(pos.s, data->width);
-  bzero(str, 20);
+  bzero(str, 128);
   sprintf(str, "deplacement: %d\n", get_direction(usr, tmp, data));
   fill_cb(&tmp->wr, str, strlen(str));
   return (0);
@@ -63,7 +69,7 @@ int		my_expulse(char **com, t_zap *data, t_user *usr)
     {
       if (tmp != usr)
 	{
-	  my_go(data, tmp, usr);
+	  my_go(data, tmp, usr, &now);
 	  send_expulse(&bool, usr, tmp, &now);
 	  push_q(&tmp->queue, &now, clone_tv);
 	}

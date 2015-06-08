@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Jun  8 13:24:05 2015 romaric
-## Last update Mon Jun  8 13:36:41 2015 Thibaut Lopez
+## Last update Mon Jun  8 13:38:02 2015 romaric
 ##
 
 SRV_N=		server/
@@ -16,7 +16,7 @@ all:
 		make -C $(SRV_N)
 		@test -d bin || mkdir bin
 		@cp $(SRV_N)zappy bin/
-		@printf "\033[1;32mBinaries in bin repertory\n"
+		@printf "\033[1;32mBinaries in bin repertory\033[0;m\n"
 clean:
 		make clean -C $(SRV_N)
 		make clean -C $(IG_N)

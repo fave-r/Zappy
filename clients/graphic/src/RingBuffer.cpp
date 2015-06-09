@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 08 13:43:12 2015 Thibaut Lopez
-// Last update Tue Jun  9 12:09:32 2015 Thibaut Lopez
+// Last update Tue Jun  9 12:25:55 2015 Thibaut Lopez
 //
 
 #include "RingBuffer.hh"
@@ -25,7 +25,7 @@ RingBuffer::~RingBuffer()
   delete this->_buff;
 }
 
-const size_t	RingBuffer::_taken() const
+size_t		RingBuffer::_taken() const
 {
   if (this->_beg <= this->_end)
     return (this->_end - this->_beg);
@@ -33,7 +33,7 @@ const size_t	RingBuffer::_taken() const
     return (this->_cap - (this->_beg - this->_end));
 }
 
-const size_t	RingBuffer::_available() const
+size_t		RingBuffer::_available() const
 {
   if (this->_beg > this->_end)
     return (this->_beg - this->_end - 1);
@@ -100,7 +100,7 @@ void		RingBuffer::fill(const std::string &to_add)
   this->_end %= this->_cap;
 }
 
-std::string	RingBuffer::extract(const size_t &len)
+std::string	RingBuffer::extract(size_t len)
 {
   std::string	buff("");
 
@@ -120,9 +120,9 @@ std::string	RingBuffer::extract(const size_t &len)
   return (buff);
 }
 
-size_t		RingBuffer::find(const char &c)
+int		RingBuffer::find(const char &c) const
 {
-  size_t	i;
+  int		i;
 
   i = this->_beg;
   while (i % this->_cap != this->_end && this->_buff[i % this->_cap] != c)
@@ -138,7 +138,7 @@ std::string	RingBuffer::getLine()
   std::string	str("");
 
   if ((ret = this->find('\r')) != -1 || (ret = this->find('\n')) != -1)
-    str.append(this->extract(ret + 1));
+    str.append(this->extract(static_cast<size_t>(ret + 1)));
   return (str);
 }
 

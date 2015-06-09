@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 08 13:43:12 2015 Thibaut Lopez
-// Last update Tue Jun  9 12:08:31 2015 Thibaut Lopez
+// Last update Tue Jun  9 12:25:46 2015 Thibaut Lopez
 //
 
 #ifndef	RINGBUFFER_HH
@@ -24,8 +24,8 @@ private:
   size_t	_beg;
   size_t	_end;
 
-  const size_t	_taken() const;
-  const size_t	_available() const;
+  size_t	_taken() const;
+  size_t	_available() const;
   char		*_getBegin() const;
   char		*_getEnd() const;
 public:
@@ -35,8 +35,8 @@ public:
   void		flush();
   void		extend(const size_t);
   void		fill(const std::string &);
-  std::string	extract(const size_t &);
-  size_t	find(const char &);
+  std::string	extract(size_t);
+  int		find(const char &) const;
   std::string	getLine();
   int		Read(int, const size_t &);
   int		Write(int);

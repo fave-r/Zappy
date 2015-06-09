@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 08 13:43:12 2015 Thibaut Lopez
-// Last update Mon Jun  8 17:10:32 2015 Thibaut Lopez
+// Last update Tue Jun  9 12:09:32 2015 Thibaut Lopez
 //
 
 #include "RingBuffer.hh"
@@ -15,7 +15,7 @@ RingBuffer::RingBuffer()
 {
 }
 
-RingBuffer::RingBuffer(size_t cap)
+RingBuffer::RingBuffer(const size_t cap)
   : _buff(new char[cap]), _cap(cap), _beg(0), _end(0)
 {
 }
@@ -25,7 +25,7 @@ RingBuffer::~RingBuffer()
   delete this->_buff;
 }
 
-size_t		RingBuffer::_taken()
+const size_t	RingBuffer::_taken() const
 {
   if (this->_beg <= this->_end)
     return (this->_end - this->_beg);
@@ -33,7 +33,7 @@ size_t		RingBuffer::_taken()
     return (this->_cap - (this->_beg - this->_end));
 }
 
-size_t		RingBuffer::_available()
+const size_t	RingBuffer::_available() const
 {
   if (this->_beg > this->_end)
     return (this->_beg - this->_end - 1);
@@ -41,12 +41,12 @@ size_t		RingBuffer::_available()
     return (this->_cap - (this->_end - this->_beg) - 1);
 }
 
-char		*RingBuffer::_getBegin()
+char		*RingBuffer::_getBegin() const
 {
   return (this->_buff + this->_beg);
 }
 
-char		*RingBuffer::_getEnd()
+char		*RingBuffer::_getEnd() const
 {
   return (this->_buff + this->_end);
 }
@@ -58,7 +58,7 @@ void		RingBuffer::flush()
   this->_end = 0;
 }
 
-void		RingBuffer::extend(size_t len)
+void		RingBuffer::extend(const size_t len)
 {
   char		*buff;
   size_t	old;
@@ -82,7 +82,7 @@ void		RingBuffer::extend(size_t len)
   this->_cap = len + 50;
 }
 
-void		RingBuffer::fill(std::string to_add)
+void		RingBuffer::fill(const std::string &to_add)
 {
   size_t	len;
 
@@ -100,7 +100,7 @@ void		RingBuffer::fill(std::string to_add)
   this->_end %= this->_cap;
 }
 
-std::string	RingBuffer::extract(size_t len)
+std::string	RingBuffer::extract(const size_t &len)
 {
   std::string	buff("");
 
@@ -120,7 +120,7 @@ std::string	RingBuffer::extract(size_t len)
   return (buff);
 }
 
-size_t		RingBuffer::find(char c)
+size_t		RingBuffer::find(const char &c)
 {
   size_t	i;
 
@@ -142,7 +142,7 @@ std::string	RingBuffer::getLine()
   return (str);
 }
 
-int		RingBuffer::Read(int fd, size_t size)
+int		RingBuffer::Read(int fd, const size_t &size)
 {
   int		rl;
   char		*str;

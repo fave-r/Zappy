@@ -5,31 +5,31 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 15:30:29 2015 Thibaut Lopez
-// Last update Tue Jun  9 16:17:57 2015 Thibaut Lopez
+// Last update Tue Jun  9 16:52:25 2015 Thibaut Lopez
 //
 
 #include "Socket.hh"
 
 Socket::Socket()
-  : _fd(-1)
+  : _s(-1)
 {
 }
 
 Socket::Socket(int fd)
-  : _fd(fd)
+  : _s(fd)
 {
 }
 
 Socket::Socket(const std::string &ip, const std::string &port)
-  : _fd(-1)
+  : _s(-1)
 {
   this->Connect(ip, port);
 }
 
 Socket::~Socket()
 {
-  if (this->_fd > 2)
-    close(this->_fd);
+  if (this->_s > 2)
+    close(this->_s);
 }
 
 void	Socket::Connect(const std::string &ip, const std::string &sPort)
@@ -39,6 +39,8 @@ void	Socket::Connect(const std::string &ip, const std::string &sPort)
   struct protoent	*pe;
   struct sockaddr_in	sin;
 
+  if (this->_s >= 2)
+    close(this->_s);
   idx = 0;
   try
     {
@@ -60,22 +62,40 @@ void	Socket::Connect(const std::string &ip, const std::string &sPort)
       port = 6667;
     }
   pe = getprotobyname("TCP");
-  this->_fd = socket(AF_INET, SOCK_STREAM, pe->p_proto);
-  if (this->_fd == -1)
+  this->_s = socket(AF_INET, SOCK_STREAM, pe->p_proto);
+  if (this->_s == -1)
     throw std::runtime_error("Socket fail.");
   sin.sin_family = AF_INET;
   sin.sin_port = htons(port);
   sin.sin_addr.s_addr = inet_addr(ip.c_str());
-  if (connect(this->_fd, reinterpret_cast<const struct sockaddr *>(&sin), sizeof(sin)) == -1)
+  if (connect(this->_s, reinterpret_cast<const struct sockaddr *>(&sin), sizeof(sin)) == -1)
     throw std::runtime_error("Connect fail.");
 }
 
 void	Socket::set(fd_set *set)
 {
-  FD_SET(this->_fd, set);
+  if (this->_s == -1)
+    throw std::runtime_error("Socket not open.");
+  FD_SET(this->_s, set);
 }
 
 int	Socket::isset(fd_set *set)
 {
-  return (FD_ISSET(this->_fd, set));
+  if (this->_s == -1)
+    throw std::runtime_error("Socket not open.");
+  return (FD_ISSET(this->_s, set));
+}
+
+int	Socket::Read(void *buf, const size_t count)
+{
+  if (this->_s == -1)
+    throw std::runtime_error("Socket not open.");
+  return (read(this->_s, buf, count));
+}
+
+int	Socket::Write(void *buf, const size_t count)
+{
+  if (this->_s == -1)
+    throw std::runtime_error("Socket not open.");
+  return (write(this->_s, buf, count));
 }

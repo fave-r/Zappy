@@ -5,16 +5,14 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 08 13:43:12 2015 Thibaut Lopez
-// Last update Tue Jun  9 12:25:46 2015 Thibaut Lopez
+// Last update Tue Jun  9 16:45:49 2015 Thibaut Lopez
 //
 
 #ifndef	RINGBUFFER_HH
 #define	RINGBUFFER_HH
 
-#include <iostream>
-#include <string>
-#include <cstring>
-#include <unistd.h>
+#include <string.h>
+#include "Socket.hh"
 
 class	RingBuffer
 {
@@ -39,7 +37,9 @@ public:
   int		find(const char &) const;
   std::string	getLine();
   int		Read(int, const size_t &);
+  int		Read(Socket &, const size_t &);
   int		Write(int);
+  int		Write(Socket &);
 };
 
 #endif

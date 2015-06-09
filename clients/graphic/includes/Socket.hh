@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 15:30:29 2015 Thibaut Lopez
-// Last update Tue Jun  9 16:17:44 2015 Thibaut Lopez
+// Last update Tue Jun  9 16:52:36 2015 Thibaut Lopez
 //
 
 #ifndef	SOCKET_HH
@@ -26,7 +26,7 @@
 class	Socket
 {
 private:
-  int	_fd;
+  int	_s;
 public:
   Socket();
   Socket(int);
@@ -35,6 +35,8 @@ public:
   void	Connect(const std::string &, const std::string &);
   void	set(fd_set *);
   int	isset(fd_set *);
+  int	Read(void *, const size_t);
+  int	Write(void *, const size_t);
 };
 
 #endif

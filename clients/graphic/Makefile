@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Jun  8 12:54:25 2015 romaric
-## Last update Tue Jun  9 16:20:03 2015 Thibaut Lopez
+## Last update Tue Jun  9 19:24:06 2015 Thibaut Lopez
 ##
 
 CXX=		g++
@@ -19,9 +19,11 @@ CPPFLAGS=	-W -Wall -Wextra -std=c++11
 NAME=		graphic
 
 SRC=		src/main.cpp		\
-                src/Command.cpp		\
+		src/Map.cpp		\
+		src/Command.cpp		\
 		src/RingBuffer.cpp	\
-		src/Socket.cpp
+		src/Socket.cpp		\
+		src/Client.cpp
 
 OBJ=		$(SRC:.cpp=.o)
 

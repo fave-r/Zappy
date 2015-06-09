@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 08 13:43:12 2015 Thibaut Lopez
-// Last update Tue Jun  9 16:56:02 2015 Thibaut Lopez
+// Last update Tue Jun  9 18:10:48 2015 Thibaut Lopez
 //
 
 #include "RingBuffer.hh"
@@ -156,20 +156,6 @@ int		RingBuffer::Read(int fd, const size_t &size)
   return (rl);
 }
 
-int		RingBuffer::Read(Socket &s, const size_t &size)
-{
-  int		rl;
-  char		*str;
-
-  str = new char[size + 1];
-  rl = s.Read(str, size);
-  str[rl] = 0;
-  if (rl > 0)
-    this->fill(str);
-  delete str;
-  return (rl);
-}
-
 int		RingBuffer::Write(int fd)
 {
   int		wl;
@@ -177,18 +163,6 @@ int		RingBuffer::Write(int fd)
 
   str = this->extract(this->_taken());
   wl = write(fd, str.c_str(), str.size());
-  if ((int)str.size() != wl && wl >= 0)
-    this->fill(str.substr(wl));
-  return (wl);
-}
-
-int		RingBuffer::Write(Socket &s)
-{
-  int		wl;
-  std::string	str;
-
-  str = this->extract(this->_taken());
-  wl = s.Write(const_cast<char *>(str.c_str()), str.size());
   if ((int)str.size() != wl && wl >= 0)
     this->fill(str.substr(wl));
   return (wl);

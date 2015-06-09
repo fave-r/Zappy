@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 15:30:29 2015 Thibaut Lopez
-// Last update Tue Jun  9 16:52:25 2015 Thibaut Lopez
+// Last update Tue Jun  9 19:44:48 2015 Thibaut Lopez
 //
 
 #include "Socket.hh"
@@ -32,7 +32,12 @@ Socket::~Socket()
     close(this->_s);
 }
 
-void	Socket::Connect(const std::string &ip, const std::string &sPort)
+int			Socket::getFD() const
+{
+  return (this->_s);
+}
+
+void			Socket::Connect(const std::string &ip, const std::string &sPort)
 {
   int			port;
   size_t		idx;
@@ -40,7 +45,11 @@ void	Socket::Connect(const std::string &ip, const std::string &sPort)
   struct sockaddr_in	sin;
 
   if (this->_s >= 2)
-    close(this->_s);
+    {
+      close(this->_s);
+      this->_in.flush();
+      this->_out.flush();
+    }
   idx = 0;
   try
     {
@@ -72,30 +81,41 @@ void	Socket::Connect(const std::string &ip, const std::string &sPort)
     throw std::runtime_error("Connect fail.");
 }
 
-void	Socket::set(fd_set *set)
+void			Socket::set(fd_set *rbf, fd_set *wbf) const
 {
   if (this->_s == -1)
     throw std::runtime_error("Socket not open.");
-  FD_SET(this->_s, set);
+  FD_SET(this->_s, rbf);
+  FD_SET(this->_s, wbf);
 }
 
-int	Socket::isset(fd_set *set)
+int			Socket::isset(fd_set *set) const
 {
   if (this->_s == -1)
     throw std::runtime_error("Socket not open.");
   return (FD_ISSET(this->_s, set));
 }
 
-int	Socket::Read(void *buf, const size_t count)
+int			Socket::Read(const size_t &size)
 {
   if (this->_s == -1)
     throw std::runtime_error("Socket not open.");
-  return (read(this->_s, buf, count));
+  return (this->_in.Read(this->_s, size));
 }
 
-int	Socket::Write(void *buf, const size_t count)
+int			Socket::Write()
 {
   if (this->_s == -1)
     throw std::runtime_error("Socket not open.");
-  return (write(this->_s, buf, count));
+  return (this->_out.Write(this->_s));
+}
+
+const std::string	Socket::getLine()
+{
+  return (this->_in.getLine());
+}
+
+void			Socket::fill(const std::string &to_add)
+{
+  this->_out.fill(to_add);
 }

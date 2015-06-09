@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 15:30:29 2015 Thibaut Lopez
-// Last update Tue Jun  9 16:52:36 2015 Thibaut Lopez
+// Last update Tue Jun  9 19:44:13 2015 Thibaut Lopez
 //
 
 #ifndef	SOCKET_HH
@@ -20,23 +20,28 @@
 #include <sys/select.h>
 #include <sys/time.h>
 #include <sys/types.h>
-#include <unistd.h>
 #include <stdexcept>
+#include "RingBuffer.hh"
 
 class	Socket
 {
 private:
-  int	_s;
+  int			_s;
+  RingBuffer		_in;
+  RingBuffer		_out;
 public:
   Socket();
   Socket(int);
   Socket(const std::string &, const std::string &);
   virtual ~Socket();
-  void	Connect(const std::string &, const std::string &);
-  void	set(fd_set *);
-  int	isset(fd_set *);
-  int	Read(void *, const size_t);
-  int	Write(void *, const size_t);
+  int			getFD() const;
+  void			Connect(const std::string &, const std::string &);
+  void			set(fd_set *, fd_set *) const;
+  int			isset(fd_set *) const;
+  int			Read(const size_t &);
+  int			Write();
+  const std::string	getLine();
+  void			fill(const std::string &);
 };
 
 #endif

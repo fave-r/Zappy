@@ -4,6 +4,7 @@
 import sys
 import socket
 from survive import *
+from elevation import *
 
 evol = [
         {"player":1, "linemate":1, "deraumere":0, "sibur":0, "mendiane":0, "phiras":0, "thystame":0},
@@ -16,23 +17,11 @@ evol = [
        ]
 
 
-inv = [
-        ("nourriture", 0),
-        ("linemate", 0),
-        ("deraumere", 0),
-        ("sibur", 0),
-        ("mendiane", 0),
-        ("phiras", 0),
-        ("thystame", 0),
-      ]
+inv = { "nourriture":0, "linemate":0, "deraumere":0, "sibur":0, "mendiane":0, "phiras":0, "thystame":0 }
 
-lvl = 0
-
-id_cli = 0
-
-def begin_ia(socket, id_c):
- global id_cli
- id_cli = id_c
- inventaire(socket, inv)
- if (int(inv[0][1]) <= 10):
-  survivor(socket, int(inv[0][1] + 20), inv)
+def begin_ia(client):
+ inventaire(client, inv)
+ if (int(inv["nourriture"]) < 10):
+  survivor(client, int(inv["nourriture"]) + 20, inv)
+ else:
+  elevation(client)

@@ -6,31 +6,82 @@ import socket
 import signal
 from ia import *
 
+#t_connect = (team, port, host)
+
+id_client = 0
+nb_client = 0
+max_client = 0
+pblevels = [ 0, 0, 0, 0, 0, 0, 0, 0 ]
+
 class Client:
 
-   s = 0
-   id_client = 0;
-   def __init__(self, id_cli, team, host, port):
+   sock = 0
+   lvl = 0
+   cliId = 0
+   t_connect = 0
+   mapX = 0
+   mapY = 0
+   def __init__(self, t_connect):
 
-        Client.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        Client.s.connect((host, port))
+      try:
+        self.t_connect = t_connect
 
-        msg = Client.s.recv(1024).decode()
+        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.sock.connect((t_connect[2], t_connect[1]))
+
+        global max_client
+        global nb_client
+        nb_client += 1
+        global id_client
+        id_client += 1
+        self.cliId = id_client
+        global pblevels
+        pblevels[0] += 1
+
+        msg = self.sock.recv(1024).decode()
         print (msg)
-        Client.s.send(team.encode())
-        remain = Client.s.recv(1024).decode()
+        self.sock.send(t_connect[0].encode())
+        remain = self.sock.recv(1024).decode()
         print (remain)
-        position = Client.s.recv(1024).decode()
-        print (position)
+        map = self.sock.recv(1024).decode()
+        print (map)
 
-        id_client = id_cli
+        if self.cliId == 1:
+         max_client = int(remain) + 1
 
-        begin_ia(Client.s, id_client)
+        map = map.split(' ')
+        self.mapX = int(map[0])
+        self.mapY = int(map[1])
 
-        Client.s.close()
+        begin_ia(self)
 
+        self.sock.close()
+        nb_client -= 1
+        pblevels[self.lvl] -= 1
 
-   def signal_handler(signal, frame):
-        Client.s.close()
+      except KeyboardInterrupt:
+        nb_client -= 1
+        pblevels[self.lvl] -= 1
+        self.sock.close()
         sys.exit(0)
-   signal.signal(signal.SIGINT, signal_handler)
+
+
+   def sendCommand(self, msg):
+     print ("{} : {}".format(self.cliId, msg))
+#     if (msg != "connect_nbr" and nb_client < max_client):
+#      rep = self.sendCommand("connect_nbr")
+#      if int(rep) > 0:
+#       Client(self.t_connect)
+     msg = msg.encode()
+     self.sock.send(msg)
+     return self.recvCommand()
+
+   def recvCommand(self):
+     rep = ""
+     while len(rep) < 2:
+      rep = self.sock.recv(1024).decode()
+     print ("rep = %s" % rep)
+     if (rep == "mort\n"):
+      self.sock.close()
+      sys.exit(0)
+     return rep

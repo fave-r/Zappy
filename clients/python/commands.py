@@ -4,23 +4,22 @@
 import sys
 import socket
 import re
-from transfer import *
 
-def avance(socket):
+def avance(client):
  msg = "avance\n"
- return sendCommand(socket, msg)
+ return client.sendCommand(msg)
 
-def gauche(socket):
+def gauche(client):
  msg = "gauche\n"
- return sendCommand(socket, msg)
+ return client.sendCommand(msg)
 
-def droite(socket):
+def droite(client):
  msg = "droite\n"
- return sendCommand(socket, msg)
+ return client.sendCommand(msg)
 
-def voir(socket):
+def voir(client):
  msg = "voir\n"
- rep = sendCommand(socket, msg)
+ rep = client.sendCommand(msg)
  return voir_to_list(rep)
 
 def voir_to_list(msg):
@@ -32,47 +31,48 @@ def voir_to_list(msg):
   i += 1
  return msg
 
-def inventaire(socket, inv):
+def inventaire(client, inv):
  msg = "inventaire\n"
- rep = sendCommand(socket, msg)
+ rep = client.sendCommand(msg)
  update_inventory(rep, inv)
 
 def update_inventory(msg, inv):
  tab = re.findall(r'\d+', msg)
- i = 0
- while i < 7:
-  tmp = list(inv[i])
-  tmp[1] = int(tab[i])
-  inv[i] = tuple(tmp)
-  i += 1
+ inv["nourriture"] = tab[0]
+ inv["linemate"] = tab[1]
+ inv["deraumere"] = tab[2]
+ inv["sibur"] = tab[3]
+ inv["mendiane"] = tab[4]
+ inv["phiras"] = tab[5]
+ inv["thystame"] = tab[6]
 
-def prend(socket, objet):
+def prend(client, objet):
  msg = "prend " + objet + "\n"
- return sendCommand(socket, msg)
+ return client.sendCommand(msg)
 
-def pose(socket, objet):
+def pose(client, objet):
  msg = "pose " + objet + "\n"
- return sendCommand(socket, msg)
+ return client.sendCommand(msg)
 
-def expulse(socket):
+def expulse(client):
  msg = "expulse\n"
- return sendCommand(socket, msg)
+ return client.sendCommand(msg)
 
-def broadcast(socket, texte):
+def broadcast(client, texte):
  msg = "broadcast " + texte + "\n"
- return sendCommand(socket, msg)
+ return client.sendCommand(msg)
 
-def incantation(socket):
+def incantation(client):
  msg = "incantation\n"
- return sendCommand(socket, msg)
+ return client.sendCommand(msg)
 
-def fork(socket):
+def fork(client):
  msg = "fork\n"
- return sendCommand(socket, msg)
+ return client.sendCommand(msg)
 
-def connect_nbr(socket):
+def connect_nbr(client):
  msg = "connect_nbr\n"
- return sendCommand(socket, msg)
+ return client.sendCommand(msg)
 
 def numberOf(cmd, to_find):
  ret = 0
@@ -93,30 +93,41 @@ def creatObject(cmd):
         ("deraumere", numberOf(cmd, "deraumere")),
         ("sibur", numberOf(cmd, "sibur")),
         ("mendiane", numberOf(cmd, "mendiane")),
-        ("phirus", numberOf(cmd, "phiras")),
+        ("phiras", numberOf(cmd, "phiras")),
         ("thystame", numberOf(cmd, "thystame")),
        ]
  return ret
 
 
-def move(case, socket):
+def move(case, client):
  if case == 0:
   return
- avance(socket)
+ avance(client)
  pos_actu = 2
  coef = 4
  while (pos_actu != case):
   if (case / pos_actu) > 1.5:
-   avance(socket)
+   avance(client)
    pos_actu += coef
    coef += 2
   elif (case / pos_actu) < 1:
-   gauche(socket)
+   gauche(client)
    while (pos_actu != case):
-    avance(socket)
+    avance(client)
     pos_actu -= 1
   else:
-   droite(socket)
+   droite(client)
    while (pos_actu != case):
-    avance(socket)
+    avance(client)
     pos_actu += 1
+
+
+def count_ressource(client, ressource):
+ i = 0
+ while prend(client, ressource) == "ok\n":
+  i += 1
+ j = i
+ while (j > 0):
+  pose(client, ressource)
+  j -= 1
+ return i

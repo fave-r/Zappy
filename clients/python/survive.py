@@ -5,15 +5,17 @@ import sys
 from commands import *
 import ia
 
-def survivor(socket, foodNeeded, inv):
- if inv[0][1] > foodNeeded:
+direction = 0
+
+def survivor(client, foodNeeded, inv):
+ if int(inv["nourriture"]) > foodNeeded:
   print ("Mode survie terminée")
-  ia.begin_ia(socket, ia.id_cli)
+  ia.begin_ia(client)
   return
 
  print ("Mode survie commencée")
 
- v = voir(socket)
+ v = voir(client)
 
  i = 0
  j = len(v)
@@ -21,17 +23,21 @@ def survivor(socket, foodNeeded, inv):
  while i < j:
   if v[i][1][1] > 0:
    if i != 0 and v[2][1][1] > 0:
-    move(2, socket)
+    move(2, client)
    else:
-    move(i, socket)
-   rep = prend(socket, "nourriture")
+    move(i, client)
+   rep = prend(client, "nourriture")
    if rep == "ko\n":
-    avance(socket)
-    return survivor(socket, foodNeeded, inv)
+    avance(client)
+    return survivor(client, foodNeeded, inv)
    else:
-    inventaire(socket, inv)
-    return survivor(socket, foodNeeded, inv)
+    inventaire(client, inv)
+    return survivor(client, foodNeeded, inv)
   i += 1
 
- avance(socket)
- return survivor(socket, foodNeeded, inv)
+ global direction
+ direction += 1
+ if direction % 4 == 0:
+  gauche(client)
+ avance(client)
+ return survivor(client, foodNeeded, inv)

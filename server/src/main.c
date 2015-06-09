@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Mon Jun  8 10:30:31 2015 Thibaut Lopez
+** Last update Tue Jun  9 12:40:06 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -96,7 +96,7 @@ int			main(int ac, char **av)
     return (1);
   if (init_bind(s, &data.port) == -1)
     return (clean_return(s, "Couldn't bind"));
-  if (listen(s, 42) == -1)
+  if (listen(s, 0) == -1)
     return (clean_return(s, "Couldn't listen"));
   handle_fds(s, &user, &data);
   data_free(&user);

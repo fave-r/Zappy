@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Jun  8 12:54:25 2015 romaric
-## Last update Tue Jun  9 11:38:00 2015 Thibaut Lopez
+## Last update Tue Jun  9 16:20:03 2015 Thibaut Lopez
 ##
 
 CXX=		g++
@@ -20,7 +20,8 @@ NAME=		graphic
 
 SRC=		src/main.cpp		\
                 src/Command.cpp		\
-		src/RingBuffer.cpp
+		src/RingBuffer.cpp	\
+		src/Socket.cpp
 
 OBJ=		$(SRC:.cpp=.o)
 

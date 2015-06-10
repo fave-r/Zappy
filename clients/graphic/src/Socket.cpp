@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 15:30:29 2015 Thibaut Lopez
-// Last update Tue Jun  9 19:44:48 2015 Thibaut Lopez
+// Last update Wed Jun 10 15:39:28 2015 Thibaut Lopez
 //
 
 #include "Socket.hh"
@@ -86,7 +86,8 @@ void			Socket::set(fd_set *rbf, fd_set *wbf) const
   if (this->_s == -1)
     throw std::runtime_error("Socket not open.");
   FD_SET(this->_s, rbf);
-  FD_SET(this->_s, wbf);
+  if (this->_out.taken() > 0)
+    FD_SET(this->_s, wbf);
 }
 
 int			Socket::isset(fd_set *set) const

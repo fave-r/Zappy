@@ -5,7 +5,7 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun  8 14:29:10 2015 romaric
-// Last update Wed Jun 10 14:03:24 2015 romaric
+// Last update Wed Jun 10 15:48:11 2015 Thibaut Lopez
 //
 
 #include <map>
@@ -53,209 +53,254 @@ Command::Command()
   this->_foncs["act"] = &Command::askContent;
   this->_foncs["ams"] = &Command::askMapSize;
   this->_foncs["ars"] = &Command::askReset;
+  this->_foncs["agt"] = &Command::askGetTime;
   this->_foncs["suc"] = &Command::unknow;
   this->_foncs["sbp"] = &Command::bad;
 }
 
-void	Command::thiscom(const std::string & com , const std::string & str, Map &map)
+void	Command::thiscom(const std::string &com, Map &map, Socket &s)
 {
-  return (this->*_foncs[com])(str, map);
+  std::string	key;
+
+  key = com.substr(0, com.find_first_of(" \n\r"));
+  std::cout << key << std::endl;
+  return (this->*_foncs.at(key.c_str()))(com, map, s);
 }
 
-void	Command::hello(const std::string & com, Map &map) const
+void	Command::hello(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
+  s.fill("GRAPHIC\n");
   (void)com;
+  (void)map;
 }
 
-void	Command::mapSize(const std::string & com, Map &map) const
+void	Command::mapSize(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::cellInfo(const std::string & com, Map &map) const
+void	Command::cellInfo(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::teamName(const std::string & com, Map &map) const
+void	Command::teamName(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::newPlayer(const std::string & com, Map &map) const
+void	Command::newPlayer(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::playerPos(const std::string & com, Map &map) const
+void	Command::playerPos(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::playerLevel(const std::string & com, Map &map) const
+void	Command::playerLevel(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::playerInv(const std::string &com, Map & map) const
+void	Command::playerInv(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::playerExpel(const std::string &com, Map &map) const
+void	Command::playerExpel(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::playerBroad(const std::string &com, Map & map) const
+void	Command::playerBroad(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::playerCastb(const std::string &com, Map &map) const
+void	Command::playerCastb(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::playerCaste(const std::string &com, Map &map) const
+void	Command::playerCaste(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::playerLay(const std::string &com, Map &map) const
+void	Command::playerLay(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::playerThrow(const std::string &com, Map &map) const
+void	Command::playerThrow(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::playerLoot(const std::string &com, Map &map) const
+void	Command::playerLoot(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::playerStarve(const std::string &com, Map &map) const
+void	Command::playerStarve(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::eggLayed(const std::string &com, Map &map) const
+void	Command::eggLayed(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::eggHatch(const std::string &com, Map &map) const
+void	Command::eggHatch(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::playerOnEgg(const std::string &com, Map &map) const
+void	Command::playerOnEgg(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::hatchedEggStarv(const std::string &com, Map &map) const
+void	Command::hatchedEggStarv(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::timeNotif(const std::string &com, Map &map) const
+void	Command::timeNotif(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::eog(const std::string &com, Map &map) const
+void	Command::eog(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::serverMsg(const std::string &com, Map &map) const
+void	Command::serverMsg(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::askTeam(const std::string &com, Map &map) const
+void	Command::askTeam(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::askPlayerPosition(const std::string &com, Map &map) const
+void	Command::askPlayerPosition(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::askPlayerInv(const std::string &com, Map &map) const
+void	Command::askPlayerInv(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::askPlayerLvl(const std::string &com, Map &map) const
+void	Command::askPlayerLvl(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::askPlayerKill(const std::string &com, Map &map) const
+void	Command::askPlayerKill(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::askContent(const std::string &com, Map &map) const
+void	Command::askContent(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::askMapSize(const std::string &com, Map &map) const
+void	Command::askMapSize(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::askReset(const std::string &com, Map &map) const
+void	Command::askReset(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::unknow(const std::string &com, Map &map) const
+void	Command::askGetTime(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
 }
 
-void	Command::bad(const std::string &com, Map &map) const
+void	Command::unknow(const std::string &com, Map &map, Socket &s) const
 {
-  (void)map;
   (void)com;
+  (void)map;
+  (void)s;
+}
+
+void	Command::bad(const std::string &com, Map &map, Socket &s) const
+{
+  (void)com;
+  (void)map;
+  (void)s;
 }

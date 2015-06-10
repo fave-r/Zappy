@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 19:21:19 2015 Thibaut Lopez
-// Last update Tue Jun  9 19:21:25 2015 Thibaut Lopez
+// Last update Wed Jun 10 14:49:58 2015 Thibaut Lopez
 //
 
 #ifndef	MAP_HH
@@ -19,6 +19,7 @@ class	Map
 public:
   Map();
   virtual ~Map();
+  void	handleKeys();
 };
 
 #endif

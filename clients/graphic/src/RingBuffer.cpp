@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 08 13:43:12 2015 Thibaut Lopez
-// Last update Tue Jun  9 18:10:48 2015 Thibaut Lopez
+// Last update Wed Jun 10 15:46:06 2015 Thibaut Lopez
 //
 
 #include "RingBuffer.hh"
@@ -22,10 +22,10 @@ RingBuffer::RingBuffer(const size_t cap)
 
 RingBuffer::~RingBuffer()
 {
-  delete this->_buff;
+  delete []this->_buff;
 }
 
-size_t		RingBuffer::_taken() const
+size_t		RingBuffer::taken() const
 {
   if (this->_beg <= this->_end)
     return (this->_end - this->_beg);
@@ -33,7 +33,7 @@ size_t		RingBuffer::_taken() const
     return (this->_cap - (this->_beg - this->_end));
 }
 
-size_t		RingBuffer::_available() const
+size_t		RingBuffer::available() const
 {
   if (this->_beg > this->_end)
     return (this->_beg - this->_end - 1);
@@ -65,7 +65,7 @@ void		RingBuffer::extend(const size_t len)
 
   if (this->_cap >= len)
     return ;
-  old = this->_taken();
+  old = this->taken();
   buff = new char[len + 51];
   memset(buff, 0, len + 51);
   if (this->_beg < this->_end)
@@ -87,7 +87,7 @@ void		RingBuffer::fill(const std::string &to_add)
   size_t	len;
 
   len = to_add.size();
-  if (this->_available() < len)
+  if (this->available() < len)
     this->extend(this->_cap + len);
   if (len < this->_cap - this->_end)
     memcpy(this->_getEnd(), to_add.c_str(), len);
@@ -106,8 +106,8 @@ std::string	RingBuffer::extract(size_t len)
 
   if (this->_beg == this->_end)
     return ("");
-  else if (this->_taken() < len)
-    len = this->_taken();
+  else if (this->taken() < len)
+    len = this->taken();
   if (this->_beg < this->_end || this->_cap - this->_beg >= len)
     buff.append(this->_getBegin(), len);
   else
@@ -152,7 +152,7 @@ int		RingBuffer::Read(int fd, const size_t &size)
   str[rl] = 0;
   if (rl > 0)
     this->fill(str);
-  delete str;
+  delete []str;
   return (rl);
 }
 
@@ -161,7 +161,7 @@ int		RingBuffer::Write(int fd)
   int		wl;
   std::string	str;
 
-  str = this->extract(this->_taken());
+  str = this->extract(this->taken());
   wl = write(fd, str.c_str(), str.size());
   if ((int)str.size() != wl && wl >= 0)
     this->fill(str.substr(wl));

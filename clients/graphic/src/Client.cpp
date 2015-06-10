@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 17:40:56 2015 Thibaut Lopez
-// Last update Wed Jun 10 13:36:07 2015 Thibaut Lopez
+// Last update Wed Jun 10 15:46:48 2015 Thibaut Lopez
 //
 
 #include "Client.hh"
@@ -49,7 +49,7 @@ void		Client::run(Map &map)
       this->_tv.tv_sec = 0;
       this->_tv.tv_usec = 10000;
       this->_s.set(&this->_rbf, &this->_wbf);
-      if ((signaled = select(this->_s.getFD() + 1, &this->_rbf, &this->_wbf, NULL, &this->_tv)) != -1)
+      if (select(this->_s.getFD() + 1, &this->_rbf, &this->_wbf, NULL, &this->_tv) != -1)
 	{
 	  if (this->_s.isset(&this->_rbf))
 	    this->_s.Read(499);
@@ -57,8 +57,8 @@ void		Client::run(Map &map)
 	    this->_s.Write();
 	}
       str = this->_s.getLine();
-      if (str.size() > 0)
-	com.thiscom(str.substr(0, 3), str, map);
+      if (str.size() > 0 && str.find_first_of("\n\r") > 0)
+	com.thiscom(str, map, this->_s);
       map.handleKeys();
     }
 }

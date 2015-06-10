@@ -5,15 +5,18 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:51:15 2015 romaric
-** Last update Wed Jun 10 11:45:45 2015 Thibaut Lopez
+** Last update Wed Jun 10 14:43:51 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
-void			set_fd(t_bf *bf, t_user *user)
+void			set_fd(int s, t_bf *bf, t_user *user)
 {
   t_user		*tmp;
 
+  FD_ZERO(&(bf->rbf));
+  FD_ZERO(&(bf->wbf));
+  FD_SET(s, &(bf->rbf));
   tmp = user;
   while (tmp != NULL)
     {
@@ -35,13 +38,12 @@ void			push_back(t_user **user, t_user *to_add)
   to_add->prev = tmp;
 }
 
-void			new_client(int fd, t_user **user, int *nbclient)
+void			new_client(int fd, t_user **user)
 {
   t_user		*new;
   struct sockaddr_in	sin;
   socklen_t		len;
 
-  *nbclient = *nbclient + 1;
   new = xmalloc(sizeof(t_user));
   len = sizeof(sin);
   new->fd = accept(fd, (struct sockaddr *)&sin, &len);

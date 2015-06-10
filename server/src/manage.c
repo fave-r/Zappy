@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Mon Jun  1 11:28:59 2015 Thibaut Lopez
-** Last update Wed Jun  3 16:44:30 2015 Thibaut Lopez
+** Last update Wed Jun 10 14:20:30 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -32,6 +32,32 @@ int		check_food(t_user *usr, t_zap *data)
 	}
     }
   return (0);
+}
+
+void		check_eggs(t_team *teams, t_tv *now, t_user *usr)
+{
+  t_egg		*frt;
+  int		bool;
+  char		tmp[16];
+
+  while (teams != NULL)
+    {
+      bool = 0;
+      while (bool == 0)
+	{
+	  frt = front_q(teams->eggs);
+	  if (frt != NULL && cmp_tv(&frt->hatch, now) <= 0)
+	    {
+	      bzero(tmp, 16);
+	      sprintf(tmp, "edi #%d\n", frt->nb);
+	      send_to_graphic(tmp, usr, NULL);
+	      pop_q(&teams->eggs);
+	    }
+	  else
+	    bool = 1;
+	}
+      teams = teams->next;
+    }
 }
 
 int		end_game(t_zap *data, t_user **user)
@@ -85,7 +111,7 @@ int		manage_server(t_user **user, t_zap *data)
 	tmp = tmp->next;
     }
   gettimeofday(&now, NULL);
-  if (front_q(data->end) != NULL && cmp_tv(front_q(data->end), &now) <= 0)
-    return (end_game(data, user));
-  return (check_asking(user, data, &data->end_game));
+  check_eggs(data->teams, &now, *user);
+  return ((front_q(data->end) != NULL && cmp_tv(front_q(data->end), &now) <= 0)
+	  ? end_game(data, user) : check_asking(user, data, &data->end_game));
 }

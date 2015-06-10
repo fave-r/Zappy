@@ -5,7 +5,7 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun  8 14:05:20 2015 romaric
-// Last update Tue Jun  9 11:57:31 2015 Thibaut Lopez
+// Last update Tue Jun  9 12:20:18 2015 romaric
 //
 
 #ifndef __FACTCO__
@@ -26,7 +26,7 @@ public:
   Command();
   virtual ~Command(){}
 
-  void				thiscom(std::string);
+  func				thiscom(const std::string &, const std::string &);
   void				hello(const std::string &);
   void				mapSize(const std::string &);
   void				cellInfo(const std::string &);

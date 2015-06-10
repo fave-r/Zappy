@@ -5,7 +5,7 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun  8 14:29:10 2015 romaric
-// Last update Tue Jun  9 11:57:16 2015 Thibaut Lopez
+// Last update Tue Jun  9 15:13:04 2015 romaric
 //
 
 #include <map>
@@ -57,7 +57,8 @@ Command::Command()
   this->_foncs["sbp"] = &Command::bad;
 }
 
-void	Command::thiscom(std::string com)
+func	Command::thiscom(const std::string & com , const std::string & str)
 {
-  return (this->*_foncs[com])(com);
+  return (this->*_foncs[com])(str);
 }
+

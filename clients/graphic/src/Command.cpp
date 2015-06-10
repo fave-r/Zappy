@@ -5,7 +5,7 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun  8 14:29:10 2015 romaric
-// Last update Tue Jun  9 15:13:04 2015 romaric
+// Last update Wed Jun 10 14:03:24 2015 romaric
 //
 
 #include <map>
@@ -57,8 +57,205 @@ Command::Command()
   this->_foncs["sbp"] = &Command::bad;
 }
 
-func	Command::thiscom(const std::string & com , const std::string & str)
+void	Command::thiscom(const std::string & com , const std::string & str, Map &map)
 {
-  return (this->*_foncs[com])(str);
+  return (this->*_foncs[com])(str, map);
 }
 
+void	Command::hello(const std::string & com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::mapSize(const std::string & com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::cellInfo(const std::string & com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::teamName(const std::string & com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::newPlayer(const std::string & com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::playerPos(const std::string & com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::playerLevel(const std::string & com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::playerInv(const std::string &com, Map & map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::playerExpel(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::playerBroad(const std::string &com, Map & map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::playerCastb(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::playerCaste(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::playerLay(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::playerThrow(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::playerLoot(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::playerStarve(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::eggLayed(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::eggHatch(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::playerOnEgg(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::hatchedEggStarv(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::timeNotif(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::eog(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::serverMsg(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::askTeam(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::askPlayerPosition(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::askPlayerInv(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::askPlayerLvl(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::askPlayerKill(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::askContent(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::askMapSize(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::askReset(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::unknow(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}
+
+void	Command::bad(const std::string &com, Map &map) const
+{
+  (void)map;
+  (void)com;
+}

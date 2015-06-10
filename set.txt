@@ -1,0 +1,60 @@
+stn N [N]
+set team name
+
+spp #n X Y O
+set player position
+
+spi #n X Y q q q q q q q
+set player inventory
+
+spl #n L
+set player level
+
+spk #n
+set player killing
+
+sct X Y q q q q q q q
+set content
+
+sms X Y
+set map size
+
+srs
+set reset
+
+atn #G #n N [N]
+asking team name
+
+app #G #n #n X Y O
+asking player position
+
+api #G #n #n X Y q q q q q q q
+asking player inventory
+
+apl #G #n #n L
+asking player level
+
+apk #G #n #n
+asking player killing
+
+act #G #n X Y q q q q q q q
+asking content
+
+ams #G #n X Y
+asking map size
+
+ars #G #n 
+asking reset
+
+agt
+asking get time (client)
+
+agt nb(float)
+asking get time (server)
+
+apr #G #n
+asking positive response
+
+anr #G #n
+asking negative response
+

@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Jun  8 12:54:25 2015 romaric
-## Last update Wed Jun 10 15:05:19 2015 Thibaut Lopez
+## Last update Wed Jun 10 18:27:22 2015 Thibaut Lopez
 ##
 
 CXX=		g++
@@ -14,7 +14,7 @@ RM=		rm -f
 
 INCLUDES=	-I ./includes
 
-CPPFLAGS=	-W -Wall -Wextra -std=c++11 -g3
+CPPFLAGS=	-W -Wall -Wextra -std=c++11 -g3 -lSDL
 
 NAME=		graphic
 
@@ -23,7 +23,8 @@ SRC=		src/main.cpp		\
 		src/Command.cpp		\
 		src/RingBuffer.cpp	\
 		src/Socket.cpp		\
-		src/Client.cpp
+		src/Client.cpp		\
+		src/Menu.cpp
 
 OBJ=		$(SRC:.cpp=.o)
 

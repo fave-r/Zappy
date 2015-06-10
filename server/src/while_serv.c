@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:38:34 2015 romaric
-** Last update Mon Jun  8 13:58:34 2015 romaric
+** Last update Wed Jun 10 11:44:28 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -18,14 +18,12 @@ void		signal_quit(__attribute__((unused))int signo)
   write(1, "\n", 1);
 }
 
-void		init_handle(int *bool, t_user **user, int *nb, t_tv *tv)
+void		init_handle(int *bool, t_user **user, int *nb)
 {
   signal(SIGINT, signal_quit);
   *nb = 1;
   *bool = 0;
   *user = NULL;
-  tv->tv_sec = 0;
-  tv->tv_usec = 5000;
 }
 
 int			handle_fds(int s, t_user **user, t_zap *data)
@@ -35,10 +33,15 @@ int			handle_fds(int s, t_user **user, t_zap *data)
   int			nb_client;
   t_tv			tv;
 
-  init_handle(&bool, user, &nb_client, &tv);
+  init_handle(&bool, user, &nb_client);
+  FD_ZERO(&(bf.rbf));
+  FD_ZERO(&(bf.wbf));
+  FD_SET(s, &(bf.rbf));
   while (bool == 0)
     {
-      set_fd(s, &bf, *user);
+      tv.tv_sec = 0;
+      tv.tv_usec = 10000;
+      set_fd(&bf, *user);
       if ((bool = select(s + nb_client, &bf.rbf, &bf.wbf, NULL, &tv)) != -1)
 	{
 	  if (FD_ISSET(s, &bf.rbf))

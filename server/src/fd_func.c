@@ -5,34 +5,28 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:51:15 2015 romaric
-** Last update Mon Jun  1 15:27:54 2015 Thibaut Lopez
+** Last update Wed Jun 10 11:45:45 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
-void	set_fd(int s, t_bf *bf, t_user *user)
+void			set_fd(t_bf *bf, t_user *user)
 {
-  t_user	*tmp;
+  t_user		*tmp;
 
-  FD_ZERO(&(bf->rbf));
-  FD_ZERO(&(bf->wbf));
-  FD_SET(s, &(bf->rbf));
-  if (user != NULL)
+  tmp = user;
+  while (tmp != NULL)
     {
-      tmp = user;
-      while (tmp != NULL)
-	{
-	  FD_SET(tmp->fd, &(bf->rbf));
-	  if (cb_taken(&tmp->wr) > 0)
-	    FD_SET(tmp->fd, &(bf->wbf));
-	  tmp = tmp->next;
-	}
+      FD_SET(tmp->fd, &(bf->rbf));
+      if (cb_taken(&tmp->wr) > 0)
+	FD_SET(tmp->fd, &(bf->wbf));
+      tmp = tmp->next;
     }
 }
 
 void			push_back(t_user **user, t_user *to_add)
 {
-  t_user	*tmp;
+  t_user		*tmp;
 
   tmp = *user;
   while (tmp->next != NULL)
@@ -69,9 +63,9 @@ void			new_client(int fd, t_user **user, int *nbclient)
   fill_cb(&new->wr, "BIENVENUE\n", strlen("BIENVENUE\n"));
 }
 
-t_user		*unit_user_free(t_user *user)
+t_user			*unit_user_free(t_user *user)
 {
-  t_user	*next;
+  t_user		*next;
 
   if (user == NULL)
     return (NULL);
@@ -94,9 +88,9 @@ t_user		*unit_user_free(t_user *user)
   return (next);
 }
 
-void		data_free(t_user **data)
+void			data_free(t_user **data)
 {
-  t_user	*tmp;
+  t_user		*tmp;
 
   tmp = *data;
   while (tmp != NULL)

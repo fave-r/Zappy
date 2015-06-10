@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 17:40:56 2015 Thibaut Lopez
-// Last update Tue Jun  9 19:52:02 2015 Thibaut Lopez
+// Last update Wed Jun 10 10:40:07 2015 Thibaut Lopez
 //
 
 #include "Client.hh"
@@ -52,6 +52,8 @@ void		Client::run(Map &map)
       this->_stdin.set(&this->_rbf, &this->_wbf);
       this->_s.set(&this->_rbf, &this->_wbf);
       if ((signaled = select(this->_s.getFD() + 1, &this->_rbf, &this->_wbf, NULL, &this->_tv)) != -1)
-	std::cout << "ok" << std::endl;
+	{
+
+	}
     }
 }

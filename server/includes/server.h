@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Mon Jun  8 11:55:35 2015 Thibaut Lopez
+** Last update Wed Jun 10 11:45:31 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -156,7 +156,7 @@ int		clean_return(int, char *);
 int		init_socket(void);
 int		init_bind(int, int *);
 int		init_connect(int, int, char *);
-void		set_fd(int, t_bf *, t_user *);
+void		set_fd(t_bf *, t_user *);
 void		new_client(int, t_user **, int *);
 t_user		*unit_user_free(t_user *);
 void		send_death(t_user **, t_user **, t_zap *);

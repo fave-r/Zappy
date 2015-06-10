@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Fri May 22 13:37:47 2015 romaric
-** Last update Mon Jun  8 10:39:02 2015 Thibaut Lopez
+** Last update Wed Jun 10 19:44:58 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -16,7 +16,16 @@ int		level_4(t_content *cont, t_user *usr, int is_casting)
       && cont->sibur >= 2 && cont->phiras >= 1)
     {
       if (check_nb_in_cell(is_casting, usr) >= 4)
-        return (1);
+	{
+	  if (is_casting == 1)
+	    {
+	      cont->linemate -= 1;
+	      cont->deraumere -= 1;
+	      cont->sibur -= 2;
+	      cont->phiras -= 1;
+	    }
+	  return (1);
+	}
     }
   return (0);
 }
@@ -27,7 +36,16 @@ int		level_5(t_content *cont, t_user *usr, int is_casting)
       && cont->sibur >= 1 && cont->mendiane >= 3)
     {
       if (check_nb_in_cell(is_casting, usr) >= 4)
-        return (1);
+	{
+	  if (is_casting == 1)
+	    {
+	      cont->linemate -= 1;
+	      cont->deraumere -= 2;
+	      cont->sibur -= 1;
+	      cont->mendiane -= 3;
+	    }
+	  return (1);
+	}
     }
   return (0);
 }
@@ -38,7 +56,16 @@ int		level_6(t_content *cont, t_user *usr, int is_casting)
       && cont->sibur >= 3 && cont->phiras >= 1)
     {
       if (check_nb_in_cell(is_casting, usr) >= 6)
-        return (1);
+	{
+	  if (is_casting == 1)
+	    {
+	      cont->linemate -= 1;
+	      cont->deraumere -= 2;
+	      cont->sibur -= 3;
+	      cont->phiras -= 1;
+	    }
+	  return (1);
+	}
     }
   return (0);
 }
@@ -50,7 +77,18 @@ int		level_7(t_content *cont, t_user *usr, int is_casting)
       && cont->phiras >= 2 && cont->thystame >= 1)
     {
       if (check_nb_in_cell(is_casting, usr) >= 6)
-        return (1);
+	{
+	  if (is_casting == 1)
+	    {
+	      cont->linemate -= 2;
+	      cont->deraumere -= 2;
+	      cont->sibur -= 2;
+	      cont->mendiane -= 2;
+	      cont->phiras -= 2;
+	      cont->thystame -= 1;
+	    }
+	  return (1);
+	}
     }
   return (0);
 }

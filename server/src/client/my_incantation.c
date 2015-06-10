@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Tue Jun  2 16:48:08 2015 Thibaut Lopez
+** Last update Wed Jun 10 19:47:35 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -15,7 +15,11 @@ int		level_1(t_content *cont, t_user *usr, int is_casting)
   if (cont->linemate >= 1)
     {
       if (check_nb_in_cell(is_casting, usr) >= 1)
-	return (1);
+	{
+	  if (is_casting == 1)
+	    cont->linemate -= 1;
+	  return (1);
+	}
     }
   return (0);
 }
@@ -25,7 +29,15 @@ int		level_2(t_content *cont, t_user *usr, int is_casting)
   if (cont->linemate >= 1 && cont->deraumere >= 1 && cont->sibur >= 1)
     {
       if (check_nb_in_cell(is_casting, usr) >= 2)
-	return (1);
+	{
+	  if (is_casting == 1)
+	    {
+	      cont->linemate -= 1;
+	      cont->deraumere -= 1;
+	      cont->sibur -= 1;
+	    }
+	  return (1);
+	}
     }
   return (0);
 }
@@ -35,7 +47,15 @@ int		level_3(t_content *cont, t_user *usr, int is_casting)
   if (cont->linemate >= 2 && cont->sibur >= 1 && cont->phiras >= 2)
     {
       if (check_nb_in_cell(is_casting, usr) >= 2)
-	return (1);
+	{
+	  if (is_casting == 1)
+	    {
+	      cont->linemate -= 2;
+	      cont->sibur -= 1;
+	      cont->phiras -= 2;
+	    }
+	  return (1);
+	}
     }
   return (0);
 }

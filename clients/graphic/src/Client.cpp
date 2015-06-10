@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 17:40:56 2015 Thibaut Lopez
-// Last update Wed Jun 10 10:40:07 2015 Thibaut Lopez
+// Last update Wed Jun 10 13:36:07 2015 Thibaut Lopez
 //
 
 #include "Client.hh"
@@ -13,17 +13,12 @@
 sig_atomic_t	signaled = 0;
 
 Client::Client()
-  : _stdin(0), _s("127.0.0.1", "6667")
 {
-  this->_tv.tv_sec = 0;
-  this->_tv.tv_usec = 5000;
 }
 
 Client::Client(const std::string &ip, const std::string &port)
-  : _stdin(0), _s(ip, port)
+  : _s(ip, port)
 {
-  this->_tv.tv_sec = 0;
-  this->_tv.tv_usec = 5000;
 }
 
 Client::~Client()
@@ -43,17 +38,27 @@ void		quit_signal(int signo)
 
 void		Client::run(Map &map)
 {
-  (void)map;
+  std::string	str;
+  Command	com;
+
   signal(SIGINT, quit_signal);
+  FD_ZERO(&this->_rbf);
+  FD_ZERO(&this->_wbf);
   while (signaled == 0)
     {
-      FD_ZERO(&this->_rbf);
-      FD_ZERO(&this->_wbf);
-      this->_stdin.set(&this->_rbf, &this->_wbf);
+      this->_tv.tv_sec = 0;
+      this->_tv.tv_usec = 10000;
       this->_s.set(&this->_rbf, &this->_wbf);
       if ((signaled = select(this->_s.getFD() + 1, &this->_rbf, &this->_wbf, NULL, &this->_tv)) != -1)
 	{
-
+	  if (this->_s.isset(&this->_rbf))
+	    this->_s.Read(499);
+	  if (this->_s.isset(&this->_wbf))
+	    this->_s.Write();
 	}
+      str = this->_s.getLine();
+      if (str.size() > 0)
+	com.thiscom(str.substr(0, 3), str, map);
+      map.handleKeys();
     }
 }

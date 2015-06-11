@@ -1,21 +1,18 @@
-#!/usr/bin/python3.3
-# -*-coding:Utf-8 -*
-
 import sys
-from commands import *
 import ia
+from commands import *
 
 direction = 0
 
-def survivor(client, foodNeeded, inv):
+def survivor(sock, cast, id, foodNeeded, inv):
  if int(inv["nourriture"]) > foodNeeded:
   print ("Mode survie terminée")
-  ia.begin_ia(client)
+  ia.begin_ia(sock, id)
   return
 
  print ("Mode survie commencée")
 
- v = voir(client)
+ v = voir(sock, cast)
 
  i = 0
  j = len(v)
@@ -23,21 +20,21 @@ def survivor(client, foodNeeded, inv):
  while i < j:
   if v[i][1][1] > 0:
    if i != 0 and v[2][1][1] > 0:
-    move(2, client)
+    move(2, sock, cast)
    else:
-    move(i, client)
-   rep = prend(client, "nourriture")
+    move(i, sock, cast)
+   rep = prend(sock, cast, "nourriture")
    if rep == "ko\n":
-    avance(client)
-    return survivor(client, foodNeeded, inv)
+    avance(sock, cast)
+    return survivor(sock, cast, id, foodNeeded, inv)
    else:
-    inventaire(client, inv)
-    return survivor(client, foodNeeded, inv)
+    inventaire(sock, cast, inv)
+    return survivor(sock, cast, id, foodNeeded, inv)
   i += 1
 
  global direction
  direction += 1
  if direction % 4 == 0:
-  gauche(client)
- avance(client)
- return survivor(client, foodNeeded, inv)
+  gauche(sock, cast)
+ avance(sock, cast)
+ return survivor(sock, cast, id, foodNeeded, inv)

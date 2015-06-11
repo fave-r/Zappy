@@ -1,25 +1,65 @@
-#!/usr/bin/python3.3
-# -*-coding:Utf-8 -*
-
 import sys
 import socket
 import re
+import ia
 
-def avance(client):
+
+def sendCommand(sock, msg):
+        print ("{} envoie {}".format(ia.cliId, msg))
+        sock.send(msg.encode())
+
+def my_recv(sock):
+        msg = sock.recv(1024).decode()
+        ret = "" + msg
+        if len(msg) <= 0:
+         sys.exit(0)
+        else:
+         while len(msg) == 1024:
+          msg = sock.recv(1024).decode()
+          ret += msg
+        return ret
+
+
+def reception(sock, cast):
+        rep = ""
+        while rep == "":
+         str = my_recv(sock)
+         if not str:
+          sys.exit(0)
+         split = str.split('\n')
+         for cmd in split:
+          if cmd != "":
+           args = cmd.split()
+           if args[0] == "message":
+            cast.append(cmd)
+           elif split[0] == "mort":
+            sys.exit(0)
+           else:
+            rep = cmd
+        
+        print ("{} reçoit {}".format(ia.cliId, rep))
+        return rep
+
+
+def avance(sock, cast):
  msg = "avance\n"
- return client.sendCommand(msg)
+ sendCommand(sock, msg)
+ return reception(sock, cast)
 
-def gauche(client):
+def gauche(sock, cast):
  msg = "gauche\n"
- return client.sendCommand(msg)
+ sendCommand(sock, msg)
+ return reception(sock, cast)
 
-def droite(client):
+def droite(sock, cast):
  msg = "droite\n"
- return client.sendCommand(msg)
+ sendCommand(sock, msg)
+ return reception(sock, cast)
 
-def voir(client):
+def voir(sock, cast):
  msg = "voir\n"
- rep = client.sendCommand(msg)
+ sendCommand(sock, msg)
+ rep = reception(sock, cast)
  return voir_to_list(rep)
 
 def voir_to_list(msg):
@@ -31,9 +71,10 @@ def voir_to_list(msg):
   i += 1
  return msg
 
-def inventaire(client, inv):
+def inventaire(sock, cast, inv):
  msg = "inventaire\n"
- rep = client.sendCommand(msg)
+ sendCommand(sock, msg)
+ rep = reception(sock, cast)
  update_inventory(rep, inv)
 
 def update_inventory(msg, inv):
@@ -46,33 +87,43 @@ def update_inventory(msg, inv):
  inv["phiras"] = tab[5]
  inv["thystame"] = tab[6]
 
-def prend(client, objet):
+def prend(sock, cast, objet):
  msg = "prend " + objet + "\n"
- return client.sendCommand(msg)
+ sendCommand(sock, msg)
+ if reception(sock, cast) != "ko":
+  ia.inv[objet] = int(ia.inv[objet]) + 1
 
-def pose(client, objet):
+def pose(sock, cast, objet):
  msg = "pose " + objet + "\n"
- return client.sendCommand(msg)
+ sendCommand(sock, msg)
+ if reception(sock, cast) != "ko":
+  ia.inv[objet] = int(ia.inv[objet]) - 1
 
-def expulse(client):
+def expulse(sock, cast):
  msg = "expulse\n"
- return client.sendCommand(msg)
+ sendCommand(sock, msg)
+ return reception(sock, cast)
 
-def broadcast(client, texte):
+def broadcast(sock, cast, texte):
  msg = "broadcast " + texte + "\n"
- return client.sendCommand(msg)
+ sendCommand(sock, msg)
+ return reception(sock, cast)
 
-def incantation(client):
+def incantation(sock, cast):
  msg = "incantation\n"
- return client.sendCommand(msg)
+ sendCommand(sock, msg)
+ reception(sock, cast)
+ return reception(sock, cast)
 
-def fork(client):
+def fork(sock, cast):
  msg = "fork\n"
- return client.sendCommand(msg)
+ sendCommand(sock, msg)
+ return reception(sock, cast)
 
 def connect_nbr(client):
  msg = "connect_nbr\n"
- return client.sendCommand(msg)
+ sendCommand(sock, msg)
+ return reception(sock, cast)
 
 def numberOf(cmd, to_find):
  ret = 0
@@ -99,35 +150,41 @@ def creatObject(cmd):
  return ret
 
 
-def move(case, client):
+def move(case, sock, cast):
  if case == 0:
   return
- avance(client)
+ avance(sock, cast)
  pos_actu = 2
  coef = 4
  while (pos_actu != case):
   if (case / pos_actu) > 1.5:
-   avance(client)
+   avance(sock, cast)
    pos_actu += coef
    coef += 2
   elif (case / pos_actu) < 1:
-   gauche(client)
+   gauche(sock, cast)
    while (pos_actu != case):
-    avance(client)
+    avance(sock, cast)
     pos_actu -= 1
   else:
-   droite(client)
+   droite(sock, cast)
    while (pos_actu != case):
-    avance(client)
+    avance(sock, cast)
     pos_actu += 1
 
 
-def count_ressource(client, ressource):
+def take_ressource(sock, cast, ressource, need):
  i = 0
- while prend(client, ressource) == "ok\n":
+ while i < need:
+  if prend(sock, cast, ressource) == "ko\n":
+   break
   i += 1
- j = i
- while (j > 0):
-  pose(client, ressource)
-  j -= 1
- return i
+
+def drop_ressource(sock, cast, lvl):
+ for elem in ia.evol[lvl]:
+  i = 0
+  if elem != "player":
+   if ia.evol[lvl][elem] > 0:
+    while i < ia.evol[lvl][elem]:
+     i += 1
+     pose(sock, cast, elem)

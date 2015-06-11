@@ -3,85 +3,78 @@
 
 import sys
 import socket
+import os
 import signal
 from ia import *
+from survive import *
 
-#t_connect = (team, port, host)
+glo_sock = 0
 
-id_client = 0
-nb_client = 0
-max_client = 0
-pblevels = [ 0, 0, 0, 0, 0, 0, 0, 0 ]
+def get_params(argv):
+        if len(argv) < 5:
+         print("Usage: -n team_name -p port (-h host)")
+         sys.exit(0)         
 
-class Client:
+        for i in range(1, len(argv)):
+         if argv[i] == "-n":
+          team = argv[i + 1]
+         elif argv[i] == "-p":
+          port = int(argv[i + 1])
+         elif argv[i] == "-h" and len(argv) > 6:
+          host = argv[i + 1]
 
-   sock = 0
-   lvl = 0
-   cliId = 0
-   t_connect = 0
-   mapX = 0
-   mapY = 0
-   def __init__(self, t_connect):
+        if 'host' not in locals():
+         host = "localhost"
+        if 'team' not in locals() or 'port' not in locals():
+         print("Usage: -n team_name -p port (-h host)")
+         sys.exit(0)         
 
-      try:
-        self.t_connect = t_connect
+        return team, port, host
 
-        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.sock.connect((t_connect[2], t_connect[1]))
+def connection(port, host):
+        try:
+         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+         sock.connect((host, port))
+        except socket.error:
+         print ("CANNOT CONNECT TO SERVER.")
+         sys.exit(0)
 
-        global max_client
-        global nb_client
-        nb_client += 1
-        global id_client
-        id_client += 1
-        self.cliId = id_client
-        global pblevels
-        pblevels[0] += 1
+        my_recv(sock)
+        msg = team + "\n"
+        sendCommand(sock, team + "\n")
+        rcv = my_recv(sock).split("\n")
+        nb_client = int(rcv[0])
+        rcv = my_recv(sock).split(" ")
+        mapX = rcv[0]
+        mapY = rcv[1][:-1]
 
-        msg = self.sock.recv(1024).decode()
-        print (msg)
-        self.sock.send(t_connect[0].encode())
-        remain = self.sock.recv(1024).decode()
-        print (remain)
-        map = self.sock.recv(1024).decode()
-        print (map)
-
-        if self.cliId == 1:
-         max_client = int(remain) + 1
-
-        map = map.split(' ')
-        self.mapX = int(map[0])
-        self.mapY = int(map[1])
-
-        begin_ia(self)
-
-        self.sock.close()
-        nb_client -= 1
-        pblevels[self.lvl] -= 1
-
-      except KeyboardInterrupt:
-        nb_client -= 1
-        pblevels[self.lvl] -= 1
-        self.sock.close()
-        sys.exit(0)
+        return sock, nb_client, mapX, mapY
 
 
-   def sendCommand(self, msg):
-     print ("{} : {}".format(self.cliId, msg))
-#     if (msg != "connect_nbr" and nb_client < max_client):
-#      rep = self.sendCommand("connect_nbr")
-#      if int(rep) > 0:
-#       Client(self.t_connect)
-     msg = msg.encode()
-     self.sock.send(msg)
-     return self.recvCommand()
+def signal_handler(signum, frame):
+        global glo_sock
+        glo_sock.close()
+        sys.exit()
 
-   def recvCommand(self):
-     rep = ""
-     while len(rep) < 2:
-      rep = self.sock.recv(1024).decode()
-     print ("rep = %s" % rep)
-     if (rep == "mort\n"):
-      self.sock.close()
-      sys.exit(0)
-     return rep
+signal.signal(signal.SIGINT, signal_handler)
+
+if __name__ == '__main__':
+
+        team, port, host = get_params(sys.argv)
+        sock, nb_client, mapX, mapY = connection(port, host)
+        global glo_sock
+        glo_sock = sock
+        print (nb_client, mapX, mapY)
+
+        max_client = nb_client + 1
+        for i in range(1, max_client):
+         pid = os.fork()
+         if pid == 0:
+          sock.close()
+          sock, nb_client, mapX, mapY = connection(port, host)
+          begin_ia(sock, i)
+          sys.exit(1)
+
+        i += 1
+        begin_ia(sock, i)
+        sys.exit(1)

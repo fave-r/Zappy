@@ -5,12 +5,12 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Thu Jun 11 11:32:20 2015 Thibaut Lopez
-// Last update Sun Jun 14 18:57:48 2015 Thibaut Lopez
+// Last update Sun Jun 14 21:36:52 2015 Thibaut Lopez
 //
 
 #include "Input.hh"
 
-void		renderTexture(SDL_Texture *tex, SDL_Renderer *ren, SDL_Rect *dst)
+void		Input::_renderTexture(SDL_Texture *tex, SDL_Renderer *ren, SDL_Rect *dst)
 {
   SDL_QueryTexture(tex, NULL, NULL, &dst->w, &dst->h);
   SDL_RenderCopy(ren, tex, NULL, dst);
@@ -44,8 +44,8 @@ Input::Input(bool isSelected)
 Input::~Input()
 {
   SDL_DestroyTexture(this->_text);
-  TTF_CloseFont(this->_ttf);
   SDL_DestroyTexture(this->_bg);
+  TTF_CloseFont(this->_ttf);
 }
 
 void		Input::init(size_t posX, size_t posY, size_t width, size_t height, SDL_Renderer *ren)
@@ -98,7 +98,7 @@ void		Input::addChar(const std::string &c, SDL_Renderer *ren)
   this->_text = SDL_CreateTextureFromSurface(ren, text);
   SDL_FreeSurface(text);
   if (this->_text == NULL)
-    throw std::runtime_error("SDL_CreateTexutreFromSurface.");
+    throw std::runtime_error("SDL_CreateTextureFromSurface.");
   SDL_QueryTexture(this->_text, NULL, NULL, &w, &h);
   if (w > this->_bgPos.w)
     this->_curPos -= c.size();
@@ -168,9 +168,14 @@ std::string	Input::getInput() const
   return (ret);
 }
 
+bool		Input::isClicked(int x, int y) const
+{
+  return (x >= this->_bgPos.x && x <= this->_bgPos.x + this->_bgPos.w && y >= this->_bgPos.y && y <= this->_bgPos.y + this->_bgPos.h);
+}
+
 void		Input::refresh(SDL_Renderer *ren)
 {
-  renderTexture(this->_bg, ren, &this->_bgPos);
+  this->_renderTexture(this->_bg, ren, &this->_bgPos);
   this->_setText(ren);
-  renderTexture(this->_text, ren, &this->_textPos);
+  this->_renderTexture(this->_text, ren, &this->_textPos);
 }

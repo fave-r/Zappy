@@ -5,7 +5,7 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun  8 13:02:03 2015 romaric
-// Last update Thu Jun 11 11:29:31 2015 Thibaut Lopez
+// Last update Sun Jun 14 19:42:47 2015 Thibaut Lopez
 //
 
 #include "Client.hh"
@@ -13,15 +13,17 @@
 
 int	main(int ac, char **av)
 {
+  std::pair<std::string, std::string>	con;
   Client	clt;
   Map		map;
-  Menu		menu;
+  Menu		*menu;
 
   (void)ac;
   (void)av;
-  (void)menu;
-  menu.run(map);
-  clt.Connect("127.0.0.1", "6667");
+  menu = new Menu();
+  con = menu->run(map);
+  delete menu;
+  clt.Connect(con.first, con.second);
   clt.run(map);
   return (0);
 }

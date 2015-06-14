@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 17:40:56 2015 Thibaut Lopez
-// Last update Wed Jun 10 15:46:48 2015 Thibaut Lopez
+// Last update Thu Jun 11 11:28:27 2015 Thibaut Lopez
 //
 
 #include "Client.hh"
@@ -58,7 +58,13 @@ void		Client::run(Map &map)
 	}
       str = this->_s.getLine();
       if (str.size() > 0 && str.find_first_of("\n\r") > 0)
-	com.thiscom(str, map, this->_s);
+	try
+	  {
+	    com.thiscom(str, map, this->_s);
+	  }
+	catch (std::out_of_range &err)
+	  {
+	  }
       map.handleKeys();
     }
 }

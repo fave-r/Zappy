@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Wed May 27 18:41:15 2015 Thibaut Lopez
+** Last update Mon Jun 15 18:33:27 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -35,7 +35,7 @@ void		analyse_cell(t_content **cnt, t_pair *cone, t_user *usr)
     tmp = tmp->prev;
   while ((tmp = in_this_cell(cone->f, cone->s, tmp)) != NULL)
     {
-      fill_cb(&usr->wr, " player", 7);
+      fill_cb(&usr->wr, " joueur", 7);
       tmp = tmp->next;
     }
   if (cnt[cone->f][cone->s].food > 0)

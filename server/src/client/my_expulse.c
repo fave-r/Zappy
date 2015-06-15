@@ -5,12 +5,12 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Mon Jun  8 10:34:07 2015 Thibaut Lopez
+** Last update Mon Jun 15 15:01:06 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
-int	send_expulse(int *bool, t_user *usr, t_user *tmp, t_tv *tv)
+int	send_expulse(int *bool, t_user *usr, t_user *tmp)
 {
   char          str[256];
 
@@ -18,18 +18,18 @@ int	send_expulse(int *bool, t_user *usr, t_user *tmp, t_tv *tv)
     {
       bzero(str, 128);
       sprintf(str, "pex #%d\n", usr->nb);
-      send_to_graphic(str, usr, tv);
+      send_to_graphic(str, usr);
     }
   bzero(str, 256);
   sprintf(str, "ppo #%d %d %d %d\n", tmp->nb,
           GET_X(tmp), GET_Y(tmp), GET_DIR(tmp) + 1);
   GET_CAST(tmp).tv_usec = 0;
   GET_CAST(tmp).tv_sec = 0;
-  send_to_graphic(str, usr, tv);
+  send_to_graphic(str, usr);
   return (0);
 }
 
-int     my_go(t_zap *data, t_user *tmp, t_user *usr, t_tv *tv)
+int     my_go(t_zap *data, t_user *tmp, t_user *usr)
 {
   t_pair        pos;
   char          str[128];
@@ -38,7 +38,7 @@ int     my_go(t_zap *data, t_user *tmp, t_user *usr, t_tv *tv)
     {
       bzero(str, 128);
       sprintf(str, "pie %d %d %d\n", GET_X(tmp), GET_Y(tmp), 0);
-      send_to_graphic(str, tmp, tv);
+      send_to_graphic(str, tmp);
     }
   pos.f = GET_X(tmp);
   pos.s = GET_Y(tmp);
@@ -69,8 +69,8 @@ int		my_expulse(char **com, t_zap *data, t_user *usr)
     {
       if (tmp != usr)
 	{
-	  my_go(data, tmp, usr, &now);
-	  send_expulse(&bool, usr, tmp, &now);
+	  my_go(data, tmp, usr);
+	  send_expulse(&bool, usr, tmp);
 	  push_q(&tmp->queue, &now, clone_tv);
 	}
     }

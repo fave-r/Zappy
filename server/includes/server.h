@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Wed Jun 10 14:35:26 2015 Thibaut Lopez
+** Last update Mon Jun 15 18:01:21 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -19,6 +19,7 @@
 #define	GET_LVL(u)	(((t_plr *)(u)->info)->level)
 #define	GET_TIME(u)	(((t_plr *)(u)->info)->time)
 #define	GET_CAST(u)	(((t_plr *)(u)->info)->cast)
+#define	GET_GHOST(u)	(((t_plr *)(u)->info)->ghost)
 #define	IS_CASTING(u)	(!(GET_CAST(u).tv_sec == 0 && GET_CAST(u).tv_usec == 0))
 #define	IS_ASKING(a)	(!((a)->wait.tv_sec == 0 && (a)->wait.tv_usec == 0))
 
@@ -79,7 +80,9 @@ typedef struct	s_egg
 {
   int		nb;
   int		dad;
+  int		son;
   t_pair	pos;
+  t_tv		lay;
   t_tv		hatch;
 }		t_egg;
 
@@ -126,6 +129,7 @@ typedef struct	s_plr
   uint16_t	level;
   t_tv		time;
   t_tv		cast;
+  int		ghost;
 }		t_plr;
 
 typedef struct	s_user
@@ -202,7 +206,7 @@ void		send_elev_in(t_user *);
 int		count_in_team(t_team *, t_user *);
 int		team_winning(t_user *, t_team *);
 t_user		*in_this_cell(int, int, t_user *);
-void		send_to_graphic(char *, t_user *, t_tv *);
+void		send_to_graphic(char *, t_user *);
 int		find_nb(t_user *, e_clt);
 int		find_egg_nb(t_team *);
 void		fill_cell(int, int, t_content **, t_zap *);
@@ -223,13 +227,13 @@ int		level_7(t_content *, t_user *, int);
 int		my_incantation(char **, t_zap *, t_user *);
 int		my_inventaire(char **, t_zap *, t_user *);
 t_com		*ptrs_get();
-int		send_pose(t_user *, int, t_content *, t_tv *);
+int		send_pose(t_user *, int, t_content *);
 int		my_pose(char **, t_zap *, t_user *);
 int		get_sibur(t_content *, uint16_t **);
 int		get_mendiane(t_content *, uint16_t **);
 int		get_phiras(t_content *, uint16_t **);
 int		get_thystame(t_content *, uint16_t **);
-int		send_prend(t_user *, int, t_content *, t_tv *);
+int		send_prend(t_user *, int, t_content *);
 int		my_prend(char **, t_zap *, t_user *);
 void		north_gofo(t_pair *, int);
 void		north_gole(t_pair *, int);

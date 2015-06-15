@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Mon Jun  8 10:55:01 2015 Thibaut Lopez
+** Last update Mon Jun 15 14:59:33 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -70,14 +70,14 @@ int		get_direction(t_user *src, t_user *dest, t_zap *data)
   return (get_dir(dir, dirs));
 }
 
-void		broadcast_graphic(t_user *usr, char *msg, t_tv *tv)
+void		broadcast_graphic(t_user *usr, char *msg)
 {
   char		*tmp;
 
   tmp = xmalloc((16 + strlen(msg)) * sizeof(char));
   bzero(tmp, 16 + strlen(msg));
   sprintf(tmp, "pbc #%d %s\n", usr->nb, msg);
-  send_to_graphic(tmp, usr, tv);
+  send_to_graphic(tmp, usr);
   free(tmp);
 }
 
@@ -106,6 +106,6 @@ int		my_broadcast(char **com, t_zap *data, t_user *usr)
     }
   fill_cb(&usr->wr, "ok\n", 3);
   push_q(&usr->queue, &now, clone_tv);
-  broadcast_graphic(usr, com[1], &now);
+  broadcast_graphic(usr, com[1]);
   return (0);
 }

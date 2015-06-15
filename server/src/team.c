@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 26 16:24:34 2015 Thibaut Lopez
-** Last update Thu May 28 11:13:07 2015 Thibaut Lopez
+** Last update Mon Jun 15 18:05:36 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -78,8 +78,12 @@ void		*clone_egg(void *to_clone)
   egg = (t_egg *)to_clone;
   new = xmalloc(sizeof(t_egg));
   new->nb = egg->nb;
+  new->dad = egg->dad;
+  new->son = egg->son;
   new->pos.f = egg->pos.f;
   new->pos.s = egg->pos.s;
+  new->lay.tv_sec = egg->lay.tv_sec;
+  new->lay.tv_usec = egg->lay.tv_usec;
   new->hatch.tv_sec = egg->hatch.tv_sec;
   new->hatch.tv_usec = egg->hatch.tv_usec;
   return (new);

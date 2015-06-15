@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:38:34 2015 romaric
-** Last update Wed Jun 10 19:13:07 2015 Thibaut Lopez
+** Last update Mon Jun 15 14:58:39 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -31,7 +31,7 @@ void		send_death(t_user **user, t_user **tmp, t_zap *data)
 	sprintf(str + strlen(str), "pie %d %d %d\n", GET_X(*tmp), GET_Y(*tmp), 0);
       if (GET_TEAM(*tmp)->count > data->count)
 	GET_TEAM(*tmp)->count--;
-      send_to_graphic(str, *tmp, NULL);
+      send_to_graphic(str, *tmp);
     }
   *user = (*tmp == *user) ? (*user)->next : *user;
   *tmp = unit_user_free(*tmp);
@@ -47,7 +47,7 @@ void		cast_result(t_zap *data, t_user **user, t_user *tmp, t_tv *now)
   cur = *user;
   bzero(str, 50);
   sprintf(str, "pie %d %d %d\n", GET_X(tmp), GET_Y(tmp), check);
-  send_to_graphic(str, (*user), NULL);
+  send_to_graphic(str, (*user));
   while ((cur = in_this_cell(GET_X(tmp), GET_Y(tmp), cur)) != NULL)
     {
       cast_loop(cur, tmp, check, now);

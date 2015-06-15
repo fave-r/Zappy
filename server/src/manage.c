@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Mon Jun  1 11:28:59 2015 Thibaut Lopez
-** Last update Wed Jun 10 14:20:30 2015 Thibaut Lopez
+** Last update Mon Jun 15 18:36:18 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -34,27 +34,49 @@ int		check_food(t_user *usr, t_zap *data)
   return (0);
 }
 
+void		check_egg_time(t_egg *egg, t_tv *now, t_user *usr, t_team *teams)
+{
+  char		tmp[128];
+
+  bzero(tmp, 128);
+  if (!(egg->lay.tv_sec == 0 && egg->lay.tv_usec == 0) &&
+      cmp_tv(&egg->lay, now) <= 0)
+    {
+      sprintf(tmp, "enw #%d #%d %d %d\n",
+	      egg->nb, egg->dad, egg->pos.f, egg->pos.s);
+      send_to_graphic(tmp, usr);
+      egg->lay.tv_sec = 0;
+      egg->lay.tv_usec = 0;
+      teams->count++;
+    }
+  else if (cmp_tv(&egg->hatch, now) <= 0)
+    {
+      sprintf(tmp, (egg->son == -1) ? "edi #%d\n" : "eht #%d\n", egg->nb);
+      if (egg->son != -1)
+	GET_GHOST(get_by_nb(usr, egg->son, AI)) = 0;
+      send_to_graphic(tmp, usr);
+      pop_q(&teams->eggs);
+    }
+}
+
 void		check_eggs(t_team *teams, t_tv *now, t_user *usr)
 {
   t_egg		*frt;
+  t_egg		*prev;
   int		bool;
-  char		tmp[16];
 
   while (teams != NULL)
     {
       bool = 0;
+      prev = NULL;
       while (bool == 0)
 	{
 	  frt = front_q(teams->eggs);
-	  if (frt != NULL && cmp_tv(&frt->hatch, now) <= 0)
-	    {
-	      bzero(tmp, 16);
-	      sprintf(tmp, "edi #%d\n", frt->nb);
-	      send_to_graphic(tmp, usr, NULL);
-	      pop_q(&teams->eggs);
-	    }
+	  if (frt != NULL && frt != prev)
+	    check_egg_time(frt, now, usr, teams);
 	  else
 	    bool = 1;
+	  prev = frt;
 	}
       teams = teams->next;
     }

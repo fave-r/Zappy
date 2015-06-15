@@ -5,27 +5,25 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Fri May 29 18:11:03 2015 Thibaut Lopez
+** Last update Mon Jun 15 18:54:05 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
-void		send_new_player(t_user *usr, int is_hatching)
+void		send_new_player(t_user *usr)
 {
-  t_tv		now;
   char		str[256];
 
-  gettimeofday(&now, NULL);
   bzero(str, 256);
   sprintf(str, "pnw #%d %d %d %d %d %s\n", usr->nb, GET_X(usr),
 	  GET_Y(usr), GET_DIR(usr) + 1, GET_LVL(usr), GET_TEAM(usr)->name);
-  send_to_graphic(str, usr, &now);
-  if (is_hatching != -1)
-    {
-      bzero(str, 256);
-      sprintf(str, "eht #%d\n", is_hatching);
-      send_to_graphic(str, usr, front_q(usr->queue));
-    }
+  send_to_graphic(str, usr);
+  bzero(str, 256);
+  sprintf(str, "pin #%d %d %d %d %d %d %d %d %d %d\n", usr->nb, GET_X(usr),
+	  GET_Y(usr), GET_INV(usr).food, GET_INV(usr).linemate,
+	  GET_INV(usr).deraumere, GET_INV(usr).sibur, GET_INV(usr).mendiane,
+	  GET_INV(usr).phiras, GET_INV(usr).thystame);
+  send_to_graphic(str, usr);
 }
 
 void		send_client_info(t_team *team, t_zap *data, t_user *usr)
@@ -63,15 +61,13 @@ t_plr		*player_info(t_team *team, t_pair *pos)
   return (plr);
 }
 
-int	hatching_egg(t_pair *pos, t_user *usr, t_zap *data, t_team *cur)
+int		hatching_egg(t_pair *pos, t_user *usr, t_zap *data, t_team *cur)
 {
-  t_tv	now;
-  t_egg	*frt;
-  char	tmp[16];
-  int	nb;
+  t_egg		*frt;
+  char		tmp[16];
+  int		nb;
 
   frt = front_q(cur->eggs);
-  gettimeofday(&now, NULL);
   if (frt == NULL || data->count > count_in_team(cur, usr))
     {
       pos->f = rand() % data->length;
@@ -83,9 +79,9 @@ int	hatching_egg(t_pair *pos, t_user *usr, t_zap *data, t_team *cur)
   bzero(tmp, 16);
   nb = frt->nb;
   sprintf(tmp, "ebo #%d\n", nb);
-  send_to_graphic(tmp, usr, &now);
+  send_to_graphic(tmp, usr);
   push_q(&usr->queue, &frt->hatch, clone_tv);
-  pop_q(&cur->eggs);
+  frt->son = find_nb(usr, AI);
   return (nb);
 }
 
@@ -103,12 +99,13 @@ int		my_other(char **com, t_zap *data, t_user *usr)
     return (-1);
   is_hatching = hatching_egg(&pos, usr, data, cur);
   usr->info = player_info(cur, &pos);
+  usr->nb = find_nb(usr, AI);
+  usr->type = AI;
+  GET_GHOST(usr) = (is_hatching != -1) ? 1 : 0;
   tmp = usr;
   while (tmp != NULL && tmp->prev != NULL)
     tmp = tmp->prev;
-  usr->nb = find_nb(tmp, AI);
-  usr->type = AI;
   send_client_info(cur, data, usr);
-  send_new_player(usr, is_hatching);
+  send_new_player(usr);
   return (0);
 }

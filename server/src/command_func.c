@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:12:11 2015 romaric
-** Last update Mon Jun  8 11:55:22 2015 Thibaut Lopez
+** Last update Mon Jun 15 18:24:22 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -14,14 +14,15 @@ t_user		*in_this_cell(int x, int y, t_user *user)
 {
   while (user != NULL)
     {
-      if (user->type == AI && GET_X(user) == x && GET_Y(user) == y)
+      if (user->type == AI && GET_X(user) == x &&
+	  GET_Y(user) == y && GET_GHOST(user) == 0)
 	return (user);
       user = user->next;
     }
   return (NULL);
 }
 
-void		send_to_graphic(char *com, t_user *usr, t_tv *when)
+void		send_to_graphic(char *com, t_user *usr)
 {
   while (usr != NULL && usr->prev != NULL)
     usr = usr->prev;
@@ -30,7 +31,7 @@ void		send_to_graphic(char *com, t_user *usr, t_tv *when)
       if (usr->type == GRAPHIC)
 	{
 	  fill_cb(&usr->wr, com, strlen(com));
-	  push_q(&usr->queue, when, clone_tv);
+	  push_q(&usr->queue, NULL, clone_tv);
 	}
       usr = usr->next;
     }

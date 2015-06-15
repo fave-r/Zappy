@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Wed Jun 10 18:13:06 2015 Thibaut Lopez
-// Last update Sun Jun 14 21:36:07 2015 Thibaut Lopez
+// Last update Mon Jun 15 03:14:45 2015 Thibaut Lopez
 //
 
 #include "Menu.hh"
@@ -71,7 +71,7 @@ std::pair<std::string, std::string>	Menu::run(Map &map)
   loop = true;
   while (loop)
     {
-      if (SDL_WaitEventTimeout(&this->_event, 100))
+      while (SDL_PollEvent(&this->_event))
 	{
 	  if (this->_event.type == SDL_QUIT || this->_event.key.keysym.sym == SDLK_ESCAPE)
 	    loop = false;
@@ -115,8 +115,8 @@ std::pair<std::string, std::string>	Menu::run(Map &map)
 		  this->_port->setSelected(false);
 		}
 	    }
-	  this->_refresh();
 	}
+      this->_refresh();
     }
   SDL_StopTextInput();
   return (ret);

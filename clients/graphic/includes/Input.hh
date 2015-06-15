@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Thu Jun 11 11:32:20 2015 Thibaut Lopez
-// Last update Sun Jun 14 21:23:34 2015 Thibaut Lopez
+// Last update Mon Jun 15 03:33:03 2015 Thibaut Lopez
 //
 
 #ifndef	INPUT_HH
@@ -15,6 +15,7 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
+#include <time.h>
 #include <SDL2/SDL.h>
 #include "SDL2/SDL_ttf.h"
 
@@ -34,8 +35,9 @@ private:
   int		_size;
 
   bool		_isSelected;
+  time_t	_time;
 
-  void		_renderTexture(SDL_Texture *, SDL_Renderer *, SDL_Rect *);
+  void		_renderTexture(SDL_Texture *, SDL_Renderer *, SDL_Rect *, SDL_Rect *);
   void		_setText(SDL_Renderer *);
 public:
   explicit Input(bool);

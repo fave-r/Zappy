@@ -5,16 +5,10 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Thu Jun 11 11:32:20 2015 Thibaut Lopez
-// Last update Sun Jun 14 21:36:52 2015 Thibaut Lopez
+// Last update Mon Jun 15 03:56:15 2015 Thibaut Lopez
 //
 
 #include "Input.hh"
-
-void		Input::_renderTexture(SDL_Texture *tex, SDL_Renderer *ren, SDL_Rect *dst)
-{
-  SDL_QueryTexture(tex, NULL, NULL, &dst->w, &dst->h);
-  SDL_RenderCopy(ren, tex, NULL, dst);
-}
 
 void		Input::_setText(SDL_Renderer *ren)
 {
@@ -22,8 +16,10 @@ void		Input::_setText(SDL_Renderer *ren)
   std::string	content;
 
   content = this->_content;
-  if (this->_isSelected == false)
+  if (this->_isSelected == false || time(NULL) - this->_time == 1)
     content[this->_curPos] = ' ';
+  else
+    this->_time = time(NULL);
   text = TTF_RenderText_Blended(this->_ttf, content.c_str(), this->_fColor);
   if (text == NULL)
     throw std::runtime_error("TTF_RenderText_Blended.");
@@ -34,7 +30,7 @@ void		Input::_setText(SDL_Renderer *ren)
 }
 
 Input::Input(bool isSelected)
-  : _bg(NULL), _text(NULL), _content("|"), _curPos(0), _size(0), _isSelected(isSelected)
+  : _bg(NULL), _text(NULL), _content("|"), _curPos(0), _size(0), _isSelected(isSelected), _time(time(NULL))
 {
   this->_fColor.r = 255;
   this->_fColor.g = 255;
@@ -82,28 +78,16 @@ void		Input::setSelected(bool isSelected)
 
 void		Input::addChar(const std::string &c, SDL_Renderer *ren)
 {
-  int		h;
-  int		w;
   std::string	str("");
-  SDL_Surface	*text;
 
+  (void)ren;
   str.append(this->_content.substr(0, this->_curPos));
   str.append(c);
   str.append("|");
   str.append(this->_content.substr(this->_curPos + 1));
   this->_curPos += c.size();
-  text = TTF_RenderText_Blended(this->_ttf, str.c_str(), this->_fColor);
-  if (text == NULL)
-    throw std::runtime_error("TTF_RenderText_Blended.");
-  this->_text = SDL_CreateTextureFromSurface(ren, text);
-  SDL_FreeSurface(text);
-  if (this->_text == NULL)
-    throw std::runtime_error("SDL_CreateTextureFromSurface.");
-  SDL_QueryTexture(this->_text, NULL, NULL, &w, &h);
-  if (w > this->_bgPos.w)
-    this->_curPos -= c.size();
-  else
-    this->_content = str;
+  this->_content = str;
+  this->_time = time(NULL);
 }
 
 void		Input::curRight()
@@ -118,6 +102,7 @@ void		Input::curRight()
   this->_curPos++;
   str.append(this->_content.substr(this->_curPos + 1));
   this->_content = str;
+  this->_time = time(NULL);
 }
 
 void		Input::curLeft()
@@ -132,6 +117,7 @@ void		Input::curLeft()
   str.append(1, this->_content.at(this->_curPos));
   str.append(this->_content.substr(this->_curPos + 2));
   this->_content = str;
+  this->_time = time(NULL);
 }
 
 void		Input::deleteChar()
@@ -145,6 +131,7 @@ void		Input::deleteChar()
   this->_curPos--;
   str.append(this->_content.substr(this->_curPos + 2));
   this->_content = str;
+  this->_time = time(NULL);
 }
 
 void		Input::supprChar()
@@ -157,6 +144,7 @@ void		Input::supprChar()
   str.append("|");
   str.append(this->_content.substr(this->_curPos + 2));
   this->_content = str;
+  this->_time = time(NULL);
 }
 
 std::string	Input::getInput() const
@@ -175,7 +163,17 @@ bool		Input::isClicked(int x, int y) const
 
 void		Input::refresh(SDL_Renderer *ren)
 {
-  this->_renderTexture(this->_bg, ren, &this->_bgPos);
+  SDL_Rect	src;
+
+  SDL_RenderCopy(ren, this->_bg, NULL, &this->_bgPos);
   this->_setText(ren);
-  this->_renderTexture(this->_text, ren, &this->_textPos);
+  SDL_QueryTexture(this->_text, NULL, NULL, &this->_textPos.w, &this->_textPos.h);
+  src.x = this->_textPos.w - this->_bgPos.w;
+  if (src.x < 0)
+    src.x = 0;
+  src.y = 0;
+  src.w = this->_bgPos.w;
+  src.h = this->_bgPos.h;
+  this->_textPos.w = (this->_textPos.w < this->_bgPos.w - 10) ? this->_textPos.w : this->_bgPos.w - 10;
+  SDL_RenderCopy(ren, this->_text, &src, &this->_textPos);
 }

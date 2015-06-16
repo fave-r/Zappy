@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Mon Jun  1 11:28:59 2015 Thibaut Lopez
-** Last update Mon Jun 15 18:36:18 2015 Thibaut Lopez
+** Last update Tue Jun 16 02:55:08 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -16,6 +16,8 @@ int		check_food(t_user *usr, t_zap *data)
   t_tv		tmp;
   t_tv		time;
 
+  if (GET_GHOST(usr) == 1)
+    return (0);
   gettimeofday(&tv, NULL);
   timersub(&tv, &GET_TIME(usr), &tmp);
   time.tv_usec = 0;

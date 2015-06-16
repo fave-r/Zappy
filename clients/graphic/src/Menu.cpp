@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Wed Jun 10 18:13:06 2015 Thibaut Lopez
-// Last update Mon Jun 15 03:14:45 2015 Thibaut Lopez
+// Last update Mon Jun 15 19:26:25 2015 Thibaut Lopez
 //
 
 #include "Menu.hh"
@@ -31,6 +31,8 @@ Menu::Menu()
     }
   this->_bg = SDL_CreateTextureFromSurface(this->_ren, bg);
   SDL_FreeSurface(bg);
+  if (this->_bg == NULL)
+    throw std::runtime_error("SDL_CreateTextureFromSurface.");
   this->_ip = new Input(true);
   this->_ip->init(250, 300, 400, 70, this->_ren);
   this->_port = new Input(false);

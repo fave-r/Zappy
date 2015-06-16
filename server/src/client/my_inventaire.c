@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Tue May 26 18:38:53 2015 Thibaut Lopez
+** Last update Tue Jun 16 16:27:49 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -23,7 +23,7 @@ int		my_inventaire(char **com, t_zap *data, t_user *usr)
   cnt = GET_INV(usr);
   bzero(tmp, 150);
   sprintf(tmp, "{nourriture %d, linemate %d, deraumere %d,\
-sibur %d, mendiane %d, phiras %d, thystame %d}\n",
+ sibur %d, mendiane %d, phiras %d, thystame %d}\n",
 	  (int)cnt.food,
 	  (int)cnt.linemate,
 	  (int)cnt.deraumere,

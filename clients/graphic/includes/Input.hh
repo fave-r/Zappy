@@ -5,26 +5,18 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Thu Jun 11 11:32:20 2015 Thibaut Lopez
-// Last update Mon Jun 15 19:23:15 2015 Thibaut Lopez
+// Last update Tue Jun 16 18:12:41 2015 Thibaut Lopez
 //
 
 #ifndef	INPUT_HH
 #define	INPUT_HH
 #define	MAIN_TTF	"tools/Nintendo-DS-BIOS.ttf"
 
-#include <iostream>
-#include <string>
-#include <stdexcept>
-#include <time.h>
-#include <SDL2/SDL.h>
-#include "SDL2/SDL_ttf.h"
+#include "Rectangle.hh"
 
-class		Input
+class		Input : public Rectangle
 {
 private:
-  SDL_Rect	_bgPos;
-  SDL_Texture	*_bg;
-
   SDL_Rect	_textPos;
   SDL_Color	_fColor;
   SDL_Texture	*_text;
@@ -40,9 +32,9 @@ private:
   void		_renderTexture(SDL_Texture *, SDL_Renderer *, SDL_Rect *, SDL_Rect *);
   void		_setText(SDL_Renderer *);
 public:
-  explicit Input(bool);
+  explicit Input(bool, size_t, size_t);
   virtual ~Input();
-  void		init(size_t, size_t, size_t, size_t, SDL_Renderer *);
+  void		init(size_t, size_t, SDL_Renderer *);
   void		setSelected(bool);
   void		addChar(const std::string &, SDL_Renderer *);
   void		curRight();
@@ -50,8 +42,7 @@ public:
   void		deleteChar();
   void		supprChar();
   std::string	getInput() const;
-  bool		isClicked(int, int) const;
-  void		refresh(SDL_Renderer *);
+  virtual void	refresh(SDL_Renderer *);
 };
 
 #endif

@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Jun  8 12:54:25 2015 romaric
-## Last update Thu Jun 11 19:06:13 2015 Thibaut Lopez
+## Last update Tue Jun 16 18:11:58 2015 Thibaut Lopez
 ##
 
 CXX=		g++
@@ -18,14 +18,16 @@ CPPFLAGS=	-W -Wall -Wextra -std=c++11 -g3 -lSDL2 -lSDL2_ttf
 
 NAME=		graphic
 
-SRC=		src/main.cpp		\
-		src/Map.cpp		\
-		src/Command.cpp		\
-		src/RingBuffer.cpp	\
-		src/Socket.cpp		\
+SRC=		src/Button.cpp		\
 		src/Client.cpp		\
+		src/Command.cpp		\
 		src/Input.cpp		\
-		src/Menu.cpp
+		src/main.cpp		\
+		src/Map.cpp		\
+		src/Menu.cpp		\
+		src/Rectangle.cpp	\
+		src/RingBuffer.cpp	\
+		src/Socket.cpp
 
 OBJ=		$(SRC:.cpp=.o)
 

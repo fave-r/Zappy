@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Wed Jun 10 18:13:06 2015 Thibaut Lopez
-// Last update Mon Jun 15 19:26:25 2015 Thibaut Lopez
+// Last update Tue Jun 16 18:31:10 2015 Thibaut Lopez
 //
 
 #include "Menu.hh"
@@ -33,11 +33,13 @@ Menu::Menu()
   SDL_FreeSurface(bg);
   if (this->_bg == NULL)
     throw std::runtime_error("SDL_CreateTextureFromSurface.");
-  this->_ip = new Input(true);
-  this->_ip->init(250, 300, 400, 70, this->_ren);
-  this->_port = new Input(false);
-  this->_port->init(850, 300, 400, 70, this->_ren);
+  this->_ip = new Input(true, 250, 300);
+  this->_ip->init(400, 70, this->_ren);
+  this->_port = new Input(false, 850, 300);
+  this->_port->init(400, 70, this->_ren);
   this->_selected = this->_ip;
+  this->_ok = new Button(550, 600);
+  this->_ok->load(this->_ren, MAIN_BUTTON);
   this->_refresh();
 }
 
@@ -45,6 +47,7 @@ Menu::~Menu()
 {
   delete this->_ip;
   delete this->_port;
+  delete this->_ok;
   SDL_DestroyTexture(this->_bg);
   SDL_DestroyRenderer(this->_ren);
   SDL_DestroyWindow(this->_screen);
@@ -58,6 +61,7 @@ void					Menu::_refresh()
   SDL_RenderCopy(this->_ren, this->_bg, NULL, NULL);
   this->_ip->refresh(this->_ren);
   this->_port->refresh(this->_ren);
+  this->_ok->refresh(this->_ren);
   SDL_RenderPresent(this->_ren);
 }
 
@@ -109,6 +113,12 @@ std::pair<std::string, std::string>	Menu::run(Map &map)
 		  this->_selected = this->_port;
 		  this->_ip->setSelected(false);
 		  this->_port->setSelected(true);
+		}
+	      else if (this->_ok->isClicked(this->_event.button.x, this->_event.button.y))
+		{
+		  ret.first = this->_ip->getInput();
+		  ret.second = this->_port->getInput();
+		  loop = false;
 		}
 	      else
 		{

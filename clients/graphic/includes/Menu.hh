@@ -5,18 +5,16 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Wed Jun 10 18:13:06 2015 Thibaut Lopez
-// Last update Sun Jun 14 20:55:19 2015 Thibaut Lopez
+// Last update Tue Jun 16 18:28:25 2015 Thibaut Lopez
 //
 
 #ifndef	MENU_HH
 #define	MENU_HH
-#define	MAIN_BG	"tools/Background.bmp"
+#define	MAIN_BG		"tools/Background.bmp"
+#define	MAIN_BUTTON	"tools/Button.bmp"
 
-#include <iostream>
-#include <string>
-#include <stdexcept>
-#include <unistd.h>
 #include "Input.hh"
+#include "Button.hh"
 #include "Map.hh"
 
 class	Menu
@@ -28,6 +26,7 @@ private:
   Input					*_ip;
   Input					*_port;
   Input					*_selected;
+  Button				*_ok;
   SDL_Event				_event;
   void					_refresh();
 public:

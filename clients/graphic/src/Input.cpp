@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Thu Jun 11 11:32:20 2015 Thibaut Lopez
-// Last update Mon Jun 15 03:56:15 2015 Thibaut Lopez
+// Last update Tue Jun 16 18:13:35 2015 Thibaut Lopez
 //
 
 #include "Input.hh"
@@ -29,8 +29,8 @@ void		Input::_setText(SDL_Renderer *ren)
     throw std::runtime_error("SDL_CreateTextureFromSurface.");
 }
 
-Input::Input(bool isSelected)
-  : _bg(NULL), _text(NULL), _content("|"), _curPos(0), _size(0), _isSelected(isSelected), _time(time(NULL))
+Input::Input(bool isSelected, size_t posX, size_t posY)
+  : Rectangle(posX, posY), _text(NULL), _content("|"), _curPos(0), _size(0), _isSelected(isSelected), _time(time(NULL))
 {
   this->_fColor.r = 255;
   this->_fColor.g = 255;
@@ -40,30 +40,27 @@ Input::Input(bool isSelected)
 Input::~Input()
 {
   SDL_DestroyTexture(this->_text);
-  SDL_DestroyTexture(this->_bg);
   TTF_CloseFont(this->_ttf);
 }
 
-void		Input::init(size_t posX, size_t posY, size_t width, size_t height, SDL_Renderer *ren)
+void		Input::init(size_t width, size_t height, SDL_Renderer *ren)
 {
-  SDL_Surface	*bg;
+  SDL_Surface	*box;
 
-  this->_bgPos.x = posX;
-  this->_bgPos.y = posY;
-  this->_bgPos.h = height;
-  this->_bgPos.w = width;
+  this->_pos.h = height;
+  this->_pos.w = width;
 
-  this->_textPos.x = posX + 10;
-  this->_textPos.y = posY + height / 10;
+  this->_textPos.x = this->_pos.x + 10;
+  this->_textPos.y = this->_pos.y + height / 10;
 
-  bg = SDL_CreateRGBSurface(0, this->_bgPos.w, this->_bgPos.h, 32, 0, 0, 0, 0);
-  if (bg == NULL)
+  box = SDL_CreateRGBSurface(0, this->_pos.w, this->_pos.h, 32, 0, 0, 0, 0);
+  if (box == NULL)
     throw std::runtime_error("SDL_CreateRGBSurface.");
-  SDL_FillRect(bg, NULL, SDL_MapRGB(bg->format, 0, 0, 0));
-  if ((this->_bg = SDL_CreateTextureFromSurface(ren, bg)) == NULL)
+  SDL_FillRect(box, NULL, SDL_MapRGB(box->format, 0, 0, 0));
+  if ((this->_box = SDL_CreateTextureFromSurface(ren, box)) == NULL)
     throw std::runtime_error("SDL_CreateTextureFromSurface.");
-  SDL_FreeSurface(bg);
-  SDL_SetTextureAlphaMod(this->_bg, 100);
+  SDL_FreeSurface(box);
+  SDL_SetTextureAlphaMod(this->_box, 100);
 
   this->_size = height;
   this->_ttf = TTF_OpenFont(MAIN_TTF, this->_size);
@@ -156,24 +153,19 @@ std::string	Input::getInput() const
   return (ret);
 }
 
-bool		Input::isClicked(int x, int y) const
-{
-  return (x >= this->_bgPos.x && x <= this->_bgPos.x + this->_bgPos.w && y >= this->_bgPos.y && y <= this->_bgPos.y + this->_bgPos.h);
-}
-
 void		Input::refresh(SDL_Renderer *ren)
 {
   SDL_Rect	src;
 
-  SDL_RenderCopy(ren, this->_bg, NULL, &this->_bgPos);
+  Rectangle::refresh(ren);
   this->_setText(ren);
   SDL_QueryTexture(this->_text, NULL, NULL, &this->_textPos.w, &this->_textPos.h);
-  src.x = this->_textPos.w - this->_bgPos.w;
+  src.x = this->_textPos.w - this->_pos.w;
   if (src.x < 0)
     src.x = 0;
   src.y = 0;
-  src.w = this->_bgPos.w;
-  src.h = this->_bgPos.h;
-  this->_textPos.w = (this->_textPos.w < this->_bgPos.w - 10) ? this->_textPos.w : this->_bgPos.w - 10;
+  src.w = this->_pos.w;
+  src.h = this->_pos.h;
+  this->_textPos.w = (this->_textPos.w < this->_pos.w - 10) ? this->_textPos.w : this->_pos.w - 10;
   SDL_RenderCopy(ren, this->_text, &src, &this->_textPos);
 }

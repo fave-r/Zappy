@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Thu Jun 11 11:32:20 2015 Thibaut Lopez
-// Last update Wed Jun 17 10:43:41 2015 Thibaut Lopez
+// Last update Wed Jun 17 19:07:25 2015 Thibaut Lopez
 //
 
 #ifndef	INPUT_HH
@@ -42,7 +42,7 @@ public:
   void		curLeft();
   void		deleteChar();
   void		supprChar();
-  std::string	getInput() const;
+  std::string	getInput();
   virtual void	refresh(SDL_Renderer *);
 };
 

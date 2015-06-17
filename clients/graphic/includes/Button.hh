@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Sun Jun 14 21:52:13 2015 Thibaut Lopez
-// Last update Tue Jun 16 18:12:32 2015 Thibaut Lopez
+// Last update Wed Jun 17 19:33:36 2015 Thibaut Lopez
 //
 
 #ifndef	BUTTON_HH
@@ -15,10 +15,15 @@
 
 class	Button : public Rectangle
 {
+private:
+  bool		_mouseOn;
+  SDL_Texture	*_boxMouseOn;
 public:
   explicit Button(size_t, size_t);
   virtual ~Button();
-  void		load(SDL_Renderer *, const std::string &);
+  void		load(SDL_Renderer *, const std::string &, const std::string &);
+  void		isMouseOn(int, int);
+  virtual void	refresh(SDL_Renderer *);
 };
 
 #endif

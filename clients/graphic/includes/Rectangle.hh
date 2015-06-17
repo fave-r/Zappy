@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 16 17:57:33 2015 Thibaut Lopez
-// Last update Tue Jun 16 18:03:16 2015 Thibaut Lopez
+// Last update Wed Jun 17 19:24:35 2015 Thibaut Lopez
 //
 
 #ifndef	RECTANGLE_HH
@@ -16,6 +16,7 @@
 #include <stdexcept>
 #include <SDL2/SDL.h>
 #include "SDL2/SDL_ttf.h"
+#include "SDL2/SDL_image.h"
 
 class	Rectangle
 {

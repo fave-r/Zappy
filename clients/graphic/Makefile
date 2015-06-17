@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Jun  8 12:54:25 2015 romaric
-## Last update Tue Jun 16 18:11:58 2015 Thibaut Lopez
+## Last update Wed Jun 17 19:23:24 2015 Thibaut Lopez
 ##
 
 CXX=		g++
@@ -14,7 +14,7 @@ RM=		rm -f
 
 INCLUDES=	-I ./includes
 
-CPPFLAGS=	-W -Wall -Wextra -std=c++11 -g3 -lSDL2 -lSDL2_ttf
+CPPFLAGS=	-W -Wall -Wextra -std=c++11 -g3 -lSDL2 -lSDL2_ttf -lSDL2_image
 
 NAME=		graphic
 

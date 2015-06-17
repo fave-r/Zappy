@@ -5,13 +5,13 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Sun Jun 14 21:52:13 2015 Thibaut Lopez
-// Last update Tue Jun 16 18:27:59 2015 Thibaut Lopez
+// Last update Wed Jun 17 19:46:03 2015 Thibaut Lopez
 //
 
 #include "Button.hh"
 
 Button::Button(size_t posX, size_t posY)
-  : Rectangle(posX, posY)
+  : Rectangle(posX, posY), _mouseOn(false), _boxMouseOn(NULL)
 {
 }
 
@@ -19,16 +19,25 @@ Button::~Button()
 {
 }
 
-void		Button::load(SDL_Renderer *ren, const std::string &img)
+void		Button::load(SDL_Renderer *ren, const std::string &img, const std::string &mouseOn)
 {
-  SDL_Surface	*surf;
-
-  surf = SDL_LoadBMP(img.c_str());
-  if (surf == NULL)
-    throw std::runtime_error("SDL_LoadBMP.");
-  this->_box = SDL_CreateTextureFromSurface(ren, surf);
-  SDL_FreeSurface(surf);
-  if (this->_box == NULL)
+  this->_box = IMG_LoadTexture(ren, img.c_str());
+  this->_boxMouseOn = IMG_LoadTexture(ren, mouseOn.c_str());
+  if (this->_box == NULL || this->_boxMouseOn == NULL)
     throw std::runtime_error("SDL_CreateTextureFromSurface.");
   SDL_QueryTexture(this->_box, NULL, NULL, &this->_pos.w, &this->_pos.h);
+
+}
+
+void		Button::isMouseOn(int x, int y)
+{
+  this->_mouseOn = this->isClicked(x, y);
+}
+
+void		Button::refresh(SDL_Renderer *ren)
+{
+  if (_mouseOn)
+    SDL_RenderCopy(ren, this->_boxMouseOn, NULL, &this->_pos);
+  else
+    Rectangle::refresh(ren);
 }

@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Wed Jun 10 18:13:06 2015 Thibaut Lopez
-// Last update Wed Jun 17 11:52:45 2015 Thibaut Lopez
+// Last update Wed Jun 17 19:56:57 2015 Thibaut Lopez
 //
 
 #include "Menu.hh"
@@ -38,8 +38,12 @@ Menu::Menu()
   this->_port = new Input(false, 850, 350);
   this->_port->init(400, 70, "Port", this->_ren);
   this->_selected = this->_ip;
-  this->_ok = new Button(550, 600);
-  this->_ok->load(this->_ren, MAIN_BUTTON);
+  this->_start = new Button(550, 550);
+  this->_start->load(this->_ren, START_BUTTON, START_BUTTON_MO);
+  this->_option = new Button(550, 660);
+  this->_option->load(this->_ren, OPTI_BUTTON, OPTI_BUTTON_MO);
+  this->_quit = new Button(550, 770);
+  this->_quit->load(this->_ren, QUIT_BUTTON, QUIT_BUTTON_MO);
   this->_refresh();
 }
 
@@ -47,7 +51,9 @@ Menu::~Menu()
 {
   delete this->_ip;
   delete this->_port;
-  delete this->_ok;
+  delete this->_start;
+  delete this->_option;
+  delete this->_quit;
   SDL_DestroyTexture(this->_bg);
   SDL_DestroyRenderer(this->_ren);
   SDL_DestroyWindow(this->_screen);
@@ -61,7 +67,9 @@ void					Menu::_refresh()
   SDL_RenderCopy(this->_ren, this->_bg, NULL, NULL);
   this->_ip->refresh(this->_ren);
   this->_port->refresh(this->_ren);
-  this->_ok->refresh(this->_ren);
+  this->_start->refresh(this->_ren);
+  this->_option->refresh(this->_ren);
+  this->_quit->refresh(this->_ren);
   SDL_RenderPresent(this->_ren);
 }
 
@@ -80,7 +88,7 @@ std::pair<std::string, std::string>	Menu::run(Map &map)
       while (SDL_PollEvent(&this->_event))
 	{
 	  if (this->_event.type == SDL_QUIT || this->_event.key.keysym.sym == SDLK_ESCAPE)
-	    loop = false;
+	    throw std::exception();
 	  if (this->_selected != NULL && this->_event.type == SDL_KEYUP)
 	    {
 	      if (this->_event.key.keysym.sym == SDLK_RIGHT)
@@ -114,18 +122,26 @@ std::pair<std::string, std::string>	Menu::run(Map &map)
 		  this->_ip->setSelected(false);
 		  this->_port->setSelected(true);
 		}
-	      else if (this->_ok->isClicked(this->_event.button.x, this->_event.button.y))
+	      else if (this->_start->isClicked(this->_event.button.x, this->_event.button.y))
 		{
 		  ret.first = this->_ip->getInput();
 		  ret.second = this->_port->getInput();
 		  loop = false;
 		}
+	      else if (this->_quit->isClicked(this->_event.button.x, this->_event.button.y))
+		throw std::exception();
 	      else
 		{
 		  this->_selected = NULL;
 		  this->_ip->setSelected(false);
 		  this->_port->setSelected(false);
 		}
+	    }
+	  else if (this->_event.type == SDL_MOUSEMOTION)
+	    {
+	      this->_start->isMouseOn(this->_event.motion.x, this->_event.motion.y);
+	      this->_option->isMouseOn(this->_event.motion.x, this->_event.motion.y);
+	      this->_quit->isMouseOn(this->_event.motion.x, this->_event.motion.y);
 	    }
 	}
       this->_refresh();

@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 15:30:29 2015 Thibaut Lopez
-// Last update Wed Jun 10 15:39:28 2015 Thibaut Lopez
+// Last update Wed Jun 17 18:41:40 2015 Thibaut Lopez
 //
 
 #include "Socket.hh"
@@ -43,6 +43,7 @@ void			Socket::Connect(const std::string &ip, const std::string &sPort)
   size_t		idx;
   struct protoent	*pe;
   struct sockaddr_in	sin;
+  struct hostent	*he;
 
   if (this->_s >= 2)
     {
@@ -76,7 +77,9 @@ void			Socket::Connect(const std::string &ip, const std::string &sPort)
     throw std::runtime_error("Socket fail.");
   sin.sin_family = AF_INET;
   sin.sin_port = htons(port);
-  sin.sin_addr.s_addr = inet_addr(ip.c_str());
+  if ((he = gethostbyname(ip.c_str())) == NULL)
+    throw std::runtime_error(ip + ": No such IP or hostname.");
+  memcpy(&sin.sin_addr, he->h_addr_list[0], he->h_length);
   if (connect(this->_s, reinterpret_cast<const struct sockaddr *>(&sin), sizeof(sin)) == -1)
     throw std::runtime_error("Connect fail.");
 }

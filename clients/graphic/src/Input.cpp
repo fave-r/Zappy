@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Thu Jun 11 11:32:20 2015 Thibaut Lopez
-// Last update Wed Jun 17 11:51:50 2015 Thibaut Lopez
+// Last update Wed Jun 17 14:23:49 2015 Thibaut Lopez
 //
 
 #include "Input.hh"
@@ -151,12 +151,14 @@ void		Input::supprChar()
   this->_time = time(NULL);
 }
 
-std::string	Input::getInput() const
+std::string	Input::getInput()
 {
   std::string	ret("");
 
   ret.append(this->_content.substr(0, this->_curPos));
   ret.append(this->_content.substr(this->_curPos + 1));
+  this->_content = "|";
+  this->_curPos = 0;
   return (ret);
 }
 

@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 16 17:57:33 2015 Thibaut Lopez
-// Last update Tue Jun 16 18:15:00 2015 Thibaut Lopez
+// Last update Wed Jun 17 19:11:39 2015 Thibaut Lopez
 //
 
 #include "Rectangle.hh"

@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Thu Jun 11 11:32:20 2015 Thibaut Lopez
-// Last update Tue Jun 16 18:12:41 2015 Thibaut Lopez
+// Last update Wed Jun 17 10:43:41 2015 Thibaut Lopez
 //
 
 #ifndef	INPUT_HH
@@ -21,6 +21,7 @@ private:
   SDL_Color	_fColor;
   SDL_Texture	*_text;
   std::string	_content;
+  std::string	_base;
   int		_curPos;
 
   TTF_Font	*_ttf;
@@ -34,7 +35,7 @@ private:
 public:
   explicit Input(bool, size_t, size_t);
   virtual ~Input();
-  void		init(size_t, size_t, SDL_Renderer *);
+  void		init(size_t, size_t, const std::string &, SDL_Renderer *);
   void		setSelected(bool);
   void		addChar(const std::string &, SDL_Renderer *);
   void		curRight();

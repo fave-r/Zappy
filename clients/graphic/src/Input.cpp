@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Thu Jun 11 11:32:20 2015 Thibaut Lopez
-// Last update Tue Jun 16 18:13:35 2015 Thibaut Lopez
+// Last update Wed Jun 17 11:51:50 2015 Thibaut Lopez
 //
 
 #include "Input.hh"
@@ -15,11 +15,16 @@ void		Input::_setText(SDL_Renderer *ren)
   SDL_Surface	*text;
   std::string	content;
 
-  content = this->_content;
-  if (this->_isSelected == false || time(NULL) - this->_time == 1)
-    content[this->_curPos] = ' ';
+  if (this->_isSelected == true || (this->_isSelected == false && this->_content.size() > 1))
+    {
+      content = this->_content;
+      if (this->_isSelected == false || time(NULL) - this->_time == 1)
+	content[this->_curPos] = ' ';
+      else
+	this->_time = time(NULL);
+    }
   else
-    this->_time = time(NULL);
+    content = this->_base;
   text = TTF_RenderText_Blended(this->_ttf, content.c_str(), this->_fColor);
   if (text == NULL)
     throw std::runtime_error("TTF_RenderText_Blended.");
@@ -43,7 +48,7 @@ Input::~Input()
   TTF_CloseFont(this->_ttf);
 }
 
-void		Input::init(size_t width, size_t height, SDL_Renderer *ren)
+void		Input::init(size_t width, size_t height, const std::string &base, SDL_Renderer *ren)
 {
   SDL_Surface	*box;
 
@@ -52,6 +57,8 @@ void		Input::init(size_t width, size_t height, SDL_Renderer *ren)
 
   this->_textPos.x = this->_pos.x + 10;
   this->_textPos.y = this->_pos.y + height / 10;
+
+  this->_base = base;
 
   box = SDL_CreateRGBSurface(0, this->_pos.w, this->_pos.h, 32, 0, 0, 0, 0);
   if (box == NULL)

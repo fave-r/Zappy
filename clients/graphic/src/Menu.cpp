@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Wed Jun 10 18:13:06 2015 Thibaut Lopez
-// Last update Tue Jun 16 18:31:10 2015 Thibaut Lopez
+// Last update Wed Jun 17 11:52:45 2015 Thibaut Lopez
 //
 
 #include "Menu.hh"
@@ -33,10 +33,10 @@ Menu::Menu()
   SDL_FreeSurface(bg);
   if (this->_bg == NULL)
     throw std::runtime_error("SDL_CreateTextureFromSurface.");
-  this->_ip = new Input(true, 250, 300);
-  this->_ip->init(400, 70, this->_ren);
-  this->_port = new Input(false, 850, 300);
-  this->_port->init(400, 70, this->_ren);
+  this->_ip = new Input(false, 250, 350);
+  this->_ip->init(400, 70, "IP", this->_ren);
+  this->_port = new Input(false, 850, 350);
+  this->_port->init(400, 70, "Port", this->_ren);
   this->_selected = this->_ip;
   this->_ok = new Button(550, 600);
   this->_ok->load(this->_ren, MAIN_BUTTON);

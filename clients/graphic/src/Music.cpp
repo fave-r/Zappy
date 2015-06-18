@@ -1,14 +1,16 @@
 //
 // Music.cpp for Music in /home/lopez_t/Zappy/clients/graphic
-// 
+//
 // Made by Thibaut Lopez
 // Login   <lopez_t@epitech.net>
-// 
+//
 // Started on  Thu Jun 18 13:09:15 2015 Thibaut Lopez
-// Last update Thu Jun 18 17:16:21 2015 Thibaut Lopez
+// Last update Thu Jun 18 17:26:39 2015 romaric
 //
 
 #include "Music.hh"
+
+Music * Music::_music  = NULL;
 
 Music::Music()
 {
@@ -26,6 +28,13 @@ Music::~Music()
   std::map<std::string, std::pair<FMOD::Sound*, bool>>::iterator it;
   for (it = this->_sons.begin(); it != this->_sons.end(); ++it)
     (*it).second.first->release();
+}
+
+Music * Music::newinstance()
+{
+  if (_music == NULL)
+    _music = new Music;
+  return _music;
 }
 
 void		Music::createSound(const char* pFile, const char* id, bool type)

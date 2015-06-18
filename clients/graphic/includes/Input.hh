@@ -5,12 +5,12 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Thu Jun 11 11:32:20 2015 Thibaut Lopez
-// Last update Wed Jun 17 19:07:25 2015 Thibaut Lopez
+// Last update Thu Jun 18 12:46:01 2015 Thibaut Lopez
 //
 
 #ifndef	INPUT_HH
 #define	INPUT_HH
-#define	MAIN_TTF	"tools/Nintendo-DS-BIOS.ttf"
+#define	MAIN_TTF	"tools/font/Nintendo-DS-BIOS.ttf"
 
 #include "Rectangle.hh"
 

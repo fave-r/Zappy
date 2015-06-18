@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Thu Jun 18 13:09:15 2015 Thibaut Lopez
-// Last update Thu Jun 18 17:26:39 2015 romaric
+// Last update Thu Jun 18 18:20:14 2015 Thibaut Lopez
 //
 
 #include "Music.hh"
@@ -21,6 +21,8 @@ Music::Music()
   if (driverCount == 0)
     throw std::runtime_error("Can't launch music");
   this->_sys->init(42, FMOD_INIT_NORMAL, NULL);
+  if (this->_sys->createChannelGroup(NULL, &this->_bgm) != FMOD_OK || this->_sys->createChannelGroup(NULL, &this->_se) != FMOD_OK)
+    throw std::runtime_error("Can't create channels");
 }
 
 Music::~Music()
@@ -66,8 +68,27 @@ void		Music::changeVolume(bool type, float to_add)
   float			vol;
 
   chan = (type) ? this->_bgm : this->_se;
-  chan->setPaused(false);
-  chan->getVolume(&vol);
-  chan->setVolume(vol + to_add);
   chan->setPaused(true);
+  chan->getVolume(&vol);
+  if (vol + to_add < 0.0f)
+    chan->setVolume(0.0f);
+  else if (vol + to_add >= 1.0f)
+    chan->setVolume(1.0f);
+  else
+    chan->setVolume(vol + to_add);
+  chan->setPaused(false);
+}
+
+Music		&Music::operator+=(float to_add)
+{
+  this->changeVolume(true, to_add);
+  this->changeVolume(false, to_add);
+  return (*this);
+}
+
+Music		&Music::operator-=(float to_sub)
+{
+  this->changeVolume(true, -to_sub);
+  this->changeVolume(false, -to_sub);
+  return (*this);
 }

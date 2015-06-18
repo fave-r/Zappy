@@ -5,13 +5,14 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Sun Jun 14 21:52:13 2015 Thibaut Lopez
-// Last update Thu Jun 18 13:05:11 2015 Thibaut Lopez
+// Last update Thu Jun 18 17:31:30 2015 Thibaut Lopez
 //
 
 #ifndef	BUTTON_HH
 #define	BUTTON_HH
 
 #include "Rectangle.hh"
+#include "Music.hh"
 
 class	Button : public Rectangle
 {

@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Thu Jun 18 13:09:21 2015 Thibaut Lopez
-// Last update Thu Jun 18 17:26:21 2015 romaric
+// Last update Thu Jun 18 17:49:35 2015 Thibaut Lopez
 //
 
 #ifndef __MUSIC_HH__
@@ -33,6 +33,8 @@ public:
   void			createSound(const char*, const char*, bool = true);
   void			playSound(const char*, bool = false);
   void			changeVolume(bool, float);
+  Music			&operator+=(float);
+  Music			&operator-=(float);
 };
 
 #endif

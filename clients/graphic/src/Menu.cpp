@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Wed Jun 10 18:13:06 2015 Thibaut Lopez
-// Last update Wed Jun 17 19:56:57 2015 Thibaut Lopez
+// Last update Thu Jun 18 19:18:01 2015 Thibaut Lopez
 //
 
 #include "Menu.hh"
@@ -13,6 +13,7 @@
 Menu::Menu()
 {
   SDL_Surface	*bg;
+  Music		*music;
 
   if (SDL_Init(SDL_INIT_VIDEO) == -1)
     throw std::runtime_error("SDL_Init.");
@@ -37,18 +38,28 @@ Menu::Menu()
   this->_ip->init(400, 70, "IP", this->_ren);
   this->_port = new Input(false, 850, 350);
   this->_port->init(400, 70, "Port", this->_ren);
-  this->_selected = this->_ip;
+  this->_selected = NULL;
   this->_start = new Button(550, 550);
   this->_start->load(this->_ren, START_BUTTON, START_BUTTON_MO);
   this->_option = new Button(550, 660);
   this->_option->load(this->_ren, OPTI_BUTTON, OPTI_BUTTON_MO);
   this->_quit = new Button(550, 770);
   this->_quit->load(this->_ren, QUIT_BUTTON, QUIT_BUTTON_MO);
+  music = Music::newinstance();
+  music->createSound(MAIN_BGM, "title");
+  music->playSound("title", true);
+  this->_eventType[SDL_QUIT] = &Menu::_etQuit;
+  this->_eventType[SDL_KEYUP] = &Menu::_etKeyUp;
+  this->_eventType[SDL_TEXTINPUT] = &Menu::_etTextInput;
+  this->_eventType[SDL_MOUSEBUTTONDOWN] = &Menu::_etMouseButtonDown;
+  this->_eventType[SDL_MOUSEMOTION] = &Menu::_etMouseMotion;
   this->_refresh();
 }
 
 Menu::~Menu()
 {
+  Music		*music;
+
   delete this->_ip;
   delete this->_port;
   delete this->_start;
@@ -59,9 +70,95 @@ Menu::~Menu()
   SDL_DestroyWindow(this->_screen);
   TTF_Quit();
   SDL_Quit();
+  music = Music::newinstance();
+  delete music;
 }
 
-void					Menu::_refresh()
+void	Menu::_etQuit(bool &loop, std::pair<std::string, std::string> &ret)
+{
+  (void)loop;
+  (void)ret;
+  throw std::exception();
+}
+
+void	Menu::_etKeyUp(bool &loop, std::pair<std::string, std::string> &ret)
+{
+  if (this->_event.key.keysym.sym == SDLK_ESCAPE)
+    throw std::exception();
+  if (this->_selected != NULL)
+    {
+      if (this->_event.key.keysym.sym == SDLK_RIGHT)
+	this->_selected->curRight();
+      else if (this->_event.key.keysym.sym == SDLK_LEFT)
+	this->_selected->curLeft();
+      else if (this->_event.key.keysym.sym == SDLK_BACKSPACE)
+	this->_selected->deleteChar();
+      else if (this->_event.key.keysym.sym == SDLK_DELETE)
+	this->_selected->supprChar();
+      else if (this->_event.key.keysym.sym == SDLK_RETURN || this->_event.key.keysym.sym == SDLK_KP_ENTER)
+	{
+	  ret.first = this->_ip->getInput();
+	  ret.second = this->_port->getInput();
+	  loop = false;
+	}
+    }
+}
+
+void	Menu::_etTextInput(bool &loop, std::pair<std::string, std::string> &ret)
+{
+  (void)loop;
+  (void)ret;
+  if (this->_event.text.text[0] == '+')
+    *(Music::newinstance()) += 0.01f;
+  else if (this->_event.text.text[0] == '-')
+    *(Music::newinstance()) -= 0.01f;
+  else if (this->_selected != NULL)
+    this->_selected->addChar(this->_event.text.text, this->_ren);
+}
+
+void	Menu::_etMouseButtonDown(bool &loop, std::pair<std::string, std::string> &ret)
+{
+  if (this->_event.button.button == SDL_BUTTON_LEFT)
+    {
+      if (this->_ip->isClicked(this->_event.button.x, this->_event.button.y))
+	{
+	  this->_selected = this->_ip;
+	  this->_ip->setSelected(true);
+	  this->_port->setSelected(false);
+	}
+      else if (this->_port->isClicked(this->_event.button.x, this->_event.button.y))
+	{
+	  this->_selected = this->_port;
+	  this->_ip->setSelected(false);
+	  this->_port->setSelected(true);
+	}
+      else if (this->_start->isClicked(this->_event.button.x, this->_event.button.y))
+	{
+	  ret.first = this->_ip->getInput();
+	  ret.second = this->_port->getInput();
+	  loop = false;
+	}
+      else if (this->_quit->isClicked(this->_event.button.x, this->_event.button.y))
+	throw std::exception();
+      else
+	{
+	  this->_selected = NULL;
+	  this->_ip->setSelected(false);
+	  this->_port->setSelected(false);
+	}
+    }
+}
+
+void	Menu::_etMouseMotion(bool &loop, std::pair<std::string, std::string> &ret)
+{
+  (void)loop;
+  (void)ret;
+  this->_start->isMouseOn(this->_event.motion.x, this->_event.motion.y);
+  this->_option->isMouseOn(this->_event.motion.x, this->_event.motion.y);
+  this->_quit->isMouseOn(this->_event.motion.x, this->_event.motion.y);
+}
+
+void	Menu::_refresh()
 {
   SDL_RenderClear(this->_ren);
   SDL_RenderCopy(this->_ren, this->_bg, NULL, NULL);
@@ -87,61 +184,12 @@ std::pair<std::string, std::string>	Menu::run(Map &map)
     {
       while (SDL_PollEvent(&this->_event))
 	{
-	  if (this->_event.type == SDL_QUIT || this->_event.key.keysym.sym == SDLK_ESCAPE)
-	    throw std::exception();
-	  if (this->_selected != NULL && this->_event.type == SDL_KEYUP)
+	  try
 	    {
-	      if (this->_event.key.keysym.sym == SDLK_RIGHT)
-		this->_selected->curRight();
-	      else if (this->_event.key.keysym.sym == SDLK_LEFT)
-		this->_selected->curLeft();
-	      else if (this->_event.key.keysym.sym == SDLK_BACKSPACE)
-		this->_selected->deleteChar();
-	      else if (this->_event.key.keysym.sym == SDLK_DELETE)
-		this->_selected->supprChar();
-	      else if (this->_event.key.keysym.sym == SDLK_RETURN || this->_event.key.keysym.sym == SDLK_KP_ENTER)
-		{
-		  ret.first = this->_ip->getInput();
-		  ret.second = this->_port->getInput();
-		  loop = false;
-		}
+	      (this->*(this->_eventType.at(this->_event.type)))(loop, ret);
 	    }
-	  else if (this->_selected != NULL && this->_event.type == SDL_TEXTINPUT)
-	    this->_selected->addChar(this->_event.text.text, this->_ren);
-	  else if (this->_event.type == SDL_MOUSEBUTTONDOWN && this->_event.button.button == SDL_BUTTON_LEFT)
+	  catch (std::out_of_range &err)
 	    {
-	      if (this->_ip->isClicked(this->_event.button.x, this->_event.button.y))
-		{
-		  this->_selected = this->_ip;
-		  this->_ip->setSelected(true);
-		  this->_port->setSelected(false);
-		}
-	      else if (this->_port->isClicked(this->_event.button.x, this->_event.button.y))
-		{
-		  this->_selected = this->_port;
-		  this->_ip->setSelected(false);
-		  this->_port->setSelected(true);
-		}
-	      else if (this->_start->isClicked(this->_event.button.x, this->_event.button.y))
-		{
-		  ret.first = this->_ip->getInput();
-		  ret.second = this->_port->getInput();
-		  loop = false;
-		}
-	      else if (this->_quit->isClicked(this->_event.button.x, this->_event.button.y))
-		throw std::exception();
-	      else
-		{
-		  this->_selected = NULL;
-		  this->_ip->setSelected(false);
-		  this->_port->setSelected(false);
-		}
-	    }
-	  else if (this->_event.type == SDL_MOUSEMOTION)
-	    {
-	      this->_start->isMouseOn(this->_event.motion.x, this->_event.motion.y);
-	      this->_option->isMouseOn(this->_event.motion.x, this->_event.motion.y);
-	      this->_quit->isMouseOn(this->_event.motion.x, this->_event.motion.y);
 	    }
 	}
       this->_refresh();

@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 16 17:57:33 2015 Thibaut Lopez
-// Last update Wed Jun 17 19:24:35 2015 Thibaut Lopez
+// Last update Fri Jun 19 12:59:16 2015 Thibaut Lopez
 //
 
 #ifndef	RECTANGLE_HH
@@ -26,7 +26,7 @@ protected:
 public:
   explicit Rectangle(size_t, size_t);
   virtual ~Rectangle();
-  bool		isClicked(int, int) const;
+  virtual bool	isClicked(int, int) const;
   virtual void	refresh(SDL_Renderer *);
 };
 

@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Thu Jun 18 13:09:15 2015 Thibaut Lopez
-// Last update Thu Jun 18 18:20:14 2015 Thibaut Lopez
+// Last update Fri Jun 19 18:25:18 2015 Thibaut Lopez
 //
 
 #include "Music.hh"
@@ -23,6 +23,8 @@ Music::Music()
   this->_sys->init(42, FMOD_INIT_NORMAL, NULL);
   if (this->_sys->createChannelGroup(NULL, &this->_bgm) != FMOD_OK || this->_sys->createChannelGroup(NULL, &this->_se) != FMOD_OK)
     throw std::runtime_error("Can't create channels");
+  this->_bgmVol = 1.0f;
+  this->_seVol = 1.0f;
 }
 
 Music::~Music()
@@ -43,10 +45,23 @@ void		Music::createSound(const char* pFile, const char* id, bool type)
 {
   FMOD::Sound	*son;
 
-  if (this->_sys->createSound(pFile, FMOD_DEFAULT, 0, &son) != FMOD_OK)
-    throw std::runtime_error("Can't create the music");
-  this->_sons[id].first = son;
-  this->_sons[id].second = type;
+  try
+    {
+      this->_sons.at(id);
+    }
+  catch (std::out_of_range &err)
+    {
+      if (type)
+	{
+	  if (this->_sys->createStream(pFile, FMOD_DEFAULT, 0, &son) != FMOD_OK)
+	    throw std::runtime_error("Can't create the music");
+	}
+      else
+	if (this->_sys->createSound(pFile, FMOD_DEFAULT, 0, &son) != FMOD_OK)
+	  throw std::runtime_error("Can't create the music");
+      this->_sons[id].first = son;
+      this->_sons[id].second = type;
+    }
 }
 
 void		Music::playSound(const char* id, bool bLoop)
@@ -65,18 +80,20 @@ void		Music::playSound(const char* id, bool bLoop)
 void		Music::changeVolume(bool type, float to_add)
 {
   FMOD::ChannelGroup	*chan;
-  float			vol;
+  float		*vol;
 
   chan = (type) ? this->_bgm : this->_se;
+  vol = (type) ? &this->_bgmVol : &this->_seVol;
   chan->setPaused(true);
-  chan->getVolume(&vol);
-  if (vol + to_add < 0.0f)
-    chan->setVolume(0.0f);
-  else if (vol + to_add >= 1.0f)
-    chan->setVolume(1.0f);
-  else
-    chan->setVolume(vol + to_add);
+  chan->getVolume(vol);
+  *vol += to_add;
+  if (*vol + to_add < 0.0f)
+    *vol = 0.0f;
+  else if (*vol + to_add >= 1.0f)
+    *vol = 1.0f;
+  chan->setVolume(*vol);
   chan->setPaused(false);
+  this->_sys->update();
 }
 
 Music		&Music::operator+=(float to_add)

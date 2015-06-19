@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Sun Jun 14 21:52:13 2015 Thibaut Lopez
-// Last update Wed Jun 17 19:46:03 2015 Thibaut Lopez
+// Last update Fri Jun 19 17:08:45 2015 Thibaut Lopez
 //
 
 #include "Button.hh"
@@ -13,6 +13,10 @@
 Button::Button(size_t posX, size_t posY)
   : Rectangle(posX, posY), _mouseOn(false), _boxMouseOn(NULL)
 {
+  Music		*music;
+
+  music = Music::newinstance();
+  music->createSound(CLICK_SOUND, "click", false);
 }
 
 Button::~Button()
@@ -31,7 +35,18 @@ void		Button::load(SDL_Renderer *ren, const std::string &img, const std::string 
 
 void		Button::isMouseOn(int x, int y)
 {
-  this->_mouseOn = this->isClicked(x, y);
+  this->_mouseOn = Rectangle::isClicked(x, y);
+}
+
+bool		Button::isClicked(int x, int y) const
+{
+  bool		ret;
+
+  ret = Rectangle::isClicked(x, y);
+  if (ret == true)
+    (Music::newinstance())->playSound("click");
+  SDL_Delay(300);
+  return (ret);
 }
 
 void		Button::refresh(SDL_Renderer *ren)

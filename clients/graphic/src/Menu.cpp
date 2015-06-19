@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Wed Jun 10 18:13:06 2015 Thibaut Lopez
-// Last update Thu Jun 18 19:18:01 2015 Thibaut Lopez
+// Last update Fri Jun 19 18:52:28 2015 Thibaut Lopez
 //
 
 #include "Menu.hh"
@@ -53,6 +53,13 @@ Menu::Menu()
   this->_eventType[SDL_TEXTINPUT] = &Menu::_etTextInput;
   this->_eventType[SDL_MOUSEBUTTONDOWN] = &Menu::_etMouseButtonDown;
   this->_eventType[SDL_MOUSEMOTION] = &Menu::_etMouseMotion;
+  this->_eventKU[SDLK_ESCAPE] = &Menu::_etQuit;
+  this->_eventKU[SDLK_RIGHT] = &Menu::_etKURight;
+  this->_eventKU[SDLK_LEFT] = &Menu::_etKULeft;
+  this->_eventKU[SDLK_BACKSPACE] = &Menu::_etKUBackspace;
+  this->_eventKU[SDLK_DELETE] = &Menu::_etKUDelete;
+  this->_eventKU[SDLK_RETURN] = &Menu::_etKUEnter;
+  this->_eventKU[SDLK_KP_ENTER] = &Menu::_etKUEnter;
   this->_refresh();
 }
 
@@ -81,26 +88,55 @@ void	Menu::_etQuit(bool &loop, std::pair<std::string, std::string> &ret)
   throw std::exception();
 }
 
+void	Menu::_etKURight(bool &loop, std::pair<std::string, std::string> &ret)
+{
+  (void)loop;
+  (void)ret;
+  if (this->_selected != NULL)
+    this->_selected->curRight();
+}
+
+void	Menu::_etKULeft(bool &loop, std::pair<std::string, std::string> &ret)
+{
+  (void)loop;
+  (void)ret;
+  if (this->_selected != NULL)
+    this->_selected->curLeft();
+}
+
+void	Menu::_etKUBackspace(bool &loop, std::pair<std::string, std::string> &ret)
+{
+  (void)loop;
+  (void)ret;
+  if (this->_selected != NULL)
+    this->_selected->deleteChar();
+}
+
+void	Menu::_etKUDelete(bool &loop, std::pair<std::string, std::string> &ret)
+{
+  (void)loop;
+  (void)ret;
+  if (this->_selected != NULL)
+    this->_selected->supprChar();
+}
+
+void	Menu::_etKUEnter(bool &loop, std::pair<std::string, std::string> &ret)
+{
+  (void)loop;
+  (void)ret;
+  ret.first = this->_ip->getInput();
+  ret.second = this->_port->getInput();
+  loop = false;
+}
+
 void	Menu::_etKeyUp(bool &loop, std::pair<std::string, std::string> &ret)
 {
-  if (this->_event.key.keysym.sym == SDLK_ESCAPE)
-    throw std::exception();
-  if (this->_selected != NULL)
+  try
     {
-      if (this->_event.key.keysym.sym == SDLK_RIGHT)
-	this->_selected->curRight();
-      else if (this->_event.key.keysym.sym == SDLK_LEFT)
-	this->_selected->curLeft();
-      else if (this->_event.key.keysym.sym == SDLK_BACKSPACE)
-	this->_selected->deleteChar();
-      else if (this->_event.key.keysym.sym == SDLK_DELETE)
-	this->_selected->supprChar();
-      else if (this->_event.key.keysym.sym == SDLK_RETURN || this->_event.key.keysym.sym == SDLK_KP_ENTER)
-	{
-	  ret.first = this->_ip->getInput();
-	  ret.second = this->_port->getInput();
-	  loop = false;
-	}
+      (this->*(this->_eventKU.at(this->_event.key.keysym.sym)))(loop, ret);
+    }
+  catch (std::out_of_range &err)
+    {
     }
 }
 
@@ -108,11 +144,14 @@ void	Menu::_etTextInput(bool &loop, std::pair<std::string, std::string> &ret)
 {
   (void)loop;
   (void)ret;
-  if (this->_event.text.text[0] == '+')
-    *(Music::newinstance()) += 0.01f;
-  else if (this->_event.text.text[0] == '-')
-    *(Music::newinstance()) -= 0.01f;
-  else if (this->_selected != NULL)
+  if (this->_selected == NULL)
+    {
+      if (this->_event.text.text[0] == '+')
+	*(Music::newinstance()) += 0.01f;
+      else if (this->_event.text.text[0] == '-')
+	*(Music::newinstance()) -= 0.01f;
+    }
+  else 
     this->_selected->addChar(this->_event.text.text, this->_ren);
 }
 

@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Wed Jun 10 18:13:06 2015 Thibaut Lopez
-// Last update Thu Jun 18 19:17:24 2015 Thibaut Lopez
+// Last update Fri Jun 19 18:42:36 2015 Thibaut Lopez
 //
 
 #ifndef	MENU_HH
@@ -42,7 +42,13 @@ private:
   Button	*_quit;
   SDL_Event	_event;
   std::map<Uint32, ptr>	_eventType;
+  std::map<Uint32, ptr>	_eventKU;
   void		_etQuit(bool &, std::pair<std::string, std::string> &);
+  void		_etKURight(bool &, std::pair<std::string, std::string> &);
+  void		_etKULeft(bool &, std::pair<std::string, std::string> &);
+  void		_etKUBackspace(bool &, std::pair<std::string, std::string> &);
+  void		_etKUDelete(bool &, std::pair<std::string, std::string> &);
+  void		_etKUEnter(bool &, std::pair<std::string, std::string> &);
   void		_etKeyUp(bool &, std::pair<std::string, std::string> &);
   void		_etTextInput(bool &, std::pair<std::string, std::string> &);
   void		_etMouseButtonDown(bool &, std::pair<std::string, std::string> &);

@@ -5,9 +5,11 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun  8 14:29:10 2015 romaric
-// Last update Wed Jun 10 15:48:11 2015 Thibaut Lopez
+// Last update Fri Jun 19 18:54:22 2015 romaric
 //
 
+#include <fstream>
+#include <sstream>
 #include <map>
 #include "Command.hh"
 
@@ -76,8 +78,19 @@ void	Command::hello(const std::string &com, Map &map, Socket &s) const
 
 void	Command::mapSize(const std::string &com, Map &map, Socket &s) const
 {
-  (void)com;
-  (void)map;
+  std::istringstream	ss(com);
+  size_t		length;
+  size_t		width;
+  std::string		sa;
+
+  ss >> sa;
+  ss >> length;
+  ss >> width;
+  if (ss.peek() == '\n')
+    {
+      map.setLength(length);
+      map.setWidth(width);
+    }
   (void)s;
 }
 

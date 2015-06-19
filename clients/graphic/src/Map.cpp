@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 19:21:19 2015 Thibaut Lopez
-// Last update Thu Jun 11 11:30:24 2015 Thibaut Lopez
+// Last update Fri Jun 19 17:52:03 2015 romaric
 //
 
 #include "Map.hh"
@@ -20,4 +20,13 @@ Map::~Map()
 
 void	Map::handleKeys()
 {
+}
+
+void	Map::setLength(const size_t val)
+{
+  this->_length = val;
+}
+void	Map::setWidth(const size_t val)
+{
+  this->_width = val;
 }

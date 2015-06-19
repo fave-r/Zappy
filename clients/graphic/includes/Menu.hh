@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Wed Jun 10 18:13:06 2015 Thibaut Lopez
-// Last update Fri Jun 19 18:42:36 2015 Thibaut Lopez
+// Last update Fri Jun 19 20:33:23 2015 Thibaut Lopez
 //
 
 #ifndef	MENU_HH
@@ -13,10 +13,10 @@
 #define	MAIN_BG		"tools/images/Background.bmp"
 #define	START_BUTTON	"tools/images/Start.png"
 #define	START_BUTTON_MO	"tools/images/StartMouseOn.png"
-#define	OPTI_BUTTON	"tools/images/Start.png"
-#define	OPTI_BUTTON_MO	"tools/images/StartMouseOn.png"
-#define	QUIT_BUTTON	"tools/images/Start.png"
-#define	QUIT_BUTTON_MO	"tools/images/StartMouseOn.png"
+#define	OPTI_BUTTON	"tools/images/Option.png"
+#define	OPTI_BUTTON_MO	"tools/images/OptionMouseOn.png"
+#define	QUIT_BUTTON	"tools/images/Quit.png"
+#define	QUIT_BUTTON_MO	"tools/images/QuitMouseOn.png"
 #define	MAIN_BGM	"tools/OST/ScreenTitle.mp3"
 
 #include "Input.hh"

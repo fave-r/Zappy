@@ -5,7 +5,7 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun  8 14:29:10 2015 romaric
-// Last update Fri Jun 19 19:12:30 2015 romaric
+// Last update Fri Jun 19 19:15:43 2015 romaric
 //
 
 #include <fstream>
@@ -89,7 +89,6 @@ void	Command::mapSize(const std::string &com, Map &map, Socket &s) const
   ss >> sa;
   if (ss.eof())
     {
-      std::cerr << "coucou" << std::endl;
       map.setLength(length);
       map.setWidth(width);
     }

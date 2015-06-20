@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 17:40:56 2015 Thibaut Lopez
-// Last update Wed Jun 10 14:06:58 2015 romaric
+// Last update Sat Jun 20 13:44:25 2015 Thibaut Lopez
 //
 
 #ifndef	CLIENT_HH
@@ -25,6 +25,7 @@ private:
   fd_set	_rbf;
   fd_set	_wbf;
   t_tv		_tv;
+  void		_update();
 public:
   Client();
   Client(const std::string &, const std::string &);

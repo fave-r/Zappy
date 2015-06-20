@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 17:40:56 2015 Thibaut Lopez
-// Last update Thu Jun 11 11:28:27 2015 Thibaut Lopez
+// Last update Sat Jun 20 13:43:34 2015 Thibaut Lopez
 //
 
 #include "Client.hh"
@@ -25,6 +25,22 @@ Client::~Client()
 {
 }
 
+void		Client::_update()
+{
+  FD_ZERO(&this->_rbf);
+  FD_ZERO(&this->_wbf);
+  this->_tv.tv_sec = 0;
+  this->_tv.tv_usec = 10000;
+  this->_s.set(&this->_rbf, &this->_wbf);
+  if (select(this->_s.getFD() + 1, &this->_rbf, &this->_wbf, NULL, &this->_tv) != -1)
+    {
+      if (this->_s.isset(&this->_rbf))
+	this->_s.Read(499);
+      if (this->_s.isset(&this->_wbf))
+	this->_s.Write();
+    }
+}
+
 void		Client::Connect(const std::string &ip, const std::string &port)
 {
   this->_s.Connect(ip, port);
@@ -42,20 +58,9 @@ void		Client::run(Map &map)
   Command	com;
 
   signal(SIGINT, quit_signal);
-  FD_ZERO(&this->_rbf);
-  FD_ZERO(&this->_wbf);
   while (signaled == 0)
     {
-      this->_tv.tv_sec = 0;
-      this->_tv.tv_usec = 10000;
-      this->_s.set(&this->_rbf, &this->_wbf);
-      if (select(this->_s.getFD() + 1, &this->_rbf, &this->_wbf, NULL, &this->_tv) != -1)
-	{
-	  if (this->_s.isset(&this->_rbf))
-	    this->_s.Read(499);
-	  if (this->_s.isset(&this->_wbf))
-	    this->_s.Write();
-	}
+      this->_update();
       str = this->_s.getLine();
       if (str.size() > 0 && str.find_first_of("\n\r") > 0)
 	try

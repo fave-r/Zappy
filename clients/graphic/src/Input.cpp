@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Thu Jun 11 11:32:20 2015 Thibaut Lopez
-// Last update Wed Jun 17 14:23:49 2015 Thibaut Lopez
+// Last update Mon Jun 22 14:28:50 2015 Thibaut Lopez
 //
 
 #include "Input.hh"
@@ -80,11 +80,10 @@ void		Input::setSelected(bool isSelected)
   this->_isSelected = isSelected;
 }
 
-void		Input::addChar(const std::string &c, SDL_Renderer *ren)
+void		Input::addChar(const std::string &c)
 {
   std::string	str("");
 
-  (void)ren;
   str.append(this->_content.substr(0, this->_curPos));
   str.append(c);
   str.append("|");

@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Thu Jun 18 13:09:21 2015 Thibaut Lopez
-// Last update Fri Jun 19 18:22:31 2015 Thibaut Lopez
+// Last update Mon Jun 22 16:37:30 2015 Thibaut Lopez
 //
 
 #ifndef __MUSIC_HH__
@@ -32,6 +32,7 @@ public:
 
 public:
   static Music		*newinstance();
+  float			getVol(bool = true) const;
   void			createSound(const char*, const char*, bool = true);
   void			playSound(const char*, bool = false);
   void			changeVolume(bool, float);

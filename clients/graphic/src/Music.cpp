@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Thu Jun 18 13:09:15 2015 Thibaut Lopez
-// Last update Fri Jun 19 18:25:18 2015 Thibaut Lopez
+// Last update Mon Jun 22 17:21:13 2015 Thibaut Lopez
 //
 
 #include "Music.hh"
@@ -39,6 +39,11 @@ Music * Music::newinstance()
   if (_music == NULL)
     _music = new Music;
   return _music;
+}
+
+float		Music::getVol(bool type) const
+{
+  return ((type) ? this->_bgmVol : this->_seVol);
 }
 
 void		Music::createSound(const char* pFile, const char* id, bool type)
@@ -77,7 +82,7 @@ void		Music::playSound(const char* id, bool bLoop)
     throw std::runtime_error("Can't play the music");
 }
 
-void		Music::changeVolume(bool type, float to_add)
+void		Music::changeVolume(bool type, float val)
 {
   FMOD::ChannelGroup	*chan;
   float		*vol;
@@ -86,10 +91,10 @@ void		Music::changeVolume(bool type, float to_add)
   vol = (type) ? &this->_bgmVol : &this->_seVol;
   chan->setPaused(true);
   chan->getVolume(vol);
-  *vol += to_add;
-  if (*vol + to_add < 0.0f)
+  *vol = val;
+  if (*vol < 0.0f)
     *vol = 0.0f;
-  else if (*vol + to_add >= 1.0f)
+  else if (*vol >= 1.0f)
     *vol = 1.0f;
   chan->setVolume(*vol);
   chan->setPaused(false);
@@ -98,14 +103,14 @@ void		Music::changeVolume(bool type, float to_add)
 
 Music		&Music::operator+=(float to_add)
 {
-  this->changeVolume(true, to_add);
-  this->changeVolume(false, to_add);
+  this->changeVolume(true, this->getVol() + to_add);
+  this->changeVolume(false, this->getVol(false) + to_add);
   return (*this);
 }
 
 Music		&Music::operator-=(float to_sub)
 {
-  this->changeVolume(true, -to_sub);
-  this->changeVolume(false, -to_sub);
+  this->changeVolume(true, this->getVol() - to_sub);
+  this->changeVolume(false, this->getVol(false) - to_sub);
   return (*this);
 }

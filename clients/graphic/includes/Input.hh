@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Thu Jun 11 11:32:20 2015 Thibaut Lopez
-// Last update Thu Jun 18 12:46:01 2015 Thibaut Lopez
+// Last update Mon Jun 22 13:52:31 2015 Thibaut Lopez
 //
 
 #ifndef	INPUT_HH
@@ -37,7 +37,7 @@ public:
   virtual ~Input();
   void		init(size_t, size_t, const std::string &, SDL_Renderer *);
   void		setSelected(bool);
-  void		addChar(const std::string &, SDL_Renderer *);
+  void		addChar(const std::string &);
   void		curRight();
   void		curLeft();
   void		deleteChar();

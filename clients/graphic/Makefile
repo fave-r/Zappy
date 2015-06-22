@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Jun  8 12:54:25 2015 romaric
-## Last update Sun Jun 21 12:22:17 2015 Thibaut Lopez
+## Last update Mon Jun 22 15:36:11 2015 Thibaut Lopez
 ##
 
 CXX=		g++
@@ -24,12 +24,16 @@ SRC=		src/Button.cpp		\
 		src/Client.cpp		\
 		src/Command.cpp		\
 		src/Input.cpp		\
+		src/IRefreshable.cpp	\
 		src/main.cpp		\
 		src/Map.cpp		\
 		src/Menu.cpp		\
 		src/Music.cpp		\
+		src/Option.cpp		\
 		src/Rectangle.cpp	\
 		src/RingBuffer.cpp	\
+		src/ScreenTitle.cpp	\
+		src/SlideBar.cpp	\
 		src/Socket.cpp
 
 OBJ=		$(SRC:.cpp=.o)

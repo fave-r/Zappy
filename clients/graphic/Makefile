@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Jun  8 12:54:25 2015 romaric
-## Last update Mon Jun 22 15:36:11 2015 Thibaut Lopez
+## Last update Tue Jun 23 15:07:28 2015 Thibaut Lopez
 ##
 
 CXX=		g++
@@ -34,7 +34,8 @@ SRC=		src/Button.cpp		\
 		src/RingBuffer.cpp	\
 		src/ScreenTitle.cpp	\
 		src/SlideBar.cpp	\
-		src/Socket.cpp
+		src/Socket.cpp		\
+		src/Timeval.cpp
 
 OBJ=		$(SRC:.cpp=.o)
 

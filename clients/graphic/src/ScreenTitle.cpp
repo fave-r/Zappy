@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 22 12:17:03 2015 Thibaut Lopez
-// Last update Mon Jun 22 16:32:00 2015 Thibaut Lopez
+// Last update Tue Jun 23 14:50:21 2015 Thibaut Lopez
 //
 
 #include "ScreenTitle.hh"
@@ -109,13 +109,21 @@ Ret	ScreenTitle::_etKeyUp(std::pair<std::string, std::string> &ret)
 
 Ret	ScreenTitle::_etTextInput(std::pair<std::string, std::string> &ret)
 {
+  Music	*music;
+
   (void)ret;
   if (this->_selected == NULL)
     {
+      music = Music::newinstance();
       if (this->_event.text.text[0] == '+')
-	*(Music::newinstance()) += 0.01f;
+	*music += 0.01f;
       else if (this->_event.text.text[0] == '-')
-	*(Music::newinstance()) -= 0.01f;
+	*music -= 0.01f;
+      else if (this->_event.text.text[0] == 'p')
+	{
+	  music->setPaused(true, !music->getPaused(true));
+	  music->setPaused(false, !music->getPaused(false));
+	}
     }
   else 
     this->_selected->addChar(this->_event.text.text);

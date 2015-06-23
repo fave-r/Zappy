@@ -5,11 +5,12 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 22 12:20:56 2015 Thibaut Lopez
-// Last update Mon Jun 22 16:47:57 2015 Thibaut Lopez
+// Last update Tue Jun 23 14:55:13 2015 Thibaut Lopez
 //
 
 #ifndef	OPTION_HH
 #define	OPTION_HH
+#define	TEST_SOUND	"tools/OST/DeathSound.mp3"
 
 #include "IRefreshable.hh"
 #include "SlideBar.hh"
@@ -23,6 +24,7 @@ private:
   SlideBar	*_bgmVol;
   SlideBar	*_seVol;
   SDL_Event	_event;
+  bool		_testSe;
   std::map<Uint32, ptr>	_eventType;
   std::map<Uint32, ptr>	_eventKU;
   Ret		_etQuit(std::pair<std::string, std::string> &);

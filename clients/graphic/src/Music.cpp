@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Thu Jun 18 13:09:15 2015 Thibaut Lopez
-// Last update Mon Jun 22 17:21:13 2015 Thibaut Lopez
+// Last update Tue Jun 23 14:43:11 2015 Thibaut Lopez
 //
 
 #include "Music.hh"
@@ -46,6 +46,24 @@ float		Music::getVol(bool type) const
   return ((type) ? this->_bgmVol : this->_seVol);
 }
 
+bool		Music::getPaused(bool type) const
+{
+  bool			pause;
+  FMOD::ChannelGroup	*chan;
+
+  chan = (type) ? this->_bgm : this->_se;
+  chan->getPaused(&pause);
+  return (pause);
+}
+
+void		Music::setPaused(bool type, bool pause)
+{
+  FMOD::ChannelGroup	*chan;
+
+  chan = (type) ? this->_bgm : this->_se;
+  chan->setPaused(pause);
+}
+
 void		Music::createSound(const char* pFile, const char* id, bool type)
 {
   FMOD::Sound	*son;
@@ -71,6 +89,7 @@ void		Music::createSound(const char* pFile, const char* id, bool type)
 
 void		Music::playSound(const char* id, bool bLoop)
 {
+
   if (!bLoop)
     this->_sons[id].first->setMode(FMOD_LOOP_OFF);
   else
@@ -80,6 +99,7 @@ void		Music::playSound(const char* id, bool bLoop)
     }
   if (this->_sys->playSound(this->_sons[id].first, (this->_sons[id].second) ? this->_bgm : this->_se, false, 0) != FMOD_OK)
     throw std::runtime_error("Can't play the music");
+  this->changeVolume(this->_sons[id].second, (this->_sons[id].second) ? this->_bgmVol : this->_seVol);
 }
 
 void		Music::changeVolume(bool type, float val)
@@ -89,7 +109,6 @@ void		Music::changeVolume(bool type, float val)
 
   chan = (type) ? this->_bgm : this->_se;
   vol = (type) ? &this->_bgmVol : &this->_seVol;
-  chan->setPaused(true);
   chan->getVolume(vol);
   *vol = val;
   if (*vol < 0.0f)
@@ -97,7 +116,6 @@ void		Music::changeVolume(bool type, float val)
   else if (*vol >= 1.0f)
     *vol = 1.0f;
   chan->setVolume(*vol);
-  chan->setPaused(false);
   this->_sys->update();
 }
 

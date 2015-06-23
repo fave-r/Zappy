@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 22 12:20:56 2015 Thibaut Lopez
-// Last update Mon Jun 22 17:22:10 2015 Thibaut Lopez
+// Last update Tue Jun 23 15:02:48 2015 Thibaut Lopez
 //
 
 #include "Option.hh"
@@ -26,6 +26,8 @@ Option::Option(SDL_Renderer *ren)
   this->_eventKU[SDLK_ESCAPE] = &Option::_etQuit;
   this->_eventKU[SDLK_RETURN] = &Option::_etKUEnter;
   this->_eventKU[SDLK_KP_ENTER] = &Option::_etKUEnter;
+  (Music::newinstance())->createSound(TEST_SOUND, "test", false);
+  this->_testSe = false;
 }
 
 Option::~Option()
@@ -64,12 +66,18 @@ Ret	Option::_etKeyUp(std::pair<std::string, std::string> &ret)
 Ret	Option::_etTextInput(std::pair<std::string, std::string> &ret)
 {
   Music	*music;
+
   (void)ret;
   music = Music::newinstance();
   if (this->_event.text.text[0] == '+')
     *music += 0.01f;
   else if (this->_event.text.text[0] == '-')
     *music -= 0.01f;
+  else if (!this->_testSe && this->_event.text.text[0] == 'p')
+    {
+      music->setPaused(true, !music->getPaused(true));
+      music->setPaused(false, !music->getPaused(false));
+    }
   return (NOTHING);
 }
 
@@ -80,6 +88,7 @@ Ret	Option::_etMouseButtonUp(std::pair<std::string, std::string> &ret)
     {
       this->_bgmVol->isSelected(false);
       this->_seVol->isSelected(false);
+      this->_testSe = false;
     }
   return (NOTHING);
 }
@@ -92,7 +101,10 @@ Ret	Option::_etMouseButtonDown(std::pair<std::string, std::string> &ret)
       if (this->_bgmVol->isClicked(this->_event.button.x, this->_event.button.y))
 	this->_bgmVol->isSelected(true);
       else if (this->_seVol->isClicked(this->_event.button.x, this->_event.button.y))
-	this->_seVol->isSelected(true);
+	{
+	  this->_seVol->isSelected(true);
+	  this->_testSe = true;
+	}
     }
   return (NOTHING);
 }

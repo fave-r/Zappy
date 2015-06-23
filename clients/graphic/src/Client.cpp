@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 17:40:56 2015 Thibaut Lopez
-// Last update Sat Jun 20 13:43:34 2015 Thibaut Lopez
+// Last update Tue Jun 23 15:10:51 2015 Thibaut Lopez
 //
 
 #include "Client.hh"
@@ -27,12 +27,14 @@ Client::~Client()
 
 void		Client::_update()
 {
+  t_tv		tv;
+
   FD_ZERO(&this->_rbf);
   FD_ZERO(&this->_wbf);
-  this->_tv.tv_sec = 0;
-  this->_tv.tv_usec = 10000;
+  this->_tv = Timeval(0, 10000);
+  tv = this->_tv.getTV();
   this->_s.set(&this->_rbf, &this->_wbf);
-  if (select(this->_s.getFD() + 1, &this->_rbf, &this->_wbf, NULL, &this->_tv) != -1)
+  if (select(this->_s.getFD() + 1, &this->_rbf, &this->_wbf, NULL, &tv) != -1)
     {
       if (this->_s.isset(&this->_rbf))
 	this->_s.Read(499);

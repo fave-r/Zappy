@@ -5,7 +5,7 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun  8 14:29:10 2015 romaric
-// Last update Fri Jun 19 19:15:43 2015 romaric
+// Last update Tue Jun 23 20:54:12 2015 romaric
 //
 
 #include <fstream>
@@ -97,8 +97,39 @@ void	Command::mapSize(const std::string &com, Map &map, Socket &s) const
 
 void	Command::cellInfo(const std::string &com, Map &map, Socket &s) const
 {
-  (void)com;
-  (void)map;
+  std::istringstream	ss(com);
+  int			x;
+  int			y;
+  int			food;
+  int			linemate;
+  int			derau;
+  int			sibur;
+  int			mend;
+  int			phir;
+  int			thy;
+  std::string		sa;
+
+  ss >> sa;
+  ss >> x;
+  ss >> y;
+  ss >> food;
+  ss >> linemate;
+  ss >> derau;
+  ss >> sibur;
+  ss >> mend;
+  ss >> phir;
+  ss >> thy;
+  ss >> sa;
+  if (ss.eof())
+    {
+      map.setMap(x, y, FOOD, food);
+      map.setMap(x, y, LINEMATE, linemate);
+      map.setMap(x, y, DERAUMERE, derau);
+      map.setMap(x, y, SIBUR, sibur);
+      map.setMap(x, y, MENDIANE, mend);
+      map.setMap(x, y, PHIRAS, phir);
+      map.setMap(x, y, THYSTAME, thy);
+    }
   (void)s;
 }
 

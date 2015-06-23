@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 19:21:19 2015 Thibaut Lopez
-// Last update Mon Jun 22 16:14:42 2015 jean_c
+// Last update Wed Jun 24 01:05:01 2015 jean_c
 //
 
 #ifndef	MAP_HH
@@ -13,12 +13,26 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include "Content.hh"
+
+enum Type
+  {
+    FOOD,
+    LINEMATE,
+    DERAUMERE,
+    SIBUR,
+    MENDIANE,
+    PHIRAS,
+    THYSTAME
+  };
 
 class	Map
 {
 private:
   size_t	_length;
   size_t	_width;
+  std::vector<std::vector <Content *> > _map;
 
 public:
   Map();
@@ -33,6 +47,7 @@ public:
   size_t	getLength();
   size_t	getWidth();
 
+  void		setMap(const int x, const int y, const Type type, const int number);
 };
 
 #endif

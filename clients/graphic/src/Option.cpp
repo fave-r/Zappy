@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 22 12:20:56 2015 Thibaut Lopez
-// Last update Tue Jun 23 15:02:48 2015 Thibaut Lopez
+// Last update Tue Jun 23 15:32:35 2015 Thibaut Lopez
 //
 
 #include "Option.hh"
@@ -13,6 +13,8 @@
 Option::Option(SDL_Renderer *ren)
   : IRefreshable()
 {
+  Music	*music;
+
   this->_bgmVol = new SlideBar(100, 100);
   this->_bgmVol->init(500, ren);
   this->_seVol = new SlideBar(100, 200);
@@ -26,8 +28,11 @@ Option::Option(SDL_Renderer *ren)
   this->_eventKU[SDLK_ESCAPE] = &Option::_etQuit;
   this->_eventKU[SDLK_RETURN] = &Option::_etKUEnter;
   this->_eventKU[SDLK_KP_ENTER] = &Option::_etKUEnter;
-  (Music::newinstance())->createSound(TEST_SOUND, "test", false);
+  music = Music::newinstance();
+  music->createSound(TEST_SOUND, "test", false);
   this->_testSe = false;
+  this->_sPausedBGM = music->getPaused(true);
+  this->_sPausedSe = music->getPaused(false);
 }
 
 Option::~Option()
@@ -83,18 +88,29 @@ Ret	Option::_etTextInput(std::pair<std::string, std::string> &ret)
 
 Ret	Option::_etMouseButtonUp(std::pair<std::string, std::string> &ret)
 {
+  Music	*music;
+
   (void)ret;
   if (this->_event.button.button == SDL_BUTTON_LEFT)
     {
       this->_bgmVol->isSelected(false);
       this->_seVol->isSelected(false);
-      this->_testSe = false;
+      if (this->_testSe)
+	{
+	  music = Music::newinstance();
+	  this->_testSe = false;
+	  this->_repeat = Timeval();
+	  music->setPaused(true, this->_sPausedBGM);
+	  music->setPaused(false, this->_sPausedSe);
+	}
     }
   return (NOTHING);
 }
 
 Ret	Option::_etMouseButtonDown(std::pair<std::string, std::string> &ret)
 {
+  Music	*music;
+
   (void)ret;
   if (this->_event.button.button == SDL_BUTTON_LEFT)
     {
@@ -102,6 +118,11 @@ Ret	Option::_etMouseButtonDown(std::pair<std::string, std::string> &ret)
 	this->_bgmVol->isSelected(true);
       else if (this->_seVol->isClicked(this->_event.button.x, this->_event.button.y))
 	{
+	  music = Music::newinstance();
+	  this->_sPausedBGM = music->getPaused(true);
+	  this->_sPausedSe = music->getPaused(false);
+	  music->setPaused(true, true);
+	  music->setPaused(false, false);
 	  this->_seVol->isSelected(true);
 	  this->_testSe = true;
 	}
@@ -146,6 +167,12 @@ void	Option::refresh(SDL_Renderer *ren)
   this->_bgmVol->refresh(ren);
   this->_seVol->setPercent(music->getVol(false) * 100);
   this->_seVol->refresh(ren);
+  if (this->_testSe && this->_repeat.cmp(Timeval()) <= 0)
+    {
+      music->playSound("test", false);
+      this->_repeat = Timeval();
+      this->_repeat += TS_DELAY;
+    }
 }
 
 Ret	Option::handleKeys(SDL_Event &event, Map &map, std::pair<std::string, std::string> &ret)

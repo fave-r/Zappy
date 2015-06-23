@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Jun  8 12:54:25 2015 romaric
-## Last update Tue Jun 23 21:03:56 2015 romaric
+## Last update Wed Jun 24 01:07:15 2015 jean_c
 ##
 
 CXX=		g++
@@ -14,7 +14,7 @@ RM=		rm -f
 
 INCLUDES=	-I ./includes
 
-CPPFLAGS=	-W -Wall -Wextra -std=c++11 -g3 -lSDL2 -lSDL2_ttf -lSDL2_image
+CPPFLAGS=	-W -Wall -Wextra -std=c++11 -lSDL2 -lSDL2_ttf -lSDL2_image
 
 FMOD=		-Wl,--rpath=./tools/lib/fmod ./tools/lib/fmod/libfmod.so
 

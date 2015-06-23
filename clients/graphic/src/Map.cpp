@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 19:21:19 2015 Thibaut Lopez
-// Last update Wed Jun 24 01:04:39 2015 jean_c
+// Last update Wed Jun 24 01:06:52 2015 jean_c
 //
 
 #include "Map.hh"
@@ -36,7 +36,7 @@ size_t	Map::getLength()
   return this->_length;
 }
 
-size_t	Map::getwidth()
+size_t	Map::getWidth()
 {
   return this->_width;
 }
@@ -67,5 +67,4 @@ void	Map::setMap(const int x, const int y, const Type type, const int number)
       this->_map[y][x]->setThystame(number);
       break;
     }
->>>>>>> d0ce4fbc9bdd5f26555a6bd573c6a5aa17d9fb42
 }

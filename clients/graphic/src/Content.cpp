@@ -5,75 +5,92 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Tue Jun 23 15:25:38 2015 romaric
-// Last update Tue Jun 23 15:47:56 2015 romaric
+// Last update Tue Jun 23 20:57:01 2015 romaric
 //
 
 #include "Content.hh"
 
 Content::Content()
 {
+  this->_food = 0;
+  this->_linemate = 0;
+  this->_deraumere = 0;
+  this->_sibur = 0;
+  this->_mendiane = 0;
+  this->_phiras = 0;
+  this->_thystame = 0;
 }
 
 Content::~Content()
 {
 }
 
-void		setLinemate(const int val)
+void		Content::setFood(const int val)
+{
+  this->_food = val;
+}
+
+void		Content::setLinemate(const int val)
 {
   this->_linemate = val;
 }
 
-void		setDeraumere(const int val)
+void		Content::setDeraumere(const int val)
 {
   this->_deraumere = val;
 }
 
-void		setSibur(const int val)
+void		Content::setSibur(const int val)
 {
   this->_sibur = val;
 }
 
-void  setMendiane(const int val)
+void		Content::setMendiane(const int val)
 {
   this->_mendiane = val;
 }
 
-void  setPhiras(const int val)
+void		Content::setPhiras(const int val)
 {
   this->_phiras = val;
 }
 
-void  setThystame(const int val)
+void		Content::setThystame(const int val)
 {
   this->_phiras = val;
 }
 
-int   getLinemate(void) const
+int		Content::getFood(void) const
+{
+  return _food;
+}
+
+int		Content::getLinemate(void) const
 {
   return _linemate;
 }
 
-int   getDeraumere(void) const
+int		Content::getDeraumere(void) const
 {
   return _deraumere;
 }
 
-int   getSibur(void) const
+int		Content::getSibur(void) const
 {
   return _sibur;
 }
 
-int   getMendiane(void) const
+int		Content::getMendiane(void) const
 {
   return _mendiane;
 }
 
-int   getPhiras(void) const
+int		Content::getPhiras(void) const
 {
   return _phiras;
 }
 
-int   getThystame(void) const
+int		Content::getThystame(void) const
 {
   return _thystame;
 }

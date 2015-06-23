@@ -5,7 +5,7 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Tue Jun 23 15:25:07 2015 romaric
-// Last update Tue Jun 23 15:51:20 2015 romaric
+// Last update Tue Jun 23 20:48:44 2015 romaric
 //
 
 #ifndef	CONTENT_HH
@@ -17,6 +17,7 @@
 class	Content
 {
 private:
+  int	_food;
   int	_linemate;
   int	_deraumere;
   int	_sibur;
@@ -29,12 +30,14 @@ public:
   ~Content();
 
 public:
+  void	setFood(const int);
   void	setLinemate(const int);
   void	setDeraumere(const int);
   void	setSibur(const int);
   void	setMendiane(const int);
   void	setPhiras(const int);
   void	setThystame(const int);
+  int	getFood(void) const;
   int	getLinemate(void) const;
   int	getDeraumere(void) const;
   int	getSibur(void) const;

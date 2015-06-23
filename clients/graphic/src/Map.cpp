@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 19:21:19 2015 Thibaut Lopez
-// Last update Fri Jun 19 17:52:03 2015 romaric
+// Last update Mon Jun 22 16:14:08 2015 jean_c
 //
 
 #include "Map.hh"
@@ -29,4 +29,14 @@ void	Map::setLength(const size_t val)
 void	Map::setWidth(const size_t val)
 {
   this->_width = val;
+}
+
+size_t	Map::getLength()
+{
+  return this->_length;
+}
+
+size_t	Map::getwidth()
+{
+  return this->_width;
 }

@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Sun Jun 14 21:52:13 2015 Thibaut Lopez
-// Last update Mon Jun 22 15:06:15 2015 Thibaut Lopez
+// Last update Tue Jun 23 16:45:40 2015 Thibaut Lopez
 //
 
 #include "Button.hh"
@@ -30,7 +30,6 @@ void		Button::load(SDL_Renderer *ren, const std::string &img, const std::string 
   if (this->_box == NULL || this->_boxMouseOn == NULL)
     throw std::runtime_error("SDL_CreateTextureFromSurface.");
   SDL_QueryTexture(this->_box, NULL, NULL, &this->_pos.w, &this->_pos.h);
-
 }
 
 void		Button::isMouseOn(int x, int y)

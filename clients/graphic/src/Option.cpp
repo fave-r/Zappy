@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 22 12:20:56 2015 Thibaut Lopez
-// Last update Tue Jun 23 15:32:35 2015 Thibaut Lopez
+// Last update Tue Jun 23 18:28:46 2015 Thibaut Lopez
 //
 
 #include "Option.hh"
@@ -19,6 +19,8 @@ Option::Option(SDL_Renderer *ren)
   this->_bgmVol->init(500, ren);
   this->_seVol = new SlideBar(100, 200);
   this->_seVol->init(500, ren);
+  this->_rb = new RadioBox(100, 300);
+  this->_rb->init(ren);
   this->_eventType[SDL_QUIT] = &Option::_etQuit;
   this->_eventType[SDL_KEYUP] = &Option::_etKeyUp;
   this->_eventType[SDL_TEXTINPUT] = &Option::_etTextInput;
@@ -39,6 +41,7 @@ Option::~Option()
 {
   delete this->_bgmVol;
   delete this->_seVol;
+  delete this->_rb;
 }
 
 Ret	Option::_etQuit(std::pair<std::string, std::string> &ret)
@@ -126,6 +129,8 @@ Ret	Option::_etMouseButtonDown(std::pair<std::string, std::string> &ret)
 	  this->_seVol->isSelected(true);
 	  this->_testSe = true;
 	}
+      else if (this->_rb->isClicked(this->_event.button.x, this->_event.button.y))
+	this->_rb->setSelected(!this->_rb->isSelected());
     }
   return (NOTHING);
 }
@@ -167,6 +172,7 @@ void	Option::refresh(SDL_Renderer *ren)
   this->_bgmVol->refresh(ren);
   this->_seVol->setPercent(music->getVol(false) * 100);
   this->_seVol->refresh(ren);
+  this->_rb->refresh(ren);
   if (this->_testSe && this->_repeat.cmp(Timeval()) <= 0)
     {
       music->playSound("test", false);

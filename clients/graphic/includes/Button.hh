@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Sun Jun 14 21:52:13 2015 Thibaut Lopez
-// Last update Mon Jun 22 15:33:24 2015 Thibaut Lopez
+// Last update Tue Jun 23 18:30:14 2015 Thibaut Lopez
 //
 
 #ifndef	BUTTON_HH

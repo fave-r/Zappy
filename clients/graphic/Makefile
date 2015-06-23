@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Jun  8 12:54:25 2015 romaric
-## Last update Tue Jun 23 15:07:28 2015 Thibaut Lopez
+## Last update Tue Jun 23 16:49:25 2015 Thibaut Lopez
 ##
 
 CXX=		g++
@@ -30,6 +30,7 @@ SRC=		src/Button.cpp		\
 		src/Menu.cpp		\
 		src/Music.cpp		\
 		src/Option.cpp		\
+		src/RadioBox.cpp	\
 		src/Rectangle.cpp	\
 		src/RingBuffer.cpp	\
 		src/ScreenTitle.cpp	\

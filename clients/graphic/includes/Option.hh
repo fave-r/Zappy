@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 22 12:20:56 2015 Thibaut Lopez
-// Last update Tue Jun 23 15:24:04 2015 Thibaut Lopez
+// Last update Tue Jun 23 16:52:28 2015 Thibaut Lopez
 //
 
 #ifndef	OPTION_HH
@@ -15,6 +15,7 @@
 
 #include "IRefreshable.hh"
 #include "SlideBar.hh"
+#include "RadioBox.hh"
 #include "Music.hh"
 #include "Timeval.hh"
 #include <map>
@@ -25,6 +26,7 @@ private:
   typedef	Ret	(Option::*ptr)(std::pair<std::string, std::string> &);
   SlideBar	*_bgmVol;
   SlideBar	*_seVol;
+  RadioBox	*_rb;
   SDL_Event	_event;
   bool		_testSe;
   bool		_sPausedBGM;

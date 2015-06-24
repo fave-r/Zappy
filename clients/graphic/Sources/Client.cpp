@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 17:40:56 2015 Thibaut Lopez
-// Last update Wed Jun 24 18:10:51 2015 Leo Thevenet
+// Last update Wed Jun 24 20:01:16 2015 Thibaut Lopez
 //
 
 #include "Client.hh"
@@ -71,14 +71,14 @@ void		Client::run(Map &map)
 	  graphic->changeSize(y, x, map.getMap());
 	}
       this->_update();
-      str = this->_s.getLine();
-      if (str.size() > 0 && str.find_first_of("\n\r") > 0)
-	try
-	  {
-	    com.thiscom(str, map, this->_s);
-	  }
-	catch (std::out_of_range &err)
-	  {}
+      while ((str = this->_s.getLine()).size() > 0)
+	if (str.find_first_of("\n\r") > 0)
+	  try
+	    {
+	      com.thiscom(str, map, this->_s);
+	    }
+	  catch (std::out_of_range &err)
+	    {}
       graphic->draw();
       map.handleKeys();
     }

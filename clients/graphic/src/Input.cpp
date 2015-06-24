@@ -5,10 +5,10 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Thu Jun 11 11:32:20 2015 Thibaut Lopez
-// Last update Mon Jun 22 14:28:50 2015 Thibaut Lopez
+// Last update Wed Jun 24 03:18:51 2015 jean_c
 //
 
-#include "Input.hh"
+#include "Input.hpp"
 
 void		Input::_setText(SDL_Renderer *ren)
 {

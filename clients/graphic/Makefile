@@ -5,60 +5,65 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Jun  8 12:54:25 2015 romaric
-## Last update Wed Jun 24 01:07:15 2015 jean_c
+## Last update Wed Jun 24 03:20:00 2015 jean_c
 ##
 
-CXX=		g++
+CXX =		g++
 
-RM=		rm -f
+CXXFLAGS =	-W -Wall -Werror -Wextra -std=gnu++11
+CXXFLAGS +=	-I./includes -I./lib/includes
 
-INCLUDES=	-I ./includes
+LDFLAGS =	-Wl,--rpath=./lib/libs -lgdl_gl -lrt -lfbxsdk -lSDL2 -lSDL2_ttf
+LDFLAGS +=	-lSDL2_image -ldl -lGLU -lX11 -lGLEW -lGL -lX11 -lXi -lXrandr
+LDFLAGS +=	-lXxf86vm -lXinerama -lXcursor -lrt -lm -pthread
 
-CPPFLAGS=	-W -Wall -Wextra -std=c++11 -lSDL2 -lSDL2_ttf -lSDL2_image
+LDLIBS =	-L./lib/libs -Wl,--rpath=./tools/lib/fmod
+LDLIBS +=	./tools/lib/fmod/libfmod.so
 
-FMOD=		-Wl,--rpath=./tools/lib/fmod ./tools/lib/fmod/libfmod.so
+NAME =		graphic
+RM =		rm -rf
 
-NAME=		graphic
+SRC =		src
 
-SRC=		src/Button.cpp		\
-		src/Client.cpp		\
-		src/Command.cpp		\
-		src/Input.cpp		\
-		src/IRefreshable.cpp	\
-		src/main.cpp		\
-		src/Map.cpp		\
-		src/Menu.cpp		\
-		src/Music.cpp		\
-		src/Option.cpp		\
-		src/RadioBox.cpp	\
-		src/Rectangle.cpp	\
-		src/RingBuffer.cpp	\
-		src/ScreenTitle.cpp	\
-		src/SlideBar.cpp	\
-		src/Socket.cpp		\
-		src/Timeval.cpp		\
-		src/Content.cpp
+SRCS =		$(SRC)/Button.cpp		\
+		$(SRC)/Client.cpp		\
+		$(SRC)/Command.cpp		\
+		$(SRC)/Input.cpp		\
+		$(SRC)/IRefreshable.cpp		\
+		$(SRC)/main.cpp			\
+		$(SRC)/Map.cpp			\
+		$(SRC)/Menu.cpp			\
+		$(SRC)/Music.cpp		\
+		$(SRC)/Option.cpp		\
+		$(SRC)/RadioBox.cpp		\
+		$(SRC)/Rectangle.cpp		\
+		$(SRC)/RingBuffer.cpp		\
+		$(SRC)/ScreenTitle.cpp		\
+		$(SRC)/SlideBar.cpp		\
+		$(SRC)/Socket.cpp		\
+		$(SRC)/Timeval.cpp		\
+		$(SRC)/Content.cpp		\
+                $(SRC)/AObject.cpp            	\
+                $(SRC)/Ground.cpp             	\
+                $(SRC)/ModelPool.cpp          	\
+                $(SRC)/TexturePool.cpp        	\
+                $(SRC)/Camera.cpp             	\
+                $(SRC)/APlayer.cpp            	\
+                $(SRC)/ARessources.cpp
 
-OBJ=		$(SRC:.cpp=.o)
+OBJS =		$(SRCS:.cpp=.o)
 
 all:		$(NAME)
 
-$(NAME):	$(OBJ)
-		@echo -e "\033[32m[Building] \033[0;m" | tr -d '\n'
-		$(CXX) -o $@ $(OBJ) $(CPPFLAGS) $(FMOD)
-
-%.o:		%.cpp
-		@echo -e "\033[33m[Doing object] \033[0;m" | tr -d '\n'
-		$(CXX) $(CPPFLAGS) $(INCLUDES) -c -o $@ $<
+$(NAME):	$(OBJS)
+		$(CXX) $(OBJS) -o $(NAME) $(LDLIBS) $(LDFLAGS)
 
 clean:
-		@echo -e "\033[31m[Cleaning] \033[0;m" | tr -d '\n'
-		$(RM) $(OBJ)
+		$(RM) $(OBJS)
 
 fclean:		clean
-		@echo -e "\033[31m[Filecleaning] \033[0;m" | tr -d '\n'
 		$(RM) $(NAME)
 
 re:		fclean all
 
-.PHONY:		all fclean re
+.PHONY:		fclean clean $(NAME) all

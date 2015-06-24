@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 22 12:17:03 2015 Thibaut Lopez
-// Last update Mon Jun 22 16:32:57 2015 Thibaut Lopez
+// Last update Wed Jun 24 03:19:36 2015 jean_c
 //
 
 #ifndef	SCREENTITLE_HH
@@ -18,7 +18,7 @@
 #define	QUIT_BUTTON_MO	"tools/images/QuitMouseOn.png"
 
 #include "IRefreshable.hh"
-#include "Input.hh"
+#include "Input.hpp"
 #include "Button.hh"
 
 class		ScreenTitle : public IRefreshable

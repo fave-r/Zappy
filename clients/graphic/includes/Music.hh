@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Thu Jun 18 13:09:21 2015 Thibaut Lopez
-// Last update Tue Jun 23 14:42:01 2015 Thibaut Lopez
+// Last update Wed Jun 24 01:22:43 2015 jean_c
 //
 
 #ifndef __MUSIC_HH__
@@ -25,7 +25,7 @@ class Music
   float			_bgmVol;
   FMOD::ChannelGroup	*_se;
   float			_seVol;
-  std::map<std::string, std::pair<FMOD::Sound*, bool>>	_sons;
+  std::map<std::string, std::pair<FMOD::Sound*, bool> >	_sons;
 public:
   Music();
   ~Music();

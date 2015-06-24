@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 10:23:22 2015 jean_c
-// Last update Wed Jun 24 09:25:02 2015 jean_c
+// Last update Wed Jun 24 11:41:00 2015 jean_c
 //
 
 #include "Graphic.hh"
@@ -105,8 +105,8 @@ bool		Graphic::update()
   if (this->_input.getKey(SDLK_SPACE))
     this->_isHUD = !this->_isHUD;
   this->_cam->getKey(this->_input);
-  glm::ivec2 caca = this->_input.getMousePosition();
-  std::cout << caca.x << "  " << caca.y << std::endl;
+  //  glm::ivec2 caca = this->_input.getMousePosition();
+  // std::cout << caca.x << "  " << caca.y << std::endl;
 
   this->_shader.setUniform("view", this->_cam->getCam());
   updateHUD();

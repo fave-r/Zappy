@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 22 12:17:03 2015 Thibaut Lopez
-// Last update Wed Jun 24 03:31:33 2015 jean_c
+// Last update Wed Jun 24 11:39:00 2015 jean_c
 //
 
 #ifndef	SCREENTITLE_HH
@@ -20,6 +20,7 @@
 #include "IRefreshable.hh"
 #include "Input.hpp"
 #include "Button.hh"
+#include "Graphic.hh"
 
 class		ScreenTitle : public IRefreshable
 {

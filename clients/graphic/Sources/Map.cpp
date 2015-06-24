@@ -5,12 +5,12 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 19:21:19 2015 Thibaut Lopez
-// Last update Wed Jun 24 01:06:52 2015 jean_c
+// Last update Wed Jun 24 11:42:05 2015 jean_c
 //
 
 #include "Map.hh"
 
-Map::Map()
+Map::Map() : _length(0), _width(0)
 {
 }
 

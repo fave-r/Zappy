@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 22 12:20:56 2015 Thibaut Lopez
-// Last update Tue Jun 23 18:28:46 2015 Thibaut Lopez
+// Last update Wed Jun 24 12:40:38 2015 Thibaut Lopez
 //
 
 #include "Option.hh"
@@ -15,11 +15,11 @@ Option::Option(SDL_Renderer *ren)
 {
   Music	*music;
 
-  this->_bgmVol = new SlideBar(100, 100);
+  this->_bgmVol = new SlideBar(500, 150);
   this->_bgmVol->init(500, ren);
-  this->_seVol = new SlideBar(100, 200);
+  this->_seVol = new SlideBar(500, 250);
   this->_seVol->init(500, ren);
-  this->_rb = new RadioBox(100, 300);
+  this->_rb = new RadioBox(100, 600);
   this->_rb->init(ren);
   this->_eventType[SDL_QUIT] = &Option::_etQuit;
   this->_eventType[SDL_KEYUP] = &Option::_etKeyUp;

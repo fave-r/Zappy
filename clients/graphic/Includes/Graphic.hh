@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 09:08:50 2015 jean_c
-// Last update Wed Jun 24 02:53:40 2015 jean_c
+// Last update Wed Jun 24 16:55:31 2015 Leo Thevenet
 //
 
 #ifndef __GRAPHIC_HH__
@@ -25,11 +25,12 @@
 #include "TexturePool.hh"
 #include "Ground.hh"
 #include "Camera.hh"
+#include "Content.hh"
 
 class		Graphic
 {
 public:
-  Graphic(size_t width, size_t height);
+  Graphic(size_t, size_t);
   ~Graphic();
 
   void			Initialize();
@@ -38,10 +39,14 @@ public:
   void			initMap();
   void			setHUD();
   void			updateHUD();
+  void			changeSize(size_t, size_t, std::vector<std::vector <Content *> >);
 private:
   size_t		_width;
   size_t		_height;
-  bool			_isHUD;
+  size_t		_camType;
+  int			_actualCase;
+
+  std::vector<std::vector <Content *> > _map;
 
   gdl::SdlContext	_context;
   gdl::BasicShader	_shader;
@@ -55,6 +60,8 @@ private:
   TexturePool		*_texturePool;
 
   Camera		*_cam;
+
+  void			MoveCase(int);
 };
 
 #endif

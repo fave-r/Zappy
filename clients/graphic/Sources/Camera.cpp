@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 // 
 // Started on  Mon Jun 22 16:21:13 2015 Leo Thevenet
-// Last update Tue Jun 23 15:44:17 2015 Leo Thevenet
+// Last update Wed Jun 24 16:08:36 2015 Leo Thevenet
 //
 
 #include "Camera.hh"
@@ -28,9 +28,16 @@ const glm::mat4 Camera::getCam()
   glm::mat4 transformation;
 
   transformation = glm::lookAt(glm::vec3(this->_x, this->_z, this->_y),
-			       glm::vec3(this->_x, 0, this->_y + 0.0001),
+			       glm::vec3(this->_x, 0, this->_y - 0.0001),
 			       glm::vec3(0, 1, 0));
   return transformation;
+}
+
+void	Camera::setCam(float x, float y, float z)
+{
+  this->_x = x;
+  this->_y = y;
+  this->_z = z;
 }
 
 const glm::vec3 Camera::getPosHUD()
@@ -49,22 +56,22 @@ void	Camera::getKey(gdl::Input &input)
 
 void	Camera::camLeft()
 {
-  this->_x += 0.1;
+  this->_x -= 0.1;
 }
 
 void	Camera::camRight()
 {
-  this->_x -= 0.1;
+  this->_x += 0.1;
 }
 
 void	Camera::camDown()
 {
-  this->_y -= 0.1;
+  this->_y += 0.1;
 }
 
 void	Camera::camUp()
 {
-  this->_y += 0.1;
+  this->_y -= 0.1;
 }
 
 void	Camera::camMinus()

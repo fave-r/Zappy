@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 10:23:22 2015 jean_c
-// Last update Wed Jun 24 12:47:10 2015 jean_c
+// Last update Wed Jun 24 17:02:06 2015 Leo Thevenet
 //
 
 #include "Graphic.hh"
@@ -13,7 +13,9 @@
 Graphic::Graphic(size_t width, size_t height) : _width(width), _height(height)
 {
   this->Initialize();
-  this->_isHUD = false;
+  this->_camType = 1;
+  this->_actualCase = 0;
+  std::cout << width << " " << height << std::endl;
 }
 
 Graphic::~Graphic()
@@ -31,7 +33,7 @@ void		Graphic::Initialize()
       || !this->_shader.build())
     throw std::runtime_error("shader erreur");
 
-  this->_cam = new Camera(this->_width / 2, this->_height / 2, 22);
+  this->_cam = new Camera(this->_width / 2, this->_height / 2.2, 22);
 
   this->_modelPool = new ModelPool();
   this->_modelPool->init();
@@ -47,6 +49,17 @@ void		Graphic::Initialize()
   this->initMap();
 }
 
+void		Graphic::changeSize(size_t width, size_t height, std::vector<std::vector <Content *> > map)
+{
+  this->_map = map;
+  this->_width = width;
+  this->_height = height;
+  this->_actualCase = 0;
+  this->initMap();
+  this->_cam->setCam(this->_width / 2, this->_height / 2.2, 22);
+  setHUD();
+}
+
 void		Graphic::initMap()
 {
   AObject        *model;
@@ -54,11 +67,11 @@ void		Graphic::initMap()
   for (size_t i = 0; i < this->_height; ++i)
     for (size_t j = 0; j < this->_width; ++j)
       {
-  	model = new Ground(j, i);
-  	model->setModel(this->_modelPool->getGround());
-  	model->setTexture(this->_texturePool->getGround());
-  	model->translate(glm::vec3(j, 0, i));
-  	this->_objects.push_back(model);
+	model = new Ground(j, i);
+	model->setModel(this->_modelPool->getGround());
+	model->setTexture(this->_texturePool->getGround());
+	model->translate(glm::vec3(j, 0, i));
+	this->_objects.push_back(model);
       }
   setHUD();
 }
@@ -89,12 +102,32 @@ void		Graphic::updateHUD()
 
   pos.x -= 1;
   pos.y -= 2.5;
-  pos.z -= 1;
+  pos.z += 1;
   this->_HUD[0]->setPos(pos);
   pos.x += 1;
   this->_HUD[1]->setPos(pos);
   pos.x += 1;
   this->_HUD[2]->setPos(pos);
+}
+
+void		Graphic::MoveCase(int nb)
+{
+  int		x = this->_actualCase % this->_width;
+  int		y = this->_actualCase / this->_height;
+
+  if (nb == -1 || nb == 1)
+    {
+      x += nb;
+      x += (x < 0) ? this->_width + 1 : 0;
+      x -= (x > static_cast<int>(this->_width)) ? this->_width + 1 : 0;
+    }
+  else
+    {
+      y += (nb < 0) ? -1 : 1;
+      y += (y < 0) ? this->_height + 1 : 0;
+      y -= (y > static_cast<int>(this->_height)) ? this->_height + 1 : 0;
+    }
+  this->_actualCase = x + y * this->_width;
 }
 
 bool		Graphic::update()
@@ -103,14 +136,36 @@ bool		Graphic::update()
   this->_context.updateInputs(this->_input);
   if (this->_input.getKey(SDLK_ESCAPE) || this->_input.getInput(SDL_QUIT))
     return false;
-  if (this->_input.getKey(SDLK_SPACE))
-    this->_isHUD = !this->_isHUD;
-  this->_cam->getKey(this->_input);
-  //  glm::ivec2 caca = this->_input.getMousePosition();
-  // std::cout << caca.x << "  " << caca.y << std::endl;
 
-  this->_shader.setUniform("view", this->_cam->getCam());
-  updateHUD();
+  if (this->_input.getKey(SDLK_KP_1))
+    this->_camType = 1;
+  else if (this->_input.getKey(SDLK_KP_2))
+    this->_camType = 2;
+  else if (this->_input.getKey(SDLK_KP_3))
+    this->_camType = 3;
+
+  if (this->_camType == 1)
+    {
+      this->_cam->getKey(this->_input);
+      this->_shader.setUniform("view", this->_cam->getCam());
+    }
+  else if (this->_camType == 2)
+    {
+      if (this->_input.getKey(SDLK_UP))
+	MoveCase(-this->_width);
+      else if (this->_input.getKey(SDLK_DOWN))
+	MoveCase(this->_width);
+      else if (this->_input.getKey(SDLK_LEFT))
+	MoveCase(-1);
+      else if (this->_input.getKey(SDLK_RIGHT))
+	MoveCase(1);
+      std::cout << /*this->_map(*/this->_actualCase << std::endl;
+      updateHUD();
+    } /* variable case actuelle
+	 catch des touches haut, bas, droite, gauche
+	 appel de getcam avec les pos x, y*/
+  // else if (this->_camType == 3)
+  // vue sur un perso, catch de droite gauche
   return true;
 }
 
@@ -119,7 +174,7 @@ void		Graphic::draw()
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   for (size_t i = 0; i < this->_objects.size(); ++i)
     this->_objects[i]->draw(this->_shader);
-  if (this->_isHUD == true)
+  if (this->_camType == 2)
     for (size_t i = 0; i < this->_HUD.size(); ++i)
       this->_HUD[i]->draw(this->_shader);
   this->_context.flush();

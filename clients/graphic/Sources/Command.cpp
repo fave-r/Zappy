@@ -5,7 +5,7 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun  8 14:29:10 2015 romaric
-// Last update Wed Jun 24 12:36:20 2015 jean_c
+// Last update Wed Jun 24 17:10:41 2015 Leo Thevenet
 //
 
 #include <fstream>
@@ -60,6 +60,8 @@ Command::Command()
   this->_foncs["sbp"] = &Command::bad;
 }
 
+
+// sérieux la à passer tous ces arguments à chaque fois putain ?
 void	Command::thiscom(const std::string &com, Map &map, Socket &s)
 {
   std::string	key;
@@ -83,10 +85,7 @@ void	Command::mapSize(const std::string &com, Map &map, Socket &s) const
   size_t		width;
   std::string		sa;
 
-  ss >> sa;
-  ss >> length;
-  ss >> width;
-  ss >> sa;
+  ss >> sa >> length >> width >> sa;
   if (ss.eof())
     {
       map.setLength(length);
@@ -99,28 +98,11 @@ void	Command::mapSize(const std::string &com, Map &map, Socket &s) const
 void	Command::cellInfo(const std::string &com, Map &map, Socket &s) const
 {
   std::istringstream	ss(com);
-  int			x;
-  int			y;
-  int			food;
-  int			linemate;
-  int			derau;
-  int			sibur;
-  int			mend;
-  int			phir;
-  int			thy;
+  int			x, y, food, linemate, derau, sibur, mend, phir, thy;
   std::string		sa;
 
-  ss >> sa;
-  ss >> x;
-  ss >> y;
-  ss >> food;
-  ss >> linemate;
-  ss >> derau;
-  ss >> sibur;
-  ss >> mend;
-  ss >> phir;
-  ss >> thy;
-  ss >> sa;
+
+  ss >> sa >> x >> y >> food >> linemate >> derau >> sibur >> mend >> phir >> thy >> sa;
   if (ss.eof())
     {
       map.setMap(x, y, FOOD, food);

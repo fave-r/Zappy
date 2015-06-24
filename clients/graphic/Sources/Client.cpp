@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 17:40:56 2015 Thibaut Lopez
-// Last update Wed Jun 24 12:35:57 2015 jean_c
+// Last update Wed Jun 24 17:10:49 2015 Leo Thevenet
 //
 
 #include "Client.hh"
@@ -58,11 +58,18 @@ void		Client::run(Map &map)
 {
   std::string	str;
   Command	com;
-  Graphic       *graphic = new Graphic(map.getWidth(), map.getLength());
+  Graphic       *graphic = new Graphic(0, 0);
+  size_t	x = 0, y = 0;
 
   signal(SIGINT, quit_signal);
   while (signaled == 0 && graphic->update() == true)
     {
+      if (x != map.getLength() || y != map.getWidth())
+	{
+	  x = map.getLength();
+	  y = map.getWidth();
+	  graphic->changeSize(y, x, map.getMap());
+	}
       this->_update();
       str = this->_s.getLine();
       if (str.size() > 0 && str.find_first_of("\n\r") > 0)
@@ -71,8 +78,7 @@ void		Client::run(Map &map)
 	    com.thiscom(str, map, this->_s);
 	  }
 	catch (std::out_of_range &err)
-	  {
-	  }
+	  {}
       graphic->draw();
       map.handleKeys();
     }

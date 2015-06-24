@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 19:21:19 2015 Thibaut Lopez
-// Last update Wed Jun 24 12:41:10 2015 jean_c
+// Last update Wed Jun 24 16:29:26 2015 Leo Thevenet
 //
 
 #ifndef	MAP_HH
@@ -48,6 +48,7 @@ public:
   size_t	getWidth();
 
   void		setMap(const int x, const int y, const Type type, const int number);
+  std::vector<std::vector <Content *> > getMap() const; 
 };
 
 #endif

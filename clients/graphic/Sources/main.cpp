@@ -5,21 +5,19 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun  8 13:02:03 2015 romaric
-// Last update Wed Jun 17 14:24:20 2015 Thibaut Lopez
+// Last update Wed Jun 24 10:20:34 2015 jean_c
 //
 
 #include "Client.hh"
 #include "Menu.hh"
 
-int	main(int ac, char **av)
+int	main()
 {
   std::pair<std::string, std::string>	con;
   Client	clt;
   Map		map;
   Menu		*menu;
 
-  (void)ac;
-  (void)av;
   try
     {
       menu = new Menu();

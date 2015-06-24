@@ -5,25 +5,25 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Jun  8 12:54:25 2015 romaric
-## Last update Wed Jun 24 03:29:17 2015 jean_c
+## Last update Wed Jun 24 03:36:07 2015 jean_c
 ##
 
 CXX =		g++
 
 CXXFLAGS =	-W -Wall -Werror -Wextra -std=gnu++11
-CXXFLAGS +=	-I./includes -I./lib/includes
+CXXFLAGS +=	-I./Includes -I./Library/includes
 
-LDFLAGS =	-Wl,--rpath=./lib/libs -lgdl_gl -lrt -lfbxsdk -lSDL2 -lSDL2_ttf
+LDFLAGS =	-Wl,--rpath=./Libarry/libs -lgdl_gl -lrt -lfbxsdk -lSDL2 -lSDL2_ttf
 LDFLAGS +=	-lSDL2_image -ldl -lGLU -lX11 -lGLEW -lGL -lX11 -lXi -lXrandr
 LDFLAGS +=	-lXxf86vm -lXinerama -lXcursor -lrt -lm -pthread
 
-LDLIBS =	-L./lib/libs -Wl,--rpath=./lib/libs/fmod
-LDLIBS +=	./lib/libs/fmod/libfmod.so
+LDLIBS =	-L./Library/libs -Wl,--rpath=./Library/libs/fmod
+LDLIBS +=	./Library/libs/fmod/libfmod.so
 
 NAME =		graphic
 RM =		rm -rf
 
-SRC =		src
+SRC =		Sources
 
 SRCS =		$(SRC)/Button.cpp		\
 		$(SRC)/Client.cpp		\

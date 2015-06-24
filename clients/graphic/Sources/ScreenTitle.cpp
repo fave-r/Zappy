@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 22 12:17:03 2015 Thibaut Lopez
-// Last update Wed Jun 24 11:46:16 2015 jean_c
+// Last update Wed Jun 24 12:12:22 2015 jean_c
 //
 
 #include "ScreenTitle.hh"
@@ -188,6 +188,7 @@ Ret	ScreenTitle::handleKeys(SDL_Event &event, Map &map, std::pair<std::string, s
 {
   Ret	eventRet;
 
+  (void)map;
   eventRet = NOTHING;
   this->_event = event;
   try

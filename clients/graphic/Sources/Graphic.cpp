@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 10:23:22 2015 jean_c
-// Last update Wed Jun 24 01:47:01 2015 jean_c
+// Last update Wed Jun 24 09:25:02 2015 jean_c
 //
 
 #include "Graphic.hh"
@@ -27,8 +27,8 @@ void		Graphic::Initialize()
 
   if (!this->_context.start(1920, 1080, "Zappy"))
     throw std::runtime_error("Cannot instanciate the window");
-  if (!this->_shader.load("./lib/shaders/basic.fp", GL_FRAGMENT_SHADER)
-      || !this->_shader.load("./lib/shaders/basic.vp", GL_VERTEX_SHADER)
+  if (!this->_shader.load("./Library/shaders/basic.fp", GL_FRAGMENT_SHADER)
+      || !this->_shader.load("./Library/shaders/basic.vp", GL_VERTEX_SHADER)
       || !this->_shader.build())
     throw std::runtime_error("shader erreur");
 

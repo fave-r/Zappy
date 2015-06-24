@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 22 12:17:03 2015 Thibaut Lopez
-// Last update Tue Jun 23 14:50:21 2015 Thibaut Lopez
+// Last update Wed Jun 24 09:31:38 2015 jean_c
 //
 
 #include "ScreenTitle.hh"
@@ -125,7 +125,7 @@ Ret	ScreenTitle::_etTextInput(std::pair<std::string, std::string> &ret)
 	  music->setPaused(false, !music->getPaused(false));
 	}
     }
-  else 
+  else
     this->_selected->addChar(this->_event.text.text);
   return (NOTHING);
 }

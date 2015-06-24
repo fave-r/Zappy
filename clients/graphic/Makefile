@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Jun  8 12:54:25 2015 romaric
-## Last update Wed Jun 24 09:11:01 2015 jean_c
+## Last update Wed Jun 24 09:22:56 2015 jean_c
 ##
 
 CXX =		g++
@@ -43,6 +43,7 @@ SRCS =		$(SRC)/Button.cpp		\
 		$(SRC)/Socket.cpp		\
 		$(SRC)/Timeval.cpp		\
 		$(SRC)/Content.cpp		\
+		$(SRC)/Graphic.cpp		\
                 $(SRC)/AObject.cpp            	\
                 $(SRC)/Ground.cpp             	\
                 $(SRC)/ModelPool.cpp          	\

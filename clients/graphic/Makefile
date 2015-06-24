@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Jun  8 12:54:25 2015 romaric
-## Last update Wed Jun 24 03:20:00 2015 jean_c
+## Last update Wed Jun 24 03:29:17 2015 jean_c
 ##
 
 CXX =		g++
@@ -17,8 +17,8 @@ LDFLAGS =	-Wl,--rpath=./lib/libs -lgdl_gl -lrt -lfbxsdk -lSDL2 -lSDL2_ttf
 LDFLAGS +=	-lSDL2_image -ldl -lGLU -lX11 -lGLEW -lGL -lX11 -lXi -lXrandr
 LDFLAGS +=	-lXxf86vm -lXinerama -lXcursor -lrt -lm -pthread
 
-LDLIBS =	-L./lib/libs -Wl,--rpath=./tools/lib/fmod
-LDLIBS +=	./tools/lib/fmod/libfmod.so
+LDLIBS =	-L./lib/libs -Wl,--rpath=./lib/libs/fmod
+LDLIBS +=	./lib/libs/fmod/libfmod.so
 
 NAME =		graphic
 RM =		rm -rf

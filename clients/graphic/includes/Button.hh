@@ -5,12 +5,12 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Sun Jun 14 21:52:13 2015 Thibaut Lopez
-// Last update Tue Jun 23 18:30:14 2015 Thibaut Lopez
+// Last update Wed Jun 24 03:30:14 2015 jean_c
 //
 
 #ifndef	BUTTON_HH
 #define	BUTTON_HH
-#define	CLICK_SOUND	"tools/OST/Click.ogg"
+#define	CLICK_SOUND	"Ressources/OST/Click.ogg"
 
 #include "Rectangle.hh"
 #include "Music.hh"

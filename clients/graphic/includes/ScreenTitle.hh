@@ -5,17 +5,17 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 22 12:17:03 2015 Thibaut Lopez
-// Last update Wed Jun 24 03:19:36 2015 jean_c
+// Last update Wed Jun 24 03:31:33 2015 jean_c
 //
 
 #ifndef	SCREENTITLE_HH
 #define	SCREENTITLE_HH
-#define	START_BUTTON	"tools/images/Start.png"
-#define	START_BUTTON_MO	"tools/images/StartMouseOn.png"
-#define	OPTI_BUTTON	"tools/images/Option.png"
-#define	OPTI_BUTTON_MO	"tools/images/OptionMouseOn.png"
-#define	QUIT_BUTTON	"tools/images/Quit.png"
-#define	QUIT_BUTTON_MO	"tools/images/QuitMouseOn.png"
+#define	START_BUTTON	"Ressources/images/Start.png"
+#define	START_BUTTON_MO	"Ressources/images/StartMouseOn.png"
+#define	OPTI_BUTTON	"Ressources/images/Option.png"
+#define	OPTI_BUTTON_MO	"Ressources/images/OptionMouseOn.png"
+#define	QUIT_BUTTON	"Ressources/images/Quit.png"
+#define	QUIT_BUTTON_MO	"Ressources/images/QuitMouseOn.png"
 
 #include "IRefreshable.hh"
 #include "Input.hpp"

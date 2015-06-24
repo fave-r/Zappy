@@ -5,12 +5,12 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 22 12:20:56 2015 Thibaut Lopez
-// Last update Tue Jun 23 16:52:28 2015 Thibaut Lopez
+// Last update Wed Jun 24 03:30:55 2015 jean_c
 //
 
 #ifndef	OPTION_HH
 #define	OPTION_HH
-#define	TEST_SOUND	"tools/OST/DeathSound.mp3"
+#define	TEST_SOUND	"Ressources/OST/DeathSound.mp3"
 #define	TS_DELAY	1000000
 
 #include "IRefreshable.hh"

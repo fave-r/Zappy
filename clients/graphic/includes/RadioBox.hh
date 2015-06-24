@@ -5,13 +5,13 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 23 15:58:55 2015 Thibaut Lopez
-// Last update Tue Jun 23 18:30:28 2015 Thibaut Lopez
+// Last update Wed Jun 24 03:31:11 2015 jean_c
 //
 
 #ifndef	RADIOBOX_HH
 #define	RADIOBOX_HH
-#define	MAIN_RB		"tools/images/RadioBox.png"
-#define SELECTED_RB	"tools/images/RadioBoxSelected.png"
+#define	MAIN_RB		"Ressources/images/RadioBox.png"
+#define SELECTED_RB	"Ressources/images/RadioBoxSelected.png"
 
 #include "Rectangle.hh"
 

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 10:23:22 2015 jean_c
-// Last update Wed Jun 24 17:02:06 2015 Leo Thevenet
+// Last update Wed Jun 24 18:12:05 2015 Leo Thevenet
 //
 
 #include "Graphic.hh"
@@ -57,7 +57,8 @@ void		Graphic::changeSize(size_t width, size_t height, std::vector<std::vector <
   this->_actualCase = 0;
   this->initMap();
   this->_cam->setCam(this->_width / 2, this->_height / 2.2, 22);
-  setHUD();
+  this->_cam->setCam2(0, 0, 5);
+  this->setHUD();
 }
 
 void		Graphic::initMap()
@@ -110,22 +111,24 @@ void		Graphic::updateHUD()
   this->_HUD[2]->setPos(pos);
 }
 
+#include <unistd.h>
+
 void		Graphic::MoveCase(int nb)
 {
   int		x = this->_actualCase % this->_width;
-  int		y = this->_actualCase / this->_height;
+  int		y = this->_actualCase / this->_width;
 
   if (nb == -1 || nb == 1)
     {
       x += nb;
-      x += (x < 0) ? this->_width + 1 : 0;
-      x -= (x > static_cast<int>(this->_width)) ? this->_width + 1 : 0;
+      x += (x < 0) ? this->_width : 0;
+      x -= (x >= static_cast<int>(this->_width)) ? this->_width : 0;
     }
   else
     {
       y += (nb < 0) ? -1 : 1;
-      y += (y < 0) ? this->_height + 1 : 0;
-      y -= (y > static_cast<int>(this->_height)) ? this->_height + 1 : 0;
+      y += (y < 0) ? this->_height : 0;
+      y -= (y >= static_cast<int>(this->_height)) ? this->_height : 0;
     }
   this->_actualCase = x + y * this->_width;
 }
@@ -151,6 +154,7 @@ bool		Graphic::update()
     }
   else if (this->_camType == 2)
     {
+      this->_objects[this->_actualCase]->setTexture(this->_texturePool->getGround());
       if (this->_input.getKey(SDLK_UP))
 	MoveCase(-this->_width);
       else if (this->_input.getKey(SDLK_DOWN))
@@ -159,7 +163,9 @@ bool		Graphic::update()
 	MoveCase(-1);
       else if (this->_input.getKey(SDLK_RIGHT))
 	MoveCase(1);
-      std::cout << /*this->_map(*/this->_actualCase << std::endl;
+      this->_objects[this->_actualCase]->setTexture(this->_texturePool->getSelectedGround());
+      this->_cam->setCam2(this->_actualCase % this->_width, this->_actualCase / this->_width, 5);
+      this->_shader.setUniform("view", this->_cam->getCam2());
       updateHUD();
     } /* variable case actuelle
 	 catch des touches haut, bas, droite, gauche

@@ -5,7 +5,7 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun  8 14:29:10 2015 romaric
-// Last update Wed Jun 24 17:10:41 2015 Leo Thevenet
+// Last update Wed Jun 24 17:47:47 2015 Leo Thevenet
 //
 
 #include <fstream>
@@ -61,7 +61,6 @@ Command::Command()
 }
 
 
-// sérieux la à passer tous ces arguments à chaque fois putain ?
 void	Command::thiscom(const std::string &com, Map &map, Socket &s)
 {
   std::string	key;

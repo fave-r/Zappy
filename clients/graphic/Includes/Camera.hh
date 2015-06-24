@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Mon Jun 22 16:21:49 2015 Leo Thevenet
-// Last update Wed Jun 24 16:07:05 2015 Leo Thevenet
+// Last update Wed Jun 24 17:49:21 2015 Leo Thevenet
 //
 
 #ifndef __CAMERA_HH__
@@ -23,13 +23,16 @@
 class	Camera
 {
   float _x, _y, _z;
+  float _x2, _y2, _z2;
   std::map<int, void(Camera::*)()> _keys;
 public:
   Camera(float, float, float);
   ~Camera();
   const glm::mat4 getCam();
+  const glm::mat4 getCam2();
   const glm::vec3 getPosHUD();
   void	setCam(float, float, float);
+  void	setCam2(float, float, float);
   void	getKey(gdl::Input &input);
   void	camLeft();
   void	camRight();

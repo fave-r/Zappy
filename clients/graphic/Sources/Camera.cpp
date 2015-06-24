@@ -5,12 +5,12 @@
 // Login   <theven_l@epitech.net>
 // 
 // Started on  Mon Jun 22 16:21:13 2015 Leo Thevenet
-// Last update Wed Jun 24 16:08:36 2015 Leo Thevenet
+// Last update Wed Jun 24 18:06:56 2015 Leo Thevenet
 //
 
 #include "Camera.hh"
 
-Camera::Camera(float x, float y, float z) : _x(x), _y(y), _z(z)
+Camera::Camera(float x, float y, float z) : _x(x), _y(y), _z(z), _x2(0), _y2(0), _z2(0)
 {
   this->_keys[SDLK_LEFT] = &Camera::camLeft;
   this->_keys[SDLK_RIGHT] = &Camera::camRight;
@@ -33,6 +33,16 @@ const glm::mat4 Camera::getCam()
   return transformation;
 }
 
+const glm::mat4 Camera::getCam2()
+{
+  glm::mat4 transformation;
+
+  transformation = glm::lookAt(glm::vec3(this->_x2, this->_z2, this->_y2 + 4),
+			       glm::vec3(this->_x2, 0, this->_y2 + 2),
+			       glm::vec3(0, 1, 0));
+  return transformation;
+}
+
 void	Camera::setCam(float x, float y, float z)
 {
   this->_x = x;
@@ -40,9 +50,16 @@ void	Camera::setCam(float x, float y, float z)
   this->_z = z;
 }
 
+void	Camera::setCam2(float x, float y, float z)
+{
+  this->_x2 = x;
+  this->_y2 = y;
+  this->_z2 = z;
+}
+
 const glm::vec3 Camera::getPosHUD()
 {
-  return glm::vec3(this->_x, this->_z, this->_y);
+  return glm::vec3(this->_x2, this->_z2, this->_y2 + 3);
 }
 
 void	Camera::getKey(gdl::Input &input)

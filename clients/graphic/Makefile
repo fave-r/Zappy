@@ -5,12 +5,12 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Jun  8 12:54:25 2015 romaric
-## Last update Wed Jun 24 09:56:13 2015 jean_c
+## Last update Wed Jun 24 12:22:32 2015 jean_c
 ##
 
 CXX =		g++
 
-CXXFLAGS =	-W -Wall -Werror -Wextra -std=gnu++11
+CXXFLAGS =	-W -Wall -Werror -Wextra -std=gnu++11 -g3
 CXXFLAGS +=	-I./Includes -I./Library/includes
 
 LDFLAGS =	-Wl,--rpath=./Library/libs -lgdl_gl -lrt -lfbxsdk -lSDL2 -lSDL2_ttf

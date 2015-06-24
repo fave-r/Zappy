@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 17:40:56 2015 Thibaut Lopez
-// Last update Tue Jun 23 15:10:51 2015 Thibaut Lopez
+// Last update Wed Jun 24 12:20:03 2015 jean_c
 //
 
 #include "Client.hh"
@@ -58,9 +58,12 @@ void		Client::run(Map &map)
 {
   std::string	str;
   Command	com;
+  Graphic       *graphic = new Graphic(map.getWidth(), map.getLength());
 
+      /*while (graphic->update() == true)
+  graphic->draw();*/
   signal(SIGINT, quit_signal);
-  while (signaled == 0)
+  while (signaled == 0 && graphic->update() == true)
     {
       this->_update();
       str = this->_s.getLine();
@@ -72,6 +75,7 @@ void		Client::run(Map &map)
 	catch (std::out_of_range &err)
 	  {
 	  }
+      graphic->draw();
       map.handleKeys();
     }
 }

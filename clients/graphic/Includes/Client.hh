@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 17:40:56 2015 Thibaut Lopez
-// Last update Tue Jun 23 15:08:15 2015 Thibaut Lopez
+// Last update Wed Jun 24 12:21:02 2015 jean_c
 //
 
 #ifndef	CLIENT_HH
@@ -16,6 +16,7 @@
 #include "Command.hh"
 #include "Socket.hh"
 #include "Timeval.hh"
+#include "Graphic.hh"
 
 class		Client
 {

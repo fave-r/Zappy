@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 17:40:56 2015 Thibaut Lopez
-// Last update Wed Jun 24 12:20:03 2015 jean_c
+// Last update Wed Jun 24 12:35:57 2015 jean_c
 //
 
 #include "Client.hh"
@@ -60,8 +60,6 @@ void		Client::run(Map &map)
   Command	com;
   Graphic       *graphic = new Graphic(map.getWidth(), map.getLength());
 
-      /*while (graphic->update() == true)
-  graphic->draw();*/
   signal(SIGINT, quit_signal);
   while (signaled == 0 && graphic->update() == true)
     {

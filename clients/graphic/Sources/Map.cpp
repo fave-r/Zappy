@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 19:21:19 2015 Thibaut Lopez
-// Last update Wed Jun 24 11:42:05 2015 jean_c
+// Last update Wed Jun 24 12:41:53 2015 jean_c
 //
 
 #include "Map.hh"
@@ -39,6 +39,13 @@ size_t	Map::getLength()
 size_t	Map::getWidth()
 {
   return this->_width;
+}
+
+void	Map::init()
+{
+  std::vector<std::vector<Content *> > A(this->_length, std::vector<Content *>(this->_width));
+
+  this->_map = A;
 }
 
 void	Map::setMap(const int x, const int y, const Type type, const int number)

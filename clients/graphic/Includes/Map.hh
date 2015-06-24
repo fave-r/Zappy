@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 19:21:19 2015 Thibaut Lopez
-// Last update Wed Jun 24 01:05:01 2015 jean_c
+// Last update Wed Jun 24 12:41:10 2015 jean_c
 //
 
 #ifndef	MAP_HH
@@ -42,7 +42,7 @@ public:
   void		handleKeys();
   void		setLength(const size_t val);
   void		setWidth(const size_t val);
-
+  void		init();
 public:
   size_t	getLength();
   size_t	getWidth();

@@ -5,14 +5,13 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 10:23:22 2015 jean_c
-// Last update Wed Jun 24 11:41:00 2015 jean_c
+// Last update Wed Jun 24 12:47:10 2015 jean_c
 //
 
 #include "Graphic.hh"
 
 Graphic::Graphic(size_t width, size_t height) : _width(width), _height(height)
 {
-  this->_cam = new Camera(width / 2, height / 2, 22);
   this->Initialize();
   this->_isHUD = false;
 }
@@ -31,6 +30,8 @@ void		Graphic::Initialize()
       || !this->_shader.load("./Library/shaders/basic.vp", GL_VERTEX_SHADER)
       || !this->_shader.build())
     throw std::runtime_error("shader erreur");
+
+  this->_cam = new Camera(this->_width / 2, this->_height / 2, 22);
 
   this->_modelPool = new ModelPool();
   this->_modelPool->init();

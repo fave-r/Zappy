@@ -21,6 +21,7 @@ namespace gdl
 	public:
 		Model();
 		~Model();
+
 		// Pause the current animation
 		void		pause(bool pauseAnim);
 
@@ -32,7 +33,7 @@ namespace gdl
 		int			getAnimationFrameNumber(int stack);
 		int			getAnimationFrameNumber(std::string const &name);
 
-		// Get the time of one animation frame
+		// Get the time of one animation frame (in seconds)
 		float		getFrameDuration();
 
 		// Create a sub animation depending on the name or index of a model animation
@@ -56,7 +57,7 @@ namespace gdl
 		void	removeFromManager();
 
 		FbxModel			*_model;
-		SFbxModelHandler		*_modelHandler;
+		SFbxModelHandler	*_modelHandler;
 		bool				_loop;
 		double				_timeSinceLastFrame;
 

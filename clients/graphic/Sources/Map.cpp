@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 19:21:19 2015 Thibaut Lopez
-// Last update Wed Jun 24 16:31:23 2015 Leo Thevenet
+// Last update Wed Jun 24 17:12:35 2015 Leo Thevenet
 //
 
 #include "Map.hh"
@@ -57,7 +57,7 @@ std::vector<std::vector<Content *> > Map::getMap() const
 }
 
 void	Map::setMap(const int x, const int y, const Type type, const int number)
-{
+{ // ya un segfault ici quand on lance longtemps le zappy
   switch (type)
     {
     case FOOD :

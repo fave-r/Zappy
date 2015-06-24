@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun Jun 21 02:33:58 2015 jean_c
-// Last update Wed Jun 24 17:08:01 2015 jean_c
+// Last update Wed Jun 24 17:19:48 2015 jean_c
 //
 
 #include "TexturePool.hh"
@@ -26,7 +26,12 @@ void                    TexturePool::init()
     throw loading_error("TexturePool : Cannot load Selected Ground texture");
 }
 
-const gdl::Texture      &TexturePool::getGround()
+const gdl::Texture      &TexturePool::getGround() const
 {
   return this->_textureGround;
+}
+
+const gdl::Texture      &TexturePool::getSelectedGround() const
+{
+  return this->_textureSelectedGround;
 }

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun Jun 21 02:31:35 2015 jean_c
-// Last update Wed Jun 24 17:07:02 2015 jean_c
+// Last update Wed Jun 24 17:20:12 2015 jean_c
 //
 
 #ifndef __TEXTUREPOOL_HH__
@@ -25,7 +25,8 @@ public:
   void			init();
 
 public:
-  const gdl::Texture	&getGround();
+  const gdl::Texture	&getGround() const;
+  const gdl::Texture    &getSelectedGround() const;
 
 private:
   gdl::Texture		_textureGround;

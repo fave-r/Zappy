@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 22 12:17:03 2015 Thibaut Lopez
-// Last update Thu Jun 25 18:24:17 2015 Thibaut Lopez
+// Last update Thu Jun 25 18:38:20 2015 Thibaut Lopez
 //
 
 #include "ScreenTitle.hh"
@@ -13,7 +13,7 @@
 ScreenTitle::ScreenTitle(SDL_Renderer *ren)
   : IRefreshable()
 {
-  this->_title = new Button(300, 50);
+  this->_title = new Button(250, 50);
   this->_title->load(ren, TITLE_BUTTON, TITLE_BUTTON_MO);
   this->_ip = new Input(false, 250, 350);
   this->_ip->init(400, 70, "IP", ren);
@@ -174,6 +174,7 @@ Ret	ScreenTitle::_etMouseButtonDown(std::pair<std::string, std::string> &ret)
 Ret	ScreenTitle::_etMouseMotion(std::pair<std::string, std::string> &ret)
 {
   (void)ret;
+  this->_title->isMouseOn(this->_event.motion.x, this->_event.motion.y);
   this->_start->isMouseOn(this->_event.motion.x, this->_event.motion.y);
   this->_option->isMouseOn(this->_event.motion.x, this->_event.motion.y);
   this->_quit->isMouseOn(this->_event.motion.x, this->_event.motion.y);

@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 22 12:17:03 2015 Thibaut Lopez
-// Last update Wed Jun 24 12:17:09 2015 jean_c
+// Last update Thu Jun 25 18:24:17 2015 Thibaut Lopez
 //
 
 #include "ScreenTitle.hh"
@@ -13,6 +13,8 @@
 ScreenTitle::ScreenTitle(SDL_Renderer *ren)
   : IRefreshable()
 {
+  this->_title = new Button(300, 50);
+  this->_title->load(ren, TITLE_BUTTON, TITLE_BUTTON_MO);
   this->_ip = new Input(false, 250, 350);
   this->_ip->init(400, 70, "IP", ren);
   this->_port = new Input(false, 850, 350);
@@ -40,6 +42,7 @@ ScreenTitle::ScreenTitle(SDL_Renderer *ren)
 
 ScreenTitle::~ScreenTitle()
 {
+  delete this->_title;
   delete this->_ip;
   delete this->_port;
   delete this->_start;
@@ -151,7 +154,9 @@ Ret	ScreenTitle::_etMouseButtonDown(std::pair<std::string, std::string> &ret)
 	  this->_selected = NULL;
 	  this->_ip->setSelected(false);
 	  this->_port->setSelected(false);
-	  if (this->_start->isClicked(this->_event.button.x, this->_event.button.y))
+	  if (this->_title->isClicked(this->_event.button.x, this->_event.button.y))
+	    system("xdg-open http://zappy-rfc.science/");
+	  else if (this->_start->isClicked(this->_event.button.x, this->_event.button.y))
 	    {
 	      ret.first = this->_ip->getInput();
 	      ret.second = this->_port->getInput();
@@ -177,6 +182,7 @@ Ret	ScreenTitle::_etMouseMotion(std::pair<std::string, std::string> &ret)
 
 void	ScreenTitle::refresh(SDL_Renderer *ren)
 {
+  this->_title->refresh(ren);
   this->_ip->refresh(ren);
   this->_port->refresh(ren);
   this->_start->refresh(ren);

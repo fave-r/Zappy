@@ -5,11 +5,12 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 22 12:20:56 2015 Thibaut Lopez
-// Last update Wed Jun 24 17:09:29 2015 Thibaut Lopez
+// Last update Thu Jun 25 13:55:48 2015 Thibaut Lopez
 //
 
 #ifndef	OPTION_HH
 #define	OPTION_HH
+#define	OPTION_TTF	"Ressources/font/batmfa__.ttf"
 #define	TEST_SOUND	"Ressources/OST/DeathSound.mp3"
 #define	TS_DELAY	1000000
 
@@ -18,6 +19,7 @@
 #include "RadioBox.hh"
 #include "Music.hh"
 #include "Timeval.hh"
+#include "TextBox.hh"
 #include <list>
 #include <map>
 
@@ -28,7 +30,7 @@ private:
   SlideBar	*_bgmVol;
   SlideBar	*_seVol;
   RadioBox	*_rb;
-  std::list<std::pair<SDL_Rect, SDL_Texture *>>	_texts;
+  std::list<TextBox *>	_texts;
   SDL_Event	_event;
   bool		_testSe;
   bool		_sPausedBGM;

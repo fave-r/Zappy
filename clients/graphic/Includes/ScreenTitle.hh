@@ -5,11 +5,13 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 22 12:17:03 2015 Thibaut Lopez
-// Last update Wed Jun 24 11:39:00 2015 jean_c
+// Last update Thu Jun 25 18:09:37 2015 Thibaut Lopez
 //
 
 #ifndef	SCREENTITLE_HH
 #define	SCREENTITLE_HH
+#define	TITLE_BUTTON	"Ressources/images/Title.png"
+#define	TITLE_BUTTON_MO	"Ressources/images/Title.png"
 #define	START_BUTTON	"Ressources/images/Start.png"
 #define	START_BUTTON_MO	"Ressources/images/StartMouseOn.png"
 #define	OPTI_BUTTON	"Ressources/images/Option.png"
@@ -26,6 +28,7 @@ class		ScreenTitle : public IRefreshable
 {
 private:
   typedef	Ret	(ScreenTitle::*ptr)(std::pair<std::string, std::string> &);
+  Button	*_title;
   Input		*_ip;
   Input		*_port;
   Input		*_selected;

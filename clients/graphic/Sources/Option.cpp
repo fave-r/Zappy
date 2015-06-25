@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 22 12:20:56 2015 Thibaut Lopez
-// Last update Wed Jun 24 12:40:38 2015 Thibaut Lopez
+// Last update Thu Jun 25 18:11:00 2015 Thibaut Lopez
 //
 
 #include "Option.hh"
@@ -14,6 +14,7 @@ Option::Option(SDL_Renderer *ren)
   : IRefreshable()
 {
   Music	*music;
+  //SDL_Color	color;
 
   this->_bgmVol = new SlideBar(500, 150);
   this->_bgmVol->init(500, ren);
@@ -21,6 +22,8 @@ Option::Option(SDL_Renderer *ren)
   this->_seVol->init(500, ren);
   this->_rb = new RadioBox(100, 600);
   this->_rb->init(ren);
+  /*this->_texts.push_back(new TextBox(500, 50));
+    this->_texts.front()->load(ren, "Settings", font, color);*/
   this->_eventType[SDL_QUIT] = &Option::_etQuit;
   this->_eventType[SDL_KEYUP] = &Option::_etKeyUp;
   this->_eventType[SDL_TEXTINPUT] = &Option::_etTextInput;

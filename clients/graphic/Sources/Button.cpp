@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Sun Jun 14 21:52:13 2015 Thibaut Lopez
-// Last update Tue Jun 23 16:45:40 2015 Thibaut Lopez
+// Last update Thu Jun 25 18:12:14 2015 Thibaut Lopez
 //
 
 #include "Button.hh"
@@ -28,7 +28,7 @@ void		Button::load(SDL_Renderer *ren, const std::string &img, const std::string 
   this->_box = IMG_LoadTexture(ren, img.c_str());
   this->_boxMouseOn = IMG_LoadTexture(ren, mouseOn.c_str());
   if (this->_box == NULL || this->_boxMouseOn == NULL)
-    throw std::runtime_error("SDL_CreateTextureFromSurface.");
+    throw std::runtime_error("Can't load button texture.");
   SDL_QueryTexture(this->_box, NULL, NULL, &this->_pos.w, &this->_pos.h);
 }
 

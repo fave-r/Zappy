@@ -8,29 +8,30 @@ import signal
 import re
 import time
 import asyncore
+import ia
 from ia import IA
 
 
 if len(sys.argv) < 5:
- print("Usage: -n team_name -p port (-h host)")
- sys.exit(0)         
+  print("Usage: -n team_name -p port (-h host)")
+  sys.exit(0)         
 
 for i in range(1, len(sys.argv)):
- if sys.argv[i] == "-n":
-  team = sys.argv[i + 1]
- elif sys.argv[i] == "-p":
-  try:
-   port = int(sys.argv[i + 1])
-  except ValueError:
-   print ("Port must be an integer")
- elif sys.argv[i] == "-h" and len(sys.argv) > 6:
-  host = sys.argv[i + 1]
+  if sys.argv[i] == "-n":
+   team = sys.argv[i + 1]
+  elif sys.argv[i] == "-p":
+   try:
+    port = int(sys.argv[i + 1])
+   except ValueError:
+    print ("Port must be an integer")
+  elif sys.argv[i] == "-h" and len(sys.argv) > 6:
+   host = sys.argv[i + 1]
 
 if 'host' not in locals():
- host = "localhost"
+  host = "localhost"
 if 'team' not in locals() or 'port' not in locals():
- print("Usage: -n team_name -p port (-h host)")
- sys.exit(0)
+  print("Usage: -n team_name -p port (-h host)")
+  sys.exit(0)
 
 params = [ team, port, host ]
 
@@ -104,8 +105,9 @@ class Client(asyncore.dispatcher):
         def handle_send(self, msg, funcCallback, returnCallback, *params):
          if msg != "connect_nbr\n" and nbClis < maxPlayers:
           self.handle_send("connect_nbr\n", callbacks["connect_nbr"], None)
-         if len(self.cmds) >= 10:
-          sys.exit()
+#         if len(self.cmds) >= 10:
+ #         print ("exit")
+  #        sys.exit()
          print (self.id, "envoie", msg)
          if len(params) == 0:
           self.cmds.append( {"msg":msg, "funcCallback":funcCallback, "returnCallback":returnCallback, "params":None })
@@ -186,58 +188,90 @@ class Client(asyncore.dispatcher):
 
 
 
-        def avance(self, cb):
-         self.handle_send("avance\n", callbacks["avance"], cb)
+        def avance(self, cb, *params):
+         if len(params) > 0:
+          self.handle_send("avance\n", callbacks["avance"], cb, params)
+         else:
+          self.handle_send("avance\n", callbacks["avance"], cb)
 
-        def avance_callback(self, rep, cb):
+        def avance_callback(self, rep, cb, *params):
          if cb is not None:
-          cb(rep)
+          if len(params) > 0:
+           cb(rep, params[0])
+          else:
+           cb(rep)
 
 
 
-        def droite(self, cb):
-         self.handle_send("droite\n", callbacks["droite"], cb)
+        def droite(self, cb, *params):
+         if len(params) > 0:
+          self.handle_send("droite\n", callbacks["droite"], cb, params)
+         else:
+          self.handle_send("droite\n", callbacks["droite"], cb)
 
-        def droite_callback(self, rep, cb):
+        def droite_callback(self, rep, cb, *params):
          if cb is not None:
-          cb(rep)
+          if len(params) > 0:
+           cb(rep, params[0])
+          else:
+           cb(rep)
 
 
 
 
-        def gauche(self, cb):
-         self.handle_send("gauche\n", callbacks["gauche"], cb)
+        def gauche(self, cb, *params):
+         if len(params) > 0:
+          self.handle_send("gauche\n", callbacks["gauche"], cb, params)
+         else:
+          self.handle_send("gauche\n", callbacks["gauche"], cb)
 
-        def gauche_callback(self, rep, cb):
+        def gauche_callback(self, rep, cb, *params):
          if cb is not None:
-          cb(rep)
+          if len(params) > 0:
+           cb(rep, params[0])
+          else:
+           cb(rep)
 
 
 
 
-        def expulse(self, cb):
-         self.handle_send("expulse\n", callbacks["expulse"], cb)
+        def expulse(self, cb, *params):
+         if len(params) > 0:
+          self.handle_send("expulse\n", callbacks["expulse"], cb, params)
+         else:
+          self.handle_send("expulse\n", callbacks["expulse"], cb)
 
-        def expulse_callback(self, rep, cb):
+        def expulse_callback(self, rep, cb, *params):
          if cb is not None:
-          cb(rep)
+          if len(params) > 0:
+           cb(rep, params[0])
+          else:
+           cb(rep)
 
 
 
 
-        def broadcast(self, msg, cb):
-         self.handle_send("broadcast " + msg + "\n", callbacks["broadcast"], cb)
 
-        def broadcast_callback(self, rep, cb):
+        def broadcast(self, msg, cb, *params):
+         if len(params) > 0:
+          self.handle_send("broadcast " + msg + "\n", callbacks["broadcast"], cb, params)
+         else:
+          self.handle_send("broadcast " + msg + "\n", callbacks["broadcast"], cb)
+
+        def broadcast_callback(self, rep, cb, *params):
          if cb is not None:
-          cb(rep)
+          if len(params) > 0:
+           cb(rep, params[0])
+          else:
+           cb(rep)
+
 
 
 
 
         def fork(self, cb, *params):
          if len(params) > 0:
-          self.handle_send("fork\n", callbacks["fork"], cb, params[0])
+          self.handle_send("fork\n", callbacks["fork"], cb, params)
          else:
           self.handle_send("fork\n", callbacks["fork"], cb)
 
@@ -257,33 +291,50 @@ class Client(asyncore.dispatcher):
           Client(params)
 
 
-        def prend(self, obj, cb):
+        def prend(self, obj, cb, *params):
          self.obj = obj
-         self.handle_send("prend " + obj + "\n", callbacks["prend"], cb)
+         if len(params) > 0:
+          self.handle_send("prend " + obj + "\n", callbacks["prend"], cb, params)
+         else:
+          self.handle_send("prend " + obj + "\n", callbacks["prend"], cb)
 
-        def prend_callback(self, rep, cb):
+        def prend_callback(self, rep, cb, *params):
          if rep == "ok\n":
           self.inv[self.obj] += 1
          if cb is not None:
-          cb(rep)
+          if len(params) > 0:
+           cb(rep, params[0])
+          else:
+           cb(rep)
 
 
-        def pose(self, obj, cb):
+
+        def pose(self, obj, cb, *params):
          self.obj = obj
-         self.handle_send("pose " + obj + "\n", callbacks["prend"], cb)
+         if len(params) > 0:
+          self.handle_send("pose " + obj + "\n", callbacks["pose"], cb, params)
+         else:
+          self.handle_send("pose " + obj + "\n", callbacks["pose"], cb)
 
-        def pose_callback(self, rep, cb):
+        def pose_callback(self, rep, cb, *params):
          if rep == "ok\n":
           self.inv[self.obj] -= 1
          if cb is not None:
-          cb(rep)
+          if len(params > 0):
+           cb(rep, params[0])
+          else:
+           cb(rep)
 
 
-        def inventaire(self, cb):
-         self.handle_send("inventaire\n", callbacks["inventaire"], cb)
+
+        def inventaire(self, cb, *params):
+         if len(params) > 0:
+          self.handle_send("inventaire\n", callbacks["inventaire"], cb, params)
+         else:
+          self.handle_send("inventaire\n", callbacks["inventaire"], cb)
 
 
-        def inventaire_callback(self, rep, cb):
+        def inventaire_callback(self, rep, cb, *params):
          tab = re.findall(r'\d+', rep)
          if tab is not None:
           self.inv["nourriture"] = tab[0]
@@ -294,13 +345,21 @@ class Client(asyncore.dispatcher):
           self.inv["phiras"] = tab[5]
           self.inv["thystame"] = tab[6]
          if cb is not None:
-          cb(rep)
+          if len(params) > 0:
+           cb(rep, params)
+          else:
+           cb(rep)
 
 
-        def voir(self, cb):
-         self.handle_send("voir\n", callbacks["voir"], cb)
 
-        def voir_callback(self, rep, cb):
+        def voir(self, cb, *params):
+         if len(params) > 0:
+          self.handle_send("voir\n", callbacks["voir"], cb, params)
+         else:
+          self.handle_send("voir\n", callbacks["voir"], cb)
+
+
+        def voir_callback(self, rep, cb, *params):
          vue = rep.replace("{ ", "").replace("}", "").split(",")
          i = 0
          j = len(vue)
@@ -309,17 +368,28 @@ class Client(asyncore.dispatcher):
           i += 1
          self.vision = vue
          if cb is not None:
-          cb(rep)
+          if len(params) > 0:
+           cb(rep, params)
+          else:
+           cb(rep)
 
 
-        def incantation(self, cb):
-         self.handle_send("incantation\n", callbacks["incantation"], cb)
 
-        def incantation_callback(self, rep, cb):
+        def incantation(self, cb, *params): 
+         if len(params) > 0:
+          self.handle_send("incantation\n", callbacks["incantation"], cb, params)
+         else:
+          self.handle_send("incantation\n", callbacks["incantation"], cb)
+
+        def incantation_callback(self, rep, cb, *params):
          if rep == "ko\n":
           self.isIncant = False
          if cb is not None:
-          cb(rep)
+          if len(params) > 0:
+           cb(rep, params)
+          else:
+           cb(rep)
+
 
 
         def numberOf(self, cmd, to_find):
@@ -350,65 +420,65 @@ class Client(asyncore.dispatcher):
         def move(self, case):
          if case == 0:
           return
-         self.avance()
+         self.avance(None)
          pos_actu = 2
          coef = 4
          while (pos_actu != case):
           if (case / pos_actu) > 1.5:
-           self.avance()
+           self.avance(None)
            pos_actu += coef
            coef += 2
           elif (case / pos_actu) < 1:
-           self.gauche()
+           self.gauche(None)
            while (pos_actu != case):
-            self.avance()
+            self.avance(None)
             pos_actu -= 1
           else:
            self.droite
            while (pos_actu != case):
-            self.avance()
+            self.avance(None)
             pos_actu += 1
 
 
         def goTo(self, sound):
 
          if (sound == 1):
-          self.avance()
+          self.avance(None)
 
          if (sound == 2):
-          self.avance()
-          self.gauche()
-          self.avance()
+          self.avance(None)
+          self.gauche(None)
+          self.avance(None)
 
          if (sound == 3):
-          self.gauche()
-          self.avance()
+          self.gauche(None)
+          self.avance(None)
 
          if (sound == 4):
-          self.gauche()
-          self.avance()
-          self.gauche()
-          self.avance()
+          self.gauche(None)
+          self.avance(None)
+          self.gauche(None)
+          self.avance(None)
 
          if (sound == 5):
-          self.gauche()
-          self.gauche()
-          self.avance()
+          self.gauche(None)
+          self.gauche(None)
+          self.avance(None)
 
          if (sound == 6):
-          self.droite()
-          self.avance()
-          self.droite()
-          self.avance()
+          self.droite(None)
+          self.avance(None)
+          self.droite(None)
+          self.avance(None)
 
          if (sound == 7):
-          self.droite()
-          self.avance()
+          self.droite(None)
+          self.avance(None)
 
          if (sound == 8):
-          self.avance()
-          self.droite()
-          self.avance()
+          self.avance(None)
+          self.droite(None)
+          self.avance(None)
 
 
 

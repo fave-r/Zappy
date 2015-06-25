@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Tue May  5 14:40:23 2015 romaric
-## Last update Thu Jun  4 17:34:01 2015 Thibaut Lopez
+## Last update Thu Jun 25 17:23:12 2015 Arnaud Lhomme
 ##
 
 CC=		gcc
@@ -16,7 +16,7 @@ INCLUDES=	-I ./includes
 
 CFLAGS=		-W -Wall -Wextra -g3 -lm
 
-S_NAME=		zappy
+S_NAME=		zappy_server
 
 U_SRC=		src/utils/common_func.c				\
 		src/utils/queue.c				\

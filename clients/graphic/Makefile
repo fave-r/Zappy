@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Jun  8 12:54:25 2015 romaric
-## Last update Wed Jun 24 13:09:26 2015 jean_c
+## Last update Thu Jun 25 17:26:21 2015 Arnaud Lhomme
 ##
 
 CXX =		g++

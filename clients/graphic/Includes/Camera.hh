@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Mon Jun 22 16:21:49 2015 Leo Thevenet
-// Last update Wed Jun 24 17:49:21 2015 Leo Thevenet
+// Last update Thu Jun 25 11:47:25 2015 Leo Thevenet
 //
 
 #ifndef __CAMERA_HH__
@@ -31,6 +31,7 @@ public:
   const glm::mat4 getCam();
   const glm::mat4 getCam2();
   const glm::vec3 getPosHUD();
+  const glm::vec3 getPosCam();
   void	setCam(float, float, float);
   void	setCam2(float, float, float);
   void	getKey(gdl::Input &input);

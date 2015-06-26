@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 10:23:22 2015 jean_c
-// Last update Wed Jun 24 18:12:05 2015 Leo Thevenet
+// Last update Fri Jun 26 16:43:25 2015 Leo Thevenet
 //
 
 #include "Graphic.hh"
@@ -167,11 +167,79 @@ bool		Graphic::update()
       this->_cam->setCam2(this->_actualCase % this->_width, this->_actualCase / this->_width, 5);
       this->_shader.setUniform("view", this->_cam->getCam2());
       updateHUD();
-    } /* variable case actuelle
-	 catch des touches haut, bas, droite, gauche
-	 appel de getcam avec les pos x, y*/
+    }
   // else if (this->_camType == 3)
   // vue sur un perso, catch de droite gauche
+
+
+
+  // if (this->_input.getKey(SDL_BUTTON_LEFT))
+  //   {
+  //     glm::ivec2 mouse = this->_input.getMousePosition();
+  //     glm::mat4 projection = glm::perspective(80.0f, 1920.0f / 1080.0f, 0.1f, 100.0f);
+  //     glm::mat4 view = this->_cam->getCam();
+
+  //     // double x = 2.0 * mouse.x / 1920.0 - 1;
+  //     // double y = -2.0 * mouse.y / 1080.0 + 1;
+  //     // glm::mat4 inv = glm::inverse(projection * view);
+  //     // glm::vec4 point = glm::vec4(x, y, 0, 0);
+  //     // glm::vec4 final = inv * point;
+  //     // std::cout << mouse.x << " " << mouse.y << std::endl;
+
+  //     glm::vec3 final1 = glm::unProject(glm::vec3((float)mouse.x, (float)mouse.y, 0.0), view, projection, glm::vec4(0, 0, 1920, 1080));
+  //     glm::vec3 final2 = glm::unProject(glm::vec3((float)mouse.x, (float)mouse.y, 1.0), view, projection, glm::vec4(0, 0, 1920, 1080));
+
+
+  //     glm::vec3 ray = glm::normalize(final2 - final1);
+
+  //     std::cout << ray.x << " " << ray.y << " " << ray.z << std::endl;
+  //     glm::vec3 pos = this->_cam->getPosCam();
+  //     glm::vec3 n = glm::vec3(0, 1, 0);
+
+  //     float t = (-glm::dot(pos, n)) / glm::dot(ray, n);
+
+  //     std::cout << t << std::endl;
+  //     glm::vec3 p = pos + ray * t;
+  //     std::cout << " x : " << p.x << " y : " << p.y << " z : " << p.z << std::endl;
+
+  // glm::vec3 vDirToSphere = glm::vec3(0, 0, 0) - final1;
+  // glm::vec3 vLineDir = glm::normalize(final1 - final2);
+  // // float fLineLength = glm::distance(final1, final2);
+  // float t = glm::dot(vDirToSphere, vLineDir);
+
+  // glm::vec3 final;
+
+  // if (t <= 0.0f)
+  //	vClosestPoint = vA;
+  // else if (t >= fLineLength)
+  //	vClosestPoint = vB;
+  // else
+  // final = final1 + vLineDir * t;
+
+
+
+  //std::cout << "t : " << t // << " f " << fLineLength
+  // std::cout << " " << final.x << "  " << final.y << "  " << final.z << std::endl;
+
+  // double a = 1;
+  // double b = 1;
+  // double c = 0;
+  // double d = 0;
+  // glm::vec3 pos = this->_cam->getPosCam();
+  // //final = final - pos;
+
+  // double k = -(a * pos.x + b * pos.y + c * pos.z + d) / (a * final.x + b * final.y + c * final.z);
+
+
+  // // double Vx = mouse.x - 1920 / 2;
+  // // double Vy = mouse.y - 1080 / 2;
+  // // double Vz = 1920 / 2 / tan(40);
+  // double Px = k * final.x + pos.x;
+  // double Py = k * final.y + pos.y;
+  // double Pz = k * final.z + pos.z;
+  // std::cout << "k : " << k << " x : " << Px << " y : " << Py << " z : " << Pz << std::endl;
+  // std::cout << mouse.x << std::endl;
+  //}
   return true;
 }
 

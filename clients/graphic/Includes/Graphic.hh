@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 09:08:50 2015 jean_c
-// Last update Wed Jun 24 16:55:31 2015 Leo Thevenet
+// Last update Thu Jun 25 14:51:01 2015 Leo Thevenet
 //
 
 #ifndef __GRAPHIC_HH__
@@ -19,6 +19,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <iostream>
+#include <math.h>
 
 #include "AObject.hh"
 #include "ModelPool.hh"

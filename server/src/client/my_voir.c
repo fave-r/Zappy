@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Mon Jun 15 18:33:27 2015 Thibaut Lopez
+** Last update Fri Jun 26 19:14:22 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -26,6 +26,18 @@ static void	(*gole[4])(t_pair *, int) =
   west_gole
 };
 
+void		loop_ressource(t_cb *wr, uint16_t goal, char *str_to_add)
+{
+  int		i;
+
+  i = 0;
+  while (i < goal)
+    {
+      fill_cb(wr, str_to_add, strlen(str_to_add));
+      i++;
+    }
+}
+
 void		analyse_cell(t_content **cnt, t_pair *cone, t_user *usr)
 {
   t_user	*tmp;
@@ -38,20 +50,13 @@ void		analyse_cell(t_content **cnt, t_pair *cone, t_user *usr)
       fill_cb(&usr->wr, " joueur", 7);
       tmp = tmp->next;
     }
-  if (cnt[cone->f][cone->s].food > 0)
-    fill_cb(&usr->wr, " nourriture", 11);
-  if (cnt[cone->f][cone->s].linemate > 0)
-    fill_cb(&usr->wr, " linemate", 9);
-  if (cnt[cone->f][cone->s].deraumere > 0)
-    fill_cb(&usr->wr, " deraumere", 10);
-  if (cnt[cone->f][cone->s].sibur > 0)
-    fill_cb(&usr->wr, " sibur", 6);
-  if (cnt[cone->f][cone->s].mendiane > 0)
-    fill_cb(&usr->wr, " mendiane", 9);
-  if (cnt[cone->f][cone->s].phiras > 0)
-    fill_cb(&usr->wr, " phiras", 7);
-  if (cnt[cone->f][cone->s].thystame > 0)
-    fill_cb(&usr->wr, " thystame", 9);
+  loop_ressource(&usr->wr, cnt[cone->f][cone->s].food, " nourriture");
+  loop_ressource(&usr->wr, cnt[cone->f][cone->s].linemate, " linemate");
+  loop_ressource(&usr->wr, cnt[cone->f][cone->s].deraumere, " deraumere");
+  loop_ressource(&usr->wr, cnt[cone->f][cone->s].sibur, " sibur");
+  loop_ressource(&usr->wr, cnt[cone->f][cone->s].mendiane, " mendiane");
+  loop_ressource(&usr->wr, cnt[cone->f][cone->s].phiras, " phiras");
+  loop_ressource(&usr->wr, cnt[cone->f][cone->s].thystame, " thystame");
 }
 
 void		vert_view(int i, t_user *usr, t_pair *cone, t_zap *data)

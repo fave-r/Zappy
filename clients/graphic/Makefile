@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Jun  8 12:54:25 2015 romaric
-## Last update Thu Jun 25 17:26:21 2015 Arnaud Lhomme
+## Last update Fri Jun 26 17:09:21 2015 romaric
 ##
 
 CXX =		g++
@@ -56,13 +56,20 @@ OBJS =		$(SRCS:.cpp=.o)
 
 all:		$(NAME)
 
+%.o:		%.cpp
+		@echo -e "\033[33m[Doing object] \033[0m" | tr -d '\n'
+		$(CXX) $(CXXFLAGS) -c -o $@ $<
+
 $(NAME):	$(OBJS)
+		@echo -e "\033[32m[Building] \033[0m" | tr -d '\n'
 		$(CXX) $(OBJS) -o $(NAME) $(LDLIBS) $(LDFLAGS)
 
 clean:
+		@echo -e "\033[31m[Cleaning] \033[0m" | tr -d '\n'
 		$(RM) $(OBJS)
 
 fclean:		clean
+		@echo -e "\033[31m[Filecleaning] \033[0m" | tr -d '\n'
 		$(RM) $(NAME)
 
 re:		fclean all

@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 // 
 // Started on  Mon Jun 22 16:21:13 2015 Leo Thevenet
-// Last update Wed Jun 24 18:06:56 2015 Leo Thevenet
+// Last update Fri Jun 26 16:30:45 2015 Leo Thevenet
 //
 
 #include "Camera.hh"
@@ -41,6 +41,11 @@ const glm::mat4 Camera::getCam2()
 			       glm::vec3(this->_x2, 0, this->_y2 + 2),
 			       glm::vec3(0, 1, 0));
   return transformation;
+}
+
+const glm::vec3 Camera::getPosCam()
+{
+  return glm::vec3(this->_x, this->_z, this->_y);
 }
 
 void	Camera::setCam(float x, float y, float z)

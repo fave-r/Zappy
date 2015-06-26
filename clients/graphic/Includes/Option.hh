@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 22 12:20:56 2015 Thibaut Lopez
-// Last update Thu Jun 25 13:55:48 2015 Thibaut Lopez
+// Last update Fri Jun 26 17:12:36 2015 Thibaut Lopez
 //
 
 #ifndef	OPTION_HH
@@ -29,8 +29,11 @@ private:
   typedef	Ret	(Option::*ptr)(std::pair<std::string, std::string> &);
   SlideBar	*_bgmVol;
   SlideBar	*_seVol;
-  RadioBox	*_rb;
+  SDL_Color	_color;
+  TTF_Font	*_font;
   std::list<TextBox *>	_texts;
+  std::vector<RadioBox *>	_rbs;
+  RadioBox	*_rb;
   SDL_Event	_event;
   bool		_testSe;
   bool		_sPausedBGM;

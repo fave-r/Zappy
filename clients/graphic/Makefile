@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Jun  8 12:54:25 2015 romaric
-## Last update Thu Jun 25 17:26:21 2015 Arnaud Lhomme
+## Last update Fri Jun 26 16:53:41 2015 Thibaut Lopez
 ##
 
 CXX =		g++
@@ -51,6 +51,7 @@ SRCS =		$(SRC)/Button.cpp		\
                 $(SRC)/Camera.cpp             	\
                 $(SRC)/APlayer.cpp            	\
                 $(SRC)/ARessources.cpp		\
+		$(SRC)/TextBox.cpp
 
 OBJS =		$(SRCS:.cpp=.o)
 

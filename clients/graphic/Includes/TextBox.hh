@@ -5,13 +5,14 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Wed Jun 24 17:39:41 2015 Thibaut Lopez
-// Last update Wed Jun 24 17:50:24 2015 Thibaut Lopez
+// Last update Fri Jun 26 16:51:58 2015 Thibaut Lopez
 //
 
 #ifndef	TEXTBOX_HH
 #define	TEXTBOX_HH
 
 #include "Rectangle.hh"
+#include <SDL2/SDL_ttf.h>
 
 class		TextBox : public Rectangle
 {

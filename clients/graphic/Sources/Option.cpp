@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 22 12:20:56 2015 Thibaut Lopez
-// Last update Thu Jun 25 18:11:00 2015 Thibaut Lopez
+// Last update Fri Jun 26 17:07:49 2015 Thibaut Lopez
 //
 
 #include "Option.hh"
@@ -14,16 +14,26 @@ Option::Option(SDL_Renderer *ren)
   : IRefreshable()
 {
   Music	*music;
-  //SDL_Color	color;
 
-  this->_bgmVol = new SlideBar(500, 150);
+  this->_bgmVol = new SlideBar(500, 200);
   this->_bgmVol->init(500, ren);
-  this->_seVol = new SlideBar(500, 250);
+  this->_seVol = new SlideBar(500, 300);
   this->_seVol->init(500, ren);
-  this->_rb = new RadioBox(100, 600);
+  this->_rb = new RadioBox(500, 400);
   this->_rb->init(ren);
-  /*this->_texts.push_back(new TextBox(500, 50));
-    this->_texts.front()->load(ren, "Settings", font, color);*/
+  this->_color.r = 255;
+  this->_color.b = 255;
+  this->_color.g = 255; 
+  this->_font = TTF_OpenFont(OPTION_TTF, 80);
+  this->_texts.push_back(new TextBox(500, 30));
+  this->_texts.back()->load(ren, "Settings", this->_font, this->_color);
+  TTF_CloseFont(this->_font);
+  this->_font = TTF_OpenFont(OPTION_TTF, 25);
+  this->_texts.push_back(new TextBox(270, 210));
+  this->_texts.back()->load(ren, "BGM Volume:", this->_font, this->_color);
+  this->_texts.push_back(new TextBox(290, 310));
+  this->_texts.back()->load(ren, "SE Volume:", this->_font, this->_color);
+  TTF_CloseFont(this->_font);
   this->_eventType[SDL_QUIT] = &Option::_etQuit;
   this->_eventType[SDL_KEYUP] = &Option::_etKeyUp;
   this->_eventType[SDL_TEXTINPUT] = &Option::_etTextInput;
@@ -42,9 +52,17 @@ Option::Option(SDL_Renderer *ren)
 
 Option::~Option()
 {
+  std::list<TextBox *>::iterator	it;
+
   delete this->_bgmVol;
   delete this->_seVol;
   delete this->_rb;
+  it = this->_texts.begin();
+  while (it != this->_texts.end())
+    {
+      delete (*it);
+      ++it;
+    }
 }
 
 Ret	Option::_etQuit(std::pair<std::string, std::string> &ret)
@@ -169,6 +187,7 @@ Ret	Option::_etMouseMotion(std::pair<std::string, std::string> &ret)
 void	Option::refresh(SDL_Renderer *ren)
 {
   Music	*music;
+  std::list<TextBox *>::iterator	it;
 
   music = Music::newinstance();
   this->_bgmVol->setPercent(music->getVol() * 100);
@@ -176,6 +195,12 @@ void	Option::refresh(SDL_Renderer *ren)
   this->_seVol->setPercent(music->getVol(false) * 100);
   this->_seVol->refresh(ren);
   this->_rb->refresh(ren);
+  it = this->_texts.begin();
+  while (it != this->_texts.end())
+    {
+      (*it)->refresh(ren);
+      ++it;
+    }
   if (this->_testSe && this->_repeat.cmp(Timeval()) <= 0)
     {
       music->playSound("test", false);

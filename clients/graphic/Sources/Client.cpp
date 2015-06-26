@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 17:40:56 2015 Thibaut Lopez
-// Last update Wed Jun 24 20:01:16 2015 Thibaut Lopez
+// Last update Fri Jun 26 20:06:35 2015 jean_c
 //
 
 #include "Client.hh"
@@ -58,6 +58,7 @@ void		Client::run(Map &map)
 {
   std::string	str;
   Command	com;
+  std::vector<std::vector<Content*> > m;
   Graphic       *graphic = new Graphic(0, 0);
   size_t	x = 0, y = 0;
 
@@ -68,7 +69,8 @@ void		Client::run(Map &map)
 	{
 	  x = map.getLength();
 	  y = map.getWidth();
-	  graphic->changeSize(y, x, map.getMap());
+	  m = map.getMap();
+	  graphic->changeSize(y, x, m);
 	}
       this->_update();
       while ((str = this->_s.getLine()).size() > 0)
@@ -76,6 +78,8 @@ void		Client::run(Map &map)
 	  try
 	    {
 	      com.thiscom(str, map, this->_s);
+	      m = map.getMap();
+	      graphic->setMap(m);
 	    }
 	  catch (std::out_of_range &err)
 	    {}

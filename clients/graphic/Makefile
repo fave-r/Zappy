@@ -5,16 +5,12 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Jun  8 12:54:25 2015 romaric
-<<<<<<< HEAD
-## Last update Fri Jun 26 16:53:41 2015 Thibaut Lopez
-=======
-## Last update Fri Jun 26 17:09:21 2015 romaric
->>>>>>> 421e7ae76cb64e4b918c43bf43eda6382e846dad
+## Last update Sat Jun 27 01:28:21 2015 jean_c
 ##
 
 CXX =		g++
 
-CXXFLAGS =	-W -Wall -Werror -Wextra -std=gnu++11 -g3
+CXXFLAGS =	-W -Wall -Werror -Wextra -std=gnu++11
 CXXFLAGS +=	-I./Includes -I./Library/includes
 
 LDFLAGS =	-Wl,--rpath=./Library/libs -lgdl_gl -lrt -lfbxsdk -lSDL2 -lSDL2_ttf
@@ -55,7 +51,14 @@ SRCS =		$(SRC)/Button.cpp		\
                 $(SRC)/Camera.cpp             	\
                 $(SRC)/APlayer.cpp            	\
                 $(SRC)/ARessources.cpp		\
-		$(SRC)/TextBox.cpp
+		$(SRC)/TextBox.cpp		\
+		$(SRC)/Food.cpp			\
+		$(SRC)/Linemate.cpp		\
+		$(SRC)/Deraumere.cpp		\
+		$(SRC)/Sibur.cpp		\
+		$(SRC)/Mendiane.cpp		\
+		$(SRC)/Phiras.cpp		\
+		$(SRC)/Thystame.cpp		\
 
 OBJS =		$(SRCS:.cpp=.o)
 

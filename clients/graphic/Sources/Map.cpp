@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 19:21:19 2015 Thibaut Lopez
-// Last update Wed Jun 24 17:42:58 2015 Leo Thevenet
+// Last update Fri Jun 26 19:23:12 2015 jean_c
 //
 
 #include "Map.hh"

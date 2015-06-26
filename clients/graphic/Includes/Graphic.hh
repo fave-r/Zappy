@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 09:08:50 2015 jean_c
-// Last update Thu Jun 25 14:51:01 2015 Leo Thevenet
+// Last update Fri Jun 26 21:24:01 2015 jean_c
 //
 
 #ifndef __GRAPHIC_HH__
@@ -20,6 +20,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <iostream>
 #include <math.h>
+#include <unistd.h>
+#include <vector>
 
 #include "AObject.hh"
 #include "ModelPool.hh"
@@ -40,7 +42,9 @@ public:
   void			initMap();
   void			setHUD();
   void			updateHUD();
-  void			changeSize(size_t, size_t, std::vector<std::vector <Content *> >);
+  void			changeSize(size_t, size_t, std::vector<std::vector <Content *> > &);
+  void			setMap(std::vector<std::vector <Content *> > &);
+
 private:
   size_t		_width;
   size_t		_height;

@@ -5,12 +5,13 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun Jun 21 02:12:29 2015 jean_c
-// Last update Sun Jun 21 02:16:08 2015 jean_c
+// Last update Sat Jun 27 01:09:59 2015 jean_c
 //
 
 #ifndef __GROUND_HH__
 # define __GROUND_HH__
 
+#include <list>
 #include "AObject.hh"
 
 class		Ground : virtual public AObject
@@ -20,11 +21,13 @@ public:
   ~Ground();
 
 public:
-  void			draw(gdl::AShader &shader);
-  void			setModel(const gdl::Geometry &);
+  virtual void		draw(gdl::AShader &shader);
+  virtual void		setModel(const gdl::Geometry &);
+  void			pushInList(const AObject *);
 
 private:
-  gdl::Geometry		_geometry;
+  gdl::Geometry					_geometry;
+  std::list<std::pair<float, const AObject *> >	_listRessources;
 };
 
 #endif

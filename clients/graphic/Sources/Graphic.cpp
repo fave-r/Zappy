@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 10:23:22 2015 jean_c
-// Last update Fri Jun 26 16:43:25 2015 Leo Thevenet
+// Last update Sat Jun 27 01:43:23 2015 jean_c
 //
 
 #include "Graphic.hh"
@@ -15,11 +15,15 @@ Graphic::Graphic(size_t width, size_t height) : _width(width), _height(height)
   this->Initialize();
   this->_camType = 1;
   this->_actualCase = 0;
-  std::cout << width << " " << height << std::endl;
 }
 
 Graphic::~Graphic()
 {
+}
+
+void		Graphic::setMap(std::vector<std::vector <Content *> > &map)
+{
+  this->_map = map;
 }
 
 void		Graphic::Initialize()
@@ -49,7 +53,7 @@ void		Graphic::Initialize()
   this->initMap();
 }
 
-void		Graphic::changeSize(size_t width, size_t height, std::vector<std::vector <Content *> > map)
+void		Graphic::changeSize(size_t width, size_t height, std::vector<std::vector <Content *> > &map)
 {
   this->_map = map;
   this->_width = width;
@@ -63,11 +67,13 @@ void		Graphic::changeSize(size_t width, size_t height, std::vector<std::vector <
 
 void		Graphic::initMap()
 {
-  AObject        *model;
+  Ground        *model;
 
   for (size_t i = 0; i < this->_height; ++i)
     for (size_t j = 0; j < this->_width; ++j)
       {
+	if (this->_map[i][j] != NULL) // DO A KIND OF FACTORY IN GROUND
+	  std::cout << this->_map[i][j]->getFood() << std::endl;
 	model = new Ground(j, i);
 	model->setModel(this->_modelPool->getGround());
 	model->setTexture(this->_texturePool->getGround());
@@ -110,8 +116,6 @@ void		Graphic::updateHUD()
   pos.x += 1;
   this->_HUD[2]->setPos(pos);
 }
-
-#include <unistd.h>
 
 void		Graphic::MoveCase(int nb)
 {

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun Jun 21 01:57:23 2015 jean_c
-// Last update Tue Jun 23 11:46:39 2015 Leo Thevenet
+// Last update Sat Jun 27 09:56:07 2015 jean_c
 //
 
 #ifndef __AOBJECT_HH__
@@ -17,6 +17,8 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <Texture.hh>
+
+#include "Error.hh"
 
 class		AObject
 {

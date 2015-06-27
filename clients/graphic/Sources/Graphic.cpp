@@ -5,10 +5,11 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 10:23:22 2015 jean_c
-// Last update Sat Jun 27 01:43:23 2015 jean_c
+// Last update Sat Jun 27 11:01:16 2015 jean_c
 //
 
 #include "Graphic.hh"
+#include "Food.hh"
 
 Graphic::Graphic(size_t width, size_t height) : _width(width), _height(height)
 {
@@ -72,9 +73,14 @@ void		Graphic::initMap()
   for (size_t i = 0; i < this->_height; ++i)
     for (size_t j = 0; j < this->_width; ++j)
       {
-	if (this->_map[i][j] != NULL) // DO A KIND OF FACTORY IN GROUND
-	  std::cout << this->_map[i][j]->getFood() << std::endl;
 	model = new Ground(j, i);
+	if (this->_map[i][j] != NULL) // DO A KIND OF FACTORY IN GROUND
+	  if (this->_map[i][j]->getMendiane() > 0)
+	    {
+	      Food *fd = new Food(j, i);
+	      //	      fd->setTexture(this->_texturePool->getGround());
+	      this->_objects.push_back(fd);
+	    }
 	model->setModel(this->_modelPool->getGround());
 	model->setTexture(this->_texturePool->getGround());
 	model->translate(glm::vec3(j, 0, i));

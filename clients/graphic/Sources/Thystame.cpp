@@ -5,13 +5,16 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 27 01:11:21 2015 jean_c
-// Last update Sat Jun 27 01:28:00 2015 jean_c
+// Last update Sat Jun 27 09:57:19 2015 jean_c
 //
 
 #include "Thystame.hh"
 
 Thystame::Thystame(int x, int y) : AObject(x, y)
 {
+  if (this->_model.load("./Ressources/Assets/egg.fbx") == false)
+    throw loading_error("Fail in Thystame load");
+  this->translate(glm::vec3(x, 1, y));
 }
 
 Thystame::~Thystame()

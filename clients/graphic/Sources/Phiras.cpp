@@ -5,13 +5,16 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 27 01:11:21 2015 jean_c
-// Last update Sat Jun 27 01:26:36 2015 jean_c
+// Last update Sat Jun 27 09:57:31 2015 jean_c
 //
 
 #include "Phiras.hh"
 
 Phiras::Phiras(int x, int y) : AObject(x, y)
 {
+  if (this->_model.load("./Ressources/Assets/egg.fbx") == false)
+    throw loading_error("Fail in Phiras load");
+  this->translate(glm::vec3(x, 1, y));
 }
 
 Phiras::~Phiras()

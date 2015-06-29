@@ -24,6 +24,7 @@ private:
   int	_mendiane;
   int	_phiras;
   int	_thystame;
+  bool _boolF;
 
 public:
   Content();
@@ -44,6 +45,8 @@ public:
   int	getMendiane(void) const;
   int	getPhiras(void) const;
   int	getThystame(void) const;
+  bool    getBoolF() const;
+  void    setBoolF(const bool);
 };
 
 #endif

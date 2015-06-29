@@ -1,4 +1,3 @@
-//
 // main.cpp for zappy in /home/fave_r/rendu/Zappy/clients/graphic/src
 //
 // Made by romaric

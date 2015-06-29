@@ -25,7 +25,8 @@ public:
   virtual void		setModel(const gdl::Geometry &);
 
 private:
-  gdl::Model		_model;
+  static gdl::Model		_model;
+  static bool         _isInit;
 };
 
 #endif

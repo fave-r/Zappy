@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 19:21:19 2015 Thibaut Lopez
-// Last update Fri Jun 26 19:23:08 2015 jean_c
+// Last update Mon Jun 29 14:24:32 2015 romaric
 //
 
 #ifndef	MAP_HH
@@ -14,6 +14,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <list>
+#include <utility>
 #include "Content.hh"
 
 enum Type
@@ -33,6 +35,7 @@ private:
   size_t	_length;
   size_t	_width;
   std::vector<std::vector <Content *> > _map;
+  std::list<std::pair<int, int>> _update;
 
 public:
   Map();

@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 19:21:19 2015 Thibaut Lopez
-// Last update Mon Jun 29 14:24:32 2015 romaric
+// Last update Mon Jun 29 14:35:21 2015 romaric
 //
 
 #ifndef	MAP_HH
@@ -35,7 +35,6 @@ private:
   size_t	_length;
   size_t	_width;
   std::vector<std::vector <Content *> > _map;
-  std::list<std::pair<int, int>> _update;
 
 public:
   Map();
@@ -53,6 +52,8 @@ public:
 
   void		setMap(const int x, const int y, const Type type, const int number);
   std::vector<std::vector <Content *> > getMap() const;
+  std::list<std::pair<int, int>> _update;
+
 };
 
 #endif

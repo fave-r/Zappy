@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Mon Jun  1 11:28:59 2015 Thibaut Lopez
-** Last update Tue Jun 16 02:55:08 2015 Thibaut Lopez
+** Last update Mon Jun 29 03:21:56 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -136,6 +136,9 @@ int		manage_server(t_user **user, t_zap *data)
     }
   gettimeofday(&now, NULL);
   check_eggs(data->teams, &now, *user);
-  return ((front_q(data->end) != NULL && cmp_tv(front_q(data->end), &now) <= 0)
-	  ? end_game(data, user) : check_asking(user, data, &data->end_game));
+  int	caca = (front_q(data->end) != NULL && cmp_tv(front_q(data->end), &now) <= 0)
+    ? end_game(data, user) : check_asking(user, data, &data->end_game);
+  if (caca != 0)
+    printf("manage %d\n", caca);
+  return (caca);
 }

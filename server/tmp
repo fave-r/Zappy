@@ -1,0 +1,289 @@
+TeamA
+TeamB
+Information about the server:
+Port: 6667
+Map of 10x10 cells
+Player max per team: 1
+Delay for each action: 100
+Name of each team
+(Time waiting for a graphic response: 7.500000)
+new client
+4 -> BIENVENUE
+4 <- TeamA
+4 -> 0
+4 -> 10 10
+4 <- connect_nbr
+4 -> 0
+4 <- fork
+4 -> ok
+4 <- avance
+          0
+          1 && 1 == 1 && 0:0
+          0x218ecb0 == 0x218ecb0 ?
+4 -> ok
+4 <- voir
+4 -> { joueur nourriture nourriture nourriture deraumere deraumere deraumere mendiane mendiane mendiane mendiane thystame, linemate linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere sibur sibur mendiane mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras, nourriture nourriture sibur sibur sibur sibur}
+4 <- avance
+          0
+          1 && 1 == 1 && 0:0
+          0x218ecb0 == 0x218ecb0 ?
+4 -> ok
+4 <- voir
+4 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras, nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere sibur sibur phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate sibur sibur sibur mendiane mendiane mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras phiras thystame}
+4 <- prend nourriture
+4 -> ok
+4 <- prend nourriture
+4 -> ok
+4 <- prend nourriture
+4 -> ok
+4 <- prend nourriture
+4 -> ok
+4 <- prend nourriture
+4 -> ok
+4 <- prend nourriture
+4 -> ok
+4 <- prend nourriture
+4 -> ok
+4 <- prend nourriture
+4 -> ok
+4 <- inventaire
+4 -> {nourriture 18, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
+4 <- connect_nbr
+4 -> 1
+4 <- inventaire
+new client
+5 -> BIENVENUE
+5 <- TeamA
+4 -> {nourriture 18, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
+4 <- voir
+4 -> { joueur linemate linemate deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras, nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere sibur sibur phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate sibur sibur sibur mendiane mendiane mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras phiras thystame}
+4 <- avance
+          0
+          1 && 1 == 1 && 0:0
+          0x218ecb0 == 0x218ecb0 ?
+4 -> ok
+4 <- voir
+4 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate sibur sibur sibur mendiane mendiane mendiane phiras phiras thystame, nourriture nourriture deraumere deraumere deraumere deraumere sibur mendiane mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere sibur sibur mendiane phiras phiras phiras thystame, linemate linemate linemate linemate linemate deraumere sibur sibur mendiane mendiane}
+4 <- prend nourriture
+4 -> ok
+4 <- prend nourriture
+4 -> ok
+4 <- prend nourriture
+4 -> ok
+4 <- prend nourriture
+4 -> ok
+4 <- prend nourriture
+4 -> ok
+4 <- prend nourriture
+4 -> ok
+4 <- prend nourriture
+4 -> ok
+4 <- prend nourriture
+4 -> ok
+4 <- prend nourriture
+4 -> ok
+4 <- inventaire
+4 -> {nourriture 26, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
+4 <- voir
+4 -> { joueur linemate linemate sibur sibur sibur mendiane mendiane mendiane phiras phiras thystame, nourriture nourriture deraumere deraumere deraumere deraumere sibur mendiane mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere sibur sibur mendiane phiras phiras phiras thystame, linemate linemate linemate linemate linemate deraumere sibur sibur mendiane mendiane}
+4 <- avance
+          0
+          1 && 1 == 1 && 0:0
+          0x218ecb0 == 0x218ecb0 ?
+4 -> ok
+4 <- voir
+4 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere sibur sibur mendiane phiras phiras phiras thystame, linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere phiras thystame, nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere sibur sibur mendiane phiras thystame}
+4 <- prend nourriture
+4 -> ok
+4 <- prend nourriture
+4 -> ok
+4 <- prend nourriture
+4 -> ok
+4 <- prend nourriture
+4 -> ok
+4 <- prend nourriture
+4 -> ok
+4 <- prend nourriture
+4 -> ok
+4 <- inventaire
+4 -> {nourriture 32, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
+4 <- voir
+4 -> { joueur linemate linemate linemate linemate deraumere deraumere deraumere deraumere sibur sibur mendiane phiras phiras phiras thystame, linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere phiras thystame, nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere sibur sibur mendiane phiras thystame}
+4 -> 
+4 <- avance
+          0
+          1 && 1 == 1 && 0:0
+          0x218ecb0 == 0x218ecb0 ?
+4 -> ok
+5 -> 0
+5 -> 10 10
+5 <- connect_nbr
+5 -> 0
+5 <- fork
+5 -> ok
+5 <- avance
+          0
+          1 && 1 == 1 && 0:0
+          0x2191ab0 == 0x2191ab0 ?
+5 -> ok
+5 <- voir
+5 -> { joueur nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane phiras phiras phiras thystame, deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere sibur sibur mendiane, nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere sibur sibur sibur mendiane mendiane mendiane phiras phiras thystame}
+5 <- avance
+          0
+          1 && 1 == 1 && 0:0
+          0x2191ab0 == 0x2191ab0 ?
+5 -> ok
+5 <- voir
+5 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere sibur sibur mendiane, nourriture nourriture linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur mendiane, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane phiras phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere sibur sibur sibur sibur sibur mendiane mendiane}
+5 <- prend nourriture
+5 -> ok
+5 <- prend nourriture
+5 -> ok
+5 <- prend nourriture
+5 -> ok
+5 <- prend nourriture
+5 -> ok
+5 <- prend nourriture
+5 -> ok
+5 <- prend nourriture
+5 -> ok
+5 <- inventaire
+5 -> {nourriture 15, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
+5 <- connect_nbr
+5 -> 1
+5 <- inventaire
+new client
+6 -> BIENVENUE
+6 <- TeamA
+5 -> {nourriture 15, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
+5 <- voir
+5 -> { joueur linemate deraumere deraumere deraumere sibur sibur mendiane, nourriture nourriture linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur mendiane, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane phiras phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere sibur sibur sibur sibur sibur mendiane mendiane}
+5 <- avance
+          0
+          1 && 1 == 1 && 0:0
+          0x2191ab0 == 0x2191ab0 ?
+5 -> ok
+5 <- voir
+5 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane phiras phiras phiras, deraumere sibur phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras phiras thystame, linemate linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane phiras phiras thystame}
+5 <- prend nourriture
+5 -> ok
+5 <- prend nourriture
+5 -> ok
+5 <- prend nourriture
+5 -> ok
+5 <- prend nourriture
+5 -> ok
+5 <- prend nourriture
+5 -> ok
+5 <- prend nourriture
+5 -> ok
+5 <- prend nourriture
+5 -> ok
+5 <- inventaire
+5 -> {nourriture 21, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
+5 <- voir
+5 -> { joueur linemate linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane phiras phiras phiras, deraumere sibur phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras phiras thystame, linemate linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane phiras phiras thystame}
+5 <- avance
+          0
+          1 && 1 == 1 && 0:0
+          0x2191ab0 == 0x2191ab0 ?
+5 -> ok
+5 <- voir
+5 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras phiras thystame, nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere sibur sibur mendiane phiras thystame, joueur nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere phiras thystame, linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur thystame}
+5 -> 
+5 <- prend nourriture
+5 -> ok
+6 -> 0
+6 -> 10 10
+6 <- connect_nbr
+6 -> 0
+6 <- fork
+6 -> ok
+6 <- avance
+          0
+          1 && 1 == 1 && 0:0
+          0x2191b70 == 0x2191b70 ?
+6 -> ok
+6 <- voir
+6 -> { joueur nourriture linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur mendiane phiras phiras phiras, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate sibur sibur mendiane mendiane mendiane mendiane phiras phiras phiras, nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane thystame}
+6 <- avance
+          0
+          1 && 1 == 1 && 0:0
+          0x2191b70 == 0x2191b70 ?
+6 -> ok
+6 <- voir
+6 -> { joueur nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur phiras phiras, nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane phiras phiras phiras}
+6 <- prend nourriture
+6 -> ok
+6 <- prend nourriture
+6 -> ok
+6 <- prend nourriture
+6 -> ok
+6 <- inventaire
+6 -> {nourriture 12, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
+6 <- connect_nbr
+6 -> 1
+6 <- inventaire
+new client
+7 -> BIENVENUE
+7 <- TeamA
+6 -> {nourriture 12, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
+6 <- voir
+6 -> { joueur linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur phiras phiras, nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane phiras phiras phiras}
+6 <- avance
+          0
+          1 && 1 == 1 && 0:0
+          0x2191b70 == 0x2191b70 ?
+6 -> ok
+6 <- voir
+6 -> { joueur nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate sibur sibur mendiane mendiane mendiane phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur mendiane phiras phiras thystame, linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane phiras phiras}
+6 <- prend nourriture
+6 -> ok
+6 <- prend nourriture
+6 -> ok
+6 <- inventaire
+6 -> {nourriture 13, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
+6 <- voir
+6 -> { joueur linemate linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate sibur sibur mendiane mendiane mendiane phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur mendiane phiras phiras thystame, linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane phiras phiras}
+6 <- avance
+          0
+          1 && 1 == 1 && 0:0
+          0x2191b70 == 0x2191b70 ?
+6 -> ok
+6 <- voir
+6 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur mendiane mendiane mendiane mendiane, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere sibur mendiane mendiane}
+6 -> 
+6 <- prend nourriture
+6 -> ok
+7 -> 0
+7 -> 10 10
+7 <- inventaire
+7 -> {nourriture 9, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
+7 <- voir
+7 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere sibur sibur mendiane mendiane mendiane, nourriture nourriture nourriture nourriture linemate linemate linemate deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane thystame, nourriture deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras phiras phiras, linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur mendiane thystame}
+7 <- avance
+          0
+          1 && 1 == 1 && 0:0
+          0x2195cb0 == 0x2195cb0 ?
+7 -> ok
+7 <- voir
+7 -> { joueur nourriture deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras phiras phiras, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur mendiane mendiane mendiane phiras thystame, nourriture deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras, nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere mendiane mendiane mendiane mendiane}
+7 <- prend nourriture
+7 -> ok
+7 <- inventaire
+7 -> {nourriture 10, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
+7 <- voir
+7 -> { joueur deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras phiras phiras, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur mendiane mendiane mendiane phiras thystame, nourriture deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras, nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere mendiane mendiane mendiane mendiane}
+7 <- avance
+          0
+          1 && 1 == 1 && 0:0
+          0x2195cb0 == 0x2195cb0 ?
+7 -> ok
+7 <- voir
+7 -> { joueur nourriture deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras, nourriture nourriture nourriture nourriture linemate linemate sibur phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere sibur sibur sibur mendiane mendiane mendiane mendiane, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras phiras}
+7 <- prend nourriture
+7 -> ok
+7 <- inventaire
+7 -> {nourriture 11, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
+7 <- voir
+7 -> { joueur deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras, nourriture nourriture nourriture nourriture linemate linemate sibur phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere sibur sibur sibur mendiane mendiane mendiane mendiane, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras phir

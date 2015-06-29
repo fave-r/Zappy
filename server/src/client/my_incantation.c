@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Wed Jun 10 19:47:35 2015 Thibaut Lopez
+** Last update Sun Jun 28 19:30:22 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -84,6 +84,7 @@ int		my_incantation(char **com, t_zap *data, t_user *usr)
 
   if (sstrlen(com) != 1 || check_this_case(usr, data, 0) == 0)
     {
+      printf("goal %d\ncase: %d %d %d %d %d %d\nnb player: %d\n", GET_LVL(usr), data->map[GET_X(usr)][GET_Y(usr)].linemate, data->map[GET_X(usr)][GET_Y(usr)].deraumere, data->map[GET_X(usr)][GET_Y(usr)].sibur, data->map[GET_X(usr)][GET_Y(usr)].mendiane, data->map[GET_X(usr)][GET_Y(usr)].phiras, data->map[GET_X(usr)][GET_Y(usr)].thystame, check_nb_in_cell(0, usr));
       fill_cb(&usr->wr, "ko\n", 3);
       return (-1);
     }

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Wed Jun 10 14:33:47 2015 Thibaut Lopez
+** Last update Mon Jun 29 18:32:29 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -46,5 +46,6 @@ int		main(int ac, char **av)
   data_free(&user);
   close(s);
   free_zap(&data);
+  printf("quitte normalement\n");
   return (0);
 }

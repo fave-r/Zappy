@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 26 18:31:09 2015 Thibaut Lopez
-** Last update Tue May 26 18:36:05 2015 Thibaut Lopez
+** Last update Mon Jun 29 17:46:13 2015 Thibaut Lopez
 */
 
 #include "utils.h"
@@ -29,6 +29,16 @@ t_tv	*add_tv(t_tv *tv, int to_add)
   sign = (to_add < 0) ? -1 : 1;
   tv->tv_usec += (ABS(to_add) % 1000000) * sign;
   tv->tv_sec += to_add / 1000000;
+  if (tv->tv_usec < 0)
+    {
+      tv->tv_usec += 1000000;
+      tv->tv_sec--;
+    }
+  else if (tv->tv_usec > 1000000)
+    {
+      tv->tv_usec -= 1000000;
+      tv->tv_sec++;
+    }
   return (tv);
 }
 

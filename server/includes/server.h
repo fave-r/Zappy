@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Mon Jun 15 18:01:21 2015 Thibaut Lopez
+** Last update Mon Jun 29 19:19:23 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -30,6 +30,7 @@
 #include <signal.h>
 #include <time.h>
 #include <math.h>
+#include <errno.h>
 #include "cb.h"
 
 typedef	enum	e_state
@@ -200,7 +201,7 @@ int		base_value(t_zap *);
 void		init_val(t_zap *);
 void		free_zap(t_zap *);
 void		send_inc_to_graph(t_user *, t_zap *);
-void		cast_loop(t_user *, t_user *, int, t_tv *);
+void		cast_loop(t_user *, t_tv *, int, t_tv *);
 void		send_elev_in(t_user *);
 
 int		count_in_team(t_team *, t_user *);

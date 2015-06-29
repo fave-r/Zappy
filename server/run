@@ -1,1 +1,1 @@
-make -j4 && ./zappy_server
+make -j4 && ./zappy_server $*

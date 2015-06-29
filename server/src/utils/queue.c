@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 15 14:41:50 2015 Thibaut Lopez
-** Last update Wed Jun  3 18:45:23 2015 Thibaut Lopez
+** Last update Mon Jun 29 18:24:52 2015 Thibaut Lopez
 */
 
 #include "utils.h"
@@ -17,6 +17,15 @@ void	push_q(t_que **q, void *e, void *(*clone)(void *))
 
   if (e == NULL)
     return ;
+  if (clone == clone_tv)
+    {
+      t_tv	*caca;
+      t_tv	now;
+
+      caca = e;
+      gettimeofday(&now, NULL);
+      printf("pushing at %ld:%ld for %ld:%ld\n", now.tv_sec, now.tv_usec, caca->tv_sec, caca->tv_usec);
+    }
   new = xmalloc(sizeof(t_que));
   new->e = clone(e);
   new->next = NULL;

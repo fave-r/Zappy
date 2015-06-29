@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon May 25 17:31:52 2015 romaric
-** Last update Mon Jun 15 15:03:58 2015 Thibaut Lopez
+** Last update Mon Jun 29 14:23:52 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -24,12 +24,12 @@ void		send_inc_to_graph(t_user *usr, t_zap *data)
   send_to_graphic(tmp, usr);
 }
 
-void		cast_loop(t_user *cur, t_user *tmp, int check, t_tv *now)
+void		cast_loop(t_user *cur, t_tv *time, int check, t_tv *now)
 {
   char		tr[100];
   char		str[50];
 
-  if (cmp_tv(&GET_CAST(cur), &GET_CAST(tmp)) == 0)
+  if (cmp_tv(&GET_CAST(cur), time) == 0)
     {
       GET_CAST(cur).tv_sec = 0;
       GET_CAST(cur).tv_usec = 0;

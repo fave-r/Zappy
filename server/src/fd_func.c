@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:51:15 2015 romaric
-** Last update Mon Jun 15 17:35:12 2015 Thibaut Lopez
+** Last update Mon Jun 29 19:13:00 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -21,8 +21,7 @@ void			set_fd(int s, t_bf *bf, t_user *user)
   while (tmp != NULL)
     {
       FD_SET(tmp->fd, &(bf->rbf));
-      if (cb_taken(&tmp->wr) > 0)
-	FD_SET(tmp->fd, &(bf->wbf));
+      FD_SET(tmp->fd, &(bf->wbf));
       tmp = tmp->next;
     }
 }

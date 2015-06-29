@@ -12,7 +12,7 @@
 
 Mendiane::Mendiane(int x, int y) : AObject(x, y)
 {
-  if (this->_model.load("./Ressources/Assets/egg.fbx") == false)
+  if (this->_model.load("./Ressources/Assets/GreenCrystal.fbx") == false)
     throw loading_error("Fail in Mendiane load");
   this->translate(glm::vec3(x, 1, y));
 }

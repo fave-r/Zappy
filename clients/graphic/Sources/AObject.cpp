@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun Jun 21 02:02:59 2015 jean_c
-// Last update Tue Jun 23 11:49:26 2015 Leo Thevenet
+// Last update Mon Jun 29 10:23:18 2015 jean_c
 //
 
 #include "AObject.hh"
@@ -54,4 +54,14 @@ const glm::mat4         AObject::getTransformation()
 void                    AObject::setTexture(const gdl::Texture &old)
 {
   this->_texture = old;
+}
+
+float			AObject::getX()
+{
+  return this->_x;
+}
+
+float			AObject::getY()
+{
+  return this->_y;
 }

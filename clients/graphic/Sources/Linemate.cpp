@@ -12,7 +12,7 @@
 
 Linemate::Linemate(int x, int y) : AObject(x, y)
 {
-  if (this->_model.load("./Ressources/Assets/egg.fbx") == false)
+  if (this->_model.load("./Ressources/Assets/CyanCrystal.fbx") == false)
     throw loading_error("Fail in Linemate load");
   this->translate(glm::vec3(x, 1, y));
 }

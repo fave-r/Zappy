@@ -14,7 +14,7 @@
 
 Food::Food(int x, int y) : AObject(x, y)
 {
-  if (this->_model.load("./Ressources/Assets/egg.fbx") == false)
+  if (this->_model.load("./Ressources/Assets/food.fbx") == false)
     throw loading_error("Fail in Food load");
   this->scale(glm::vec3(0.01, 0.01, 0.01));
   this->translate(glm::vec3(x, 1, y));

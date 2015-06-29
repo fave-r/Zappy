@@ -50,7 +50,6 @@ SRCS =		$(SRC)/Button.cpp		\
                 $(SRC)/TexturePool.cpp        	\
                 $(SRC)/Camera.cpp             	\
                 $(SRC)/APlayer.cpp            	\
-                $(SRC)/ARessources.cpp		\
 		$(SRC)/TextBox.cpp		\
 		$(SRC)/Food.cpp			\
 		$(SRC)/Linemate.cpp		\

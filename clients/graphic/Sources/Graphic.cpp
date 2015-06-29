@@ -5,11 +5,17 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 10:23:22 2015 jean_c
-// Last update Sat Jun 27 11:01:16 2015 jean_c
+// Last update Mon Jun 29 09:27:37 2015 jean_c
 //
 
 #include "Graphic.hh"
 #include "Food.hh"
+#include "Linemate.hh"
+#include "Deraumere.hh"
+#include "Mendiane.hh"
+#include "Phiras.hh"
+#include "Sibur.hh"
+#include "Thystame.hh"
 
 Graphic::Graphic(size_t width, size_t height) : _width(width), _height(height)
 {
@@ -74,13 +80,51 @@ void		Graphic::initMap()
     for (size_t j = 0; j < this->_width; ++j)
       {
 	model = new Ground(j, i);
-	if (this->_map[i][j] != NULL) // DO A KIND OF FACTORY IN GROUND
-	  if (this->_map[i][j]->getMendiane() > 0)
-	    {
-	      Food *fd = new Food(j, i);
-	      //	      fd->setTexture(this->_texturePool->getGround());
-	      this->_objects.push_back(fd);
-	    }
+	//if (this->_map[i][j] != NULL)
+	  //{
+	    if (this->_map[i][j]->getFood() > 0)
+	      {
+		Food *fd = new Food(j, i);
+		this->_objects.push_back(fd);
+	      }
+	    else if (this->_map[i][j]->getLinemate() > 0)
+	      {
+		Linemate *lin = new Linemate(j, i);
+		this->_objects.push_back(lin);
+	      }
+	    else if (this->_map[i][j]->getDeraumere() > 0)
+	      {
+		Deraumere *der = new Deraumere(j, i);
+		this->_objects.push_back(der);
+	      }
+	    else if (this->_map[i][j]->getMendiane() > 0)
+	      {
+		Mendiane *men = new Mendiane(j, i);
+		this->_objects.push_back(men);
+	      }
+	    else if (this->_map[i][j]->getPhiras() > 0)
+	      {
+		Phiras *phi = new Phiras(j, i);
+		this->_objects.push_back(phi);
+	      }
+	    else if (this->_map[i][j]->getSibur() > 0)
+	      {
+		Sibur *si = new Sibur(j, i);
+		this->_objects.push_back(si);
+	      }
+	    else if (this->_map[i][j]->getThystame() > 0)
+	      {
+		Thystame *thy = new Thystame(j, i);
+		this->_objects.push_back(thy);
+	      }
+      else
+        {
+          for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it) {
+            if ((*it)->getX() == j && (*it)->getY() == i)
+              this->_objects.erase(it);
+          }
+        }
+	  //}
 	model->setModel(this->_modelPool->getGround());
 	model->setTexture(this->_texturePool->getGround());
 	model->translate(glm::vec3(j, 0, i));
@@ -256,8 +300,11 @@ bool		Graphic::update()
 void		Graphic::draw()
 {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  for (size_t i = 0; i < this->_objects.size(); ++i)
-    this->_objects[i]->draw(this->_shader);
+  for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it) {
+    (*it)->draw(this->_shader);
+  }
+//  for (size_t i = 0; i < this->_objects.size(); ++i)
+//    this->_objects[i]->draw(this->_shader);
   if (this->_camType == 2)
     for (size_t i = 0; i < this->_HUD.size(); ++i)
       this->_HUD[i]->draw(this->_shader);

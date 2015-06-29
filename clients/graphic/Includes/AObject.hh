@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun Jun 21 01:57:23 2015 jean_c
-// Last update Sat Jun 27 09:56:07 2015 jean_c
+// Last update Mon Jun 29 10:22:32 2015 jean_c
 //
 
 #ifndef __AOBJECT_HH__
@@ -39,6 +39,10 @@ public:
 public:
   virtual void		setModel(const gdl::Geometry &) = 0;
   void                  setTexture(const gdl::Texture &old);
+
+public:
+  float			getX();
+  float			getY();
 
 protected:
   float			_x;

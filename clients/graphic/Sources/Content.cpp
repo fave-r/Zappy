@@ -20,6 +20,12 @@ Content::Content()
   this->_phiras = 0;
   this->_thystame = 0;
   this->_boolF = false;
+  this->_boolD = false;
+  this->_boolL = false;
+  this->_boolM = false;
+  this->_boolP = false;
+  this->_boolS = false;
+  this->_boolT = false;
 }
 
 Content::~Content()
@@ -104,4 +110,64 @@ bool    Content::getBoolF() const
 void    Content::setBoolF(const bool boolF)
 {
   this->_boolF = boolF;
+}
+
+bool    Content::getBoolD() const
+{
+  return this->_boolD;
+}
+
+void    Content::setBoolD(const bool boolD)
+{
+  this->_boolD = boolD;
+}
+
+bool    Content::getBoolL() const
+{
+  return this->_boolL;
+}
+
+void    Content::setBoolL(const bool boolL)
+{
+  this->_boolL = boolL;
+}
+
+bool    Content::getBoolM() const
+{
+  return this->_boolM;
+}
+
+void    Content::setBoolM(const bool boolM)
+{
+  this->_boolM = boolM;
+}
+
+bool    Content::getBoolP() const
+{
+  return this->_boolP;
+}
+
+void    Content::setBoolP(const bool boolP)
+{
+  this->_boolP = boolP;
+}
+
+bool    Content::getBoolS() const
+{
+  return this->_boolS;
+}
+
+void    Content::setBoolS(const bool boolS)
+{
+  this->_boolS = boolS;
+}
+
+bool    Content::getBoolT() const
+{
+  return this->_boolT;
+}
+
+void    Content::setBoolT(const bool boolT)
+{
+  this->_boolT = boolT;
 }

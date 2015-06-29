@@ -22,20 +22,24 @@ Food::Food(int x, int y) : AObject(x, y)
       throw loading_error("Fail in Food load");
     this->_isInit = true;
   }
-  this->scale(glm::vec3(0.01, 0.01, 0.01));
-  this->translate(glm::vec3(x, 1, y));
+  this->scale(glm::vec3(0.005, 0.005, 0.005));
+  this->translate(glm::vec3(x, 0.5, y));
 }
 
-Food::~Food()
+inline Food::~Food()
 {
 }
 
-void		Food::draw(gdl::AShader &shader)
+inline void		Food::draw(gdl::AShader &shader)
 {
+  //this->_texture.bind();
   this->_model.draw(shader, getTransformation(), GL_QUADS);
 }
 
-void		Food::setModel(const gdl::Geometry &geo)
+inline void		Food::setModel(const gdl::Geometry &geo)
 {
   (void)geo;
+  //this->scale(glm::vec3(0.1, 0.1, 0.1));
+  //this->translate(glm::vec3(this->_x, 1, this->_y));
+  //this->_geometry = geo;
 }

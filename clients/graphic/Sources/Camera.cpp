@@ -1,9 +1,9 @@
 //
 // Camera.cpp for Camera in /home/theven_l/Dropbox/zappy/Sources
-// 
+//
 // Made by Leo Thevenet
 // Login   <theven_l@epitech.net>
-// 
+//
 // Started on  Mon Jun 22 16:21:13 2015 Leo Thevenet
 // Last update Fri Jun 26 16:30:45 2015 Leo Thevenet
 //
@@ -67,13 +67,17 @@ const glm::vec3 Camera::getPosHUD()
   return glm::vec3(this->_x2, this->_z2, this->_y2 + 3);
 }
 
-void	Camera::getKey(gdl::Input &input)
+bool	Camera::getKey(gdl::Input &input)
 {
   std::map<int, void(Camera::*)()>::const_iterator it;
 
   for (it = this->_keys.begin(); it != this->_keys.end(); ++it)
     if (input.getKey(it->first))
+    {
       (this->*(*it).second)();
+      return true;
+  } 
+  return false;
 }
 
 void	Camera::camLeft()

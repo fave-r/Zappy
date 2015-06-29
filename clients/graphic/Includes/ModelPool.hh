@@ -22,9 +22,21 @@ public:
 public:
   void			init();
   const gdl::Geometry   &getGround() const;
+  const gdl::Geometry   &getCrystalD() const;
+  const gdl::Geometry   &getCrystalL() const;
+  const gdl::Geometry   &getCrystalM() const;
+  const gdl::Geometry   &getCrystalP() const;
+  const gdl::Geometry   &getCrystalS() const;
+  const gdl::Geometry   &getCrystalT() const;
 
 private:
   gdl::Geometry         _ground;
+  gdl::Geometry         _crystalD;
+  gdl::Geometry         _crystalL;
+  gdl::Geometry         _crystalM;
+  gdl::Geometry         _crystalP;
+  gdl::Geometry         _crystalS;
+  gdl::Geometry         _crystalT;
 };
 
 #endif

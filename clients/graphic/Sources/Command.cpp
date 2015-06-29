@@ -66,7 +66,7 @@ void	Command::thiscom(const std::string &com, Map &map, Socket &s)
   std::string	key;
 
   key = com.substr(0, com.find_first_of(" \n\r"));
-  std::cout << key << std::endl;
+  //std::cout << key << std::endl;
   return (this->*_foncs.at(key.c_str()))(com, map, s);
 }
 

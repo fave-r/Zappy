@@ -54,6 +54,9 @@ void		quit_signal(int signo)
   signaled = 1;
 }
 
+#include <ctime>
+#include <cstdio>
+
 void		Client::run(Map &map)
 {
   std::string	str;
@@ -61,6 +64,9 @@ void		Client::run(Map &map)
   std::vector<std::vector<Content*> > m;
   Graphic       *graphic = new Graphic(0, 0);
   size_t	x = 0, y = 0;
+
+  //std::clock_t start;
+  //double duration;
 
   signal(SIGINT, quit_signal);
   while (signaled == 0 && graphic->update() == true)
@@ -72,18 +78,24 @@ void		Client::run(Map &map)
 	  m = map.getMap();
 	  graphic->changeSize(y, x, m);
 	}
-      this->_update();
+  //start = std::clock();
+  this->_update();
+  //duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
+//  std::cout << "time update : " << duration << std::endl;
       while ((str = this->_s.getLine()).size() > 0)
 	if (str.find_first_of("\n\r") > 0)
 	  try
 	    {
 	      com.thiscom(str, map, this->_s);
 	      m = map.getMap();
-	      graphic->setMap(m);
+	      graphic->setMap(m, map._update);
 	    }
 	  catch (std::out_of_range &err)
 	    {}
+        //start = std::clock();
         graphic->draw();
-      map.handleKeys();
+        //duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
+        //std::cout << "time draw :" << duration << std::endl;
+        map.handleKeys();
     }
 }

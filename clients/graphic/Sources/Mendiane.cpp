@@ -12,9 +12,6 @@
 
 Mendiane::Mendiane(int x, int y) : AObject(x, y)
 {
-  if (this->_model.load("./Ressources/Assets/GreenCrystal.fbx") == false)
-    throw loading_error("Fail in Mendiane load");
-  this->translate(glm::vec3(x, 1, y));
 }
 
 Mendiane::~Mendiane()
@@ -23,11 +20,12 @@ Mendiane::~Mendiane()
 
 void		Mendiane::draw(gdl::AShader &shader)
 {
-  this->_texture.bind();
-  this->_model.draw(shader, getTransformation(), GL_QUADS);
+  this->_geometry.draw(shader, getTransformation(), GL_TRIANGLES);
 }
 
 void		Mendiane::setModel(const gdl::Geometry &geo)
 {
-  (void)geo;
+  this->_geometry = geo;
+  this->translate(glm::vec3(this->_x + 0.2, 1, this->_y - 0.2));
+  this->scale(glm::vec3(0.1, 0.1, 0.1));
 }

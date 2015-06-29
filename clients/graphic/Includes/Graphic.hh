@@ -29,6 +29,13 @@
 #include "Ground.hh"
 #include "Camera.hh"
 #include "Content.hh"
+#include "Food.hh"
+#include "Linemate.hh"
+#include "Deraumere.hh"
+#include "Mendiane.hh"
+#include "Phiras.hh"
+#include "Sibur.hh"
+#include "Thystame.hh"
 
 class		Graphic
 {
@@ -43,15 +50,17 @@ public:
   void			setHUD();
   void			updateHUD();
   void			changeSize(size_t, size_t, std::vector<std::vector <Content *> > &);
-  void			setMap(std::vector<std::vector <Content *> > &);
+  void			setMap(std::vector<std::vector <Content *> > &, std::list<std::pair<int, int> > &);
 
 private:
   size_t		_width;
   size_t		_height;
   size_t		_camType;
   int			_actualCase;
-
+  bool     _needUpdate;
+  
   std::vector<std::vector <Content *> > _map;
+  std::list<std::pair<int, int> >       _update;
 
   gdl::SdlContext	_context;
   gdl::BasicShader	_shader;

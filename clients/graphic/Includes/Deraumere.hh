@@ -11,7 +11,6 @@
 #ifndef __DERAUMERE_HH__
 # define __DERAUMERE_HH__
 
-#include <Model.hh>
 #include "AObject.hh"
 
 class		Deraumere : virtual public AObject
@@ -25,7 +24,7 @@ public:
   virtual void		setModel(const gdl::Geometry &);
 
 private:
-  gdl::Model		_model;
+  gdl::Geometry         _geometry;
 };
 
 #endif

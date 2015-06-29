@@ -25,6 +25,12 @@ private:
   int	_phiras;
   int	_thystame;
   bool _boolF;
+  bool _boolD;
+  bool _boolL;
+  bool _boolM;
+  bool _boolP;
+  bool _boolS;
+  bool _boolT;
 
 public:
   Content();
@@ -47,6 +53,18 @@ public:
   int	getThystame(void) const;
   bool    getBoolF() const;
   void    setBoolF(const bool);
+  bool    getBoolD() const;
+  void    setBoolD(const bool);
+  bool    getBoolL() const;
+  void    setBoolL(const bool);
+  bool    getBoolM() const;
+  void    setBoolM(const bool);
+  bool    getBoolP() const;
+  void    setBoolP(const bool);
+  bool    getBoolS() const;
+  void    setBoolS(const bool);
+  bool    getBoolT() const;
+  void    setBoolT(const bool);
 };
 
 #endif

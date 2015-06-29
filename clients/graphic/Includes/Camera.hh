@@ -34,7 +34,7 @@ public:
   const glm::vec3 getPosCam();
   void	setCam(float, float, float);
   void	setCam2(float, float, float);
-  void	getKey(gdl::Input &input);
+  bool	getKey(gdl::Input &input);
   void	camLeft();
   void	camRight();
   void	camDown();

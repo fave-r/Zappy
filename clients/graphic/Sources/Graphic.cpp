@@ -9,28 +9,23 @@
 //
 
 #include "Graphic.hh"
-#include "Food.hh"
-#include "Linemate.hh"
-#include "Deraumere.hh"
-#include "Mendiane.hh"
-#include "Phiras.hh"
-#include "Sibur.hh"
-#include "Thystame.hh"
 
 Graphic::Graphic(size_t width, size_t height) : _width(width), _height(height)
 {
   this->Initialize();
   this->_camType = 1;
   this->_actualCase = 0;
+  this->_needUpdate = false;
 }
 
 Graphic::~Graphic()
 {
 }
 
-void		Graphic::setMap(std::vector<std::vector <Content *> > &map)
+void		Graphic::setMap(std::vector<std::vector <Content *> > &map, std::list<std::pair<int, int> > &update)
 {
   this->_map = map;
+  this->_update = update;
 }
 
 void		Graphic::Initialize()
@@ -156,10 +151,12 @@ bool		Graphic::update()
   else if (this->_input.getKey(SDLK_KP_3))
     this->_camType = 3;
 
+//  if (this->_update.size() == 0)
+    //draw();
+
   if (this->_camType == 1)
     {
-      this->_cam->getKey(this->_input);
-      this->_shader.setUniform("view", this->_cam->getCam());
+      this->_needUpdate = this->_cam->getKey(this->_input);
     }
   else if (this->_camType == 2)
     {
@@ -179,24 +176,118 @@ bool		Graphic::update()
     }
   // else if (this->_camType == 3)
   // vue sur un perso, catch de droite gauche
+  this->_shader.setUniform("view", this->_cam->getCam());
 
-  for (size_t i = 0; i < this->_height; ++i)
-    for (size_t j = 0; j < this->_width; ++j)
-      {
-        if (this->_map[i][j]->getFood() > 0 && this->_map[i][j]->getBoolF() == false)
-          {
-            Food *fd = new Food(j, i);
-            this->_objects.push_back(fd);
-            this->_map[i][j]->setBoolF(true);
-          }
-        else if (this->_map[i][j]->getFood() == 0 && this->_map[i][j]->getBoolF() == true)
+if (this->_update.size() > 0)
+{
+  std::list<std::pair<int, int> >::const_iterator it2;
+  for (it2 = this->_update.begin(); it2 != this->_update.end(); ++it2) {
+      /*if (this->_map[(*it2).second][(*it2).first]->getFood() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolF() == false)
+        {
+          Food *fd = new Food((*it2).first, (*it2).second);
+          this->_objects.push_back(fd);
+          this->_map[(*it2).second][(*it2).first]->setBoolF(true);
+        }
+        else if (this->_map[(*it2).second][(*it2).first]->getFood() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolF() == true)
           {
             for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it) {
-              if ((*it)->getX() == i && (*it)->getY() == j && dynamic_cast<Food *>((*it)) != NULL)
+              if ((*it)->getX() == (*it2).second && (*it)->getY() == (*it2).first && dynamic_cast<Food *>((*it)) != NULL)
                 this->_objects.erase(it);
-            }
+              }
+          }*/
+
+      if (this->_map[(*it2).second][(*it2).first]->getDeraumere() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolD() == false)
+        {
+          Deraumere *fd = new Deraumere((*it2).first, (*it2).second);
+          fd->setModel(this->_modelPool->getCrystalD());
+          this->_objects.push_back(fd);
+          this->_map[(*it2).second][(*it2).first]->setBoolD(true);
+        }
+        else if (this->_map[(*it2).second][(*it2).first]->getDeraumere() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolD() == true)
+          {
+            for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it) {
+              if ((*it)->getX() == (*it2).second && (*it)->getY() == (*it2).first && dynamic_cast<Deraumere *>((*it)) != NULL)
+                this->_objects.erase(it);
+              }
           }
-      }
+
+      if (this->_map[(*it2).second][(*it2).first]->getLinemate() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolL() == false)
+        {
+          Linemate *fd = new Linemate((*it2).first, (*it2).second);
+          fd->setModel(this->_modelPool->getCrystalL());
+          this->_objects.push_back(fd);
+          this->_map[(*it2).second][(*it2).first]->setBoolL(true);
+        }
+        else if (this->_map[(*it2).second][(*it2).first]->getLinemate() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolL() == true)
+          {
+            for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it) {
+              if ((*it)->getX() == (*it2).second && (*it)->getY() == (*it2).first && dynamic_cast<Linemate *>((*it)) != NULL)
+                this->_objects.erase(it);
+              }
+          }
+
+        if (this->_map[(*it2).second][(*it2).first]->getMendiane() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolM() == false)
+        {
+          Mendiane *fd = new Mendiane((*it2).first, (*it2).second);
+          fd->setModel(this->_modelPool->getCrystalM());
+          this->_objects.push_back(fd);
+          this->_map[(*it2).second][(*it2).first]->setBoolM(true);
+        }
+        else if (this->_map[(*it2).second][(*it2).first]->getMendiane() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolM() == true)
+          {
+            for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it) {
+              if ((*it)->getX() == (*it2).second && (*it)->getY() == (*it2).first && dynamic_cast<Mendiane *>((*it)) != NULL)
+                this->_objects.erase(it);
+              }
+          }
+
+          if (this->_map[(*it2).second][(*it2).first]->getPhiras() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolP() == false)
+        {
+          Phiras *fd = new Phiras((*it2).first, (*it2).second);
+          fd->setModel(this->_modelPool->getCrystalP());
+          this->_objects.push_back(fd);
+          this->_map[(*it2).second][(*it2).first]->setBoolP(true);
+        }
+        else if (this->_map[(*it2).second][(*it2).first]->getPhiras() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolP() == true)
+          {
+            for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it) {
+              if ((*it)->getX() == (*it2).second && (*it)->getY() == (*it2).first && dynamic_cast<Phiras *>((*it)) != NULL)
+                this->_objects.erase(it);
+              }
+          }
+
+            if (this->_map[(*it2).second][(*it2).first]->getSibur() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolS() == false)
+        {
+          Sibur *fd = new Sibur((*it2).first, (*it2).second);
+          fd->setModel(this->_modelPool->getCrystalS());
+          this->_objects.push_back(fd);
+          this->_map[(*it2).second][(*it2).first]->setBoolS(true);
+        }
+        else if (this->_map[(*it2).second][(*it2).first]->getSibur() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolS() == true)
+          {
+            for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it) {
+              if ((*it)->getX() == (*it2).second && (*it)->getY() == (*it2).first && dynamic_cast<Sibur *>((*it)) != NULL)
+                this->_objects.erase(it);
+              }
+          }
+
+          if (this->_map[(*it2).second][(*it2).first]->getThystame() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolT() == false)
+        {
+          Thystame *fd = new Thystame((*it2).first, (*it2).second);
+          fd->setModel(this->_modelPool->getCrystalT());
+          this->_objects.push_back(fd);
+          this->_map[(*it2).second][(*it2).first]->setBoolT(true);
+        }
+        else if (this->_map[(*it2).second][(*it2).first]->getThystame() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolT() == true)
+          {
+            for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it) {
+              if ((*it)->getX() == (*it2).second && (*it)->getY() == (*it2).first && dynamic_cast<Thystame *>((*it)) != NULL)
+                this->_objects.erase(it);
+              }
+          }
+        }
+      this->_update.clear();
+  }
   // if (this->_input.getKey(SDL_BUTTON_LEFT))
   //   {
   //     glm::ivec2 mouse = this->_input.getMousePosition();
@@ -266,17 +357,39 @@ bool		Graphic::update()
   //}
   return true;
 }
+#include <ctime>
+#include <cstdio>
 
 void		Graphic::draw()
 {
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it) {
-    (*it)->draw(this->_shader);
-  }
-//  for (size_t i = 0; i < this->_objects.size(); ++i)
-//    this->_objects[i]->draw(this->_shader);
-  if (this->_camType == 2)
-    for (size_t i = 0; i < this->_HUD.size(); ++i)
-      this->_HUD[i]->draw(this->_shader);
-  this->_context.flush();
+  if (this->_update.size() > 0 || this->_needUpdate == true)
+  {
+    //std::clock_t start;
+    //double duration;
+
+    //start = std::clock();
+
+      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    //duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
+  //  std::cout << "clear update : " << duration << std::endl;
+
+    //start = std::clock();
+
+      for (std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it) {
+          (*it)->draw(this->_shader);
+        }
+
+      //duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
+    //  std::cout << "All draw update : " << duration << std::endl;
+
+    //  start = std::clock();
+
+      if (this->_camType == 2)
+        for (size_t i = 0; i < this->_HUD.size(); ++i)
+          this->_HUD[i]->draw(this->_shader);
+        this->_needUpdate = false;
+        this->_context.flush();
+    }
+  //duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
+  //std::cout << "flush update : " << duration << std::endl;
 }

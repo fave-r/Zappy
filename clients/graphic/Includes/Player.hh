@@ -1,20 +1,20 @@
 //
-// Players.hh for zappy in /home/fave_r/rendu/Zappy/clients/graphic
+// Player.hh for zappy in /home/fave_r/rendu/Zappy/clients/graphic
 //
 // Made by romaric
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun 29 12:15:40 2015 romaric
-// Last update Mon Jun 29 12:23:14 2015 romaric
+// Last update Mon Jun 29 12:52:57 2015 romaric
 //
 
-#ifndef	PLAYERS_HH
-#define	PLAYERS_HH
+#ifndef	PLAYER_HH
+#define	PLAYER_HH
 
 #include <iostream>
 #include <string>
 
-class	Players
+class	Player
 {
 private:
   int	_nb;
@@ -27,8 +27,8 @@ private:
   int   _thystame;
 
 public:
-  Players(const int nb);
-  ~Players();
+  Player(const int nb);
+  ~Player();
 };
 
 #endif

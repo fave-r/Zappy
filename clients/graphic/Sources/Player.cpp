@@ -1,16 +1,16 @@
 //
-// Players.cpp for zappy in /home/fave_r/rendu/Zappy/clients/graphic
+// Player.cpp for zappy in /home/fave_r/rendu/Zappy/clients/graphic
 //
 // Made by romaric
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun 29 12:15:56 2015 romaric
-// Last update Mon Jun 29 12:24:51 2015 romaric
+// Last update Mon Jun 29 12:41:47 2015 romaric
 //
 
 #include "Players.hh"
 
-Players::Players(const int nb)
+Player::Player(const int nb)
 {
   this->_nb = nb;
   this->_food = 0;
@@ -22,7 +22,7 @@ Players::Players(const int nb)
   this->_thystame = 0;
 }
 
-Players::~Players()
+Player::~Player()
 {
 }
 

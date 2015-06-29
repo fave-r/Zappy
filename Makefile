@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Jun  8 13:24:05 2015 romaric
-## Last update Thu Jun 25 17:37:48 2015 Arnaud Lhomme
+## Last update Mon Jun 29 10:40:30 2015 romaric
 ##
 
 SRV_N=		server/
@@ -34,6 +34,6 @@ clean:
 fclean:		clean
 		make fclean -C $(SRV_N)
 		make fclean -C $(IG_N)
-		@rm -f bin/zappy
+		@rm -rf bin
 
 re:		fclean all

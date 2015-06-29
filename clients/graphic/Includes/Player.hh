@@ -17,17 +17,22 @@
 class	Player
 {
 private:
-  int	_nb;
-  int   _food;
-  int   _linemate;
-  int   _deraumere;
-  int   _sibur;
-  int   _mendiane;
-  int   _phiras;
-  int   _thystame;
+  int	        _nb;
+  int         _x;
+  int         _y;
+  int         _dir;
+  int         _level;
+  std::string _tn;
+  int         _food;
+  int         _linemate;
+  int         _deraumere;
+  int         _sibur;
+  int         _mendiane;
+  int         _phiras;
+  int         _thystame;
 
 public:
-  Player(const int nb);
+  Player(const int nb, const int x, const int y, const int dir, const int lev, const std::string &tn);
   ~Player();
 };
 

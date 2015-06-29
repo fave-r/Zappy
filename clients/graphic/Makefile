@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Jun  8 12:54:25 2015 romaric
-## Last update Sat Jun 27 01:28:21 2015 jean_c
+## Last update Mon Jun 29 15:43:57 2015 romaric
 ##
 
 CXX =		g++
@@ -58,6 +58,8 @@ SRCS =		$(SRC)/Button.cpp		\
 		$(SRC)/Mendiane.cpp		\
 		$(SRC)/Phiras.cpp		\
 		$(SRC)/Thystame.cpp		\
+		$(SRC)/Player.cpp		\
+		$(SRC)/User.cpp
 
 OBJS =		$(SRCS:.cpp=.o)
 

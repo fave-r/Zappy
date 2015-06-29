@@ -5,22 +5,25 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Tue May 26 18:11:25 2015 Thibaut Lopez
+** Last update Mon Jun 29 16:34:18 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
 int	my_connect_nbr(char **com, t_zap *data, t_user *usr)
 {
+  t_tv	now;
   int	count;
   char	tmp[10];
 
   (void)data;
+  gettimeofday(&now, NULL);
   if (sstrlen(com) != 1)
     return (-1);
   count = GET_TEAM(usr)->count;
   bzero(tmp, 10);
   sprintf(tmp, "%d\n", count - count_in_team(GET_TEAM(usr), usr));
   fill_cb(&usr->wr, tmp, strlen(tmp));
+  push_q(&usr->queue, &now, clone_tv);
   return (0);
 }

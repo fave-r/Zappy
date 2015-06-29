@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri Apr 10 10:17:56 2015 Thibaut Lopez
-** Last update Tue Jun 16 02:46:24 2015 Thibaut Lopez
+** Last update Mon Jun 29 19:05:55 2015 Thibaut Lopez
 */
 
 #include "cb.h"
@@ -52,9 +52,11 @@ int	read_cb(t_cb *cb, int fd)
 
   str = xmalloc(500 * sizeof(char));
   rl = read(fd, str, 499);
-  str[rl] = 0;
   if (rl > 0)
-    fill_cb(cb, str, rl);
+    {
+      str[rl] = 0;
+      fill_cb(cb, str, rl);
+    }
   free(str);
   return (rl);
 }
@@ -70,7 +72,10 @@ int	write_cb(t_cb *cb, int fd, t_que **queue)
   if (queue == NULL || cmp_tv(front_q(*queue), &now) <= 0)
     {
       if ((str = get_line_cb(cb)) == NULL)
-	return (0);
+	{
+	  printf("%d -> NULL\n", fd);
+	  return (0);
+	}
       printf("%d -> %s\n", fd, str);
       str[strlen(str)] = '\n';
       tmp = front_q(*queue);

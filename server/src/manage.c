@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Mon Jun  1 11:28:59 2015 Thibaut Lopez
-** Last update Mon Jun 29 03:21:56 2015 Thibaut Lopez
+** Last update Mon Jun 29 18:21:53 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -15,16 +15,20 @@ int		check_food(t_user *usr, t_zap *data)
   t_tv		tv;
   t_tv		tmp;
   t_tv		time;
+  t_tv		now;
 
   if (GET_GHOST(usr) == 1)
     return (0);
   gettimeofday(&tv, NULL);
+  now.tv_sec = tv.tv_sec;
+  now.tv_usec = tv.tv_usec;
   timersub(&tv, &GET_TIME(usr), &tmp);
   time.tv_usec = 0;
   time.tv_sec = 0;
   add_tv(&time, (126000000 / data->delay));
   if (cmp_tv(&tmp, &time) == 1 || cmp_tv(&tmp, &time) == 0)
     {
+      printf("%d: eat at %ld:%ld... next time %ld:%ld\n", usr->fd, now.tv_sec, now.tv_usec, tv.tv_sec, tv.tv_usec);
       GET_INV(usr).food -= 1;
       GET_TIME(usr) = tv;
       if (GET_INV(usr).food  == 0)
@@ -136,9 +140,6 @@ int		manage_server(t_user **user, t_zap *data)
     }
   gettimeofday(&now, NULL);
   check_eggs(data->teams, &now, *user);
-  int	caca = (front_q(data->end) != NULL && cmp_tv(front_q(data->end), &now) <= 0)
-    ? end_game(data, user) : check_asking(user, data, &data->end_game);
-  if (caca != 0)
-    printf("manage %d\n", caca);
-  return (caca);
+  return ((front_q(data->end) != NULL && cmp_tv(front_q(data->end), &now) <= 0)
+	  ? end_game(data, user) : check_asking(user, data, &data->end_game));
 }

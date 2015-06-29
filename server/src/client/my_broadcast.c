@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Mon Jun 29 03:15:53 2015 Thibaut Lopez
+** Last update Mon Jun 29 16:53:36 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -60,13 +60,14 @@ int		get_direction(t_user *src, t_user *dest, t_zap *data)
     return (0);
   dir = get_closest(src, dest, data);
   dirs[0] = GET_DIR(dest) * 2 + 1;
-  dirs[1] = S_MOD(dirs[0] + 1, 4);
-  dirs[2] = S_MOD(dirs[1] + 1, 4);
-  dirs[3] = S_MOD(dirs[2] + 1, 4);
-  dirs[4] = S_MOD(dirs[3] + 1, 4);
-  dirs[5] = S_MOD(dirs[4] + 1, 4);
-  dirs[6] = S_MOD(dirs[5] + 1, 4);
-  dirs[7] = S_MOD(dirs[6] + 1, 4);
+  dirs[1] = S_MOD(dirs[0], 8) + 1;
+  dirs[2] = S_MOD(dirs[1], 8) + 1;
+  dirs[3] = S_MOD(dirs[2], 8) + 1;
+  dirs[4] = S_MOD(dirs[3], 8) + 1;
+  dirs[5] = S_MOD(dirs[4], 8) + 1;
+  dirs[6] = S_MOD(dirs[5], 8) + 1;
+  dirs[7] = S_MOD(dirs[6], 8) + 1;
+  printf("%d %d %d %d %d %d %d %d\n", dirs[0], dirs[1], dirs[2], dirs[3], dirs[4], dirs[5], dirs[6], dirs[7]);
   return (get_dir(dir, dirs));
 }
 
@@ -92,13 +93,16 @@ int		my_broadcast(char **com, t_zap *data, t_user *usr)
   gettimeofday(&now, NULL);
   add_tv(&now, 7000000 / data->delay);
   tmp = usr;
+  printf("%d: broadcast from %dx%d\n", usr->fd, GET_X(usr), GET_Y(usr));
   while (tmp != NULL && tmp->prev != NULL)
     tmp = tmp->prev;
   while (tmp != NULL)
     {
       if (tmp != usr && tmp->type == AI && GET_GHOST(tmp) == 0)
 	{
+	  printf("%d: receive from %dx%d (dir : %d)\n", tmp->fd, GET_X(tmp), GET_Y(tmp), GET_DIR(tmp));
 	  sprintf(str, "message %d,%s\n", get_direction(usr, tmp, data), com[1]);
+	  printf("Envoie de '%s'\n", str);
 	  fill_cb(&tmp->wr, str, strlen(str));
 	  push_q(&tmp->queue, &now, clone_tv);
 	}

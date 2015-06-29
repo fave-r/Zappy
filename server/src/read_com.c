@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:51:04 2015 romaric
-** Last update Tue Jun 16 02:45:57 2015 Thibaut Lopez
+** Last update Mon Jun 29 19:30:12 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -62,6 +62,7 @@ void	check_com(t_com *com, t_user *usr, int *ret, t_zap *data)
       if ((tok = stwt(gnl, " \t\n\r", usr->type)) == NULL)
 	{
 	  *ret = 0;
+	  free(gnl);
 	  return;
 	}
       if ((i = find_ptr(com, tok[0])) != -1
@@ -82,11 +83,12 @@ int		read_com(t_user *usr, t_zap *data)
 {
   t_com		*com;
   int		ret;
+  int		rv;
 
   ret = 0;
-  if (cb_taken(&usr->cb) == 0 && read_cb(&usr->cb, usr->fd) <= 0)
+  if (cb_taken(&usr->cb) == 0 && (rv = read_cb(&usr->cb, usr->fd)) <= 0)
     {
-      usr->tokill = 1;
+      usr->tokill = (rv <= 0) ? 2 : 1;
       return (-1);
     }
   com = ptr_to_function(usr->type);

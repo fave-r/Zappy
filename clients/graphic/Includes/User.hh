@@ -13,15 +13,30 @@
 
 #include <iostream>
 #include <string>
+#include <list>
+#include "Player.hh"
 
 class	User
 {
 private:
-
+std::list<Player *> _users;
 
 public:
   User();
   ~User();
+
+public:
+  std::list<Player *> getUser() const
+  {
+    return _users;
+  };
+
+  void putUser(const int nb, const int x, const int y, const int dir, const int lev, const std::string &tn)
+  {
+    Player tmp(nb, x, y, dir, lev, tn);
+
+    _users.push_back(&tmp);
+  }
 };
 
 #endif

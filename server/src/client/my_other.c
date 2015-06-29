@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Mon Jun 29 03:15:29 2015 Thibaut Lopez
+** Last update Mon Jun 29 13:45:56 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -96,7 +96,11 @@ int		my_other(char **com, t_zap *data, t_user *usr)
   while (cur != NULL && strcmp(cur->name, com[0]) != 0)
     cur = cur->next;
   if (cur == NULL || count_in_team(cur, usr) == cur->count)
-    return (-1);
+    {
+      dprintf(usr->fd, "ko\n");
+      usr->tokill = 1;
+      return (-1);
+    }
   is_hatching = hatching_egg(&pos, usr, data, cur);
   usr->info = player_info(cur, &pos);
   usr->nb = find_nb(usr, AI);

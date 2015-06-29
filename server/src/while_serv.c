@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:38:34 2015 romaric
-** Last update Mon Jun 15 14:58:39 2015 Thibaut Lopez
+** Last update Mon Jun 29 19:29:55 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -22,9 +22,12 @@ void		send_death(t_user **user, t_user **tmp, t_zap *data)
 {
   char		str[50];
 
+  printf("client %d dead\n", (*tmp)->fd);
   if ((*tmp)->type == AI)
     {
-      dprintf((*tmp)->fd, "mort\n");
+      printf("%d\n", GET_INV(*tmp).food);
+      if ((*tmp)->tokill != 2)
+	dprintf((*tmp)->fd, "mort\n");
       bzero(str, 50);
       sprintf(str, "pdi #%d\n", (*tmp)->nb);
       if (check_nb_in_cell(1, *tmp) == 1)
@@ -42,15 +45,18 @@ void		cast_result(t_zap *data, t_user **user, t_user *tmp, t_tv *now)
   int		check;
   t_user	*cur;
   char		str[50];
+  t_tv		time;
 
   check = check_this_case(tmp, data, 1);
   cur = *user;
   bzero(str, 50);
   sprintf(str, "pie %d %d %d\n", GET_X(tmp), GET_Y(tmp), check);
   send_to_graphic(str, (*user));
+  time.tv_sec = GET_CAST(tmp).tv_sec;
+  time.tv_usec = GET_CAST(tmp).tv_usec;
   while ((cur = in_this_cell(GET_X(tmp), GET_Y(tmp), cur)) != NULL)
     {
-      cast_loop(cur, tmp, check, now);
+      cast_loop(cur, &time, check, now);
       cur = cur->next;
     }
   send_inc_to_graph(tmp, data);
@@ -73,7 +79,7 @@ void		check_client(t_user **user, t_bf *bf, t_zap *data)
       if (tmp->type == AI && IS_CASTING(tmp) &&
 	  cmp_tv(&GET_CAST(tmp), &now) <= 0)
 	cast_result(data, user, tmp, &now);
-      if (tmp->tokill == 1)
+      if (tmp->tokill != 0)
 	send_death(user, &tmp, data);
       else
 	tmp = tmp->next;

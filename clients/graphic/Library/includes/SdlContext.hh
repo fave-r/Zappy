@@ -15,9 +15,8 @@ namespace	gdl
 
 	public:
 		SdlContext() { }
-		virtual ~SdlContext() { }
-
-		// Start the context, create a window
+	        virtual ~SdlContext() { }
+		// Start the context, create a windows
 		virtual bool    start(unsigned int swidth, unsigned int sheight, const std::string &name,
 							  int initFlags = SDL_INIT_VIDEO, int windowsFlags = SDL_WINDOW_OPENGL);
 		// Update the inputs

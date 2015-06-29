@@ -43,6 +43,7 @@ public:
   void		setLength(const size_t val);
   void		setWidth(const size_t val);
   void		init();
+
 public:
   size_t	getLength();
   size_t	getWidth();

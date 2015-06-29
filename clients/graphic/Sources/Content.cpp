@@ -19,6 +19,7 @@ Content::Content()
   this->_mendiane = 0;
   this->_phiras = 0;
   this->_thystame = 0;
+  this->_boolF = false;
 }
 
 Content::~Content()
@@ -93,4 +94,14 @@ int		Content::getPhiras(void) const
 int		Content::getThystame(void) const
 {
   return _thystame;
+}
+
+bool    Content::getBoolF() const
+{
+  return this->_boolF;
+}
+
+void    Content::setBoolF(const bool boolF)
+{
+  this->_boolF = boolF;
 }

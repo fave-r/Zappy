@@ -8,11 +8,16 @@
 // Last update Mon Jun 29 12:41:47 2015 romaric
 //
 
-#include "Players.hh"
+#include "Player.hh"
 
-Player::Player(const int nb)
+Player::Player(const int nb, const int x, const int y, const int dir, const int lev, const std::string &tn)
 {
   this->_nb = nb;
+  this->_x = x;
+  this->_y = y;
+  this->_dir = dir;
+  this->_level = lev;
+  this->_tn = tn;
   this->_food = 0;
   this->_linemate = 0;
   this->_deraumere = 0;
@@ -25,4 +30,3 @@ Player::Player(const int nb)
 Player::~Player()
 {
 }
-

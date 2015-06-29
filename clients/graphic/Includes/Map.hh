@@ -17,6 +17,7 @@
 #include <list>
 #include <utility>
 #include "Content.hh"
+#include "User.hh"
 
 enum Type
   {
@@ -53,7 +54,7 @@ public:
   void		setMap(const int x, const int y, const Type type, const int number);
   std::vector<std::vector <Content *> > getMap() const;
   std::list<std::pair<int, int>> _update;
-
+  User    _user;
 };
 
 #endif

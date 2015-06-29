@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:12:11 2015 romaric
-** Last update Mon Jun 15 18:24:22 2015 Thibaut Lopez
+** Last update Mon Jun 29 03:18:53 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -44,12 +44,16 @@ int		find_nb(t_user *player, e_clt type)
 
   nbr = 0;
   tmp = player;
+  while (tmp != NULL && tmp->prev != NULL)
+    tmp = tmp->prev;
   while (tmp != NULL)
     {
       if (tmp->type == type && tmp->nb == nbr)
 	{
 	  nbr++;
 	  tmp = player;
+	  while (tmp != NULL && tmp->prev != NULL)
+	    tmp = tmp->prev;
 	}
       else
 	tmp = tmp->next;

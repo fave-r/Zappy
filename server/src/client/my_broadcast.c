@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Tue Jun 16 16:47:28 2015 Thibaut Lopez
+** Last update Mon Jun 29 03:15:53 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -59,7 +59,6 @@ int		get_direction(t_user *src, t_user *dest, t_zap *data)
   if (GET_X(src) == GET_X(dest) && GET_Y(src) == GET_Y(dest))
     return (0);
   dir = get_closest(src, dest, data);
-  printf("%dx%d; dir: %d\n", dir.f, dir.s, GET_DIR(dest));
   dirs[0] = GET_DIR(dest) * 2 + 1;
   dirs[1] = S_MOD(dirs[0] + 1, 4);
   dirs[2] = S_MOD(dirs[1] + 1, 4);
@@ -97,7 +96,7 @@ int		my_broadcast(char **com, t_zap *data, t_user *usr)
     tmp = tmp->prev;
   while (tmp != NULL)
     {
-      if (tmp != usr && tmp->type == AI)
+      if (tmp != usr && tmp->type == AI && GET_GHOST(tmp) == 0)
 	{
 	  sprintf(str, "message %d,%s\n", get_direction(usr, tmp, data), com[1]);
 	  fill_cb(&tmp->wr, str, strlen(str));

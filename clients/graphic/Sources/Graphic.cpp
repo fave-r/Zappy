@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 10:23:22 2015 jean_c
-// Last update Mon Jun 29 09:27:37 2015 jean_c
+// Last update Mon Jun 29 10:52:16 2015 jean_c
 //
 
 #include "Graphic.hh"
@@ -80,51 +80,6 @@ void		Graphic::initMap()
     for (size_t j = 0; j < this->_width; ++j)
       {
 	model = new Ground(j, i);
-	//if (this->_map[i][j] != NULL)
-	  //{
-	    if (this->_map[i][j]->getFood() > 0)
-	      {
-		Food *fd = new Food(j, i);
-		this->_objects.push_back(fd);
-	      }
-	    else if (this->_map[i][j]->getLinemate() > 0)
-	      {
-		Linemate *lin = new Linemate(j, i);
-		this->_objects.push_back(lin);
-	      }
-	    else if (this->_map[i][j]->getDeraumere() > 0)
-	      {
-		Deraumere *der = new Deraumere(j, i);
-		this->_objects.push_back(der);
-	      }
-	    else if (this->_map[i][j]->getMendiane() > 0)
-	      {
-		Mendiane *men = new Mendiane(j, i);
-		this->_objects.push_back(men);
-	      }
-	    else if (this->_map[i][j]->getPhiras() > 0)
-	      {
-		Phiras *phi = new Phiras(j, i);
-		this->_objects.push_back(phi);
-	      }
-	    else if (this->_map[i][j]->getSibur() > 0)
-	      {
-		Sibur *si = new Sibur(j, i);
-		this->_objects.push_back(si);
-	      }
-	    else if (this->_map[i][j]->getThystame() > 0)
-	      {
-		Thystame *thy = new Thystame(j, i);
-		this->_objects.push_back(thy);
-	      }
-      else
-        {
-          for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it) {
-            if ((*it)->getX() == j && (*it)->getY() == i)
-              this->_objects.erase(it);
-          }
-        }
-	  //}
 	model->setModel(this->_modelPool->getGround());
 	model->setTexture(this->_texturePool->getGround());
 	model->translate(glm::vec3(j, 0, i));
@@ -225,8 +180,23 @@ bool		Graphic::update()
   // else if (this->_camType == 3)
   // vue sur un perso, catch de droite gauche
 
-
-
+  for (size_t i = 0; i < this->_height; ++i)
+    for (size_t j = 0; j < this->_width; ++j)
+      {
+        if (this->_map[i][j]->getFood() > 0 && this->_map[i][j]->getBoolF() == false)
+          {
+            Food *fd = new Food(j, i);
+            this->_objects.push_back(fd);
+            this->_map[i][j]->setBoolF(true);
+          }
+        else if (this->_map[i][j]->getFood() == 0 && this->_map[i][j]->getBoolF() == true)
+          {
+            for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it) {
+              if ((*it)->getX() == i && (*it)->getY() == j && dynamic_cast<Food *>((*it)) != NULL)
+                this->_objects.erase(it);
+            }
+          }
+      }
   // if (this->_input.getKey(SDL_BUTTON_LEFT))
   //   {
   //     glm::ivec2 mouse = this->_input.getMousePosition();

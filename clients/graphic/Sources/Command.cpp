@@ -124,8 +124,16 @@ void	Command::teamName(const std::string &com, Map &map, Socket &s) const
 
 void	Command::newPlayer(const std::string &com, Map &map, Socket &s) const
 {
-  (void)com;
-  (void)map;
+  std::istringstream	ss(com);
+
+  int                 id, x, y, dir, level;
+  std::string         sa, tn;
+
+  ss >> sa >> id >> x >> y >> dir >> level >> tn >> sa;
+  if (ss.eof())
+    {
+      map._user.putUser(id, x, y, dir, level, tn);
+    }
   (void)s;
 }
 

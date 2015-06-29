@@ -83,7 +83,7 @@ void		Client::run(Map &map)
 	    }
 	  catch (std::out_of_range &err)
 	    {}
-      graphic->draw();
+        graphic->draw();
       map.handleKeys();
     }
 }

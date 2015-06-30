@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 26 16:24:34 2015 Thibaut Lopez
-** Last update Mon Jun 15 18:05:36 2015 Thibaut Lopez
+** Last update Tue Jun 30 11:56:48 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -66,6 +66,8 @@ void		team_free(t_team *teams)
       to_free = teams;
       teams = teams->next;
       free(to_free->name);
+      while (front_q(to_free->eggs) != NULL)
+	pop_q(&to_free->eggs);
       free(to_free);
     }
 }

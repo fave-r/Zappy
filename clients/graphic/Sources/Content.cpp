@@ -5,7 +5,7 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Tue Jun 23 15:25:38 2015 romaric
-// Last update Tue Jun 23 20:57:01 2015 romaric
+// Last update Tue Jun 30 10:42:51 2015 romaric
 //
 
 #include "Content.hh"
@@ -64,7 +64,7 @@ void		Content::setPhiras(const int val)
 
 void		Content::setThystame(const int val)
 {
-  this->_phiras = val;
+  this->_thystame = val;
 }
 
 int		Content::getFood(void) const

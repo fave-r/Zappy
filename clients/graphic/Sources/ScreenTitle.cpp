@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Mon Jun 22 12:17:03 2015 Thibaut Lopez
-// Last update Thu Jun 25 18:38:20 2015 Thibaut Lopez
+// Last update Tue Jun 30 10:22:38 2015 Leo Thevenet
 //
 
 #include "ScreenTitle.hh"
@@ -155,7 +155,7 @@ Ret	ScreenTitle::_etMouseButtonDown(std::pair<std::string, std::string> &ret)
 	  this->_ip->setSelected(false);
 	  this->_port->setSelected(false);
 	  if (this->_title->isClicked(this->_event.button.x, this->_event.button.y))
-	    system("xdg-open http://zappy-rfc.science/");
+	    system("xdg-open http://www.zappy-rfc.science/");
 	  else if (this->_start->isClicked(this->_event.button.x, this->_event.button.y))
 	    {
 	      ret.first = this->_ip->getInput();

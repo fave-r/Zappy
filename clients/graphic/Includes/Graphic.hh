@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 09:08:50 2015 jean_c
-// Last update Fri Jun 26 21:24:01 2015 jean_c
+// Last update Tue Jun 30 10:29:05 2015 Leo Thevenet
 //
 
 #ifndef __GRAPHIC_HH__
@@ -51,14 +51,15 @@ public:
   void			updateHUD();
   void			changeSize(size_t, size_t, std::vector<std::vector <Content *> > &);
   void			setMap(std::vector<std::vector <Content *> > &, std::list<std::pair<int, int> > &);
+  void			affHudData();
 
 private:
   size_t		_width;
   size_t		_height;
   size_t		_camType;
   int			_actualCase;
-  bool     _needUpdate;
-  
+  bool		        _needUpdate;
+
   std::vector<std::vector <Content *> > _map;
   std::list<std::pair<int, int> >       _update;
 

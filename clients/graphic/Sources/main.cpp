@@ -4,7 +4,7 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun  8 13:02:03 2015 romaric
-// Last update Wed Jun 24 17:31:18 2015 Thibaut Lopez
+// Last update Tue Jun 30 10:01:44 2015 Thibaut Lopez
 //
 
 #include "Client.hh"

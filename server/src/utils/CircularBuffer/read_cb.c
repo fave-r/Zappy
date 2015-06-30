@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri Apr 10 10:17:56 2015 Thibaut Lopez
-** Last update Mon Jun 29 19:05:55 2015 Thibaut Lopez
+** Last update Tue Jun 30 02:31:13 2015 Thibaut Lopez
 */
 
 #include "cb.h"
@@ -71,11 +71,8 @@ int	write_cb(t_cb *cb, int fd, t_que **queue)
   gettimeofday(&now, NULL);
   if (queue == NULL || cmp_tv(front_q(*queue), &now) <= 0)
     {
-      if ((str = get_line_cb(cb)) == NULL)
-	{
-	  printf("%d -> NULL\n", fd);
-	  return (0);
-	}
+      if ((str = get_line_cb(cb)) == NULL || strlen(str) == 0)
+	return (0);
       printf("%d -> %s\n", fd, str);
       str[strlen(str)] = '\n';
       tmp = front_q(*queue);

@@ -2,1338 +2,619 @@ TeamA
 TeamB
 Information about the server:
 Port: 6667
-Map of 10x10 cells
-Player max per team: 8
+Map of 20x30 cells
+Player max per team: 6
 Delay for each action: 100
 Name of each team
 (Time waiting for a graphic response: 7.500000)
 new client
 4 -> BIENVENUE
-4 <- TeamA
-4 -> 7
-4 -> 10 10
-4 <- connect_nbr
-pushing at 1435599025:454666 for 1435599025:453255
-4 -> 7
-4 <- inventaire
-pushing at 1435599025:474079 for 1435599025:543024
-new client
-5 -> BIENVENUE
-5 <- TeamA
-5 -> 6
-5 -> 10 10
-4 -> {nourriture 10, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-5 <- connect_nbr
-pushing at 1435599025:580804 for 1435599025:580791
-5 -> 6
-4 <- voir
-pushing at 1435599025:601706 for 1435599025:663984
-5 <- inventaire
-pushing at 1435599025:601958 for 1435599025:671924
-new client
-6 -> BIENVENUE
-6 <- TeamA
-6 -> 5
-6 -> 10 10
-4 -> { joueur nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras, nourriture linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane phiras thystame, nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane, nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere sibur mendiane phiras}
-5 -> {nourriture 10, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-4 <- avance
-pushing at 1435599025:676701 for 1435599025:744652
-6 <- connect_nbr
-pushing at 1435599025:689099 for 1435599025:689085
-6 -> 5
-6 <- inventaire
-pushing at 1435599025:709598 for 1435599025:779571
-5 <- voir
-pushing at 1435599025:722395 for 1435599025:792155
-new client
-7 -> BIENVENUE
-4 -> ok
-4 <- voir
-pushing at 1435599025:754865 for 1435599025:824717
-7 <- TeamA
-7 -> 4
-7 -> 10 10
-6 -> {nourriture 10, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-5 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate deraumere deraumere sibur sibur phiras phiras thystame, nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane phiras phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras}
-7 <- connect_nbr
-pushing at 1435599025:799113 for 1435599025:799092
-7 -> 4
-5 <- avance
-pushing at 1435599025:803040 for 1435599025:872827
-7 <- inventaire
-pushing at 1435599025:819569 for 1435599025:889541
-4 -> { joueur nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane phiras phiras}
-6 <- voir
-pushing at 1435599025:831004 for 1435599025:900409
-4 <- prend nourriture
-pushing at 1435599025:838687 for 1435599025:905949
-new client
-8 -> BIENVENUE
-8 <- TeamA
-8 -> 3
-8 -> 10 10
-5 -> ok
-5 <- voir
-pushing at 1435599025:883392 for 1435599025:953274
-7 -> {nourriture 10, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-6 -> { joueur nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane phiras phiras phiras thystame, linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane phiras phiras phiras, nourriture linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras phiras, nourriture nourriture linemate linemate linemate linemate linemate deraumere sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras}
-4 -> ok
-8 <- connect_nbr
-pushing at 1435599025:908699 for 1435599025:908685
-8 -> 3
-6 <- avance
-pushing at 1435599025:911110 for 1435599025:981095
-4 <- prend nourriture
-pushing at 1435599025:915822 for 1435599025:985810
-8 <- inventaire
-pushing at 1435599025:929213 for 1435599025:999184
-7 <- voir
-pushing at 1435599025:940688 for 1435599026:10373
-5 -> { joueur nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane phiras phiras phiras, nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane phiras thystame, nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur phiras phiras phiras}
-new client
-9 -> BIENVENUE
-5 <- prend nourriture
-pushing at 1435599025:963978 for 1435599026:33965
-9 <- TeamA
-9 -> 2
-9 -> 10 10
-6 -> ok
-4 -> ok
-6 <- voir
-pushing at 1435599025:991615 for 1435599026:61489
-4 <- prend nourriture
-pushing at 1435599025:996739 for 1435599026:66727
-8 -> {nourriture 10, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-7 -> { joueur nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur phiras phiras thystame, linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur, nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere sibur sibur sibur mendiane mendiane mendiane thystame, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur mendiane mendiane}
-9 <- connect_nbr
-pushing at 1435599026:18076 for 1435599026:18062
-9 -> 2
-7 <- avance
-pushing at 1435599026:21008 for 1435599026:90997
-5 -> ok
-9 <- inventaire
-pushing at 1435599026:38596 for 1435599026:108569
-5 <- prend nourriture
-pushing at 1435599026:44377 for 1435599026:114363
-8 <- voir
-pushing at 1435599026:50142 for 1435599026:120007
-6 -> { joueur nourriture linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras thystame, linemate deraumere sibur sibur sibur sibur sibur phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur phiras phiras phiras}
-new client
-4 -> ok
-10 -> BIENVENUE
-6 <- prend nourriture
-pushing at 1435599026:72171 for 1435599026:142155
-4 <- prend nourriture
-pushing at 1435599026:76626 for 1435599026:146616
-10 <- TeamA
-10 -> 1
-10 -> 10 10
-7 -> ok
-7 <- voir
-pushing at 1435599026:101529 for 1435599026:171422
-9 -> {nourriture 10, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-5 -> ok
-8 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane phiras phiras, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane}
-5 <- prend nourriture
-pushing at 1435599026:124760 for 1435599026:194750
-10 <- connect_nbr
-pushing at 1435599026:127341 for 1435599026:127329
-10 -> 1
-8 <- avance
-pushing at 1435599026:130694 for 1435599026:200682
-6 -> ok
-4 -> ok
-10 <- inventaire
-pushing at 1435599026:147820 for 1435599026:217793
-6 <- inventaire
-pushing at 1435599026:152590 for 1435599026:222561
-4 <- inventaire
-pushing at 1435599026:157033 for 1435599026:227007
-9 <- voir
-pushing at 1435599026:159503 for 1435599026:229364
-7 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere sibur sibur sibur mendiane mendiane mendiane thystame, nourriture linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane thystame, nourriture nourriture nourriture nourriture nourriture deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane phiras}
-new client
-11 -> BIENVENUE
-7 <- prend nourriture
-pushing at 1435599026:182077 for 1435599026:252062
-5 -> ok
-11 <- TeamA
-11 -> 0
-11 -> 10 10
-8 -> ok
-5 <- inventaire
-pushing at 1435599026:205149 for 1435599026:275124
-8 <- voir
-pushing at 1435599026:211556 for 1435599026:281441
-10 -> {nourriture 10, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-6 -> {nourriture 11, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-4 -> {nourriture 14, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-9 -> { joueur nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate sibur sibur sibur mendiane mendiane phiras phiras thystame}
-11 <- inventaire
-pushing at 1435599026:236439 for 1435599026:306412
-9 <- avance
-pushing at 1435599026:240103 for 1435599026:310094
-7 -> ok
-6 <- voir
-pushing at 1435599026:253253 for 1435599026:323133
-4 <- voir
-pushing at 1435599026:257689 for 1435599026:327566
-7 <- prend nourriture
-pushing at 1435599026:262419 for 1435599026:332407
-10 <- voir
-pushing at 1435599026:268682 for 1435599026:338559
-5 -> {nourriture 13, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-8 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras thystame, linemate linemate linemate linemate linemate linemate linemate deraumere sibur mendiane mendiane mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate mendiane mendiane mendiane mendiane phiras phiras phiras thystame, nourriture linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur phiras phiras phiras thystame}
-8 <- prend nourriture
-pushing at 1435599026:291781 for 1435599026:361770
-5 <- voir
-pushing at 1435599026:305778 for 1435599026:375665
-11 -> {nourriture 10, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-9 -> ok
-9 <- voir
-pushing at 1435599026:320595 for 1435599026:390484
-6 -> { joueur linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras thystame, linemate deraumere sibur sibur sibur sibur sibur phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur phiras phiras phiras}
-4 -> { joueur linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane phiras phiras}
-7 -> ok
-6 <- droite
-pushing at 1435599026:334786 for 1435599026:404088
-4 <- avance
-pushing at 1435599026:338242 for 1435599026:408234
-10 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere sibur sibur phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere mendiane mendiane mendiane mendiane, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane mendiane thystame}
-7 <- prend nourriture
-pushing at 1435599026:342763 for 1435599026:412752
-10 <- avance
-pushing at 1435599026:349255 for 1435599026:419248
-11 <- voir
-pushing at 1435599026:357728 for 1435599026:427071
-8 -> ok
-8 <- prend nourriture
-pushing at 1435599026:372157 for 1435599026:442146
-5 -> { joueur linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane phiras phiras phiras, nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane phiras thystame, nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur phiras phiras phiras}
-5 <- avance
-pushing at 1435599026:386289 for 1435599026:456282
-9 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane phiras phiras phiras thystame, nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane thystame, linemate linemate linemate sibur sibur sibur sibur mendiane mendiane mendiane phiras}
-9 <- prend nourriture
-pushing at 1435599026:401100 for 1435599026:471090
-6 -> ok
-4 -> ok
-7 -> ok
-6 <- voir
-pushing at 1435599026:414599 for 1435599026:484086
-4 <- voir
-pushing at 1435599026:418705 for 1435599026:488571
-10 -> ok
-7 <- prend nourriture
-pushing at 1435599026:423127 for 1435599026:493117
-11 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere sibur sibur sibur phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane phiras thystame, nourriture nourriture linemate linemate deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere sibur sibur sibur mendiane mendiane phiras phiras thystame}
-10 <- voir
-pushing at 1435599026:429733 for 1435599026:499611
-11 <- avance
-pushing at 1435599026:437652 for 1435599026:507644
-8 -> ok
-8 <- prend nourriture
-pushing at 1435599026:452496 for 1435599026:522486
-5 -> ok
-5 <- voir
-pushing at 1435599026:466735 for 1435599026:536623
-9 -> ok
-9 <- prend nourriture
-pushing at 1435599026:481452 for 1435599026:551442
-6 -> { joueur linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur phiras phiras phiras, nourriture nourriture linemate linemate linemate linemate linemate deraumere sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras, nourriture nourriture nourriture nourriture nourriture linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane phiras}
-4 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur phiras phiras phiras thystame, nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane mendiane phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate deraumere deraumere deraumere deraumere mendiane mendiane mendiane mendiane phiras phiras phiras}
-7 -> ok
-6 <- avance
-pushing at 1435599026:494706 for 1435599026:564698
-4 <- prend nourriture
-pushing at 1435599026:499270 for 1435599026:569260
-10 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere mendiane mendiane mendiane mendiane, deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane mendiane phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere sibur sibur mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate deraumere deraumere deraumere deraumere mendiane mendiane mendiane mendiane phiras phiras phiras}
-7 <- prend nourriture
-pushing at 1435599026:503498 for 1435599026:573489
-11 -> ok
-10 <- prend nourriture
-pushing at 1435599026:510232 for 1435599026:580222
-11 <- voir
-pushing at 1435599026:518117 for 1435599026:588003
-8 -> ok
-8 <- prend nourriture
-pushing at 1435599026:532847 for 1435599026:602838
-5 -> { joueur nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur mendiane mendiane mendiane mendiane phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere mendiane mendiane mendiane phiras phiras thystame, nourriture nourriture linemate linemate linemate linemate linemate deraumere sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras}
-5 <- prend nourriture
-pushing at 1435599026:547276 for 1435599026:617264
-9 -> ok
-9 <- prend nourriture
-pushing at 1435599026:561841 for 1435599026:631830
-6 -> ok
-4 -> ok
-7 -> ok
-6 <- voir
-pushing at 1435599026:575182 for 1435599026:645067
-4 <- prend nourriture
-pushing at 1435599026:579618 for 1435599026:649607
-10 -> ok
-7 <- prend nourriture
-pushing at 1435599026:583844 for 1435599026:653834
-11 -> { joueur nourriture nourriture linemate linemate deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane phiras phiras, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras phiras phiras thystame, nourriture linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane phiras thystame, nourriture linemate linemate deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras phiras}
-10 <- prend nourriture
-pushing at 1435599026:590616 for 1435599026:660607
-11 <- prend nourriture
-pushing at 1435599026:598641 for 1435599026:668632
-8 -> ok
-8 <- prend nourriture
-pushing at 1435599026:613369 for 1435599026:683356
-5 -> ok
-5 <- inventaire
-pushing at 1435599026:627660 for 1435599026:697633
-9 -> ok
-9 <- prend nourriture
-pushing at 1435599026:642210 for 1435599026:712195
-6 -> { joueur nourriture nourriture linemate linemate linemate linemate linemate deraumere sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras, joueur linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere mendiane mendiane mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur mendiane phiras thystame}
-4 -> ok
-7 -> ok
-6 <- prend nourriture
-pushing at 1435599026:655714 for 1435599026:725704
-4 <- prend nourriture
-pushing at 1435599026:660008 for 1435599026:729999
-10 -> ok
-4: eat at 1435599026:663125... next time 1435599026:663125
-7 <- inventaire
-pushing at 1435599026:664248 for 1435599026:734222
-11 -> ok
-10 <- prend nourriture
-pushing at 1435599026:670981 for 1435599026:740971
-11 <- prend nourriture
-pushing at 1435599026:679027 for 1435599026:749018
-8 -> ok
-8 <- prend nourriture
-pushing at 1435599026:693703 for 1435599026:763694
-5 -> {nourriture 14, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-9 -> ok
-9 <- prend nourriture
-pushing at 1435599026:722578 for 1435599026:792567
-6 -> ok
-5 <- voir
-pushing at 1435599026:728258 for 1435599026:798140
-4 -> ok
-7 -> {nourriture 16, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-6 <- prend nourriture
-pushing at 1435599026:736062 for 1435599026:806051
-4 <- prend nourriture
-pushing at 1435599026:740355 for 1435599026:810345
-10 -> ok
-11 -> ok
-10 <- prend nourriture
-pushing at 1435599026:751341 for 1435599026:821331
-11 <- inventaire
-pushing at 1435599026:759405 for 1435599026:829380
-8 -> ok
-7 <- voir
-pushing at 1435599026:764885 for 1435599026:834734
-8 <- prend nourriture
-pushing at 1435599026:774079 for 1435599026:844069
-5: eat at 1435599026:780467... next time 1435599026:780467
-9 -> ok
-5 -> { joueur linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur mendiane mendiane mendiane mendiane phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere mendiane mendiane mendiane phiras phiras thystame, joueur nourriture linemate linemate linemate linemate linemate deraumere sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras}
-9 <- prend nourriture
-pushing at 1435599026:802931 for 1435599026:872916
-6 -> ok
-5 <- avance
-pushing at 1435599026:808751 for 1435599026:878741
-4 -> ok
-6 <- inventaire
-pushing at 1435599026:816452 for 1435599026:886427
-4 <- prend nourriture
-pushing at 1435599026:820743 for 1435599026:890733
-10 -> ok
-11 -> {nourriture 12, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-10 <- prend nourriture
-pushing at 1435599026:831701 for 1435599026:901692
-7 -> { joueur linemate deraumere sibur sibur sibur mendiane mendiane mendiane thystame, nourriture linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane thystame, nourriture nourriture nourriture nourriture nourriture deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane phiras}
-8 -> ok
-7 <- avance
-pushing at 1435599026:845326 for 1435599026:915318
-8 <- prend nourriture
-pushing at 1435599026:854423 for 1435599026:924412
-11 <- voir
-pushing at 1435599026:860060 for 1435599026:929937
-9 -> ok
-5 -> ok
-9 <- prend nourriture
-pushing at 1435599026:883275 for 1435599026:953264
-6 -> {nourriture 13, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-5 <- voir
-pushing at 1435599026:890447 for 1435599026:959104
-4 -> ok
-4 <- prend nourriture
-pushing at 1435599026:901109 for 1435599026:971098
-10 -> ok
-6: eat at 1435599026:908639... next time 1435599026:908639
-10 <- prend nourriture
-pushing at 1435599026:912084 for 1435599026:982074
-7 -> ok
-6 <- voir
-pushing at 1435599026:917048 for 1435599026:986936
-8 -> ok
-7 <- voir
-pushing at 1435599026:925768 for 1435599026:995656
-11 -> { joueur linemate linemate deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane phiras phiras, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras phiras phiras thystame, nourriture linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane phiras thystame, nourriture linemate linemate deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras phiras}
-8 <- prend nourriture
-pushing at 1435599026:934761 for 1435599027:4750
-11 <- avance
-pushing at 1435599026:940518 for 1435599027:10510
-9 -> ok
-5 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere mendiane mendiane mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane, nourriture nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur mendiane phiras thystame, nourriture nourriture nourriture nourriture nourriture linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane phiras}
-5 -> 
-9 <- inventaire
-pushing at 1435599026:963665 for 1435599027:33634
-5 <- prend nourriture
-pushing at 1435599026:969746 for 1435599027:39735
-4 -> ok
-4 <- inventaire
-pushing at 1435599026:981599 for 1435599027:51553
-10 -> ok
-6 -> { joueur linemate linemate linemate linemate linemate deraumere sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras, linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras thystame, joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere mendiane mendiane mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur mendiane phiras thystame}
-6 -> 
-10 <- prend nourriture
-pushing at 1435599026:992465 for 1435599027:62453
-7 -> { joueur nourriture nourriture nourriture nourriture nourriture deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur phiras phiras thystame, nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate sibur sibur sibur sibur mendiane mendiane mendiane mendiane thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere sibur sibur sibur sibur sibur mendiane mendiane thystame}
-6 <- droite
-pushing at 1435599026:997591 for 1435599027:67587
-8 -> ok
-7 <- prend nourriture
-pushing at 1435599027:6410 for 1435599027:76397
-11 -> ok
-8 <- inventaire
-pushing at 1435599027:15188 for 1435599027:85162
-7: eat at 1435599027:18711... next time 1435599027:18711
-11 <- voir
-pushing at 1435599027:21064 for 1435599027:90945
-9 -> {nourriture 17, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-5 -> ok
-4 -> {nourriture 19, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-10 -> ok
-9 <- voir
-pushing at 1435599027:64355 for 1435599027:134253
-6 -> ok
-10 <- prend nourriture
-pushing at 1435599027:72852 for 1435599027:142841
-7 -> ok
-4 <- voir
-pushing at 1435599027:82164 for 1435599027:152037
-8 -> {nourriture 19, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-7 <- prend nourriture
-pushing at 1435599027:86764 for 1435599027:156754
-11 -> { joueur nourriture linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane phiras thystame, joueur linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur phiras phiras phiras thystame, linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane, nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras}
-11 <- prend nourriture
-pushing at 1435599027:101546 for 1435599027:171535
-8 <- voir
-pushing at 1435599027:115818 for 1435599027:185717
-8: eat at 1435599027:128310... next time 1435599027:128310
-9 -> { joueur deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane phiras phiras phiras thystame, nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane thystame, linemate linemate linemate sibur sibur sibur sibur mendiane mendiane mendiane phiras}
-10 -> ok
-9 <- avance
-pushing at 1435599027:144840 for 1435599027:214831
-4 -> { joueur linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur phiras phiras phiras thystame, nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane mendiane phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate deraumere deraumere deraumere deraumere mendiane mendiane mendiane mendiane phiras phiras phiras}
-10 <- inventaire
-pushing at 1435599027:153209 for 1435599027:223183
-7 -> ok
-4 <- avance
-pushing at 1435599027:162699 for 1435599027:232692
-7 <- prend nourriture
-pushing at 1435599027:167130 for 1435599027:237119
-11 -> ok
-11 <- inventaire
-pushing at 1435599027:181915 for 1435599027:251890
-8 -> { joueur linemate deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras thystame, linemate linemate linemate linemate linemate linemate linemate deraumere sibur mendiane mendiane mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate mendiane mendiane mendiane mendiane phiras phiras phiras thystame, nourriture linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur phiras phiras phiras thystame}
-8 <- avance
-pushing at 1435599027:196279 for 1435599027:266272
-9 -> ok
-10 -> {nourriture 18, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-9 <- voir
-pushing at 1435599027:225286 for 1435599027:295170
-4 -> ok
-7 -> ok
-9: eat at 1435599027:237693... next time 1435599027:237693
-4 <- voir
-pushing at 1435599027:243154 for 1435599027:313037
-7 <- prend nourriture
-pushing at 1435599027:247473 for 1435599027:317462
-11 -> {nourriture 13, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-10 <- voir
-pushing at 1435599027:253815 for 1435599027:323706
-8 -> ok
-8 <- voir
-pushing at 1435599027:276742 for 1435599027:346627
-11 <- voir
-pushing at 1435599027:282550 for 1435599027:352449
-9 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate deraumere deraumere sibur sibur phiras phiras thystame, linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane phiras phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras}
-9 <- prend nourriture
-pushing at 1435599027:305823 for 1435599027:375812
-4 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane mendiane phiras phiras, linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere sibur sibur sibur mendiane mendiane mendiane phiras phiras thystame, nourriture nourriture nourriture deraumere deraumere deraumere sibur mendiane mendiane mendiane thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane mendiane thystame}
-4 -> 
-7 -> ok
-4 <- prend nourriture
-pushing at 1435599027:323670 for 1435599027:393657
-10 -> { joueur linemate linemate linemate deraumere deraumere deraumere deraumere mendiane mendiane mendiane mendiane, deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane mendiane phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere sibur sibur mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate deraumere deraumere deraumere deraumere mendiane mendiane mendiane mendiane phiras phiras phiras}
-7 <- prend nourriture
-pushing at 1435599027:327885 for 1435599027:397873
-10 <- avance
-pushing at 1435599027:334378 for 1435599027:404366
-8 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate mendiane mendiane mendiane mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere sibur mendiane mendiane phiras thystame, nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane phiras}
-10: eat at 1435599027:346993... next time 1435599027:346993
-11 -> { joueur linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane phiras thystame, linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur phiras phiras phiras thystame, linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane, nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras}
-8 <- prend nourriture
-pushing at 1435599027:357303 for 1435599027:427290
-11 <- droite
-pushing at 1435599027:363067 for 1435599027:433064
-9 -> ok
-9 <- prend nourriture
-pushing at 1435599027:386177 for 1435599027:456166
-4 -> ok
-7 -> ok
-10 -> ok
-7 <- inventaire
-pushing at 1435599027:408237 for 1435599027:478211
-10 <- voir
-pushing at 1435599027:414804 for 1435599027:484661
-8 -> ok
-11 -> ok
-8 <- prend nourriture
-pushing at 1435599027:437638 for 1435599027:507628
-11 <- voir
-pushing at 1435599027:443736 for 1435599027:513401
-11: eat at 1435599027:456006... next time 1435599027:456006
-9 -> ok
-9 <- prend nourriture
-pushing at 1435599027:466518 for 1435599027:536508
-7 -> {nourriture 20, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-10 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere sibur sibur mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras phiras phiras, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane phiras phiras}
-10 <- prend nourriture
-pushing at 1435599027:495334 for 1435599027:565324
-8 -> ok
-7 <- voir
-pushing at 1435599027:508840 for 1435599027:578732
-11 -> { joueur linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane phiras thystame, nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras, nourriture linemate linemate deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere sibur sibur sibur mendiane mendiane phiras phiras thystame}
-8 <- prend nourriture
-pushing at 1435599027:517989 for 1435599027:587979
-11 <- avance
-pushing at 1435599027:524115 for 1435599027:593945
-9 -> ok
-9 <- prend nourriture
-pushing at 1435599027:546884 for 1435599027:616874
-10 -> ok
-10 <- prend nourriture
-pushing at 1435599027:575677 for 1435599027:645667
-7 -> { joueur deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur phiras phiras thystame, nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate sibur sibur sibur sibur mendiane mendiane mendiane mendiane thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere sibur sibur sibur sibur sibur mendiane mendiane thystame}
-8 -> ok
-7 <- avance
-pushing at 1435599027:589329 for 1435599027:659321
-11 -> ok
-8 <- prend nourriture
-pushing at 1435599027:598341 for 1435599027:668330
-11 <- voir
-pushing at 1435599027:604395 for 1435599027:674295
-9 -> ok
-9 <- prend nourriture
-pushing at 1435599027:627212 for 1435599027:697202
-10 -> ok
-10 <- prend nourriture
-pushing at 1435599027:656041 for 1435599027:726031
-7 -> ok
-8 -> ok
-7 <- voir
-pushing at 1435599027:669756 for 1435599027:739657
-11 -> { joueur nourriture linemate linemate deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras phiras, nourriture linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane thystame, nourriture nourriture nourriture linemate linemate deraumere deraumere deraumere sibur mendiane phiras phiras phiras thystame, nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere sibur sibur sibur sibur sibur phiras}
-11 -> 
-8 <- prend nourriture
-pushing at 1435599027:678672 for 1435599027:748662
-11 <- prend nourriture
-pushing at 1435599027:684881 for 1435599027:754870
-client 11 dead
-13
-9 -> ok
-9 <- prend nourriture
-pushing at 1435599027:707635 for 1435599027:777622
-10 -> ok
-10 <- prend nourriture
-pushing at 1435599027:736456 for 1435599027:806444
-7 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate sibur sibur sibur sibur mendiane mendiane mendiane mendiane thystame, linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane, nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere sibur mendiane phiras, nourriture nourriture deraumere deraumere deraumere deraumere sibur sibur sibur phiras phiras thystame}
-8 -> ok
-7 <- prend nourriture
-pushing at 1435599027:750340 for 1435599027:820329
-8 <- prend nourriture
-pushing at 1435599027:759061 for 1435599027:829048
-9 -> ok
-9 <- prend nourriture
-pushing at 1435599027:787971 for 1435599027:857961
-10 -> ok
-10 <- prend nourriture
-pushing at 1435599027:816772 for 1435599027:886762
-7 -> ok
-8 -> ok
-7 <- prend nourriture
-pushing at 1435599027:830641 for 1435599027:900631
-8 <- prend nourriture
-pushing at 1435599027:839403 for 1435599027:909393
-9 -> ok
-9 <- prend nourriture
-pushing at 1435599027:868308 for 1435599027:938298
-10 -> ok
-10 <- prend nourriture
-pushing at 1435599027:897129 for 1435599027:967119
-7 -> ok
-8 -> ok
-7 <- prend nourriture
-pushing at 1435599027:910997 for 1435599027:980988
-8 <- prend nourriture
-pushing at 1435599027:919751 for 1435599027:989741
-4: eat at 1435599027:923148... next time 1435599027:923148
-9 -> ok
-9 <- prend nourriture
-pushing at 1435599027:948696 for 1435599028:18685
-10 -> ok
-10 <- prend nourriture
-pushing at 1435599027:977453 for 1435599028:47442
-7 -> ok
-8 -> ok
-7 <- prend nourriture
-pushing at 1435599027:991326 for 1435599028:61316
-8 <- prend nourriture
-pushing at 1435599028:77 for 1435599028:70068
-9 -> ok
-9 <- inventaire
-pushing at 1435599028:29025 for 1435599028:99000
-5: eat at 1435599028:40486... next time 1435599028:40486
-10 -> ok
-10 <- prend nourriture
-pushing at 1435599028:57804 for 1435599028:127795
-7 -> ok
-8 -> ok
-7 <- prend nourriture
-pushing at 1435599028:71672 for 1435599028:141663
-8 <- inventaire
-pushing at 1435599028:80431 for 1435599028:150407
-9 -> {nourriture 25, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-10 -> ok
-9 <- voir
-pushing at 1435599028:129631 for 1435599028:199504
-10 <- prend nourriture
-pushing at 1435599028:138155 for 1435599028:208145
-7 -> ok
-8 -> {nourriture 27, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-7 <- prend nourriture
-pushing at 1435599028:152049 for 1435599028:222037
-6: eat at 1435599028:168658... next time 1435599028:168658
-8 <- voir
-pushing at 1435599028:181063 for 1435599028:250946
-9 -> { joueur linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate deraumere deraumere sibur sibur phiras phiras thystame, linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane phiras phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras}
-10 -> ok
-9 <- droite
-pushing at 1435599028:210110 for 1435599028:280107
-10 <- inventaire
-pushing at 1435599028:218519 for 1435599028:288493
-7 -> ok
-7 <- prend nourriture
-pushing at 1435599028:232402 for 1435599028:302391
-8 -> { joueur linemate linemate linemate linemate mendiane mendiane mendiane mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere sibur mendiane mendiane phiras thystame, nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane phiras}
-8 <- avance
-pushing at 1435599028:261512 for 1435599028:331504
-7: eat at 1435599028:278716... next time 1435599028:278716
-9 -> ok
-10 -> {nourriture 26, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-9 <- voir
-pushing at 1435599028:290556 for 1435599028:360450
-7 -> ok
-7 <- prend nourriture
-pushing at 1435599028:312778 for 1435599028:382766
-10 <- voir
-pushing at 1435599028:319189 for 1435599028:389051
-8 -> ok
-8 <- voir
-pushing at 1435599028:342034 for 1435599028:411914
-9 -> { joueur linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras, linemate linemate linemate sibur sibur sibur sibur mendiane mendiane mendiane phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate sibur sibur sibur mendiane mendiane phiras phiras thystame}
-9 -> 
-9 <- droite
-pushing at 1435599028:371058 for 1435599028:441055
-7 -> ok
-8: eat at 1435599028:388310... next time 1435599028:388310
-10 -> { joueur linemate linemate linemate linemate deraumere deraumere deraumere deraumere sibur sibur mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras phiras phiras, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane phiras phiras}
-10 -> 
-7 <- prend nourriture
-pushing at 1435599028:393197 for 1435599028:463184
-10 <- avance
-pushing at 1435599028:399728 for 1435599028:469719
-client 10 dead
-26
-client 9 dead
-25
-8 -> { joueur nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane phiras phiras phiras thystame, linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane phiras phiras phiras, linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras phiras, joueur linemate linemate linemate linemate linemate deraumere sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras}
-8 -> 
-8 <- prend nourriture
-pushing at 1435599028:422547 for 1435599028:492534
-client 8 dead
-27
-7 -> ok
-7 <- inventaire
-pushing at 1435599028:473605 for 1435599028:543575
-7 -> {nourriture 28, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-7 <- voir
-pushing at 1435599028:574185 for 1435599028:644091
-7 -> { joueur linemate linemate linemate sibur sibur sibur sibur mendiane mendiane mendiane mendiane thystame, linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane, nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere sibur mendiane phiras, nourriture nourriture deraumere deraumere deraumere deraumere sibur sibur sibur phiras phiras thystame}
-7 -> 
-7 <- avance
-pushing at 1435599028:654617 for 1435599028:724608
-client 7 dead
-28
-client 6 dead
-11
+4 <- GRAPHIC
+4 -> msz 30 20
+4 -> sgt 100
+4 -> bct 0 0 8 2 6 3 1 3 1
+4 -> bct 1 0 7 7 0 1 1 3 0
+4 -> bct 2 0 1 7 6 0 2 3 1
+4 -> bct 3 0 1 1 6 5 1 2 0
+4 -> bct 4 0 7 0 4 3 3 0 0
+4 -> bct 5 0 8 3 2 4 1 3 1
+4 -> bct 6 0 5 7 7 3 3 1 0
+4 -> bct 7 0 7 5 1 4 4 0 0
+4 -> bct 8 0 8 0 0 0 4 0 1
+4 -> bct 9 0 2 6 1 2 0 1 1
+4 -> bct 10 0 3 5 0 1 4 1 1
+4 -> bct 11 0 5 0 5 5 0 2 1
+4 -> bct 12 0 2 6 0 5 1 3 0
+4 -> bct 13 0 1 1 1 0 3 1 0
+4 -> bct 14 0 8 2 7 3 0 1 1
+4 -> bct 15 0 5 1 0 2 2 2 1
+4 -> bct 16 0 5 6 7 2 0 3 0
+4 -> bct 17 0 5 6 5 5 1 0 0
+4 -> bct 18 0 3 1 2 2 3 3 1
+4 -> bct 19 0 9 7 7 5 4 2 0
+4 -> bct 20 0 2 1 5 4 3 3 0
+4 -> bct 21 0 7 1 0 1 4 1 1
+4 -> bct 22 0 7 5 5 4 3 1 0
+4 -> bct 23 0 9 3 6 2 0 1 1
+4 -> bct 24 0 2 2 1 1 3 1 0
+4 -> bct 25 0 5 4 5 3 4 1 0
+4 -> bct 26 0 7 6 6 1 3 1 1
+4 -> bct 27 0 2 3 6 2 3 2 1
+4 -> bct 28 0 6 5 1 4 2 0 0
+4 -> bct 29 0 7 7 3 3 4 2 0
+4 -> bct 0 1 9 4 5 3 3 3 1
+4 -> bct 1 1 6 7 5 3 2 3 0
+4 -> bct 2 1 9 1 5 3 1 0 0
+4 -> bct 3 1 4 5 2 4 3 1 0
+4 -> bct 4 1 8 2 5 4 3 2 0
+4 -> bct 5 1 9 0 1 4 2 2 0
+4 -> bct 6 1 8 2 6 2 2 3 0
+4 -> bct 7 1 5 3 4 5 3 0 1
+4 -> bct 8 1 5 0 5 1 2 2 1
+4 -> bct 9 1 8 0 4 2 3 2 0
+4 -> bct 10 1 3 2 6 1 0 0 0
+4 -> bct 11 1 8 0 7 2 0 3 0
+4 -> bct 12 1 9 4 1 1 2 2 1
+4 -> bct 13 1 4 1 3 4 3 0 1
+4 -> bct 14 1 5 3 2 4 1 2 1
+4 -> bct 15 1 1 4 6 5 0 3 1
+4 -> bct 16 1 2 6 0 4 2 2 1
+4 -> bct 17 1 4 6 7 1 0 0 1
+4 -> bct 18 1 1 2 7 4 2 3 1
+4 -> bct 19 1 1 2 4 5 2 3 1
+4 -> bct 20 1 5 2 5 2 2 2 0
+4 -> bct 21 1 3 0 0 5 4 3 1
+4 -> bct 22 1 0 1 4 1 2 3 1
+4 -> bct 23 1 8 3 6 4 2 3 0
+4 -> bct 24 1 9 0 1 5 1 3 1
+4 -> bct 25 1 9 2 0 1 0 3 0
+4 -> bct 26 1 4 5 6 0 3 2 1
+4 -> bct 27 1 5 6 7 0 4 2 0
+4 -> bct 28 1 2 0 4 2 1 3 0
+4 -> bct 29 1 1 4 5 3 1 1 0
+4 -> bct 0 2 7 0 3 1 1 2 1
+4 -> bct 1 2 8 4 5 5 3 0 1
+4 -> bct 2 2 0 1 2 2 3 0 0
+4 -> bct 3 2 8 5 7 0 3 1 1
+4 -> bct 4 2 4 2 4 1 1 2 1
+4 -> bct 5 2 1 4 6 3 3 2 0
+4 -> bct 6 2 1 7 1 2 0 3 1
+4 -> bct 7 2 8 6 5 5 1 2 0
+4 -> bct 8 2 2 6 7 1 4 0 1
+4 -> bct 9 2 8 7 2 2 3 0 1
+4 -> bct 10 2 8 3 7 5 3 1 0
+4 -> bct 11 2 2 3 7 5 1 2 1
+4 -> bct 12 2 7 6 2 4 4 3 0
+4 -> bct 13 2 2 7 7 4 4 0 1
+4 -> bct 14 2 7 3 6 5 2 2 0
+4 -> bct 15 2 8 2 3 3 1 0 0
+4 -> bct 16 2 5 1 4 5 1 0 0
+4 -> bct 17 2 5 0 1 2 4 1 0
+4 -> bct 18 2 1 3 6 2 2 2 1
+4 -> bct 19 2 4 5 4 4 2 2 1
+4 -> bct 20 2 4 4 6 3 4 0 0
+4 -> bct 21 2 3 4 2 0 0 2 0
+4 -> bct 22 2 1 7 1 2 0 3 1
+4 -> bct 23 2 8 4 1 0 3 2 0
+4 -> bct 24 2 5 3 3 3 1 3 1
+4 -> bct 25 2 1 3 6 2 2 3 0
+4 -> bct 26 2 0 0 2 5 2 1 0
+4 -> bct 27 2 8 0 2 5 4 0 0
+4 -> bct 28 2 3 4 5 1 0 0 1
+4 -> bct 29 2 2 3 6 0 2 1 0
+4 -> bct 0 3 3 0 3 4 3 1 1
+4 -> bct 1 3 1 3 5 5 3 3 1
+4 -> bct 2 3 9 6 0 1 3 3 0
+4 -> bct 3 3 1 7 7 5 1 1 0
+4 -> bct 4 3 3 2 5 2 3 2 0
+4 -> bct 5 3 9 4 4 0 2 0 1
+4 -> bct 6 3 7 2 1 2 0 2 0
+4 -> bct 7 3 1 4 2 5 2 2 0
+4 -> bct 8 3 7 7 3 1 0 0 1
+4 -> bct 9 3 0 2 1 4 4 0 1
+4 -> bct 10 3 1 4 2 0 0 1 0
+4 -> bct 11 3 3 1 0 3 0 2 0
+4 -> bct 12 3 6 7 5 2 0 2 0
+4 -> bct 13 3 3 7 1 4 0 0 1
+4 -> bct 14 3 6 1 0 3 4 3 0
+4 -> bct 15 3 7 3 7 0 0 0 1
+4 -> bct 16 3 1 2 1 3 1 0 1
+4 -> bct 17 3 1 6 0 1 3 2 0
+4 -> bct 18 3 8 3 1 0 3 0 1
+4 -> bct 19 3 0 6 5 3 0 0 0
+4 -> bct 20 3 6 7 1 1 4 1 1
+4 -> bct 21 3 6 0 3 0 1 1 1
+4 -> bct 22 3 3 4 5 4 4 2 0
+4 -> bct 23 3 3 0 4 4 3 3 1
+4 -> bct 24 3 8 6 0 3 0 2 0
+4 -> bct 25 3 7 5 4 0 0 2 0
+4 -> bct 26 3 8 6 3 3 3 2 1
+4 -> bct 27 3 4 7 0 0 1 2 1
+4 -> bct 28 3 8 4 5 1 2 3 1
+4 -> bct 29 3 3 2 7 3 0 2 1
+4 -> bct 0 4 5 6 1 3 4 3 0
+4 -> bct 1 4 5 3 5 4 4 1 0
+4 -> bct 2 4 2 0 7 3 4 2 1
+4 -> bct 3 4 3 6 6 2 4 0 1
+4 -> bct 4 4 4 1 7 2 0 3 1
+4 -> bct 5 4 3 0 5 3 2 0 0
+4 -> bct 6 4 5 6 1 3 2 0 0
+4 -> bct 7 4 0 0 1 2 1 2 0
+4 -> bct 8 4 8 3 6 4 1 2 0
+4 -> bct 9 4 0 7 6 0 1 3 1
+4 -> bct 10 4 6 3 3 1 0 3 0
+4 -> bct 11 4 4 2 7 3 2 0 0
+4 -> bct 12 4 6 6 6 4 0 2 0
+4 -> bct 13 4 9 3 3 4 4 0 0
+4 -> bct 14 4 2 7 3 0 3 3 1
+4 -> bct 15 4 2 4 1 1 3 1 0
+4 -> bct 16 4 8 0 3 3 2 2 0
+4 -> bct 17 4 1 4 1 1 3 3 0
+4 -> bct 18 4 2 0 5 1 3 3 1
+4 -> bct 19 4 7 7 4 0 4 0 1
+4 -> bct 20 4 5 3 2 1 0 3 1
+4 -> bct 21 4 6 0 4 4 0 0 1
+4 -> bct 22 4 4 1 3 1 2 0 1
+4 -> bct 23 4 7 3 5 0 3 3 0
+4 -> bct 24 4 4 7 1 3 4 2 0
+4 -> bct 25 4 6 7 1 0 4 3 1
+4 -> bct 26 4 3 7 3 2 4 1 0
+4 -> bct 27 4 6 3 3 1 1 1 1
+4 -> bct 28 4 0 5 1 0 0 2 0
+4 -> bct 29 4 6 3 5 1 0 0 0
+4 -> bct 0 5 7 7 7 2 0 0 1
+4 -> bct 1 5 7 0 6 4 0 3 1
+4 -> bct 2 5 1 1 6 2 3 0 1
+4 -> bct 3 5 7 2 1 4 3 3 0
+4 -> bct 4 5 3 4 5 5 2 3 1
+4 -> bct 5 5 5 7 3 2 4 0 0
+4 -> bct 6 5 2 5 4 3 1 3 1
+4 -> bct 7 5 6 6 2 5 2 2 0
+4 -> bct 8 5 2 6 1 5 2 2 0
+4 -> bct 9 5 9 4 6 5 1 2 1
+4 -> bct 10 5 4 1 5 5 1 3 0
+4 -> bct 11 5 2 6 3 5 2 2 1
+4 -> bct 12 5 4 1 6 3 1 3 1
+4 -> bct 13 5 5 1 0 5 2 0 1
+4 -> bct 14 5 4 0 1 1 3 3 1
+4 -> bct 15 5 7 7 1 3 3 3 0
+4 -> bct 16 5 9 5 6 2 1 2 0
+4 -> bct 17 5 5 3 7 3 1 2 1
+4 -> bct 18 5 9 6 6 0 2 1 0
+4 -> bct 19 5 5 2 4 2 1 0 1
+4 -> bct 20 5 0 6 3 5 1 0 1
+4 -> bct 21 5 2 6 2 5 1 2 0
+4 -> bct 22 5 2 5 1 2 1 1 1
+4 -> bct 23 5 3 0 4 5 2 2 1
+4 -> bct 24 5 7 3 6 4 3 3 0
+4 -> bct 25 5 3 0 3 2 4 3 1
+4 -> bct 26 5 7 2 1 5 0 3 1
+4 -> bct 27 5 5 7 5 0 2 0 0
+4 -> bct 28 5 4 2 3 0 4 3 0
+4 -> bct 29 5 4 2 6 5 2 3 1
+4 -> bct 0 6 6 3 0 5 0 3 0
+4 -> bct 1 6 3 7 1 5 0 2 1
+4 -> bct 2 6 4 0 3 2 2 2 1
+4 -> bct 3 6 3 1 0 3 4 3 1
+4 -> bct 4 6 1 1 6 3 0 2 0
+4 -> bct 5 6 7 3 2 4 3 1 0
+4 -> bct 6 6 6 6 7 3 3 0 1
+4 -> bct 7 6 3 6 7 3 0 0 0
+4 -> bct 8 6 6 4 5 1 4 1 0
+4 -> bct 9 6 7 5 6 3 0 0 0
+4 -> bct 10 6 8 0 7 2 0 2 1
+4 -> bct 11 6 4 5 5 4 4 0 0
+4 -> bct 12 6 5 1 2 0 2 0 1
+4 -> bct 13 6 0 4 2 0 3 1 0
+4 -> bct 14 6 9 1 0 0 4 2 0
+4 -> bct 15 6 8 6 1 2 1 0 1
+4 -> bct 16 6 0 1 3 0 2 0 1
+4 -> bct 17 6 1 2 2 4 3 3 0
+4 -> bct 18 6 4 5 7 5 3 1 1
+4 -> bct 19 6 1 0 2 1 3 3 0
+4 -> bct 20 6 8 3 5 2 3 0 1
+4 -> bct 21 6 0 5 4 1 0 2 1
+4 -> bct 22 6 5 5 5 1 4 2 1
+4 -> bct 23 6 1 6 1 3 2 2 0
+4 -> bct 24 6 2 3 5 3 0 0 1
+4 -> bct 25 6 1 6 7 1 0 1 1
+4 -> bct 26 6 0 6 4 2 1 2 1
+4 -> bct 27 6 8 6 4 4 3 2 1
+4 -> bct 28 6 7 2 7 2 4 0 1
+4 -> bct 29 6 8 0 3 4 3 1 0
+4 -> bct 0 7 6 1 3 5 2 2 1
+4 -> bct 1 7 0 2 2 1 2 3 0
+4 -> bct 2 7 0 2 5 4 1 2 1
+4 -> bct 3 7 5 0 4 0 1 3 1
+4 -> bct 4 7 7 1 7 4 1 1 0
+4 -> bct 5 7 6 3 6 1 0 2 0
+4 -> bct 6 7 1 3 1 0 4 2 1
+4 -> bct 7 7 3 3 0 4 4 2 1
+4 -> bct 8 7 9 1 7 4 2 2 1
+4 -> bct 9 7 6 5 3 4 1 0 0
+4 -> bct 10 7 0 3 3 4 2 2 0
+4 -> bct 11 7 0 2 3 5 1 3 1
+4 -> bct 12 7 8 7 5 2 2 2 1
+4 -> bct 13 7 2 5 6 2 4 3 0
+4 -> bct 14 7 6 0 4 3 0 0 0
+4 -> bct 15 7 0 5 0 1 3 3 1
+4 -> bct 16 7 0 4 7 3 1 0 1
+4 -> bct 17 7 9 0 1 3 0 1 0
+4 -> bct 18 7 2 7 2 0 4 3 0
+4 -> bct 19 7 2 5 3 2 2 0 1
+4 -> bct 20 7 8 0 6 4 4 3 1
+4 -> bct 21 7 7 0 5 2 2 0 0
+4 -> bct 22 7 6 5 5 1 2 2 0
+4 -> bct 23 7 5 1 0 0 4 0 0
+4 -> bct 24 7 1 4 6 5 0 2 0
+4 -> bct 25 7 4 5 1 1 0 1 0
+4 -> bct 26 7 3 7 0 4 3 3 1
+4 -> bct 27 7 2 7 1 3 1 1 1
+4 -> bct 28 7 9 0 2 0 4 3 1
+4 -> bct 29 7 8 7 5 3 1 0 0
+4 -> bct 0 8 0 3 7 1 2 0 0
+4 -> bct 1 8 5 6 7 4 2 0 1
+4 -> bct 2 8 6 1 4 3 1 3 0
+4 -> bct 3 8 9 0 0 0 4 2 0
+4 -> bct 4 8 2 7 6 0 1 1 0
+4 -> bct 5 8 4 7 3 0 0 0 1
+4 -> bct 6 8 2 4 5 1 0 2 0
+4 -> bct 7 8 8 4 2 0 0 3 0
+4 -> bct 8 8 2 3 1 2 1 3 0
+4 -> bct 9 8 2 4 7 2 2 1 1
+4 -> bct 10 8 4 3 6 2 3 2 0
+4 -> bct 11 8 4 1 5 4 1 0 1
+4 -> bct 12 8 5 5 7 1 2 1 0
+4 -> bct 13 8 6 4 3 5 4 2 1
+4 -> bct 14 8 1 3 6 0 2 2 0
+4 -> bct 15 8 5 7 6 5 1 0 1
+4 -> bct 16 8 2 1 0 3 0 3 0
+4 -> bct 17 8 5 3 4 3 0 2 0
+4 -> bct 18 8 2 3 5 4 0 2 1
+4 -> bct 19 8 2 0 5 1 0 2 0
+4 -> bct 20 8 8 5 4 3 1 3 1
+4 -> bct 21 8 0 5 7 1 2 3 1
+4 -> bct 22 8 6 0 6 2 1 1 1
+4 -> bct 23 8 0 4 1 1 4 2 1
+4 -> bct 24 8 7 0 1 5 4 2 0
+4 -> bct 25 8 1 3 6 5 1 0 1
+4 -> bct 26 8 3 6 4 3 0 3 1
+4 -> bct 27 8 2 7 0 5 3 3 0
+4 -> bct 28 8 3 6 0 5 0 1 1
+4 -> bct 29 8 8 2 1 2 0 2 1
+4 -> bct 0 9 3 7 0 0 1 0 0
+4 -> bct 1 9 8 2 5 2 1 3 0
+4 -> bct 2 9 1 1 6 2 1 0 1
+4 -> bct 3 9 8 2 1 4 1 2 0
+4 -> bct 4 9 1 1 7 2 2 1 1
+4 -> bct 5 9 2 0 7 5 3 2 0
+4 -> bct 6 9 4 6 2 1 3 3 0
+4 -> bct 7 9 2 6 5 2 0 3 1
+4 -> bct 8 9 2 6 2 2 2 3 0
+4 -> bct 9 9 3 4 6 0 4 0 0
+4 -> bct 10 9 0 5 0 4 1 2 0
+4 -> bct 11 9 4 1 3 4 4 2 1
+4 -> bct 12 9 9 3 6 5 4 0 1
+4 -> bct 13 9 6 3 5 5 4 2 0
+4 -> bct 14 9 8 5 6 4 2 3 1
+4 -> bct 15 9 1 1 3 5 1 0 0
+4 -> bct 16 9 8 5 6 1 2 1 1
+4 -> bct 17 9 5 5 0 2 3 3 0
+4 -> bct 18 9 3 2 0 2 3 3 0
+4 -> bct 19 9 1 6 7 3 2 3 1
+4 -> bct 20 9 9 6 0 5 4 0 1
+4 -> bct 21 9 9 0 4 5 4 2 1
+4 -> bct 22 9 5 1 7 1 3 0 0
+4 -> bct 23 9 0 2 0 5 1 0 1
+4 -> bct 24 9 0 4 0 0 2 3 0
+4 -> bct 25 9 5 7 7 0 2 2 0
+4 -> bct 26 9 4 0 5 2 0 3 1
+4 -> bct 27 9 9 4 5 2 4 2 0
+4 -> bct 28 9 5 3 0 5 3 3 1
+4 -> bct 29 9 5 7 3 5 4 1 0
+4 -> bct 0 10 4 4 7 2 1 3 1
+4 -> bct 1 10 2 6 3 1 0 0 0
+4 -> bct 2 10 4 0 0 4 3 0 1
+4 -> bct 3 10 1 6 4 0 1 0 1
+4 -> bct 4 10 9 0 1 0 3 3 0
+4 -> bct 5 10 3 7 4 4 0 3 0
+4 -> bct 6 10 5 2 5 3 0 1 0
+4 -> bct 7 10 0 6 7 1 4 2 0
+4 -> bct 8 10 1 1 6 2 0 0 1
+4 -> bct 9 10 3 7 1 2 4 3 1
+4 -> bct 10 10 9 1 6 5 3 1 1
+4 -> bct 11 10 4 0 1 0 4 2 1
+4 -> bct 12 10 7 3 2 2 4 0 1
+4 -> bct 13 10 1 2 1 0 3 0 0
+4 -> bct 14 10 2 2 6 4 3 2 0
+4 -> bct 15 10 9 3 0 3 0 1 1
+4 -> bct 16 10 3 3 3 3 1 3 1
+4 -> bct 17 10 9 5 5 4 0 3 0
+4 -> bct 18 10 1 4 5 3 2 0 1
+4 -> bct 19 10 0 4 1 3 1 3 1
+4 -> bct 20 10 0 4 2 0 2 0 0
+4 -> bct 21 10 2 0 1 5 0 1 0
+4 -> bct 22 10 6 6 5 1 2 2 0
+4 -> bct 23 10 8 6 0 2 2 2 1
+4 -> bct 24 10 2 6 2 2 3 0 0
+4 -> bct 25 10 3 6 7 0 0 2 1
+4 -> bct 26 10 7 6 5 5 4 1 0
+4 -> bct 27 10 6 6 3 2 2 3 0
+4 -> bct 28 10 9 2 0 1 3 3 1
+4 -> bct 29 10 8 4 1 4 2 1 1
+4 -> bct 0 11 6 2 1 0 4 1 0
+4 -> bct 1 11 3 2 1 3 2 3 1
+4 -> bct 2 11 6 2 4 2 0 1 0
+4 -> bct 3 11 7 3 0 0 1 0 0
+4 -> bct 4 11 1 1 4 2 2 0 0
+4 -> bct 5 11 3 0 0 2 3 3 1
+4 -> bct 6 11 5 5 0 0 4 1 1
+4 -> bct 7 11 1 3 0 4 1 0 1
+4 -> bct 8 11 4 1 5 5 4 1 0
+4 -> bct 9 11 4 0 3 0 0 2 0
+4 -> bct 10 11 1 3 5 3 4 0 1
+4 -> bct 11 11 3 3 5 3 0 0 1
+4 -> bct 12 11 1 0 6 1 1 3 1
+4 -> bct 13 11 6 5 3 3 0 1 1
+4 -> bct 14 11 7 4 0 3 0 0 0
+4 -> bct 15 11 4 5 5 0 2 1 1
+4 -> bct 16 11 0 7 4 3 2 3 0
+4 -> bct 17 11 5 2 7 3 2 0 0
+4 -> bct 18 11 5 2 4 3 1 3 1
+4 -> bct 19 11 1 2 1 5 0 0 0
+4 -> bct 20 11 1 4 4 1 2 2 1
+4 -> bct 21 11 7 3 0 5 2 1 1
+4 -> bct 22 11 3 0 6 2 4 3 1
+4 -> bct 23 11 4 4 1 5 3 1 1
+4 -> bct 24 11 4 0 5 3 0 3 1
+4 -> bct 25 11 2 4 4 2 3 1 0
+4 -> bct 26 11 3 0 7 4 3 3 0
+4 -> bct 27 11 0 6 3 5 3 0 0
+4 -> bct 28 11 7 3 3 3 2 1 1
+4 -> bct 29 11 8 6 5 4 4 2 1
+4 -> bct 0 12 6 3 1 1 1 0 0
+4 -> bct 1 12 0 2 1 1 3 1 0
+4 -> bct 2 12 9 7 0 5 4 0 0
+4 -> bct 3 12 4 0 6 3 2 2 0
+4 -> bct 4 12 4 1 5 0 3 3 0
+4 -> bct 5 12 0 1 7 0 2 2 0
+4 -> bct 6 12 0 3 4 0 2 1 0
+4 -> bct 7 12 5 2 0 1 4 2 1
+4 -> bct 8 12 9 7 7 5 3 0 0
+4 -> bct 9 12 8 3 7 1 0 2 1
+4 -> bct 10 12 4 6 1 4 1 0 1
+4 -> bct 11 12 9 3 6 5 2 3 1
+4 -> bct 12 12 5 6 0 4 3 3 0
+4 -> bct 13 12 1 0 1 4 2 0 1
+4 -> bct 14 12 7 0 0 0 4 3 0
+4 -> bct 15 12 0 4 6 3 2 1 1
+4 -> bct 16 12 3 4 3 3 3 0 0
+4 -> bct 17 12 4 1 6 0 0 3 1
+4 -> bct 18 12 6 2 6 2 3 3 1
+4 -> bct 19 12 2 4 1 1 2 3 0
+4 -> bct 20 12 6 1 6 1 2 2 0
+4 -> bct 21 12 2 6 5 4 0 0 1
+4 -> bct 22 12 7 5 7 3 1 1 0
+4 -> bct 23 12 5 6 7 1 2 0 0
+4 -> bct 24 12 2 1 5 5 0 2 1
+4 -> bct 25 12 3 2 2 0 4 0 0
+4 -> bct 26 12 9 3 7 0 3 3 1
+4 -> bct 27 12 9 5 1 5 4 2 0
+4 -> bct 28 12 3 5 4 2 0 0 1
+4 -> bct 29 12 1 7 3 3 4 1 0
+4 -> bct 0 13 0 0 3 0 0 3 0
+4 -> bct 1 13 7 5 7 1 2 0 1
+4 -> bct 2 13 2 7 5 5 1 3 0
+4 -> bct 3 13 1 4 2 4 1 0 0
+4 -> bct 4 13 7 1 1 4 4 0 1
+4 -> bct 5 13 7 3 0 3 2 3 1
+4 -> bct 6 13 4 0 2 5 3 1 0
+4 -> bct 7 13 6 6 6 4 3 3 0
+4 -> bct 8 13 7 0 6 5 1 1 0
+4 -> bct 9 13 7 4 0 1 1 2 1
+4 -> bct 10 13 1 2 5 5 0 1 0
+4 -> bct 11 13 3 0 4 3 0 3 0
+4 -> bct 12 13 0 4 2 3 1 0 1
+4 -> bct 13 13 4 2 1 4 0 2 1
+4 -> bct 14 13 8 1 1 2 3 3 0
+4 -> bct 15 13 0 5 4 3 0 3 0
+4 -> bct 16 13 0 7 7 2 1 1 0
+4 -> bct 17 13 7 1 3 2 3 3 1
+4 -> bct 18 13 8 6 2 5 1 3 0
+4 -> bct 19 13 9 1 4 2 0 0 1
+4 -> bct 20 13 9 1 5 4 4 2 1
+4 -> bct 21 13 9 0 4 5 1 0 0
+4 -> bct 22 13 4 6 3 1 4 2 0
+4 -> bct 23 13 1 7 5 1 2 1 1
+4 -> bct 24 13 1 0 5 4 3 2 0
+4 -> bct 25 13 7 0 1 2 4 0 0
+4 -> bct 26 13 0 2 3 2 0 0 0
+4 -> bct 27 13 7 5 2 3 3 0 1
+4 -> bct 28 13 1 5 6 0 3 2 0
+4 -> bct 29 13 1 3 5 0 0 1 1
+4 -> bct 0 14 8 3 7 2 2 2 0
+4 -> bct 1 14 6 7 7 2 3 2 1
+4 -> bct 2 14 7 7 5 2 1 1 0
+4 -> bct 3 14 7 6 2 4 4 2 0
+4 -> bct 4 14 1 5 6 4 4 3 1
+4 -> bct 5 14 1 2 5 4 3 1 0
+4 -> bct 6 14 2 4 4 1 3 1 0
+4 -> bct 7 14 0 2 5 4 3 0 1
+4 -> bct 8 14 0 4 4 4 2 2 0
+4 -> bct 9 14 3 3 1 0 1 3 0
+4 -> bct 10 14 4 3 4 1 0 2 1
+4 -> bct 11 14 6 5 3 2 0 0 1
+4 -> bct 12 14 7 4 6 4 4 0 1
+4 -> bct 13 14 0 4 3 3 2 0 1
+4 -> bct 14 14 5 6 5 3 1 3 1
+4 -> bct 15 14 1 3 6 0 4 2 1
+4 -> bct 16 14 0 2 5 1 2 1 0
+4 -> bct 17 14 6 3 5 3 1 2 1
+4 -> bct 18 14 4 2 6 1 0 3 1
+4 -> bct 19 14 7 7 5 1 2 2 1
+4 -> bct 20 14 3 2 6 3 2 1 1
+4 -> bct 21 14 2 6 7 0 0 1 1
+4 -> bct 22 14 7 3 4 1 0 2 0
+4 -> bct 23 14 3 1 2 4 2 2 0
+4 -> bct 24 14 5 5 4 4 0 3 0
+4 -> bct 25 14 8 3 6 1 2 1 0
+4 -> bct 26 14 2 7 0 3 1 1 0
+4 -> bct 27 14 4 2 2 4 0 1 0
+4 -> bct 28 14 1 1 5 4 3 1 1
+4 -> bct 29 14 2 2 4 2 2 1 1
+4 -> bct 0 15 8 6 1 0 0 3 0
+4 -> bct 1 15 1 6 1 0 1 3 1
+4 -> bct 2 15 6 1 3 4 4 3 1
+4 -> bct 3 15 5 2 1 5 3 1 1
+4 -> bct 4 15 3 6 3 4 2 3 0
+4 -> bct 5 15 3 0 2 0 0 3 0
+4 -> bct 6 15 0 6 6 5 1 2 0
+4 -> bct 7 15 3 3 5 0 3 1 1
+4 -> bct 8 15 2 6 1 4 1 2 0
+4 -> bct 9 15 0 2 3 2 0 3 1
+4 -> bct 10 15 8 0 6 5 4 3 1
+4 -> bct 11 15 9 3 6 2 1 3 0
+4 -> bct 12 15 8 4 4 3 2 2 0
+4 -> bct 13 15 1 0 0 1 0 3 0
+4 -> bct 14 15 1 1 4 0 2 0 1
+4 -> bct 15 15 9 7 1 5 3 2 1
+4 -> bct 16 15 8 0 0 1 2 0 0
+4 -> bct 17 15 2 1 1 1 2 0 0
+4 -> bct 18 15 8 0 4 3 3 0 1
+4 -> bct 19 15 5 1 2 2 4 3 0
+4 -> bct 20 15 2 1 1 1 4 1 0
+4 -> bct 21 15 8 6 2 5 0 2 0
+4 -> bct 22 15 2 4 1 1 1 3 1
+4 -> bct 23 15 4 4 3 3 3 1 0
+4 -> bct 24 15 9 7 6 1 4 3 0
+4 -> bct 25 15 7 3 5 4 3 2 0
+4 -> bct 26 15 2 6 6 3 0 2 0
+4 -> bct 27 15 7 4 4 0 3 3 1
+4 -> bct 28 15 3 4 7 0 1 2 1
+4 -> bct 29 15 1 2 2 5 3 3 1
+4 -> bct 0 16 2 0 2 2 3 0 1
+4 -> bct 1 16 9 6 4 1 0 2 0
+4 -> bct 2 16 2 1 7 5 1 3 0
+4 -> bct 3 16 1 6 4 3 3 2 1
+4 -> bct 4 16 4 3 4 2 0 1 0
+4 -> bct 5 16 5 2 6 1 3 1 0
+4 -> bct 6 16 5 7 3 1 0 3 0
+4 -> bct 7 16 6 5 0 1 4 0 0
+4 -> bct 8 16 8 3 4 5 1 3 0
+4 -> bct 9 16 7 5 5 2 3 0 1
+4 -> bct 10 16 6 4 4 0 3 2 0
+4 -> bct 11 16 3 3 3 2 3 1 1
+4 -> bct 12 16 5 5 4 0 3 0 1
+4 -> bct 13 16 7 4 5 2 2 2 0
+4 -> bct 14 16 9 1 6 2 4 2 1
+4 -> bct 15 16 5 3 4 4 2 3 1
+4 -> bct 16 16 6 0 6 5 3 2 0
+4 -> bct 17 16 1 0 4 3 0 3 1
+4 -> bct 18 16 9 7 6 5 0 0 0
+4 -> bct 19 16 9 7 2 4 2 3 1
+4 -> bct 20 16 1 7 1 4 4 3 1
+4 -> bct 21 16 9 7 7 3 1 0 0
+4 -> bct 22 16 0 2 7 1 3 2 1
+4 -> bct 23 16 8 6 0 5 3 3 0
+4 -> bct 24 16 2 6 3 2 0 1 0
+4 -> bct 25 16 6 7 2 0 1 0 0
+4 -> bct 26 16 6 5 0 3 1 0 1
+4 -> bct 27 16 1 3 7 2 3 0 0
+4 -> bct 28 16 8 7 6 3 2 2 1
+4 -> bct 29 16 2 2 6 5 2 2 1
+4 -> bct 0 17 6 4 6 3 1 1 1
+4 -> bct 1 17 0 7 6 1 4 1 0
+4 -> bct 2 17 7 3 3 0 3 0 1
+4 -> bct 3 17 2 0 1 2 1 3 0
+4 -> bct 4 17 1 5 5 0 4 2 0
+4 -> bct 5 17 6 0 4 3 2 0 1
+4 -> bct 6 17 0 0 4 0 4 2 1
+4 -> bct 7 17 5 3 1 4 3 3 0
+4 -> bct 8 17 1 4 6 2 3 1 0
+4 -> bct 9 17 6 3 6 3 1 3 0
+4 -> bct 10 17 2 6 3 5 2 0 1
+4 -> bct 11 17 0 4 0 1 4 0 1
+4 -> bct 12 17 6 4 5 0 1 3 0
+4 -> bct 13 17 7 2 4 1 1 1 1
+4 -> bct 14 17 3 5 1 0 3 2 0
+4 -> bct 15 17 1 0 2 3 1 2 1
+4 -> bct 16 17 1 6 5 1 0 0 0
+4 -> bct 17 17 7 6 0 4 4 3 1
+4 -> bct 18 17 0 0 3 2 2 1 1
+4 -> bct 19 17 9 2 5 2 0 2 0
+4 -> bct 20 17 1 1 3 4 2 1 0
+4 -> bct 21 17 7 1 3 0 4 0 1
+4 -> bct 22 17 6 4 5 0 0 0 1
+4 -> bct 23 17 0 0 2 2 4 0 1
+4 -> bct 24 17 0 7 3 1 1 0 1
+4 -> bct 25 17 0 5 0 5 4 2 1
+4 -> bct 26 17 1 3 3 5 4 2 0
+4 -> bct 27 17 4 2 6 2 2 1 1
+4 -> bct 28 17 0 6 0 5 4 2 1
+4 -> bct 29 17 8 7 3 2 3 0 0
+4 -> bct 0 18 1 4 7 5 3 2 0
+4 -> bct 1 18 4 1 2 0 1 1 0
+4 -> bct 2 18 6 3 1 3 0 2 1
+4 -> bct 3 18 2 7 2 4 2 0 0
+4 -> bct 4 18 8 6 3 3 1 2 1
+4 -> bct 5 18 4 4 2 5 2 3 1
+4 -> bct 6 18 3 3 1 1 0 1 0
+4 -> bct 7 18 3 2 5 5 1 2 0
+4 -> bct 8 18 6 6 2 4 4 2 0
+4 -> bct 9 18 9 5 6 2 1 3 0
+4 -> bct 10 18 9 6 7 1 1 3 1
+4 -> bct 11 18 1 3 1 4 0 0 0
+4 -> bct 12 18 0 7 5 1 4 3 0
+4 -> bct 13 18 6 3 4 0 4 3 0
+4 -> bct 14 18 8 1 5 1 3 2 1
+4 -> bct 15 18 1 5 7 3 2 2 1
+4 -> bct 16 18 8 1 4 4 0 1 1
+4 -> bct 17 18 7 7 4 3 1 1 0
+4 -> bct 18 18 0 0 1 2 2 0 0
+4 -> bct 19 18 2 6 6 1 4 3 1
+4 -> bct 20 18 1 7 0 0 1 2 1
+4 -> bct 21 18 5 0 6 5 3 1 1
+4 -> bct 22 18 4 3 5 5 0 2 0
+4 -> bct 23 18 6 5 0 5 2 2 1
+4 -> bct 24 18 4 6 1 2 3 2 0
+4 -> bct 25 18 1 2 7 1 4 1 1
+4 -> bct 26 18 9 6 6 5 0 2 0
+4 -> bct 27 18 2 1 6 0 1 0 0
+4 -> bct 28 18 7 5 7 4 3 1 1
+4 -> bct 29 18 9 1 6 3 3 2 1
+4 -> bct 0 19 0 5 2 2 0 0 0
+4 -> bct 1 19 2 4 3 3 2 0 1
+4 -> bct 2 19 8 4 6 1 4 1 1
+4 -> bct 3 19 6 2
+ 5 0 4 2 1
+4 -> bct 4 19 5 1 0 0 1 3 0
+4 -> bct 5 19 5 0 1 4 3 0 0
+4 -> bct 6 19 3 7 0 5 1 2 1
+4 -> bct 7 19 9 7 5 2 3 3 1
+4 -> bct 8 19 6 0 6 2 4 3 1
+4 -> bct 9 19 2 2 2 2 1 2 1
+4 -> bct 10 19 6 5 6 3 3 0 0
+4 -> bct 11 19 8 1 5 3 1 3 0
+4 -> bct 12 19 8 3 3 1 2 3 0
+4 -> bct 13 19 6 3 7 5 1 3 1
+4 -> bct 14 19 1 6 0 0 2 0 0
+4 -> bct 15 19 8 4 7 2 2 0 1
+4 -> bct 16 19 4 2 2 2 1 2 1
+4 -> bct 17 19 2 3 7 2 4 0 0
+4 -> bct 18 19 5 3 3 1 1 3 0
+4 -> bct 19 19 9 1 4 4 3 2 1
+4 -> bct 20 19 3 7 2 1 3 3 0
+4 -> bct 21 19 3 6 1 3 0 3 1
+4 -> bct 22 19 5 4 3 3 3 0 0
+4 -> bct 23 19 1 5 1 1 2 1 0
+4 -> bct 24 19 1 5 2 0 4 1 1
+4 -> bct 25 19 6 2 7 4 3 0 0
+4 -> bct 26 19 8 3 6 2 0 1 0
+4 -> bct 27 19 8 5 2 0 3 2 0
+4 -> bct 28 19 8 2 6 1 1 1 0
+4 -> bct 29 19 7 7 4 2 4 2 0
+4 -> tna TeamA
+4 -> tna TeamB
+4 -> agt 7.500000
 client 4 dead
-19
-5: eat at 1435599029:363724... next time 1435599029:363724
-5: eat at 1435599030:665493... next time 1435599030:665493
-5: eat at 1435599031:967246... next time 1435599031:967246
-5: eat at 1435599033:269020... next time 1435599033:269020
-5: eat at 1435599034:570807... next time 1435599034:570807
-5: eat at 1435599035:872547... next time 1435599035:872547
-5: eat at 1435599037:174357... next time 1435599037:174357
-5: eat at 1435599038:476114... next time 1435599038:476114
-5: eat at 1435599039:777860... next time 1435599039:777860
-5: eat at 1435599041:79618... next time 1435599041:79618
-5: eat at 1435599042:381369... next time 1435599042:381369
-new client
-client 5 dead
-2
-4 -> BIENVENUE
-4 <- TeamA
-4 -> 7
-4 -> 10 10
-4 <- connect_nbr
-pushing at 1435599043:210325 for 1435599043:210311
-4 -> 7
-4 <- inventaire
-pushing at 1435599043:230998 for 1435599043:300970
-new client
-5 -> BIENVENUE
-5 <- TeamA
-5 -> 6
-5 -> 10 10
-4 -> {nourriture 10, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-5 <- connect_nbr
-pushing at 1435599043:319652 for 1435599043:319639
-5 -> 6
-5 <- inventaire
-pushing at 1435599043:340117 for 1435599043:410089
-4 <- voir
-pushing at 1435599043:351993 for 1435599043:421861
-new client
-6 -> BIENVENUE
-6 <- TeamA
-6 -> 5
-6 -> 10 10
-5 -> {nourriture 10, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-4 -> { joueur nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane phiras phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere sibur sibur phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere mendiane mendiane phiras phiras}
-6 <- connect_nbr
-pushing at 1435599043:428692 for 1435599043:428680
-6 -> 5
-4 <- avance
-pushing at 1435599043:432793 for 1435599043:502785
-6 <- inventaire
-pushing at 1435599043:449157 for 1435599043:519129
-5 <- voir
-pushing at 1435599043:461024 for 1435599043:530913
-new client
-7 -> BIENVENUE
-7 <- TeamA
-7 -> 4
-7 -> 10 10
-4 -> ok
-4 <- voir
-pushing at 1435599043:513349 for 1435599043:583212
-6 -> {nourriture 10, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-5 -> { joueur nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere sibur sibur sibur sibur sibur phiras, linemate linemate deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras phiras, nourriture nourriture nourriture linemate linemate deraumere deraumere deraumere sibur mendiane phiras phiras phiras thystame, linemate linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane}
-7 <- connect_nbr
-pushing at 1435599043:539685 for 1435599043:539670
-7 -> 4
-5 <- avance
-pushing at 1435599043:541528 for 1435599043:611519
-7 <- inventaire
-pushing at 1435599043:560173 for 1435599043:630145
-6 <- voir
-pushing at 1435599043:570057 for 1435599043:639963
-4 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane phiras thystame, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras phiras thystame, nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur phiras phiras thystame}
-new client
-8 -> BIENVENUE
-4 <- prend nourriture
-pushing at 1435599043:594262 for 1435599043:664248
-8 <- TeamA
-8 -> 3
-8 -> 10 10
-5 -> ok
-5 <- voir
-pushing at 1435599043:622056 for 1435599043:691965
-7 -> {nourriture 10, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-6 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate deraumere deraumere sibur sibur phiras phiras thystame, linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane thystame, nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur, nourriture nourriture linemate linemate deraumere deraumere deraumere sibur sibur}
-8 <- connect_nbr
-pushing at 1435599043:648681 for 1435599043:648667
-8 -> 3
-6 <- avance
-pushing at 1435599043:650527 for 1435599043:720518
-4 -> ok
-8 <- inventaire
-pushing at 1435599043:669130 for 1435599043:739103
-4 <- prend nourriture
-pushing at 1435599043:674686 for 1435599043:744673
-7 <- voir
-pushing at 1435599043:681161 for 1435599043:751007
-5 -> { joueur nourriture nourriture nourriture linemate linemate deraumere deraumere deraumere sibur mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras, nourriture linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane thystame, linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur}
-new client
-9 -> BIENVENUE
-5 <- prend nourriture
-pushing at 1435599043:702629 for 1435599043:772603
-9 <- TeamA
-9 -> 2
-9 -> 10 10
-6 -> ok
-6 <- voir
-pushing at 1435599043:731040 for 1435599043:800937
-8 -> {nourriture 10, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-4 -> ok
-7 -> { joueur nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras thystame, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane mendiane phiras phiras}
-4 <- prend nourriture
-pushing at 1435599043:755067 for 1435599043:825056
-9 <- connect_nbr
-pushing at 1435599043:757950 for 1435599043:757938
-9 -> 2
-7 <- avance
-pushing at 1435599043:761719 for 1435599043:831710
-5 -> ok
-9 <- inventaire
-pushing at 1435599043:778415 for 1435599043:848389
-5 <- prend nourriture
-pushing at 1435599043:782925 for 1435599043:852913
-8 <- voir
-pushing at 1435599043:790088 for 1435599043:859964
-6 -> { joueur nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur, deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras phiras, nourriture nourriture linemate sibur sibur mendiane mendiane phiras}
-new client
-10 -> BIENVENUE
-6 <- prend nourriture
-pushing at 1435599043:811585 for 1435599043:881572
-4 -> ok
-10 <- TeamA
-10 -> 1
-10 -> 10 10
-7 -> ok
-4 <- prend nourriture
-pushing at 1435599043:835472 for 1435599043:905462
-7 <- voir
-pushing at 1435599043:842271 for 1435599043:912149
-9 -> {nourriture 10, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-5 -> ok
-8 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane phiras phiras, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane phiras, linemate deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane}
-5 <- prend nourriture
-pushing at 1435599043:863342 for 1435599043:933331
-10 <- connect_nbr
-pushing at 1435599043:866956 for 1435599043:866943
-10 -> 1
-8 <- droite
-pushing at 1435599043:870612 for 1435599043:940608
-6 -> ok
-10 <- inventaire
-pushing at 1435599043:887383 for 1435599043:957356
-6 <- inventaire
-pushing at 1435599043:891962 for 1435599043:961934
-9 <- voir
-pushing at 1435599043:899372 for 1435599043:969261
-4 -> ok
-7 -> { joueur nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras thystame, linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane phiras phiras phiras, linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere sibur sibur sibur mendiane mendiane mendiane phiras phiras thystame, nourriture nourriture nourriture deraumere deraumere deraumere sibur mendiane mendiane mendiane thystame}
-new client
-11 -> BIENVENUE
-4 <- prend nourriture
-pushing at 1435599043:915888 for 1435599043:985875
-7 <- prend nourriture
-pushing at 1435599043:922801 for 1435599043:992791
-5 -> ok
-11 <- TeamA
-11 -> 0
-11 -> 10 10
-8 -> ok
-5 <- inventaire
-pushing at 1435599043:943774 for 1435599044:13732
-8 <- voir
-pushing at 1435599043:951172 for 1435599044:21044
-10 -> {nourriture 10, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-6 -> {nourriture 11, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-9 -> { joueur linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras, linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane phiras phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate deraumere deraumere sibur sibur phiras phiras thystame}
-11 <- inventaire
-pushing at 1435599043:976086 for 1435599044:46051
-9 <- droite
-pushing at 1435599043:979889 for 1435599044:49885
-4 -> ok
-6 <- voir
-pushing at 1435599043:992629 for 1435599044:62529
-7 -> ok
-4 <- prend nourriture
-pushing at 1435599043:996237 for 1435599044:66225
-7 <- prend nourriture
-pushing at 1435599044:3161 for 1435599044:73149
-10 <- voir
-pushing at 1435599044:8278 for 1435599044:78177
-5 -> {nourriture 13, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-8 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane, nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur phiras phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere phiras}
-8 <- avance
-pushing at 1435599044:31697 for 1435599044:101687
-5 <- voir
-pushing at 1435599044:44366 for 1435599044:114275
-11 -> {nourriture 10, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-9 -> ok
-9 <- voir
-pushing at 1435599044:60393 for 1435599044:130284
-6 -> { joueur linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur, deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras phiras, nourriture nourriture linemate sibur sibur mendiane mendiane phiras}
-4 -> ok
-6 <- avance
-pushing at 1435599044:73121 for 1435599044:143113
-7 -> ok
-4 <- prend nourriture
-pushing at 1435599044:76639 for 1435599044:146618
-10 -> { joueur nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere phiras phiras thystame, deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras thystame, nourriture deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras}
-7 <- prend nourriture
-pushing at 1435599044:83529 for 1435599044:153519
-10 <- avance
-pushing at 1435599044:88813 for 1435599044:158805
-11 <- voir
-pushing at 1435599044:96853 for 1435599044:166756
-8 -> ok
-8 <- voir
-pushing at 1435599044:112181 for 1435599044:182063
-5 -> { joueur linemate linemate deraumere deraumere deraumere sibur mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras, joueur nourriture linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane thystame, linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur}
-5 <- droite
-pushing at 1435599044:124802 for 1435599044:194798
-9 -> { joueur linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate deraumere deraumere sibur sibur phiras phiras thystame, nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur mendiane mendiane mendiane mendiane phiras thystame}
-9 <- avance
-pushing at 1435599044:140873 for 1435599044:210866
-6 -> ok
-4 -> ok
-6 <- voir
-pushing at 1435599044:153577 for 1435599044:223467
-7 -> ok
-4 <- inventaire
-pushing at 1435599044:157013 for 1435599044:226978
-10 -> ok
-7 <- prend nourriture
-pushing at 1435599044:163901 for 1435599044:233890
-11 -> { joueur nourriture linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane thystame, linemate linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane, joueur linemate linemate deraumere deraumere deraumere sibur mendiane phiras phiras phiras thystame, linemate linemate deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras phiras}
-10 <- voir
-pushing at 1435599044:169278 for 1435599044:239159
-11 <- droite
-pushing at 1435599044:177321 for 1435599044:247318
-8 -> { joueur nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur phiras phiras phiras, nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras, nourriture deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras, joueur nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras thystame}
-8 <- prend nourriture
-pushing at 1435599044:192694 for 1435599044:262684
-5 -> ok
-5 <- voir
-pushing at 1435599044:205242 for 1435599044:275147
-9 -> ok
-9 <- voir
-pushing at 1435599044:221316 for 1435599044:291201
-6 -> { joueur nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras phiras, joueur nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras thystame, nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane thystame}
-4 -> {nourriture 17, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-7 -> ok
-6 <- prend nourriture
-pushing at 1435599044:234115 for 1435599044:304105
-10 -> { joueur nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate sibur sibur sibur mendiane mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere phiras, joueur nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur phiras phiras phiras}
-7 <- inventaire
-pushing at 1435599044:244262 for 1435599044:314238
-11 -> ok
-10 <- prend nourriture
-pushing at 1435599044:249804 for 1435599044:319785
-4 <- voir
-pushing at 1435599044:257610 for 1435599044:327475
-11 <- voir
-pushing at 1435599044:257813 for 1435599044:327724
-8 -> ok
-8 <- prend nourriture
-pushing at 1435599044:273047 for 1435599044:343037
-5 -> { joueur linemate linemate deraumere deraumere deraumere sibur mendiane phiras phiras phiras thystame, linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur, linemate linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere sibur mendiane mendiane phiras phiras thystame}
-5 <- droite
-pushing at 1435599044:285706 for 1435599044:355702
-9 -> { joueur nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane phiras phiras phiras thystame, deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane mendiane phiras thystame, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras phiras thystame}
-9 <- prend nourriture
-pushing at 1435599044:301831 for 1435599044:371821
-6 -> ok
-7 -> {nourriture 14, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-6 <- prend nourriture
-pushing at 1435599044:314439 for 1435599044:384430
-10 -> ok
-4 -> { joueur linemate linemate linemate linemate linemate deraumere deraumere deraumere, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane phiras thystame, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras phiras thystame, nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur phiras phiras thystame}
-11 -> { joueur nourriture linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane thystame, linemate linemate deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras phiras, nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras, linemate linemate linemate sibur sibur sibur sibur mendiane mendiane mendiane mendiane thystame}
-10 <- prend nourriture
-pushing at 1435599044:330152 for 1435599044:400142
-4 <- avance
-pushing at 1435599044:338139 for 1435599044:408132
-11 <- avance
-pushing at 1435599044:338269 for 1435599044:408262
-8 -> ok
-7 <- voir
-pushing at 1435599044:344849 for 1435599044:414735
-8 <- prend nourriture
-pushing at 1435599044:353399 for 1435599044:423389
-5 -> ok
-5 <- voir
-pushing at 1435599044:366134 for 1435599044:436026
-9 -> ok
-9 <- inventaire
-pushing at 1435599044:382200 for 1435599044:452175
-6 -> ok
-6 <- prend nourriture
-pushing at 1435599044:394794 for 1435599044:464784
-10 -> ok
-4 -> ok
-11 -> ok
-10 <- prend nourriture
-pushing at 1435599044:410486 for 1435599044:480477
-7 -> { joueur linemate linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras thystame, linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane phiras phiras phiras, linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere sibur sibur sibur mendiane mendiane mendiane phiras phiras thystame, nourriture nourriture nourriture deraumere deraumere deraumere sibur mendiane mendiane mendiane thystame}
-4 <- voir
-pushing at 1435599044:418592 for 1435599044:488476
-11 <- voir
-pushing at 1435599044:418789 for 1435599044:488693
-8 -> ok
-7 <- droite
-pushing at 1435599044:425327 for 1435599044:495323
-4: eat at 1435599044:429935... next time 1435599044:429935
-8 <- prend nourriture
-pushing at 1435599044:433758 for 1435599044:503748
-5 -> { joueur linemate linemate deraumere deraumere deraumere sibur mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere sibur mendiane mendiane phiras phiras thystame, nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere sibur sibur sibur sibur sibur phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere sibur sibur sibur mendiane mendiane phiras phiras thystame}
-5 <- avance
-pushing at 1435599044:446625 for 1435599044:516618
-9 -> {nourriture 11, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-6 -> ok
-6 <- prend nourriture
-pushing at 1435599044:475155 for 1435599044:545145
-10 -> ok
-9 <- voir
-pushing at 1435599044:482797 for 1435599044:552682
-4 -> { joueur nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras phiras thystame, nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere sibur phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere phiras, nourriture linemate linemate linemate linemate deraumere deraumere sibur}
-11 -> { joueur nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras, linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane phiras thystame, linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane, nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere sibur mendiane phiras}
-10 <- prend nourriture
-pushing at 1435599044:490866 for 1435599044:560857
-7 -> ok
-4 <- prend nourriture
-pushing at 1435599044:499095 for 1435599044:569085
-11 <- prend nourriture
-pushing at 1435599044:499272 for 1435599044:569262
-8 -> ok
-7 <- voir
-pushing at 1435599044:505787 for 1435599044:575675
-8 <- inventaire
-pushing at 1435599044:514111 for 1435599044:584086
-5 -> ok
-5 <- voir
-pushing at 1435599044:527092 for 1435599044:596990
-5: eat at 1435599044:539311... next time 1435599044:539311
-6 -> ok
-9 -> { joueur linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane phiras phiras phiras thystame, deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane mendiane phiras thystame, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras phiras thystame}
-6 <- inventaire
-pushing at 1435599044:555546 for 1435599044:625520
-10 -> ok
-9 <- droite
-pushing at 1435599044:563304 for 1435599044:633301
-4 -> ok
-11 -> ok
-10 <- prend nourriture
-pushing at 1435599044:571219 for 1435599044:641208
-7 -> { joueur linemate linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras thystame, nourriture nourriture nourriture deraumere deraumere deraumere sibur mendiane mendiane mendiane thystame, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane mendiane phiras phiras, linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur phiras phiras phiras thystame}
-4 <- prend nourriture
-pushing at 1435599044:579469 for 1435599044:649459
-11 <- prend nourriture
-pushing at 1435599044:579644 for 1435599044:649634
-8 -> {nourriture 14, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-7 <- avance
-pushing at 1435599044:586305 for 1435599044:656297
-5 -> { joueur nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere sibur sibur sibur sibur sibur phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate sibur phiras thystame, nourriture linemate linemate linemate linemate linemate sibur sibur mendiane thystame}
-5 <- prend nourriture
-pushing at 1435599044:607640 for 1435599044:677624
-8 <- voir
-pushing at 1435599044:614737 for 1435599044:684627
-6 -> {nourriture 15, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-9 -> ok
-10 -> ok
-9 <- voir
-pushing at 1435599044:643976 for 1435599044:713642
-6: eat at 1435599044:648313... next time 1435599044:648313
-4 -> ok
-11 -> ok
-10 <- inventaire
-pushing at 1435599044:651578 for 1435599044:721550
-6 <- voir
-pushing at 1435599044:656138 for 1435599044:726037
-7 -> ok
-4 <- prend nourriture
-pushing at 1435599044:659797 for 1435599044:729785
-11 <- prend nourriture
-pushing at 1435599044:659987 for 1435599044:729978
-7 <- voir
-pushing at 1435599044:666811 for 1435599044:736680
-5 -> ok
-8 -> { joueur linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur phiras phiras phiras, nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras, nourriture deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras, joueur linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras thystame}
-5 <- prend nourriture
-pushing at 1435599044:687918 for 1435599044:757907
-8 <- avance
-pushing at 1435599044:695236 for 1435599044:765228
-9 -> { joueur linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane phiras thystame, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur mendiane mendiane mendiane mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur mendiane mendiane mendiane mendiane phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere mendiane mendiane mendiane phiras phiras thystame}
-10 -> {nourriture 15, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-9 <- avance
-pushing at 1435599044:724268 for 1435599044:794261
-6 -> { joueur linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras phiras, joueur linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras thystame, nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane thystame}
-4 -> ok
-11 -> ok
-6 <- avance
-pushing at 1435599044:736614 for 1435599044:806607
-7 -> { joueur nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane mendiane phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane mendiane thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate deraumere deraumere deraumere deraumere mendiane mendiane mendiane mendiane phiras phiras phiras, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane phiras phiras}
-4 <- prend nourriture
-pushing at 1435599044:740177 for 1435599044:810163
-11 <- prend nourriture
-pushing at 1435599044:740357 for 1435599044:810347
-7 <- prend nourriture
-pushing at 1435599044:747343 for 1435599044:817333
-10 <- voir
-pushing at 1435599044:752208 for 1435599044:822095
-5 -> ok
-7: eat at 1435599044:759291... next time 1435599044:759291
-8 -> ok
-5 <- inventaire
-pushing at 1435599044:768269 for 1435599044:838243
-8 <- voir
-pushing at 1435599044:775684 for 1435599044:845591
-9 -> ok
-9 <- voir
-pushing at 1435599044:804737 for 1435599044:874626
-6 -> ok
-4 -> ok
-11 -> ok
-6 <- voir
-pushing at 1435599044:817099 for 1435599044:887003
-7 -> ok
-4 <- prend nourriture
-pushing at 1435599044:820519 for 1435599044:890509
-11 <- inventaire
-pushing at 1435599044:820711 for 1435599044:890686
-10 -> { joueur linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate sibur sibur sibur mendiane mendiane phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere phiras, linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur phiras phiras phiras}
-7 <- prend nourriture
-pushing at 1435599044:827676 for 1435599044:897666
-10 <- avance
-pushing at 1435599044:832679 for 1435599044:902671
-5 -> {nourriture 14, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-8 -> { joueur nourriture deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras, nourriture nourriture linemate linemate linemate linemate linemate sibur sibur mendiane mendiane mendiane mendiane phiras, nourriture nourriture linemate linemate deraumere deraumere deraumere deraumere deraumere sibur mendiane mendiane mendiane mendiane, joueur nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere phiras phiras thystame}
-8 <- prend nourriture
-pushing at 1435599044:856149 for 1435599044:926138
-8: eat at 1435599044:868300... next time 1435599044:868300
-5 <- voir
-pushing at 1435599044:868861 for 1435599044:938765
-9 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur mendiane mendiane mendiane mendiane phiras thystame, nourriture nourriture nourriture nourriture deraumere sibur sibur phiras, nourriture nourriture nourriture nourriture nourriture deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane, nourriture nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur mendiane phiras thystame}
-9 -> 
-9 <- prend nourriture
-pushing at 1435599044:885244 for 1435599044:955233
-6 -> { joueur nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere phiras phiras thystame, joueur nourriture deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras, nourriture nourriture linemate linemate deraumere deraumere deraumere deraumere deraumere sibur mendiane mendiane mendiane mendiane, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere sibur sibur sibur sibur thystame}
-4 -> ok
-11 -> {nourriture 14, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-6 <- prend nourriture
-pushing at 1435599044:897591 for 1435599044:967578
-7 -> ok
-4 <- inventaire
-pushing at 1435599044:900908 for 1435599044:970882
-10 -> ok
-7 <- prend nourriture
-pushing at 1435599044:908085 for 1435599044:978074
-10 <- voir
-pushing at 1435599044:913193 for 1435599044:983093
-11 <- voir
-pushing at 1435599044:921271 for 1435599044:991176
-8 -> ok
-8 <- inventaire
-pushing at 1435599044:936534 for 1435599045:6508
-5 -> { joueur linemate linemate linemate linemate linemate deraumere deraumere deraumere sibur sibur sibur sibur sibur phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate sibur phiras thystame, nourriture linemate linemate linemate linemate linemate sibur sibur mendiane thystame}
-5 <- avance
-pushing at 1435599044:949384 for 1435599045:19375
-9 -> ok
-6 -> ok
-4 -> {nourriture 21, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-9: eat at 1435599044:977604... next time 1435599044:977604
-6 <- prend nourriture
-pushing at 1435599044:977981 for 1435599045:47968
-7 -> ok
-10 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere phiras, nourriture linemate linemate linemate linemate linemate sibur sibur mendiane thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate sibur phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane phiras phiras}
-7 <- prend nourriture
-pushing at 1435599044:988454 for 1435599045:58444
-11 -> { joueur linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras, linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane phiras thystame, linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane mendiane, nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere sibur mendiane phiras}
-10 <- prend nourriture
-pushing at 1435599044:993710 for 1435599045:63699
-4 <- voir
-pushing at 1435599045:1557 for 1435599045:71451
-11 <- droite
-pushing at 1435599045:1738 for 1435599045:71734
-8 -> {nourriture 14, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-5 -> ok
-5 <- voir
-pushing at 1435599045:29903 for 1435599045:99792
-8 <- voir
-pushing at 1435599045:37153 for 1435599045:107065
-6 -> ok
-6 <- prend nourriture
-pushing at 1435599045:58332 for 1435599045:128320
-7 -> ok
-10 -> ok
-7 <- prend nourriture
-pushing at 1435599045:68820 for 1435599045:138810
-4 -> { joueur linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras phiras thystame, nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere sibur phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere phiras, nourriture linemate linemate linemate linemate deraumere deraumere sibur}
-11 -> ok
-10 <- prend nourriture
-pushing at 1435599045:74055 for 1435599045:144045
-4 <- avance
-pushing at 1435599045:82067 for 1435599045:152058
-11 <- voir
-pushing at 1435599045:82284 for 1435599045:152198
-10: eat at 1435599045:86553... next time 1435599045:86553
-5 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate sibur phiras thystame, linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur phiras phiras phiras, joueur nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate deraumere deraumere deraumere deraumere phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate sibur sibur sibur mendiane mendiane phiras phiras thystame}
-5 -> 
-8 -> { joueur deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras, nourriture nourriture linemate linemate linemate linemate linemate sibur sibur mendiane mendiane mendiane mendiane phiras, nourriture nourriture linemate linemate deraumere deraumere deraumere deraumere deraumere sibur mendiane mendiane mendiane mendiane, joueur nourriture linemate deraumere deraumere deraumere deraumere phiras phiras thystame}
-5 <- prend nourriture
-pushing at 1435599045:110366 for 1435599045:180355
-8 <- avance
-pushing at 1435599045:117838 for 1435599045:187827
-6 -> ok
-6 <- inventaire
-pushing at 1435599045:138737 for 1435599045:208709
-7 -> ok
-10 -> ok
-7 <- inventaire
-pushing at 1435599045:149205 for 1435599045:219180
-4 -> ok
-11 -> { joueur linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras, nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere sibur mendiane phiras, linemate linemate linemate sibur sibur sibur sibur mendiane mendiane mendiane mendiane thystame, deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur phiras phiras thystame}
-10 <- prend nourriture
-pushing at 1435599045:154510 for 1435599045:224499
-4 <- voir
-pushing at 1435599045:162539 for 1435599045:232411
-11 <- droite
-pushing at 1435599045:162659 for 1435599045:232656
-5 -> ok
-8 -> ok
-11: eat at 1435599045:195647... next time 1435599045:195647
-8 <- voir
-pushing at 1435599045:198337 for 1435599045:268235
-6 -> {nourriture 17, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-7 -> {nourriture 18, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-10 -> ok
-4 -> { joueur nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere phiras, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate phiras phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur thystame, nourriture nourriture nourriture nourriture linemate linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane phiras phiras thystame}
-11 -> ok
-4 -> 
-10 <- prend nourriture
-pushing at 1435599045:234863 for 1435599045:304851
-6 <- voir
-pushing at 1435599045:239330 for 1435599045:309238
-11 <- voir
-pushing at 1435599045:243108 for 1435599045:313025
-4 <- prend nourriture
-pushing at 1435599045:243230 for 1435599045:313220
-7 <- voir
-pushing at 1435599045:249919 for 1435599045:319784
-8 -> { joueur nourriture nourriture linemate linemate deraumere deraumere deraumere deraumere deraumere sibur mendiane mendiane mendiane mendiane, nourriture linemate linemate deraumere deraumere mendiane phiras phiras phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere sibur sibur sibur sibur thystame, nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane thystame}
-8 -> 
-8 <- prend nourriture
-pushing at 1435599045:278800 for 1435599045:348788
-10 -> ok
-6 -> { joueur linemate deraumere deraumere deraumere deraumere phiras phiras thystame, deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras, joueur nourriture nourriture linemate linemate deraumere deraumere deraumere deraumere deraumere sibur mendiane mendiane mendiane mendiane, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture deraumere deraumere sibur sibur sibur sibur thystame}
-6 -> 
-11 -> { joueur linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras, deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur phiras phiras thystame, nourriture linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane thystame, linemate linemate deraumere deraumere deraumere sibur mendiane phiras phiras phiras thystame}
-4 -> ok
-10 <- prend nourriture
-pushing at 1435599045:315287 for 1435599045:385274
-6 <- droite
-pushing at 1435599045:319822 for 1435599045:389818
-7 -> { joueur linemate linemate linemate linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane mendiane phiras phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere mendiane mendiane thystame, nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate deraumere deraumere deraumere deraumere mendiane mendiane mendiane mendiane phiras phiras phiras, nourriture nourriture nourriture nourriture nourriture linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane phiras phiras}
-7 -> 
-11 <- avance
-pushing at 1435599045:323809 for 1435599045:393800
-7 <- avance
-pushing at 1435599045:330464 for 1435599045:400454
-8 -> ok
-10 -> ok
-6 -> ok
-11 -> ok
-10 <- prend nourriture
-pushing at 1435599045:395675 for 1435599045:465662
-7 -> ok
-11 <- voir
-pushing at 1435599045:404259 for 1435599045:474168
-10 -> ok
-11 -> { joueur nourriture linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane thystame, linemate deraumere sibur sibur sibur mendiane mendiane mendiane thystame, linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur, linemate linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane}
-10 <- prend nourriture
-pushing at 1435599045:476008 for 1435599045:545998
-11 <- prend nourriture
-pushing at 1435599045:484722 for 1435599045:554712
-10 -> ok
-11 -> ok
-10 <- prend nourriture
-pushing at 1435599045:556361 for 1435599045:626350
-11 <- inventaire
-pushing at 1435599045:565081 for 1435599045:635056
-10 -> ok
-11 -> {nourriture 14, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-10 <- prend nourriture
-pushing at 1435599045:636700 for 1435599045:706691
-11 <- voir
-pushing at 1435599045:665665 for 1435599045:735575
-4: eat at 1435599045:689942... next time 1435599045:689942
-10 -> ok
-10 <- inventaire
-pushing at 1435599045:717080 for 1435599045:787053
-11 -> { joueur linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane thystame, linemate deraumere sibur sibur sibur mendiane mendiane mendiane thystame, linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur, linemate linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane}
-11 <- droite
-pushing at 1435599045:746105 for 1435599045:816092
-10 -> {nourriture 23, linemate 0, deraumere 0, sibur 0, mendiane 0, phiras 0, thystame 0}
-5: eat at 1435599045:799311... next time 1435599045:799311
-11 -> ok
-10 <- voir
-pushing at 1435599045:817634 for 1435599045:887548
-11 <- voir
-pushing at 1435599045:826518 for 1435599045:896424
-10 -> { joueur linemate deraumere deraumere deraumere deraumere phiras, nourriture linemate linemate linemate linemate linemate sibur sibur mendiane thystame, joueur nourriture nourriture nourriture nourriture nourriture nourriture linemate sibur phiras thystame, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane phiras phiras}
-11 -> { joueur linemate linemate linemate linemate deraumere deraumere sibur sibur sibur sibur mendiane mendiane thystame, linemate linemate linemate linemate linemate linemate linemate deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane mendiane, linemate linemate deraumere deraumere deraumere sibur mendiane phiras phiras phiras thystame, linemate linemate deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane mendiane phiras phiras}
-11 -> 
-10 <- droite
-pushing at 1435599045:898110 for 1435599045:968106
-11 <- droite
-pushing at 1435599045:906953 for 1435599045:976950
-6: eat at 1435599045:908325... next time 1435599045:908325
-client 11 dead
-14
-10 -> ok
-10 <- voir
-pushing at 1435599045:978584 for 1435599046:48482
-7: eat at 1435599046:19313... next time 1435599046:19313
-10 -> { joueur linemate deraumere deraumere deraumere deraumere phiras, nourriture nourriture nourriture nourriture nourriture nourriture nourriture linemate linemate linemate deraumere deraumere deraumere deraumere deraumere sibur sibur mendiane mendiane mendiane phiras phiras, linemate linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur phiras phiras phiras, deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras}
-10 <- droite
-pushing at 1435599046:59073 for 1435599046:129069
-8: eat at 1435599046:128311... next time 1435599046:128311
-10 -> ok
-10 <- voir
-pushing at 1435599046:139479 for 1435599046:209387
-10 -> { joueur linemate deraumere deraumere deraumere deraumere phiras, deraumere deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur sibur mendiane phiras, linemate linemate linemate deraumere deraumere deraumere deraumere deraumere deraumere deraumere mendiane phiras phiras thystame, deraumere deraumere deraumere deraumere deraumere deraumere sibur sibur sibur sibur mendiane mendiane mendiane phiras phiras phiras thystame}
-10 -> 
-10 <- droite
-pushing at 1435599046:219931 for 1435599046:289924
-client 10 dead
-23
-client 9 d
-ead
-11
-client 4 dead
-21
-client 5 dead
-14
-client 6 dead
-16
-client 7 dead
-17
-client 8 dead
-14
 quitte normalement

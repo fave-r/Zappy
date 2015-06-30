@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 10:23:22 2015 jean_c
-// Last update Tue Jun 30 13:02:01 2015 Leo Thevenet
+// Last update Tue Jun 30 17:14:28 2015 Leo Thevenet
 //
 
 #include "Graphic.hh"
@@ -83,24 +83,17 @@ void		Graphic::initMap()
   setHUD();
 }
 
-void		Graphic::affHudData()
+void		Graphic::setHUD()
 {
   int		y = this->_actualCase % this->_width;
   int		x = this->_actualCase / this->_width;
-
-  std::cout << "x : " << y << " y : " << x << std::endl;
-  std::cout << "Food : " << this->_map[x][y]->getFood();
-  std::cout << " Limenate : " << this->_map[x][y]->getLinemate();
-  std::cout << " Deraumere : " << this->_map[x][y]->getDeraumere();
-  std::cout << " Sibur : " << this->_map[x][y]->getSibur();
-  std::cout << " Mendiane : " << this->_map[x][y]->getMendiane();
-  std::cout << " Phiras : " << this->_map[x][y]->getPhiras();
-  std::cout << " Thystame : " << this->_map[x][y]->getThystame() << std::endl;
-}
-
-void		Graphic::setHUD()
-{
   AObject        *model;
+  std::cout << "x : " << y << " y : " << x << std::endl;
+
+  model = new Deraumere(0, 0);
+  model->setModel(this->_modelPool->getCrystalD());
+  this->_HUD.push_back(model);
+  std::cout << " Deraumere : " << this->_map[x][y]->getDeraumere();
 
   model = new Deraumere(0, 0);
   model->setModel(this->_modelPool->getCrystalD());
@@ -113,7 +106,15 @@ void		Graphic::setHUD()
   model = new Linemate(0, 0);
   model->setModel(this->_modelPool->getCrystalL());
   this->_HUD.push_back(model);
+  std::cout << " Limenate : " << this->_map[x][y]->getLinemate();
+  model = new Linemate(0, 0);
+  model->setModel(this->_modelPool->getCrystalL());
+  this->_HUD.push_back(model);
 
+  model = new Sibur(0, 0);
+  model->setModel(this->_modelPool->getCrystalS());
+  this->_HUD.push_back(model);
+  std::cout << " Sibur : " << this->_map[x][y]->getSibur();
   model = new Sibur(0, 0);
   model->setModel(this->_modelPool->getCrystalS());
   this->_HUD.push_back(model);
@@ -121,11 +122,23 @@ void		Graphic::setHUD()
   model = new Mendiane(0, 0);
   model->setModel(this->_modelPool->getCrystalM());
   this->_HUD.push_back(model);
+  std::cout << " Mendiane : " << this->_map[x][y]->getMendiane();
+  model = new Mendiane(0, 0);
+  model->setModel(this->_modelPool->getCrystalM());
+  this->_HUD.push_back(model);
 
   model = new Phiras(0, 0);
   model->setModel(this->_modelPool->getCrystalP());
   this->_HUD.push_back(model);
+  std::cout << " Phiras : " << this->_map[x][y]->getPhiras();
+  model = new Phiras(0, 0);
+  model->setModel(this->_modelPool->getCrystalP());
+  this->_HUD.push_back(model);
 
+  model = new Thystame(0, 0);
+  model->setModel(this->_modelPool->getCrystalT());
+  this->_HUD.push_back(model);
+  std::cout << " Thystame : " << this->_map[x][y]->getThystame() << std::endl;
   model = new Thystame(0, 0);
   model->setModel(this->_modelPool->getCrystalT());
   this->_HUD.push_back(model);
@@ -135,13 +148,14 @@ void		Graphic::updateHUD()
 {
   glm::vec3 pos = this->_cam->getPosHUD();
 
-  pos.x -= 2.5;
+  pos.x -= 2.4;
   pos.y -= 2;
   pos.z += 1;
-  for (int i = 0; i < 6; i++)
+  for (int i = 0; i < 12; i++)
     {
       this->_HUD[i]->setPos(pos);
-      pos.x += 1;
+      pos.x += 0.3;
+      pos.x += (i % 2 == 1) ? 0.3 : 0;
     }
 }
 

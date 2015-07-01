@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 10:23:22 2015 jean_c
-// Last update Tue Jun 30 17:14:28 2015 Leo Thevenet
+// Last update Wed Jul  1 10:47:13 2015 Leo Thevenet
 //
 
 #include "Graphic.hh"
@@ -224,7 +224,6 @@ bool		Graphic::update()
       this->_cam->setCam2(this->_actualCase % this->_width, this->_actualCase / this->_width, 5);
       std::cout << this->_actualCase << std::endl;
       this->_shader.setUniform("view", this->_cam->getCam2());
-      affHudData();
       updateHUD();
     }
   // else if (this->_camType == 3)

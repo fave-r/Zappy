@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 10:23:22 2015 jean_c
-// Last update Wed Jul  1 10:47:13 2015 Leo Thevenet
+// Last update Wed Jul  1 11:03:35 2015 Leo Thevenet
 //
 
 #include "Graphic.hh"
@@ -80,7 +80,6 @@ void		Graphic::initMap()
 	model->translate(glm::vec3(j, 0, i));
 	this->_objects.push_back(model);
       }
-  setHUD();
 }
 
 void		Graphic::setHUD()
@@ -88,6 +87,7 @@ void		Graphic::setHUD()
   int		y = this->_actualCase % this->_width;
   int		x = this->_actualCase / this->_width;
   AObject        *model;
+
   std::cout << "x : " << y << " y : " << x << std::endl;
 
   model = new Deraumere(0, 0);

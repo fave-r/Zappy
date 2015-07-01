@@ -29,8 +29,6 @@ void		ModelPool::init()
   this->_ground.pushUv(glm::vec2(1.0f, 1.0f));
   this->_ground.pushUv(glm::vec2(0.0f, 1.0f));
 
-  this->_ground.build();
-
   this->_food.pushVertex(glm::vec3(0.4, 0.4, 0.4));
   this->_food.pushVertex(glm::vec3(0.4, 0.4, -0.4));
   this->_food.pushVertex(glm::vec3(-0.4, 0.4, -0.4));
@@ -39,8 +37,6 @@ void		ModelPool::init()
   this->_food.pushUv(glm::vec2(1.0f, 0.0f));
   this->_food.pushUv(glm::vec2(1.0f, 1.0f));
   this->_food.pushUv(glm::vec2(0.0f, 1.0f));
-
-  this->_food.build();
 
   this->_crystalD.setColor(glm::vec4(1, 0, 0, 1));
   this->_crystalD.pushVertex(glm::vec3(0.0f, 1.0f, 0.0f));
@@ -78,8 +74,6 @@ void		ModelPool::init()
   this->_crystalD.pushUv(glm::vec2(1.0f, 1.0f));
   this->_crystalD.pushUv(glm::vec2(0.0f, 1.0f));
 
-  this->_crystalD.build();
-
   this->_crystalL.setColor(glm::vec4(0, 1, 0, 1));
   this->_crystalL.pushVertex(glm::vec3(0.0f, 1.0f, 0.0f));
   this->_crystalL.pushVertex(glm::vec3(-1.0f, -1.0f, 1.0f));
@@ -115,8 +109,6 @@ void		ModelPool::init()
   this->_crystalL.pushUv(glm::vec2(1.0f, 0.0f));
   this->_crystalL.pushUv(glm::vec2(1.0f, 1.0f));
   this->_crystalL.pushUv(glm::vec2(0.0f, 1.0f));
-
-  this->_crystalL.build();
 
   this->_crystalM.setColor(glm::vec4(0, 0, 1, 1));
   this->_crystalM.pushVertex(glm::vec3(0.0f, 1.0f, 0.0f));
@@ -154,8 +146,6 @@ void		ModelPool::init()
   this->_crystalM.pushUv(glm::vec2(1.0f, 1.0f));
   this->_crystalM.pushUv(glm::vec2(0.0f, 1.0f));
 
-  this->_crystalM.build();
-
   this->_crystalP.setColor(glm::vec4(1, 0, 1, 1));
   this->_crystalP.pushVertex(glm::vec3(0.0f, 1.0f, 0.0f));
   this->_crystalP.pushVertex(glm::vec3(-1.0f, -1.0f, 1.0f));
@@ -191,8 +181,6 @@ void		ModelPool::init()
   this->_crystalP.pushUv(glm::vec2(1.0f, 0.0f));
   this->_crystalP.pushUv(glm::vec2(1.0f, 1.0f));
   this->_crystalP.pushUv(glm::vec2(0.0f, 1.0f));
-
-  this->_crystalP.build();
 
   this->_crystalS.setColor(glm::vec4(0, 1, 1, 1));
   this->_crystalS.pushVertex(glm::vec3(0.0f, 1.0f, 0.0f));
@@ -230,8 +218,6 @@ void		ModelPool::init()
   this->_crystalS.pushUv(glm::vec2(1.0f, 1.0f));
   this->_crystalS.pushUv(glm::vec2(0.0f, 1.0f));
 
-  this->_crystalS.build();
-
   this->_crystalT.setColor(glm::vec4(1, 1, 0, 1));
   this->_crystalT.pushVertex(glm::vec3(0.0f, 1.0f, 0.0f));
   this->_crystalT.pushVertex(glm::vec3(-1.0f, -1.0f, 1.0f));
@@ -268,7 +254,15 @@ void		ModelPool::init()
   this->_crystalT.pushUv(glm::vec2(1.0f, 1.0f));
   this->_crystalT.pushUv(glm::vec2(0.0f, 1.0f));
 
+  this->_ground.build();
   this->_crystalT.build();
+  this->_food.build();
+  this->_crystalD.build();
+  this->_crystalS.build();
+  this->_crystalP.build();
+  this->_crystalM.build();
+  this->_crystalL.build();
+
 }
 
 const gdl::Geometry     &ModelPool::getGround() const

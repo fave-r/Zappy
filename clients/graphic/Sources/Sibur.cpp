@@ -20,12 +20,15 @@ Sibur::~Sibur()
 
 void		Sibur::draw(gdl::AShader &shader)
 {
+  //this->_geometry.draw(shader, getTransformation(), GL_TRIANGLES);
+  glDisable(GL_TEXTURE_2D);
   this->_geometry.draw(shader, getTransformation(), GL_TRIANGLES);
+  glEnable(GL_TEXTURE_2D);
 }
 
 void		Sibur::setModel(const gdl::Geometry &geo)
 {
   this->_geometry = geo;
-  this->translate(glm::vec3(this->_x, 1, this->_y));
+  this->translate(glm::vec3(this->_x, 0.8, this->_y));
   this->scale(glm::vec3(0.1, 0.1, 0.1));
 }

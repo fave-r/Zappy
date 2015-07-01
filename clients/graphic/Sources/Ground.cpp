@@ -20,7 +20,6 @@ Ground::~Ground()
 
 void                    Ground::draw(gdl::AShader &shader)
 {
-  /*ITERATE IN LISTRESSOURCES TO DRAW*/
   this->_texture.bind();
   this->_geometry.draw(shader, getTransformation(), GL_QUADS);
 }

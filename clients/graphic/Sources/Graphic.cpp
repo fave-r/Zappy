@@ -238,6 +238,7 @@ bool		Graphic::update()
 	  {
 	    Deraumere *de = new Deraumere((*it2).first, (*it2).second);
 	    de->setModel(this->_modelPool->getCrystalD());
+      de->setTexture(this->_texturePool->getWhite());
 	    this->_objects.push_back(de);
 	    this->_map[(*it2).second][(*it2).first]->setBoolD(true);
 	  }
@@ -324,7 +325,7 @@ bool		Graphic::update()
 	    }
 	  }
 
-  /*if (this->_map[(*it2).second][(*it2).first]->getFood() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolF() == false)
+  if (this->_map[(*it2).second][(*it2).first]->getFood() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolF() == false)
       {
          Food *fd = new Food((*it2).first, (*it2).second);
          fd->setModel(this->_modelPool->getFood());
@@ -338,7 +339,7 @@ bool		Graphic::update()
            if ((*it)->getX() == (*it2).second && (*it)->getY() == (*it2).first && dynamic_cast<Food *>((*it)) != NULL)
             this->_objects.erase(it);
            }
-      }*/
+      }
     }
       this->_update.clear();
     }

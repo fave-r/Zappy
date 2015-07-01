@@ -11,19 +11,8 @@
 #include "Food.hh"
 #include <iostream>
 
-gdl::Model Food::_model;
-bool Food::_isInit = false;
-
 Food::Food(int x, int y) : AObject(x, y)
 {
-  if (this->_isInit == false)
-  {
-    if (this->_model.load("./Ressources/Assets/food.fbx") == false)
-      throw loading_error("Fail in Food load");
-    this->_isInit = true;
-  }
-  this->scale(glm::vec3(0.005, 0.005, 0.005));
-  this->translate(glm::vec3(x, 0.5, y));
 }
 
 inline Food::~Food()
@@ -32,14 +21,13 @@ inline Food::~Food()
 
 inline void		Food::draw(gdl::AShader &shader)
 {
-  //this->_texture.bind();
-  this->_model.draw(shader, getTransformation(), GL_QUADS);
+  this->_texture.bind();
+  this->_geometry.draw(shader, getTransformation(), GL_QUADS);
 }
 
 inline void		Food::setModel(const gdl::Geometry &geo)
 {
-  (void)geo;
-  //this->scale(glm::vec3(0.1, 0.1, 0.1));
-  //this->translate(glm::vec3(this->_x, 1, this->_y));
-  //this->_geometry = geo;
+  this->_geometry = geo;
+  this->scale(glm::vec3(0.5, 0.5, 0.5));
+  this->translate(glm::vec3(this->_x, 2, this->_y));
 }

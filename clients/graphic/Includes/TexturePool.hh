@@ -26,12 +26,15 @@ public:
 
 public:
   const gdl::Texture	&getGround() const;
-  const gdl::Texture    &getSelectedGround() const;
+  const gdl::Texture  &getSelectedGround() const;
+  const gdl::Texture  &getWaterMelon() const;
+  const gdl::Texture  &getWhite() const;
 
 private:
   gdl::Texture		_textureGround;
   gdl::Texture		_textureSelectedGround;
-
+  gdl::Texture    _textureWaterMelon;
+  gdl::Texture    _White;
 };
 
 #endif

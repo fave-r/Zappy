@@ -28,6 +28,7 @@ public:
   const gdl::Geometry   &getCrystalP() const;
   const gdl::Geometry   &getCrystalS() const;
   const gdl::Geometry   &getCrystalT() const;
+  const gdl::Geometry   &getFood() const;
 
 private:
   gdl::Geometry         _ground;
@@ -37,6 +38,8 @@ private:
   gdl::Geometry         _crystalP;
   gdl::Geometry         _crystalS;
   gdl::Geometry         _crystalT;
+  gdl::Geometry         _food;
+
 };
 
 #endif

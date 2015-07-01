@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 10:23:22 2015 jean_c
-// Last update Wed Jul  1 11:03:35 2015 Leo Thevenet
+// Last update Wed Jul  1 14:11:05 2015 Leo Thevenet
 //
 
 #include "Graphic.hh"
@@ -220,9 +220,7 @@ bool		Graphic::update()
       else if (this->_input.getKey(SDLK_RIGHT))
 	MoveCase(1);
       this->_objects[this->_actualCase]->setTexture(this->_texturePool->getSelectedGround());
-      std::cout << "XXXX : " << this->_objects[this->_actualCase]->getX() << " YYYY " << this->_objects[this->_actualCase]->getY() << std::endl;
       this->_cam->setCam2(this->_actualCase % this->_width, this->_actualCase / this->_width, 5);
-      std::cout << this->_actualCase << std::endl;
       this->_shader.setUniform("view", this->_cam->getCam2());
       updateHUD();
     }
@@ -238,7 +236,7 @@ bool		Graphic::update()
 	  {
 	    Deraumere *de = new Deraumere((*it2).first, (*it2).second);
 	    de->setModel(this->_modelPool->getCrystalD());
-      de->setTexture(this->_texturePool->getWhite());
+	    de->setTexture(this->_texturePool->getWhite());
 	    this->_objects.push_back(de);
 	    this->_map[(*it2).second][(*it2).first]->setBoolD(true);
 	  }
@@ -314,7 +312,7 @@ bool		Graphic::update()
 	  {
 	    Thystame *th = new Thystame((*it2).first, (*it2).second);
 	    th->setModel(this->_modelPool->getCrystalT());
-      this->_objects.push_back(th);
+	    this->_objects.push_back(th);
 	    this->_map[(*it2).second][(*it2).first]->setBoolT(true);
 	  }
 	else if (this->_map[(*it2).second][(*it2).first]->getThystame() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolT() == true)
@@ -325,25 +323,25 @@ bool		Graphic::update()
 	    }
 	  }
 
-  if (this->_map[(*it2).second][(*it2).first]->getFood() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolF() == false)
-      {
-         Food *fd = new Food((*it2).first, (*it2).second);
-         fd->setModel(this->_modelPool->getFood());
-         fd->setTexture(this->_texturePool->getWaterMelon());
-         this->_objects.push_back(fd);
-         this->_map[(*it2).second][(*it2).first]->setBoolF(true);
+	if (this->_map[(*it2).second][(*it2).first]->getFood() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolF() == false)
+	  {
+	    Food *fd = new Food((*it2).first, (*it2).second);
+	    fd->setModel(this->_modelPool->getFood());
+	    fd->setTexture(this->_texturePool->getWaterMelon());
+	    this->_objects.push_back(fd);
+	    this->_map[(*it2).second][(*it2).first]->setBoolF(true);
+	  }
+	else if (this->_map[(*it2).second][(*it2).first]->getFood() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolF() == true)
+	  {
+	    for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it) {
+	      if ((*it)->getX() == (*it2).second && (*it)->getY() == (*it2).first && dynamic_cast<Food *>((*it)) != NULL)
+		this->_objects.erase(it);
+	    }
+	  }
       }
-    else if (this->_map[(*it2).second][(*it2).first]->getFood() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolF() == true)
-     {
-        for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it) {
-           if ((*it)->getX() == (*it2).second && (*it)->getY() == (*it2).first && dynamic_cast<Food *>((*it)) != NULL)
-            this->_objects.erase(it);
-           }
-      }
-    }
       this->_update.clear();
     }
-       // glm::vec4 final = inv * point;
+  // glm::vec4 final = inv * point;
   //     // std::cout << mouse.x << " " << mouse.y << std::endl;
 
   //     glm::vec3 final1 = glm::unProject(glm::vec3((float)mouse.x, (float)mouse.y, 0.0), view, projection, glm::vec4(0, 0, 1920, 1080));

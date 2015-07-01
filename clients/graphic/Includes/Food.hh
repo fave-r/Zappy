@@ -11,7 +11,6 @@
 #ifndef __FOOD_HH__
 # define __FOOD_HH__
 
-#include <Model.hh>
 #include "AObject.hh"
 
 class		Food : virtual public AObject
@@ -25,8 +24,7 @@ public:
   virtual void		setModel(const gdl::Geometry &);
 
 private:
-  static gdl::Model		_model;
-  static bool         _isInit;
+  gdl::Geometry _geometry;
 };
 
 #endif

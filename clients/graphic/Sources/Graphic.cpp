@@ -220,25 +220,12 @@ bool		Graphic::update()
     {
       std::list<std::pair<int, int> >::const_iterator it2;
       for (it2 = this->_update.begin(); it2 != this->_update.end(); ++it2) {
-	/*if (this->_map[(*it2).second][(*it2).first]->getFood() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolF() == false)
-	  {
-	  Food *fd = new Food((*it2).first, (*it2).second);
-	  this->_objects.push_back(fd);
-	  this->_map[(*it2).second][(*it2).first]->setBoolF(true);
-	  }
-	  else if (this->_map[(*it2).second][(*it2).first]->getFood() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolF() == true)
-	  {
-	  for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it) {
-	  if ((*it)->getX() == (*it2).second && (*it)->getY() == (*it2).first && dynamic_cast<Food *>((*it)) != NULL)
-	  this->_objects.erase(it);
-	  }
-	  }*/
 
 	if (this->_map[(*it2).second][(*it2).first]->getDeraumere() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolD() == false)
 	  {
-	    Deraumere *fd = new Deraumere((*it2).first, (*it2).second);
-	    fd->setModel(this->_modelPool->getCrystalD());
-	    this->_objects.push_back(fd);
+	    Deraumere *de = new Deraumere((*it2).first, (*it2).second);
+	    de->setModel(this->_modelPool->getCrystalD());
+	    this->_objects.push_back(de);
 	    this->_map[(*it2).second][(*it2).first]->setBoolD(true);
 	  }
 	else if (this->_map[(*it2).second][(*it2).first]->getDeraumere() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolD() == true)
@@ -251,9 +238,9 @@ bool		Graphic::update()
 
 	if (this->_map[(*it2).second][(*it2).first]->getLinemate() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolL() == false)
 	  {
-	    Linemate *fd = new Linemate((*it2).first, (*it2).second);
-	    fd->setModel(this->_modelPool->getCrystalL());
-	    this->_objects.push_back(fd);
+	    Linemate *li = new Linemate((*it2).first, (*it2).second);
+	    li->setModel(this->_modelPool->getCrystalL());
+	    this->_objects.push_back(li);
 	    this->_map[(*it2).second][(*it2).first]->setBoolL(true);
 	  }
 	else if (this->_map[(*it2).second][(*it2).first]->getLinemate() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolL() == true)
@@ -266,9 +253,9 @@ bool		Graphic::update()
 
 	if (this->_map[(*it2).second][(*it2).first]->getMendiane() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolM() == false)
 	  {
-	    Mendiane *fd = new Mendiane((*it2).first, (*it2).second);
-	    fd->setModel(this->_modelPool->getCrystalM());
-	    this->_objects.push_back(fd);
+	    Mendiane *me = new Mendiane((*it2).first, (*it2).second);
+	    me->setModel(this->_modelPool->getCrystalM());
+	    this->_objects.push_back(me);
 	    this->_map[(*it2).second][(*it2).first]->setBoolM(true);
 	  }
 	else if (this->_map[(*it2).second][(*it2).first]->getMendiane() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolM() == true)
@@ -281,9 +268,9 @@ bool		Graphic::update()
 
 	if (this->_map[(*it2).second][(*it2).first]->getPhiras() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolP() == false)
 	  {
-	    Phiras *fd = new Phiras((*it2).first, (*it2).second);
-	    fd->setModel(this->_modelPool->getCrystalP());
-	    this->_objects.push_back(fd);
+	    Phiras *ph = new Phiras((*it2).first, (*it2).second);
+	    ph->setModel(this->_modelPool->getCrystalP());
+	    this->_objects.push_back(ph);
 	    this->_map[(*it2).second][(*it2).first]->setBoolP(true);
 	  }
 	else if (this->_map[(*it2).second][(*it2).first]->getPhiras() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolP() == true)
@@ -296,9 +283,9 @@ bool		Graphic::update()
 
 	if (this->_map[(*it2).second][(*it2).first]->getSibur() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolS() == false)
 	  {
-	    Sibur *fd = new Sibur((*it2).first, (*it2).second);
-	    fd->setModel(this->_modelPool->getCrystalS());
-	    this->_objects.push_back(fd);
+	    Sibur *si = new Sibur((*it2).first, (*it2).second);
+	    si->setModel(this->_modelPool->getCrystalS());
+	    this->_objects.push_back(si);
 	    this->_map[(*it2).second][(*it2).first]->setBoolS(true);
 	  }
 	else if (this->_map[(*it2).second][(*it2).first]->getSibur() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolS() == true)
@@ -311,9 +298,9 @@ bool		Graphic::update()
 
 	if (this->_map[(*it2).second][(*it2).first]->getThystame() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolT() == false)
 	  {
-	    Thystame *fd = new Thystame((*it2).first, (*it2).second);
-	    fd->setModel(this->_modelPool->getCrystalT());
-	    this->_objects.push_back(fd);
+	    Thystame *th = new Thystame((*it2).first, (*it2).second);
+	    th->setModel(this->_modelPool->getCrystalT());
+      this->_objects.push_back(th);
 	    this->_map[(*it2).second][(*it2).first]->setBoolT(true);
 	  }
 	else if (this->_map[(*it2).second][(*it2).first]->getThystame() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolT() == true)
@@ -323,20 +310,26 @@ bool		Graphic::update()
 		this->_objects.erase(it);
 	    }
 	  }
+
+  /*if (this->_map[(*it2).second][(*it2).first]->getFood() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolF() == false)
+      {
+         Food *fd = new Food((*it2).first, (*it2).second);
+         fd->setModel(this->_modelPool->getFood());
+         fd->setTexture(this->_texturePool->getWaterMelon());
+         this->_objects.push_back(fd);
+         this->_map[(*it2).second][(*it2).first]->setBoolF(true);
       }
+    else if (this->_map[(*it2).second][(*it2).first]->getFood() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolF() == true)
+     {
+        for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it) {
+           if ((*it)->getX() == (*it2).second && (*it)->getY() == (*it2).first && dynamic_cast<Food *>((*it)) != NULL)
+            this->_objects.erase(it);
+           }
+      }*/
+    }
       this->_update.clear();
     }
-  // if (this->_input.getKey(SDL_BUTTON_LEFT))
-  //   {
-  //     glm::ivec2 mouse = this->_input.getMousePosition();
-  //     glm::mat4 projection = glm::perspective(80.0f, 1920.0f / 1080.0f, 0.1f, 100.0f);
-  //     glm::mat4 view = this->_cam->getCam();
-
-  //     // double x = 2.0 * mouse.x / 1920.0 - 1;
-  //     // double y = -2.0 * mouse.y / 1080.0 + 1;
-  //     // glm::mat4 inv = glm::inverse(projection * view);
-  //     // glm::vec4 point = glm::vec4(x, y, 0, 0);
-  //     // glm::vec4 final = inv * point;
+       // glm::vec4 final = inv * point;
   //     // std::cout << mouse.x << " " << mouse.y << std::endl;
 
   //     glm::vec3 final1 = glm::unProject(glm::vec3((float)mouse.x, (float)mouse.y, 0.0), view, projection, glm::vec4(0, 0, 1920, 1080));
@@ -415,8 +408,8 @@ void		Graphic::draw()
     //start = std::clock();
 
       for (std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it) {
-	  (*it)->draw(this->_shader);
-	}
+	       (*it)->draw(this->_shader);
+	      }
 
       //duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
     //  std::cout << "All draw update : " << duration << std::endl;

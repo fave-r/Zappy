@@ -5,10 +5,10 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun 29 12:15:56 2015 romaric
-// Last update Mon Jun 29 12:41:47 2015 romaric
+// Last update Wed Jul  1 10:49:16 2015 romaric
 //
 
-#include "Player.hh"
+#include "Player.hpp"
 
 Player::Player(const int nb, const int x, const int y, const int dir, const int lev, const std::string &tn)
 {

@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 19:21:19 2015 Thibaut Lopez
-// Last update Mon Jun 29 14:35:21 2015 romaric
+// Last update Wed Jul  1 10:49:55 2015 romaric
 //
 
 #ifndef	MAP_HH
@@ -17,7 +17,7 @@
 #include <list>
 #include <utility>
 #include "Content.hh"
-#include "User.hh"
+#include "User.hpp"
 
 enum Type
   {

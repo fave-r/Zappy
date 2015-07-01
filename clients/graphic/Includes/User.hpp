@@ -5,7 +5,7 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun 29 13:02:34 2015 romaric
-// Last update Mon Jun 29 13:25:13 2015 romaric
+// Last update Wed Jul  1 10:50:09 2015 romaric
 //
 
 #ifndef	USER_HH
@@ -14,7 +14,7 @@
 #include <iostream>
 #include <string>
 #include <list>
-#include "Player.hh"
+#include "Player.hpp"
 
 class	User
 {

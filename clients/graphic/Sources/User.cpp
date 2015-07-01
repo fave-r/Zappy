@@ -5,10 +5,10 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun 29 13:02:12 2015 romaric
-// Last update Mon Jun 29 13:02:16 2015 romaric
+// Last update Wed Jul  1 10:48:59 2015 romaric
 //
 
-#include "User.hh"
+#include "User.hpp"
 
 User::User()
 {

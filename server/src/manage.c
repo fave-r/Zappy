@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Mon Jun  1 11:28:59 2015 Thibaut Lopez
-** Last update Mon Jun 29 18:21:53 2015 Thibaut Lopez
+** Last update Tue Jun 30 20:08:02 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -30,8 +30,9 @@ int		check_food(t_user *usr, t_zap *data)
     {
       printf("%d: eat at %ld:%ld... next time %ld:%ld\n", usr->fd, now.tv_sec, now.tv_usec, tv.tv_sec, tv.tv_usec);
       GET_INV(usr).food -= 1;
+      data->map[rand() % data->length][rand() % data->width].food++;
       GET_TIME(usr) = tv;
-      if (GET_INV(usr).food  == 0)
+      if (GET_INV(usr).food == 0)
 	{
 	  usr->tokill = 1;
 	  return (-1);
@@ -42,6 +43,7 @@ int		check_food(t_user *usr, t_zap *data)
 
 void		check_egg_time(t_egg *egg, t_tv *now, t_user *usr, t_team *teams)
 {
+  t_user	*new;
   char		tmp[128];
 
   bzero(tmp, 128);
@@ -57,9 +59,10 @@ void		check_egg_time(t_egg *egg, t_tv *now, t_user *usr, t_team *teams)
     }
   else if (cmp_tv(&egg->hatch, now) <= 0)
     {
-      sprintf(tmp, (egg->son == -1) ? "edi #%d\n" : "eht #%d\n", egg->nb);
-      if (egg->son != -1)
-	GET_GHOST(get_by_nb(usr, egg->son, AI)) = 0;
+      new = (egg->son == -1) ? NULL : get_by_nb(usr, egg->son, AI);
+      sprintf(tmp, (new == NULL) ? "edi #%d\n" : "eht #%d\n", egg->nb);
+      if (new != NULL)
+	GET_GHOST(new) = 0;
       send_to_graphic(tmp, usr);
       pop_q(&teams->eggs);
     }

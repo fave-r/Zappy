@@ -31,6 +31,17 @@ void		ModelPool::init()
 
   this->_ground.build();
 
+  this->_food.pushVertex(glm::vec3(0.4, 0.4, 0.4));
+  this->_food.pushVertex(glm::vec3(0.4, 0.4, -0.4));
+  this->_food.pushVertex(glm::vec3(-0.4, 0.4, -0.4));
+  this->_food.pushVertex(glm::vec3(-0.4, 0.4, 0.4));
+  this->_food.pushUv(glm::vec2(0.0f, 0.0f));
+  this->_food.pushUv(glm::vec2(1.0f, 0.0f));
+  this->_food.pushUv(glm::vec2(1.0f, 1.0f));
+  this->_food.pushUv(glm::vec2(0.0f, 1.0f));
+
+  this->_food.build();
+
   this->_crystalD.setColor(glm::vec4(1, 0, 0, 1));
   this->_crystalD.pushVertex(glm::vec3(0.0f, 1.0f, 0.0f));
   this->_crystalD.pushVertex(glm::vec3(-1.0f, -1.0f, 1.0f));
@@ -293,4 +304,9 @@ const gdl::Geometry     &ModelPool::getCrystalS() const
 const gdl::Geometry     &ModelPool::getCrystalT() const
 {
   return this->_crystalT;
+}
+
+const gdl::Geometry     &ModelPool::getFood() const
+{
+  return this->_food;
 }

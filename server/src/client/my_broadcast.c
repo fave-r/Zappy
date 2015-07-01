@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Mon Jun 29 16:53:36 2015 Thibaut Lopez
+** Last update Tue Jun 30 10:10:38 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -102,7 +102,7 @@ int		my_broadcast(char **com, t_zap *data, t_user *usr)
 	{
 	  printf("%d: receive from %dx%d (dir : %d)\n", tmp->fd, GET_X(tmp), GET_Y(tmp), GET_DIR(tmp));
 	  sprintf(str, "message %d,%s\n", get_direction(usr, tmp, data), com[1]);
-	  printf("Envoie de '%s'\n", str);
+	  printf("Envoie de %s", str);
 	  fill_cb(&tmp->wr, str, strlen(str));
 	  push_q(&tmp->queue, &now, clone_tv);
 	}

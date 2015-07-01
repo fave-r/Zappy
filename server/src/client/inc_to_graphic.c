@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon May 25 17:31:52 2015 romaric
-** Last update Tue Jun 30 03:36:07 2015 Thibaut Lopez
+** Last update Wed Jul  1 13:43:16 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -36,7 +36,7 @@ void		cast_loop(t_user *cur, t_tv *time, int check, t_tv *now)
       if (check == 1)
 	GET_LVL(cur)++;
       bzero(tr, 100);
-      sprintf(tr, "plv #%d %d\n", cur->nb, GET_LVL(cur));
+      sprintf(tr, "plv %d %d\n", cur->nb, GET_LVL(cur)); // "plv #%d %d\n"
       send_to_graphic(tr, cur);
       bzero(str, 50);
       sprintf(str, "niveau actuel : %d\n", GET_LVL(cur));
@@ -58,7 +58,7 @@ void		send_elev_in(t_user *usr)
   while ((tmp = in_this_cell(GET_X(usr), GET_Y(usr), tmp)) != NULL)
     {
       if (GET_LVL(usr) == GET_LVL(tmp) && !IS_CASTING(tmp))
-	sprintf(str + strlen(str), " #%d", tmp->nb);
+	sprintf(str + strlen(str), " %d", tmp->nb); // " #%d"
       tmp = tmp->next;
     }
   sprintf(str + strlen(str), "\n");

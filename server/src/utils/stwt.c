@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 18:33:45 2015 Thibaut Lopez
-** Last update Wed May 13 18:53:20 2015 Thibaut Lopez
+** Last update Wed Jul  1 18:22:14 2015 Thibaut Lopez
 */
 
 #include "utils.h"
@@ -33,10 +33,8 @@ int	skip_word(char *str, char *delim, int nb_word)
 
 int	lenword(char *str, int *nb_letters, char *delim, int nb_word)
 {
-  int	save;
   int	len;
 
-  save = *nb_letters;
   len = 0;
   while (str != NULL && (str = skip_delim(str, delim))[0] != 0
 	 && (nb_word == -1 || len < nb_word))
@@ -46,7 +44,7 @@ int	lenword(char *str, int *nb_letters, char *delim, int nb_word)
       str += skip_word(str, delim, len);
     }
   if (str[0] != 0)
-    *nb_letters = save;
+    *nb_letters += strlen(str);
   return (len);
 }
 

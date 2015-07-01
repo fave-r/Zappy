@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri Apr 10 10:17:56 2015 Thibaut Lopez
-** Last update Tue Jun 30 11:50:38 2015 Thibaut Lopez
+** Last update Wed Jul  1 19:14:06 2015 Thibaut Lopez
 */
 
 #include "cb.h"
@@ -79,7 +79,7 @@ int	write_cb(t_cb *cb, int fd, t_que **queue)
 	}
       printf("%d -> %s\n", fd, str);
       str[strlen(str)] = '\n';
-      tmp = front_q(*queue);
+      tmp = (queue == NULL) ? NULL : front_q(*queue);
       if (tmp == NULL)
 	tmp = &now;
       wl = write(fd, str, strlen(str));

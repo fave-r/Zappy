@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Tue Jun 30 10:54:41 2015 Thibaut Lopez
+** Last update Wed Jul  1 18:40:53 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -19,10 +19,12 @@ int	my_droite(char **com, __attribute((unused)) t_zap *data
   if (sstrlen(com) != 1)
     return (-1);
   gettimeofday(&now, NULL);
-  GET_DIR(usr) = S_MOD((int)(GET_DIR(usr) + 1), 4);
+  printf("droite: %d", GET_DIR(usr));
+  GET_DIR(usr) = smod((int)(GET_DIR(usr) + 1), 4);
+  printf(" -> %d\n", GET_DIR(usr));
   fill_cb(&usr->wr, "ok\n", 3);
   push_q(&usr->queue, add_tv(&now, 7000000 / data->delay), clone_tv);
-  sprintf(tmp, "ppo #%d %d %d %d\n", usr->nb,
+  sprintf(tmp, "ppo %d %d %d %d\n", usr->nb, // "ppo #%d %d %d %d\n"
 	  GET_X(usr), GET_Y(usr), GET_DIR(usr) + 1);
   send_to_graphic(tmp, usr);
   return (0);

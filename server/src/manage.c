@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Mon Jun  1 11:28:59 2015 Thibaut Lopez
-** Last update Tue Jun 30 20:08:02 2015 Thibaut Lopez
+** Last update Wed Jul  1 20:12:39 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -15,20 +15,16 @@ int		check_food(t_user *usr, t_zap *data)
   t_tv		tv;
   t_tv		tmp;
   t_tv		time;
-  t_tv		now;
 
   if (GET_GHOST(usr) == 1)
     return (0);
   gettimeofday(&tv, NULL);
-  now.tv_sec = tv.tv_sec;
-  now.tv_usec = tv.tv_usec;
   timersub(&tv, &GET_TIME(usr), &tmp);
   time.tv_usec = 0;
   time.tv_sec = 0;
   add_tv(&time, (126000000 / data->delay));
   if (cmp_tv(&tmp, &time) == 1 || cmp_tv(&tmp, &time) == 0)
     {
-      printf("%d: eat at %ld:%ld... next time %ld:%ld\n", usr->fd, now.tv_sec, now.tv_usec, tv.tv_sec, tv.tv_usec);
       GET_INV(usr).food -= 1;
       data->map[rand() % data->length][rand() % data->width].food++;
       GET_TIME(usr) = tv;
@@ -50,7 +46,7 @@ void		check_egg_time(t_egg *egg, t_tv *now, t_user *usr, t_team *teams)
   if (!(egg->lay.tv_sec == 0 && egg->lay.tv_usec == 0) &&
       cmp_tv(&egg->lay, now) <= 0)
     {
-      sprintf(tmp, "enw #%d #%d %d %d\n",
+      sprintf(tmp, "enw %d %d %d %d\n", //"enw #%d #%d %d %d\n",
 	      egg->nb, egg->dad, egg->pos.f, egg->pos.s);
       send_to_graphic(tmp, usr);
       egg->lay.tv_sec = 0;
@@ -60,7 +56,7 @@ void		check_egg_time(t_egg *egg, t_tv *now, t_user *usr, t_team *teams)
   else if (cmp_tv(&egg->hatch, now) <= 0)
     {
       new = (egg->son == -1) ? NULL : get_by_nb(usr, egg->son, AI);
-      sprintf(tmp, (new == NULL) ? "edi #%d\n" : "eht #%d\n", egg->nb);
+      sprintf(tmp, (new == NULL) ? "edi %d\n" : "eht %d\n", egg->nb); // "edi #%d\n" : "eht #%d\n"
       if (new != NULL)
 	GET_GHOST(new) = 0;
       send_to_graphic(tmp, usr);
@@ -103,6 +99,8 @@ int		end_game(t_zap *data, t_user **user)
     {
       if (tmp->type == GRAPHIC)
 	fill_cb(&tmp->wr, str, strlen(str));
+      else if (tmp->type == AI)
+	fill_cb(&tmp->wr, "mort\n", 5);
       if (tmp->type != UNKNOWN)
 	while (cb_taken(&tmp->wr) > 0)
 	  write_cb(&tmp->wr, tmp->fd, NULL);

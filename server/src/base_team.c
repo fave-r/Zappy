@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Wed May 27 10:54:50 2015 Thibaut Lopez
-** Last update Wed Jun  3 15:55:35 2015 Thibaut Lopez
+** Last update Wed Jul  1 19:05:55 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -61,19 +61,17 @@ int		count_in_team(t_team *team_name, t_user *user)
 int		team_winning(t_user *usr, t_team *team)
 {
   t_user	*tmp;
-  int		nb;
 
   tmp = usr;
-  nb = 0;
   while (tmp != NULL && tmp->prev != NULL)
     tmp = tmp->prev;
   while (tmp != NULL)
     {
       if (tmp->type == AI && GET_TEAM(tmp) == team && GET_LVL(tmp) == 8)
-	nb++;
+	return (1);
       tmp = tmp->next;
     }
-  return ((nb != 0 && nb == count_in_team(team, usr)) ? 1 : 0);
+  return (0);
 }
 
 t_team		*team_by_name(t_team *teams, char *name)

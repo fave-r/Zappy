@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 17:40:56 2015 Thibaut Lopez
-// Last update Fri Jun 26 20:06:35 2015 jean_c
+// Last update Wed Jul  1 14:07:31 2015 Leo Thevenet
 //
 
 #include "Client.hh"
@@ -71,31 +71,31 @@ void		Client::run(Map &map)
   signal(SIGINT, quit_signal);
   while (signaled == 0 && graphic->update() == true)
     {
-      if (x != map.getLength() || y != map.getWidth())
-	{
-	  x = map.getLength();
-	  y = map.getWidth();
-	  m = map.getMap();
-	  graphic->changeSize(y, x, m);
-	}
-  //start = std::clock();
-  this->_update();
-  //duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
-//  std::cout << "time update : " << duration << std::endl;
+      //start = std::clock();
+      this->_update();
+      //duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
+      //  std::cout << "time update : " << duration << std::endl;
       while ((str = this->_s.getLine()).size() > 0)
 	if (str.find_first_of("\n\r") > 0)
 	  try
 	    {
 	      com.thiscom(str, map, this->_s);
 	      m = map.getMap();
+	      if (x != map.getLength() || y != map.getWidth())
+		{
+		  x = map.getLength();
+		  y = map.getWidth();
+		  m = map.getMap();
+		  graphic->changeSize(y, x, m);
+		}
 	      graphic->setMap(m, map._update);
 	    }
 	  catch (std::out_of_range &err)
 	    {}
-        //start = std::clock();
-        graphic->draw();
-        //duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
-        //std::cout << "time draw :" << duration << std::endl;
-        map.handleKeys();
+      //start = std::clock();
+      graphic->draw();
+      //duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
+      //std::cout << "time draw :" << duration << std::endl;
+      map.handleKeys();
     }
 }

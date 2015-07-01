@@ -402,6 +402,7 @@ bool		Graphic::update()
   //}
   return true;
 }
+
 // #include <ctime>
 // #include <cstdio>
 
@@ -409,7 +410,7 @@ void		Graphic::draw()
 {
   this->_needUpdate = true;
   if (this->_update.size() > 0 || this->_needUpdate == true)
-  {
+    {
     //std::clock_t start;
     //double duration;
 
@@ -431,10 +432,10 @@ void		Graphic::draw()
     //  start = std::clock();
 
       if (this->_camType == 2)
-	for (size_t i = 0; i < this->_HUD.size(); ++i)
-	  this->_HUD[i]->draw(this->_shader);
-	this->_needUpdate = false;
-	this->_context.flush();
+	     for (size_t i = 0; i < this->_HUD.size(); ++i)
+	       this->_HUD[i]->draw(this->_shader);
+	    this->_needUpdate = false;
+	    this->_context.flush();
     }
   //duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
   //std::cout << "flush update : " << duration << std::endl;

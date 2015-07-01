@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 19:21:19 2015 Thibaut Lopez
-// Last update Mon Jun 29 14:31:23 2015 romaric
+// Last update Wed Jul  1 11:41:35 2015 romaric
 //
 
 #include "Map.hh"
@@ -85,4 +85,10 @@ void	Map::setMap(const int y, const int x, const Type type, const int number)
       this->_map[y][x]->setThystame(number);
       break;
     }
+}
+
+void	Map::putUser(const int nb, const int x, const int y, const int dir, const int lev, const std::string &tn)
+{
+  this->_play.push_back(nb);
+  this->_user.putUser(nb, x, y, dir, lev, tn);
 }

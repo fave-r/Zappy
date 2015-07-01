@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 19:21:19 2015 Thibaut Lopez
-// Last update Wed Jul  1 10:49:55 2015 romaric
+// Last update Wed Jul  1 11:40:54 2015 romaric
 //
 
 #ifndef	MAP_HH
@@ -51,9 +51,12 @@ public:
   size_t	getLength();
   size_t	getWidth();
 
+  void		putUser(const int nb, const int x, const int y, const int dir, const int lev, const std::string &tn);
   void		setMap(const int x, const int y, const Type type, const int number);
+
   std::vector<std::vector <Content *> > getMap() const;
   std::list<std::pair<int, int>> _update;
+  std::list<int> _play;
   User    _user;
 };
 

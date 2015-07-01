@@ -5,7 +5,7 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun  8 14:29:10 2015 romaric
-// Last update Tue Jun 30 10:04:11 2015 Thibaut Lopez
+// Last update Wed Jul  1 11:41:04 2015 romaric
 //
 
 #include <fstream>
@@ -132,7 +132,8 @@ void	Command::newPlayer(const std::string &com, Map &map, Socket &s) const
   ss >> sa >> id >> x >> y >> dir >> level >> tn >> sa;
   if (ss.eof())
     {
-      map._user.putUser(id, x, y, dir, level, tn);
+      //map._user.putUser(id, x, y, dir, level, tn);
+      map.putUser(id, x, y, dir, level, tn);
     }
   (void)s;
 }

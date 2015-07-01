@@ -5,7 +5,7 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun 29 13:02:34 2015 romaric
-// Last update Wed Jul  1 10:50:09 2015 romaric
+// Last update Wed Jul  1 11:22:42 2015 romaric
 //
 
 #ifndef	USER_HH
@@ -13,20 +13,20 @@
 
 #include <iostream>
 #include <string>
-#include <list>
+#include <map>
 #include "Player.hpp"
 
 class	User
 {
 private:
-std::list<Player *> _users;
+  std::map<int, Player *> _users;
 
 public:
   User();
   ~User();
 
 public:
-  std::list<Player *> getUser() const
+  std::map<int, Player *> getUser() const
   {
     return _users;
   };
@@ -35,7 +35,7 @@ public:
   {
     Player tmp(nb, x, y, dir, lev, tn);
 
-    _users.push_back(&tmp);
+    _users[nb] = &tmp;
   }
 };
 

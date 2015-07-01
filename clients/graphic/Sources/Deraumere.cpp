@@ -18,7 +18,7 @@ Deraumere::~Deraumere()
 {
 }
 
-void		Deraumere::draw(gdl::AShader &shader)
+inline void		Deraumere::draw(gdl::AShader &shader)
 {
   //glBindTexture(GL_TEXTURE_2D, 0);
   glDisable(GL_TEXTURE_2D);
@@ -26,7 +26,7 @@ void		Deraumere::draw(gdl::AShader &shader)
   glEnable(GL_TEXTURE_2D);
 }
 
-void		Deraumere::setModel(const gdl::Geometry &geo)
+inline void		Deraumere::setModel(const gdl::Geometry &geo)
 {
   this->_geometry = geo;
   this->translate(glm::vec3(this->_x - 0.2, 0.8, this->_y - 0.2));

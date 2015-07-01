@@ -26,7 +26,7 @@ Food::Food(int x, int y) : AObject(x, y)
     this->translate(glm::vec3(this->_x, 1, this->_y));
 }
 
-inline Food::~Food()
+Food::~Food()
 {
 }
 

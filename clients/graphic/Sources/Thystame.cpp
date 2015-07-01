@@ -18,7 +18,7 @@ Thystame::~Thystame()
 {
 }
 
-void		Thystame::draw(gdl::AShader &shader)
+inline void		Thystame::draw(gdl::AShader &shader)
 {
   //this->_geometry.draw(shader, getTransformation(), GL_TRIANGLES);
   glDisable(GL_TEXTURE_2D);
@@ -26,7 +26,7 @@ void		Thystame::draw(gdl::AShader &shader)
   glEnable(GL_TEXTURE_2D);
 }
 
-void		Thystame::setModel(const gdl::Geometry &geo)
+inline void		Thystame::setModel(const gdl::Geometry &geo)
 {
   this->_geometry = geo;
   this->translate(glm::vec3(this->_x + 0.2, 0.8, this->_y));

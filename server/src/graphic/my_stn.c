@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Mon Jun  8 18:18:18 2015 Thibaut Lopez
+** Last update Thu Jul  2 04:24:57 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -51,13 +51,22 @@ void		stn_data(t_user **usr, t_zap *data, t_ask *ask)
 
 void		stn_ok(t_ask *ask, t_user *usr, t_zap *data)
 {
+  char		*flat;
+  char		*result;
+
   (void)ask;
+  flat = teamflat(data->teams, ", ");
+  result = my_strcat("The team name are now ", flat);
+  my_smg(usr, result);
+  free(result);
+  free(flat);
   my_send_tna(data, usr);
 }
 
 void		stn_ko(t_ask *ask, t_user *usr, t_zap *data)
 {
   (void)ask;
+  my_smg(usr, "The team are still the same");
   my_send_tna(data, usr);
 }
 
@@ -75,10 +84,12 @@ int		my_stn(char **com, t_zap *data, t_user *usr)
   ask.changes = stn_data;
   ask.ko = stn_ko;
   find_ask(&ask, data->asking);
-  if (count_type(usr, GRAPHIC) == 1)
+  if (count_type(usr, GRAPHIC) == 1 || data->wait == 1)
     gettimeofday(&ask.wait, NULL);
   push_q((t_que **)&usr->info, &ask, clone_ask);
-  str = strflat(com, " ", usr->nb, q_len((t_que *)usr->info) - 1);
+  if (data->wait == 1)
+    return (0);
+  str = flat_ask(com, usr->nb, q_len((t_que *)usr->info) - 1);
   str[0] = 'a';
   alert_graphic(str, usr);
   free(str);

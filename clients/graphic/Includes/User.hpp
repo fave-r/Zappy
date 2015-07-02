@@ -5,7 +5,7 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun 29 13:02:34 2015 romaric
-// Last update Wed Jul  1 11:22:42 2015 romaric
+// Last update Thu Jul  2 10:16:16 2015 romaric
 //
 
 #ifndef	USER_HH
@@ -37,6 +37,13 @@ public:
 
     _users[nb] = &tmp;
   }
+
+  void movUser(const int nb, const int x, const int y, const int dir)
+  {
+    _users[nb]->setX1(x);
+    _users[nb]->setY1(y);
+    _users[nb]->setDir(dir);
+   }
 };
 
 #endif

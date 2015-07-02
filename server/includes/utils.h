@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 18:07:00 2015 Thibaut Lopez
-** Last update Wed Jun  3 18:46:39 2015 Thibaut Lopez
+** Last update Thu Jul  2 02:57:57 2015 Thibaut Lopez
 */
 
 #ifndef	UTILS_H
@@ -47,10 +47,10 @@ int		xopen(const char *, int);
 ssize_t		xread(int, void *, size_t);
 void		*xmalloc(size_t);
 char		*xstrdup(const char *);
+int		smod(int, int);
 int		find_ptr(t_com *, char *);
 int		my_strtol(char *);
 float		my_strtof(char *);
-char		*strflat(char **, char *, int, int);
 int		my_strstr(char **, char *);
 char		*my_strcat(char *, char *);
 int		my_strchr(char *, char);

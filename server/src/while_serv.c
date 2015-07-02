@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:38:34 2015 romaric
-** Last update Mon Jun 29 19:29:55 2015 Thibaut Lopez
+** Last update Thu Jul  2 04:32:01 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -25,11 +25,10 @@ void		send_death(t_user **user, t_user **tmp, t_zap *data)
   printf("client %d dead\n", (*tmp)->fd);
   if ((*tmp)->type == AI)
     {
-      printf("%d\n", GET_INV(*tmp).food);
       if ((*tmp)->tokill != 2)
 	dprintf((*tmp)->fd, "mort\n");
       bzero(str, 50);
-      sprintf(str, "pdi #%d\n", (*tmp)->nb);
+      sprintf(str, "pdi %d\n", (*tmp)->nb);
       if (check_nb_in_cell(1, *tmp) == 1)
 	sprintf(str + strlen(str), "pie %d %d %d\n", GET_X(*tmp), GET_Y(*tmp), 0);
       if (GET_TEAM(*tmp)->count > data->count)
@@ -62,7 +61,7 @@ void		cast_result(t_zap *data, t_user **user, t_user *tmp, t_tv *now)
   send_inc_to_graph(tmp, data);
   if ((check = team_winning(tmp, GET_TEAM(tmp))) == 1)
     push_q(&data->end, now, clone_tv);
-  data->winner = (check == 1) ? GET_TEAM(tmp) : NULL;
+  data->win = (check == 1) ? GET_TEAM(tmp) : NULL;
 }
 
 void		check_client(t_user **user, t_bf *bf, t_zap *data)

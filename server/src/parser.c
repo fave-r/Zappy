@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 16:43:22 2015 Thibaut Lopez
-** Last update Mon Jun  1 16:57:40 2015 Thibaut Lopez
+** Last update Thu Jul  2 04:12:43 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -33,38 +33,11 @@ int		pars_error(char *arg, char **map, t_com *func)
   return (-1);
 }
 
-char		**map_state()
-{
-  int		i;
-  char		**map;
-
-  map = xmalloc(8 * sizeof(char *) + 7 * 3 * sizeof(char));
-  i = -1;
-  while (++i < 7)
-    map[i] = (char *)map + (8 * sizeof(char *)) + i * 3 * sizeof(char);
-  strcpy(map[0], "-p");
-  map[0][2] = 0;
-  strcpy(map[1], "-x");
-  map[1][2] = 0;
-  strcpy(map[2], "-y");
-  map[2][2] = 0;
-  strcpy(map[3], "-n");
-  map[3][2] = 0;
-  strcpy(map[4], "-c");
-  map[4][2] = 0;
-  strcpy(map[5], "-t");
-  map[5][2] = 0;
-  strcpy(map[6], "-a");
-  map[6][2] = 0;
-  map[7] = NULL;
-  return (map);
-}
-
 t_com		*map_func()
 {
   t_com		*func;
 
-  func = xmalloc(8 * sizeof(t_com));
+  func = xmalloc(9 * sizeof(t_com));
   func[0].com = "-p";
   func[1].com = "-x";
   func[2].com = "-y";
@@ -72,7 +45,8 @@ t_com		*map_func()
   func[4].com = "-c";
   func[5].com = "-t";
   func[6].com = "-a";
-  func[7].com = NULL;
+  func[7].com = "-w";
+  func[8].com = NULL;
   func[0].ptr = set_port;
   func[1].ptr = set_x;
   func[2].ptr = set_y;
@@ -80,7 +54,8 @@ t_com		*map_func()
   func[4].ptr = set_count;
   func[5].ptr = set_delay;
   func[6].ptr = set_asking;
-  func[7].ptr = NULL;
+  func[7].ptr = set_wait;
+  func[8].ptr = NULL;
   return (func);
 }
 
@@ -93,7 +68,7 @@ int		parse_com(char **argv, t_zap *data)
 
   i = 0;
   state = NONE;
-  map = map_state();
+  map = stwt("-p -x -y -n -c -t -a -w", " ", -1);
   func = map_func();
   while (argv[++i] != NULL)
     {

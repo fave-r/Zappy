@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Tue Jun 30 20:42:49 2015 Thibaut Lopez
+** Last update Wed Jul  1 20:08:12 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -43,7 +43,6 @@ void		analyse_cell(t_content **cnt, t_pair *cone, t_user *usr)
   t_user	*tmp;
 
   tmp = usr;
-  printf("analysing %dx%d\n", cone->f, cone->s);
   while (tmp != NULL && tmp->prev != NULL)
     tmp = tmp->prev;
   while ((tmp = in_this_cell(cone->f, cone->s, tmp)) != NULL)
@@ -70,18 +69,17 @@ void		vert_view(int i, t_user *usr, t_pair *cone, t_zap *data)
     {
       if (j != i)
 	fill_cb(&usr->wr, ",", 1);
-      cone->f = S_MOD(cone->f, data->width);
-      cone->s = S_MOD(cone->s, data->length);
+      cone->f = smod(cone->f, data->width);
+      cone->s = smod(cone->s, data->length);
       analyse_cell(data->map, cone, usr);
       gole[GET_DIR(usr)](cone, -1);
       j--;
     }
   if (j != i)
     fill_cb(&usr->wr, ",", 1);
-  cone->f = S_MOD(cone->f, data->width);
-  cone->s = S_MOD(cone->s, data->length);
+  cone->f = smod(cone->f, data->width);
+  cone->s = smod(cone->s, data->length);
   analyse_cell(data->map, cone, usr);
-  printf("-i : %d\n", -i);
   gole[GET_DIR(usr)](cone, i);
 }
 
@@ -98,7 +96,6 @@ int		my_voir(char **com, t_zap *data, t_user *usr)
   cone.s = GET_Y(usr);
   fill_cb(&usr->wr, "{", 1);
   i = 0;
-  printf("%d: voir at %dx%d looking at %d\n", usr->fd, GET_X(usr), GET_Y(usr), GET_DIR(usr));
   while (i < GET_LVL(usr) + 1)
     {
       if (i > 0)

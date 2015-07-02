@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Mon Jun 29 13:45:56 2015 Thibaut Lopez
+** Last update Wed Jul  1 21:30:12 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -15,11 +15,11 @@ void		send_new_player(t_user *usr)
   char		str[256];
 
   bzero(str, 256);
-  sprintf(str, "pnw #%d %d %d %d %d %s\n", usr->nb, GET_X(usr),
+  sprintf(str, "pnw %d %d %d %d %d %s\n", usr->nb, GET_X(usr),
 	  GET_Y(usr), GET_DIR(usr) + 1, GET_LVL(usr), GET_TEAM(usr)->name);
   send_to_graphic(str, usr);
   bzero(str, 256);
-  sprintf(str, "pin #%d %d %d %d %d %d %d %d %d %d\n", usr->nb, GET_X(usr),
+  sprintf(str, "pin %d %d %d %d %d %d %d %d %d %d\n", usr->nb, GET_X(usr),
 	  GET_Y(usr), GET_INV(usr).food, GET_INV(usr).linemate,
 	  GET_INV(usr).deraumere, GET_INV(usr).sibur, GET_INV(usr).mendiane,
 	  GET_INV(usr).phiras, GET_INV(usr).thystame);
@@ -78,7 +78,7 @@ int		hatching_egg(t_pair *pos, t_user *usr, t_zap *data, t_team *cur)
   pos->s = frt->pos.s;
   bzero(tmp, 16);
   nb = frt->nb;
-  sprintf(tmp, "ebo #%d\n", nb);
+  sprintf(tmp, "ebo %d\n", nb);
   send_to_graphic(tmp, usr);
   push_q(&usr->queue, &frt->hatch, clone_tv);
   frt->son = find_nb(usr, AI);

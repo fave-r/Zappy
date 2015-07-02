@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Thu Jun  4 17:26:08 2015 Thibaut Lopez
+** Last update Thu Jul  2 04:22:36 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -20,16 +20,22 @@ void		spk_data(t_user **usr, t_zap *data, t_ask *ask)
 
 void		spk_ok(t_ask *ask, t_user *usr, t_zap *data)
 {
-  (void)ask;
-  (void)usr;
+  char		str[64];
+
   (void)data;
+  bzero(str, 64);
+  sprintf(str, "Player #%d successfuly killed", my_strtol(ask->args[0] + 1));
+  my_smg(usr, str);
 }
 
 void		spk_ko(t_ask *ask, t_user *usr, t_zap *data)
 {
-  (void)ask;
-  (void)usr;
+  char		str[64];
+
   (void)data;
+  bzero(str, 64);
+  sprintf(str, "Player #%d will stay alive", my_strtol(ask->args[0] + 1));
+  my_smg(usr, str);
 }
 
 int		my_spk(char **com, t_zap *data, t_user *usr)
@@ -46,10 +52,12 @@ int		my_spk(char **com, t_zap *data, t_user *usr)
   ask.changes = spk_data;
   ask.ko = spk_ko;
   find_ask(&ask, data->asking);
-  if (count_type(usr, GRAPHIC) == 1)
+  if (count_type(usr, GRAPHIC) == 1 || data->wait == 1)
     gettimeofday(&ask.wait, NULL);
   push_q((t_que **)&usr->info, &ask, clone_ask);
-  str = strflat(com, " ", usr->nb, q_len((t_que *)usr->info) - 1);
+  if (data->wait == 1)
+    return (0);
+  str = flat_ask(com, usr->nb, q_len((t_que *)usr->info) - 1);
   str[0] = 'a';
   alert_graphic(str, usr);
   free(str);

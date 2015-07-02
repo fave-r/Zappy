@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 10:23:22 2015 jean_c
-// Last update Wed Jul  1 14:11:05 2015 Leo Thevenet
+// Last update Wed Jul  1 16:20:40 2015 Leo Thevenet
 //
 
 #include "Graphic.hh"
@@ -82,6 +82,17 @@ void		Graphic::initMap()
       }
 }
 
+void		Graphic::addNumberHUD()
+{
+  AObject        *model;
+
+  model = new Ground(0, 0);
+  model->setModel(this->_modelPool->getGround());
+  model->setTexture(this->_texturePool->getGround());
+  model->scale(glm::vec3(0.2, 0, 0.2));
+  this->_HUD.push_back(model);
+}
+
 void		Graphic::setHUD()
 {
   int		y = this->_actualCase % this->_width;
@@ -93,12 +104,7 @@ void		Graphic::setHUD()
   model = new Deraumere(0, 0);
   model->setModel(this->_modelPool->getCrystalD());
   this->_HUD.push_back(model);
-  std::cout << " Deraumere : " << this->_map[x][y]->getDeraumere();
-
-  model = new Deraumere(0, 0);
-  model->setModel(this->_modelPool->getCrystalD());
-  this->_HUD.push_back(model);
-
+  addNumberHUD();
   // model = new Food(0, 0);
   // model->setModel(this->_modelPool->getCrystalF());
   // this->_HUD.push_back(model);
@@ -106,46 +112,35 @@ void		Graphic::setHUD()
   model = new Linemate(0, 0);
   model->setModel(this->_modelPool->getCrystalL());
   this->_HUD.push_back(model);
-  std::cout << " Limenate : " << this->_map[x][y]->getLinemate();
-  model = new Linemate(0, 0);
-  model->setModel(this->_modelPool->getCrystalL());
-  this->_HUD.push_back(model);
+  addNumberHUD();
 
   model = new Sibur(0, 0);
   model->setModel(this->_modelPool->getCrystalS());
   this->_HUD.push_back(model);
-  std::cout << " Sibur : " << this->_map[x][y]->getSibur();
-  model = new Sibur(0, 0);
-  model->setModel(this->_modelPool->getCrystalS());
-  this->_HUD.push_back(model);
+  addNumberHUD();
 
   model = new Mendiane(0, 0);
   model->setModel(this->_modelPool->getCrystalM());
   this->_HUD.push_back(model);
-  std::cout << " Mendiane : " << this->_map[x][y]->getMendiane();
-  model = new Mendiane(0, 0);
-  model->setModel(this->_modelPool->getCrystalM());
-  this->_HUD.push_back(model);
+  addNumberHUD();
 
   model = new Phiras(0, 0);
   model->setModel(this->_modelPool->getCrystalP());
   this->_HUD.push_back(model);
-  std::cout << " Phiras : " << this->_map[x][y]->getPhiras();
-  model = new Phiras(0, 0);
-  model->setModel(this->_modelPool->getCrystalP());
-  this->_HUD.push_back(model);
+  addNumberHUD();
 
   model = new Thystame(0, 0);
   model->setModel(this->_modelPool->getCrystalT());
   this->_HUD.push_back(model);
-  std::cout << " Thystame : " << this->_map[x][y]->getThystame() << std::endl;
-  model = new Thystame(0, 0);
-  model->setModel(this->_modelPool->getCrystalT());
-  this->_HUD.push_back(model);
+  addNumberHUD();
 }
 
 void		Graphic::updateHUD()
 {
+  int		y = this->_actualCase % this->_width;
+  int		x = this->_actualCase / this->_width;
+
+  std::cout << "x : " << y << " y : " << x << std::endl;
   glm::vec3 pos = this->_cam->getPosHUD();
 
   pos.x -= 2.4;
@@ -157,6 +152,16 @@ void		Graphic::updateHUD()
       pos.x += 0.3;
       pos.x += (i % 2 == 1) ? 0.3 : 0;
     }
+  //this->_HUD[1]->setTexture(this->_texturePool->getNumber[this->_map[x][y]->getDeraumere()]);
+
+
+ std::cout << " Deraumere : " << this->_map[x][y]->getDeraumere();
+  std::cout << " Limenate : " << this->_map[x][y]->getLinemate();
+  std::cout << " Sibur : " << this->_map[x][y]->getSibur();
+  std::cout << " Mendiane : " << this->_map[x][y]->getMendiane();
+  std::cout << " Phiras : " << this->_map[x][y]->getPhiras();
+  std::cout << " Thystame : " << this->_map[x][y]->getThystame() << std::endl;
+  //  this->_objects[this->_actualCase]->setTexture(this->_texturePool->getSelectedGround());
 }
 
 void		Graphic::MoveCase(int nb)
@@ -187,25 +192,16 @@ bool		Graphic::update()
   if (this->_input.getKey(SDLK_ESCAPE) || this->_input.getInput(SDL_QUIT))
     return false;
 
-  if (this->_input.getKey(SDLK_KP_1))
-    {
-      this->_needUpdate = true;
-      this->_camType = 1;
-    }
-  else if (this->_input.getKey(SDLK_KP_2))
-    {
-      this->_camType = 2;
-      this->_needUpdate = true;
-    }
-  else if (this->_input.getKey(SDLK_KP_3))
+  if (this->_input.getKey(SDLK_KP_1) && (this->_needUpdate = true))
+    this->_camType = 1;
+  else if (this->_input.getKey(SDLK_KP_2) && (this->_needUpdate = true))
+    this->_camType = 2;
+  else if (this->_input.getKey(SDLK_KP_3) && (this->_needUpdate = true))
     this->_camType = 3;
-
-  //  if (this->_update.size() == 0)
-  //draw();
 
   if (this->_camType == 1)
     {
-      this->_needUpdate = this->_cam->getKey(this->_input);
+      this->_needUpdate = this->_cam->getKey(this->_input) ? true : this->_needUpdate;
       this->_shader.setUniform("view", this->_cam->getCam());
     }
   else if (this->_camType == 2)
@@ -346,100 +342,23 @@ bool		Graphic::update()
         this->_user._users[(*it3)];
       }*/
     }
-  // glm::vec4 final = inv * point;
-  //     // std::cout << mouse.x << " " << mouse.y << std::endl;
-
-  //     glm::vec3 final1 = glm::unProject(glm::vec3((float)mouse.x, (float)mouse.y, 0.0), view, projection, glm::vec4(0, 0, 1920, 1080));
-  //     glm::vec3 final2 = glm::unProject(glm::vec3((float)mouse.x, (float)mouse.y, 1.0), view, projection, glm::vec4(0, 0, 1920, 1080));
-
-
-  //     glm::vec3 ray = glm::normalize(final2 - final1);
-
-  //     std::cout << ray.x << " " << ray.y << " " << ray.z << std::endl;
-  //     glm::vec3 pos = this->_cam->getPosCam();
-  //     glm::vec3 n = glm::vec3(0, 1, 0);
-
-  //     float t = (-glm::dot(pos, n)) / glm::dot(ray, n);
-
-  //     std::cout << t << std::endl;
-  //     glm::vec3 p = pos + ray * t;
-  //     std::cout << " x : " << p.x << " y : " << p.y << " z : " << p.z << std::endl;
-
-  // glm::vec3 vDirToSphere = glm::vec3(0, 0, 0) - final1;
-  // glm::vec3 vLineDir = glm::normalize(final1 - final2);
-  // // float fLineLength = glm::distance(final1, final2);
-  // float t = glm::dot(vDirToSphere, vLineDir);
-
-  // glm::vec3 final;
-
-  // if (t <= 0.0f)
-  //	vClosestPoint = vA;
-  // else if (t >= fLineLength)
-  //	vClosestPoint = vB;
-  // else
-  // final = final1 + vLineDir * t;
-
-
-
-  //std::cout << "t : " << t // << " f " << fLineLength
-  // std::cout << " " << final.x << "  " << final.y << "  " << final.z << std::endl;
-
-  // double a = 1;
-  // double b = 1;
-  // double c = 0;
-  // double d = 0;
-  // glm::vec3 pos = this->_cam->getPosCam();
-  // //final = final - pos;
-
-  // double k = -(a * pos.x + b * pos.y + c * pos.z + d) / (a * final.x + b * final.y + c * final.z);
-
-
-  // // double Vx = mouse.x - 1920 / 2;
-  // // double Vy = mouse.y - 1080 / 2;
-  // // double Vz = 1920 / 2 / tan(40);
-  // double Px = k * final.x + pos.x;
-  // double Py = k * final.y + pos.y;
-  // double Pz = k * final.z + pos.z;
-  // std::cout << "k : " << k << " x : " << Px << " y : " << Py << " z : " << Pz << std::endl;
-  // std::cout << mouse.x << std::endl;
-  //}
   return true;
 }
 
-// #include <ctime>
-// #include <cstdio>
-
 void		Graphic::draw()
 {
-  this->_needUpdate = true;
+  //  this->_needUpdate = true;
   if (this->_update.size() > 0 || this->_needUpdate == true)
     {
-    //std::clock_t start;
-    //double duration;
-
-    //start = std::clock();
-
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    //duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
-  //  std::cout << "clear update : " << duration << std::endl;
-
-    //start = std::clock();
-
       for (std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it) {
-	       (*it)->draw(this->_shader);
-	      }
-
-      //duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
-    //  std::cout << "All draw update : " << duration << std::endl;
-
-    //  start = std::clock();
+	(*it)->draw(this->_shader);
+      }
 
       if (this->_camType == 2)
-	     for (size_t i = 0; i < this->_HUD.size(); ++i)
-	       this->_HUD[i]->draw(this->_shader);
-	    this->_needUpdate = false;
-	    this->_context.flush();
+	for (size_t i = 0; i < this->_HUD.size(); ++i)
+	  this->_HUD[i]->draw(this->_shader);
+      this->_needUpdate = false;
+      this->_context.flush();
     }
-  //duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
-  //std::cout << "flush update : " << duration << std::endl;
 }

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:51:04 2015 romaric
-** Last update Tue Jun 30 02:30:48 2015 Thibaut Lopez
+** Last update Wed Jul  1 21:28:14 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -17,8 +17,8 @@ int	send_prend(t_user *usr, int item, t_content *cnt)
 
   nbr = usr->nb;
   bzero(tmp, 256);
-  sprintf(tmp, "pgt #%d %d\n\
-pin #%d %d %d %d %d %d %d %d %d %d\n\
+  sprintf(tmp, "pgt %d %d\n\
+pin %d %d %d %d %d %d %d %d %d %d\n\
 bct %d %d %d %d %d %d %d %d %d\n",
 	  nbr, item, nbr, GET_X(usr), GET_Y(usr), GET_INV(usr).food,
 	  GET_INV(usr).linemate, GET_INV(usr).deraumere, GET_INV(usr).sibur,
@@ -37,8 +37,8 @@ int	send_pose(t_user *usr, int item, t_content *cnt)
 
   nbr = usr->nb;
   bzero(tmp, 256);
-  sprintf(tmp, "%d %d\n\
-pin #%d %d %d %d %d %d %d %d %d %d\n\
+  sprintf(tmp, "pgt %d %d\n\
+pin %d %d %d %d %d %d %d %d %d %d\n\
 bct %d %d %d %d %d %d %d %d %d\n",
 	  nbr, item, nbr, GET_X(usr), GET_Y(usr), GET_INV(usr).food,
 	  GET_INV(usr).linemate, GET_INV(usr).deraumere, GET_INV(usr).sibur,
@@ -58,7 +58,6 @@ void	check_com(t_com *com, t_user *usr, int *ret, t_zap *data)
 
   while (usr->queue == NULL && (gnl = get_line_cb(&usr->cb)) != NULL)
     {
-      printf("%d <- %s\n", usr->fd, gnl);
       if ((tok = stwt(gnl, " \t\n\r", usr->type)) == NULL)
 	{
 	  *ret = 0;

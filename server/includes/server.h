@@ -5,12 +5,11 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Mon Jun 29 19:19:23 2015 Thibaut Lopez
+** Last update Thu Jul  2 04:31:28 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
 #define	ZAPPY_H
-#define	S_MOD(a, b)	(((a) < 0) ? (a) + (b) : (a) % (b))
 #define	GET_X(u)	(((t_plr *)(u)->info)->x)
 #define	GET_Y(u)	(((t_plr *)(u)->info)->y)
 #define	GET_DIR(u)	(((t_plr *)(u)->info)->dir)
@@ -42,6 +41,7 @@ typedef	enum	e_state
     C,
     T,
     A,
+    W,
     NONE = -1
   }		e_state;
 
@@ -115,9 +115,10 @@ typedef struct	s_zap
   t_team	*teams;
   int		delay;
   t_que		*end;
-  t_team	*winner;
+  t_team	*win;
   float		asking;
   t_ask		end_game;
+  int		wait;
 }		t_zap;
 
 typedef struct	s_plr
@@ -194,15 +195,20 @@ int		set_team(t_zap *, char *, e_state *);
 int		set_count(t_zap *, char *, e_state *);
 int		set_delay(t_zap *, char *, e_state *);
 int		set_asking(t_zap *, char *, e_state *);
+int		set_wait(t_zap *, char *, e_state *);
 t_user		*get_by_nb(t_user *, int, e_clt);
 t_egg		*get_egg_by_nb(t_team *, int);
 int		parse_com(char **, t_zap *);
+void		add_rand_food(t_zap *, int, t_user *);
 int		base_value(t_zap *);
 void		init_val(t_zap *);
 void		free_zap(t_zap *);
 void		send_inc_to_graph(t_user *, t_zap *);
 void		cast_loop(t_user *, t_tv *, int, t_tv *);
 void		send_elev_in(t_user *);
+char		*strflat(char **, char *);
+char		*flat_ask(char **, int, int);
+char		*teamflat(t_team *, char *);
 
 int		count_in_team(t_team *, t_user *);
 int		team_winning(t_user *, t_team *);
@@ -247,8 +253,8 @@ void		west_gole(t_pair *, int);
 int		my_voir(char **, t_zap *, t_user *);
 
 int		my_graphic(char **, t_zap *, t_user *);
-void		my_reset(t_user *, t_zap *);
-void		my_endgame(t_user *, t_zap *);
+void		my_reset(t_ask *, t_user *, t_zap *);
+void		my_endgame(t_ask *, t_user *, t_zap *);
 void		my_reset_map(t_user **, t_zap *, t_ask *);
 int		my_other(char **, t_zap *, t_user *);
 
@@ -287,5 +293,6 @@ t_ask		*get_asking(t_user *, int, int);
 int		my_apr(char **, t_zap *, t_user *);
 int		aeg_response(t_zap *, t_user *, e_rsp);
 int		my_anr(char **, t_zap *, t_user *);
+int		my_smg(t_user *, char *);
 
 #endif

@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Mon Jun 15 15:01:06 2015 Thibaut Lopez
+** Last update Wed Jul  1 21:30:04 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -17,11 +17,11 @@ int	send_expulse(int *bool, t_user *usr, t_user *tmp)
   if (++(*bool) == 1)
     {
       bzero(str, 128);
-      sprintf(str, "pex #%d\n", usr->nb);
+      sprintf(str, "pex %d\n", usr->nb);
       send_to_graphic(str, usr);
     }
   bzero(str, 256);
-  sprintf(str, "ppo #%d %d %d %d\n", tmp->nb,
+  sprintf(str, "ppo %d %d %d %d\n", tmp->nb,
           GET_X(tmp), GET_Y(tmp), GET_DIR(tmp) + 1);
   GET_CAST(tmp).tv_usec = 0;
   GET_CAST(tmp).tv_sec = 0;
@@ -43,8 +43,8 @@ int     my_go(t_zap *data, t_user *tmp, t_user *usr)
   pos.f = GET_X(tmp);
   pos.s = GET_Y(tmp);
   gofo[GET_DIR(usr)](&pos, 1);
-  GET_X(tmp) = S_MOD(pos.f, data->length);
-  GET_Y(tmp) = S_MOD(pos.s, data->width);
+  GET_X(tmp) = smod(pos.f, data->length);
+  GET_Y(tmp) = smod(pos.s, data->width);
   bzero(str, 128);
   sprintf(str, "deplacement: %d\n", get_direction(usr, tmp, data));
   fill_cb(&tmp->wr, str, strlen(str));

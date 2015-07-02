@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 09:08:50 2015 jean_c
-// Last update Tue Jun 30 17:14:48 2015 Leo Thevenet
+// Last update Wed Jul  1 16:06:35 2015 Leo Thevenet
 //
 
 #ifndef __GRAPHIC_HH__
@@ -51,7 +51,7 @@ public:
   void			updateHUD();
   void			changeSize(size_t, size_t, std::vector<std::vector <Content *> > &);
   void			setMap(std::vector<std::vector <Content *> > &, std::list<std::pair<int, int> > &);
- 
+  void			addNumberHUD();
 private:
   size_t		_width;
   size_t		_height;

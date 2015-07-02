@@ -5,10 +5,28 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 10:39:02 2015 Thibaut Lopez
-** Last update Tue Jun 30 20:07:06 2015 Thibaut Lopez
+** Last update Thu Jul  2 04:32:24 2015 Thibaut Lopez
 */
 
 #include "server.h"
+
+void	add_rand_food(t_zap *data, int nb, t_user *usr)
+{
+  int	x;
+  int	y;
+  char	tmp[150];
+
+  x = rand() % data->length;
+  y = rand() % data->width;
+  data->map[x][y].food += nb;
+  bzero(tmp, 150);
+  sprintf(tmp, "bct %d %d %d %d %d %d %d %d %d\n", x, y,
+	  (int)data->map[x][y].food, (int)data->map[x][y].linemate,
+	  (int)data->map[x][y].deraumere, (int)data->map[x][y].sibur,
+	  (int)data->map[x][y].mendiane, (int)data->map[x][y].phiras,
+	  (int)data->map[x][y].thystame);
+  send_to_graphic(tmp, usr);
+}
 
 void	init_map(t_zap *data)
 {
@@ -68,7 +86,7 @@ void	init_val(t_zap *data)
   data->count = -1;
   data->delay = -1;
   data->end = NULL;
-  data->winner = NULL;
+  data->win = NULL;
   data->asking = -1;
   data->end_game.wait.tv_sec = 0;
   data->end_game.wait.tv_usec = 0;
@@ -77,6 +95,7 @@ void	init_val(t_zap *data)
   data->end_game.ok = my_reset;
   data->end_game.changes = my_reset_map;
   data->end_game.ko = my_endgame;
+  data->wait = 0;
 }
 
 void	free_zap(t_zap *data)

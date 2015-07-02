@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Thu Jul  2 04:31:28 2015 Thibaut Lopez
+** Last update Thu Jul  2 19:42:57 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -42,6 +42,8 @@ typedef	enum	e_state
     T,
     A,
     W,
+    V,
+    H,
     NONE = -1
   }		e_state;
 
@@ -119,6 +121,7 @@ typedef struct	s_zap
   float		asking;
   t_ask		end_game;
   int		wait;
+  int		verbose;
 }		t_zap;
 
 typedef struct	s_plr
@@ -164,7 +167,7 @@ int		init_bind(int, int *);
 int		init_connect(int, int, char *);
 void		set_fd(int, t_bf *, t_user *);
 void		new_client(int, t_user **);
-t_user		*unit_user_free(t_user *);
+t_user		*unit_user_free(t_user *, t_zap *);
 void		send_death(t_user **, t_user **, t_zap *);
 void		check_client(t_user **, t_bf *, t_zap *);
 int		manage_server(t_user **, t_zap *);
@@ -174,8 +177,8 @@ t_com		*graphic_funcs();
 int		count_type(t_user *, e_clt);
 t_com		*ptr_to_function(e_clt);
 int		read_com(t_user *, t_zap *);
-void		data_free(t_user **);
-void		put_team(t_team *, int);
+void		data_free(t_user **, t_zap *);
+void		put_team(t_team *);
 int		team_len(t_team *);
 t_team		*team_cat(t_team *, char *);
 void		team_free(t_team *);
@@ -206,9 +209,19 @@ void		free_zap(t_zap *);
 void		send_inc_to_graph(t_user *, t_zap *);
 void		cast_loop(t_user *, t_tv *, int, t_tv *);
 void		send_elev_in(t_user *);
+int		read_cb(t_cb *, int);
+int		write_cb(t_user *, t_zap *, t_que **);
 char		*strflat(char **, char *);
 char		*flat_ask(char **, int, int);
 char		*teamflat(t_team *, char *);
+void		verbose_receive(t_user *, char *, t_zap *);
+void		verbose_send(t_user *, char *, t_zap *);
+void		verbose_eat(t_user *, int, int, t_zap *);
+void		verbose_new(t_user *, int, e_clt, t_zap *);
+void		verbose_death(t_user *, t_zap *);
+void		print_data(t_zap *);
+void		verbose_base(t_user *, char *);
+int		set_verbose(t_zap *, char *, e_state *);
 
 int		count_in_team(t_team *, t_user *);
 int		team_winning(t_user *, t_team *);

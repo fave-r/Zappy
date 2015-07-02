@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 16:43:22 2015 Thibaut Lopez
-** Last update Thu Jul  2 04:12:43 2015 Thibaut Lopez
+** Last update Thu Jul  2 17:15:12 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -37,7 +37,7 @@ t_com		*map_func()
 {
   t_com		*func;
 
-  func = xmalloc(9 * sizeof(t_com));
+  func = xmalloc(10 * sizeof(t_com));
   func[0].com = "-p";
   func[1].com = "-x";
   func[2].com = "-y";
@@ -46,7 +46,8 @@ t_com		*map_func()
   func[5].com = "-t";
   func[6].com = "-a";
   func[7].com = "-w";
-  func[8].com = NULL;
+  func[8].com = "-v";
+  func[9].com = NULL;
   func[0].ptr = set_port;
   func[1].ptr = set_x;
   func[2].ptr = set_y;
@@ -55,7 +56,8 @@ t_com		*map_func()
   func[5].ptr = set_delay;
   func[6].ptr = set_asking;
   func[7].ptr = set_wait;
-  func[8].ptr = NULL;
+  func[8].ptr = set_verbose;
+  func[9].ptr = NULL;
   return (func);
 }
 
@@ -68,7 +70,7 @@ int		parse_com(char **argv, t_zap *data)
 
   i = 0;
   state = NONE;
-  map = stwt("-p -x -y -n -c -t -a -w", " ", -1);
+  map = stwt("-p -x -y -n -c -t -a -w -v -h", " ", -1);
   func = map_func();
   while (argv[++i] != NULL)
     {
@@ -77,7 +79,7 @@ int		parse_com(char **argv, t_zap *data)
 	  if ((state = my_strstr(map, argv[i])) == NONE)
 	    return (pars_error(argv[i], map, func));
 	}
-      else if (state == NONE)
+      else if (state == NONE || state == H)
 	return (pars_error(argv[i], map, func));
       else if (func[find_ptr(func, map[state])].
 	       ptr(data, argv[i], &state) == -1)

@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 10:39:02 2015 Thibaut Lopez
-** Last update Thu Jul  2 04:32:24 2015 Thibaut Lopez
+** Last update Thu Jul  2 18:17:59 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -26,6 +26,7 @@ void	add_rand_food(t_zap *data, int nb, t_user *usr)
 	  (int)data->map[x][y].mendiane, (int)data->map[x][y].phiras,
 	  (int)data->map[x][y].thystame);
   send_to_graphic(tmp, usr);
+  verbose_eat(usr, x, y, data);
 }
 
 void	init_map(t_zap *data)
@@ -50,28 +51,24 @@ void	init_map(t_zap *data)
 	  data->map[i][j].thystame = rand() % 2;
 	}
     }
-  printf("Information about the server:\nPort: %d\nMap of %dx%d cells\n\
-Player max per team: %d\nDelay for each action: %d\nName of each team\n",
-	 data->port, data->length, data->width, data->count, data->delay);
-  put_team(data->teams, 1);
-  printf("(Time waiting for a graphic response: %f)\n", data->asking);
+  print_data(data);
 }
 
 int	base_value(t_zap *data)
 {
   data->port = (data->port == -1) ? 6667 : data->port;
-  data->length = (data->length == -1) ? 50 : data->length;
-  data->width = (data->width == -1) ? 50 : data->width;
+  data->length = (data->length == -1) ? 30 : data->length;
+  data->width = (data->width == -1) ? 30 : data->width;
   if (data->teams == NULL || team_len(data->teams) < 2)
     {
       if (data->teams != NULL)
 	team_free(data->teams);
       data->teams = base_team();
     }
-  data->count = (data->count == -1) ? 20 : data->count;
+  data->count = (data->count == -1) ? 10 : data->count;
   team_counts(data->teams, data->count);
   data->delay = (data->delay == -1) ? 100 : data->delay;
-  data->asking = (data->asking == -1) ? 7.5 : data->asking;
+  data->asking = (data->asking == -1) ? 4.5 : data->asking;
   init_map(data);
   return (0);
 }
@@ -96,6 +93,7 @@ void	init_val(t_zap *data)
   data->end_game.changes = my_reset_map;
   data->end_game.ko = my_endgame;
   data->wait = 0;
+  data->verbose = 0;
 }
 
 void	free_zap(t_zap *data)

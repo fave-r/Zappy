@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May  5 14:14:46 2015 Thibaut Lopez
-** Last update Mon May 18 11:30:24 2015 Thibaut Lopez
+** Last update Thu Jul  2 16:39:53 2015 Thibaut Lopez
 */
 
 #ifndef	CB_H
@@ -35,7 +35,5 @@ void	*cb_end(t_cb *);
 void	*flush_cb(t_cb *);
 int	cbchr(t_cb *, void *);
 char	*get_line_cb(t_cb *);
-int	read_cb(t_cb *, int);
-int	write_cb(t_cb *, int, t_que **);
 
 #endif

@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 28 13:49:58 2015 Thibaut Lopez
-** Last update Thu Jul  2 04:14:08 2015 Thibaut Lopez
+** Last update Thu Jul  2 05:08:08 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -51,13 +51,10 @@ int		check_asking(t_user **usr, t_zap *data, t_ask *ask)
   tmp = *usr;
   while (tmp != NULL)
     {
-      if (tmp->type == GRAPHIC)
-	{
-	  if (ask->res == APR)
-	    ask->ok(ask, tmp, data);
-	  else
-	    ask->ko(ask, tmp, data);
-	}
+      if (tmp->type == GRAPHIC && ask->res == APR)
+	ask->ok(ask, tmp, data);
+      else if (tmp->type == GRAPHIC)
+	ask->ko(ask, tmp, data);
       tmp = tmp->next;
     }
   ask->wait.tv_sec = 0;

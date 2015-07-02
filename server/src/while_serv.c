@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:38:34 2015 romaric
-** Last update Thu Jul  2 04:32:01 2015 Thibaut Lopez
+** Last update Thu Jul  2 19:45:00 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -22,7 +22,6 @@ void		send_death(t_user **user, t_user **tmp, t_zap *data)
 {
   char		str[50];
 
-  printf("client %d dead\n", (*tmp)->fd);
   if ((*tmp)->type == AI)
     {
       if ((*tmp)->tokill != 2)
@@ -36,7 +35,7 @@ void		send_death(t_user **user, t_user **tmp, t_zap *data)
       send_to_graphic(str, *tmp);
     }
   *user = (*tmp == *user) ? (*user)->next : *user;
-  *tmp = unit_user_free(*tmp);
+  *tmp = unit_user_free(*tmp, data);
 }
 
 void		cast_result(t_zap *data, t_user **user, t_user *tmp, t_tv *now)
@@ -87,7 +86,7 @@ void		check_client(t_user **user, t_bf *bf, t_zap *data)
   while (tmp != NULL)
     {
       if (cb_taken(&tmp->wr) > 0 && FD_ISSET(tmp->fd, &bf->wbf))
-	write_cb(&tmp->wr, tmp->fd, &tmp->queue);
+	write_cb(tmp, data, &tmp->queue);
       tmp = tmp->next;
     }
 }

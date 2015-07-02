@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Thu Jul  2 04:31:56 2015 Thibaut Lopez
+** Last update Thu Jul  2 19:24:58 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -56,6 +56,7 @@ int		my_graphic(char **com, t_zap *data, t_user *usr)
   my_enw(data, usr);
   my_agt(com, data, usr);
   usr->nb = find_nb(usr, GRAPHIC);
+  verbose_new(usr, -1, GRAPHIC, data);
   usr->type = GRAPHIC;
   return (0);
 }
@@ -81,7 +82,7 @@ void		my_endgame(t_ask *ask, t_user *usr, t_zap *data)
   sprintf(tmp, "seg %s\n", data->win->name);
   fill_cb(&usr->wr, tmp, strlen(tmp));
   while (cb_taken(&usr->wr) > 0)
-    write_cb(&usr->wr, usr->fd, NULL);
+    write_cb(usr, data, NULL);
 }
 
 void		my_reset_map(t_user **usr, t_zap *data, t_ask *ask)
@@ -106,9 +107,5 @@ void		my_reset_map(t_user **usr, t_zap *data, t_ask *ask)
 	  data->map[i][j].thystame = rand() % 2;
 	}
     }
-  printf("Information about the server:\nPort: %d\nMap of %dx%d cells\n\
-Player max per team: %d\nDelay for each action: %d\nName of each team\n",
-	 data->port, data->length, data->width, data->count, data->delay);
-  put_team(data->teams, 1);
-  printf("(Time waiting for a graphic response: %f)\n", data->asking);
+  print_data(data);
 }

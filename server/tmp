@@ -1,0 +1,36 @@
+
+Information about the server:
+Port: 6667
+Map of 1x1 cells
+Player max per team: 10
+Delay for each action: 100
+Name of each team
+TeamA
+TeamB
+(Time waiting for a graphic response: 4.500000)
+new client
+2015-07-02 17:46:33:699922:
+User 0 (type unknown) will receive 'BIENVENUE'
+
+2015-07-02 17:46:33:763299:
+User 0 (type unknown) send 'GRAPHIC'
+
+2015-07-02 17:46:33:763347:
+User 0 (type GUI) will receive 'msz 1 1'
+
+2015-07-02 17:46:33:763373:
+User 0 (type GUI) will receive 'sgt 100'
+
+2015-07-02 17:46:33:763391:
+User 0 (type GUI) will receive 'bct 0 0 9 1 1 2 2 2 1'
+
+2015-07-02 17:46:33:763405:
+User 0 (type GUI) will receive 'tna TeamA'
+
+2015-07-02 17:46:33:763419:
+User 0 (type GUI) will receive 'tna TeamB'
+
+2015-07-02 17:46:33:763433:
+User 0 (type GUI) will receive 'agt 4.500000'
+
+client 4 dead

@@ -5,10 +5,10 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri Apr 10 10:17:56 2015 Thibaut Lopez
-** Last update Wed Jul  1 20:36:45 2015 Thibaut Lopez
+** Last update Thu Jul  2 17:04:22 2015 Thibaut Lopez
 */
 
-#include "cb.h"
+#include "server.h"
 
 void	*flush_cb(t_cb *cb)
 {
@@ -61,7 +61,7 @@ int	read_cb(t_cb *cb, int fd)
   return (rl);
 }
 
-int	write_cb(t_cb *cb, int fd, t_que **queue)
+int	write_cb(t_user *usr, t_zap *data, t_que **queue)
 {
   int	wl;
   char	*str;
@@ -71,20 +71,21 @@ int	write_cb(t_cb *cb, int fd, t_que **queue)
   gettimeofday(&now, NULL);
   if (queue == NULL || cmp_tv(front_q(*queue), &now) <= 0)
     {
-      if ((str = get_line_cb(cb)) == NULL || strlen(str) == 0)
+      if ((str = get_line_cb(&usr->wr)) == NULL || strlen(str) == 0)
 	{
 	  if (str != NULL)
 	    free(str);
 	  return (0);
 	}
+      verbose_send(usr, str, data);
       str[strlen(str)] = '\n';
       tmp = (queue == NULL) ? NULL : front_q(*queue);
       if (tmp == NULL)
 	tmp = &now;
-      wl = write(fd, str, strlen(str));
+      wl = write(usr->fd, str, strlen(str));
       if (queue != NULL && wl == (int)strlen(str))
 	pop_q(queue);
-      fill_cb(cb, str + wl, strlen(str) - wl);
+      fill_cb(&usr->wr, str + wl, strlen(str) - wl);
       free(str);
     }
   return (0);

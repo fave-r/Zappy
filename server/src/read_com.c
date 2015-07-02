@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:51:04 2015 romaric
-** Last update Wed Jul  1 21:28:14 2015 Thibaut Lopez
+** Last update Thu Jul  2 15:43:21 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -58,6 +58,7 @@ void	check_com(t_com *com, t_user *usr, int *ret, t_zap *data)
 
   while (usr->queue == NULL && (gnl = get_line_cb(&usr->cb)) != NULL)
     {
+      verbose_receive(usr, gnl, data);
       if ((tok = stwt(gnl, " \t\n\r", usr->type)) == NULL)
 	{
 	  *ret = 0;

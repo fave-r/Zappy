@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Tue May  5 14:40:23 2015 romaric
-## Last update Thu Jul  2 04:17:32 2015 Thibaut Lopez
+## Last update Thu Jul  2 16:03:14 2015 Thibaut Lopez
 ##
 
 CC=		gcc
@@ -45,6 +45,8 @@ S_SRC=		src/asking.c					\
 		src/setter.c					\
 		src/strflat.c					\
 		src/team.c					\
+		src/verbose.c					\
+		src/verbose2.c					\
 		src/while_serv.c				\
 		src/x_tcp.c					\
 		src/client/cone_x.c				\

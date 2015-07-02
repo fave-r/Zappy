@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Wed May  6 09:49:44 2015 Thibaut Lopez
-** Last update Tue May 26 14:14:48 2015 Thibaut Lopez
+** Last update Thu Jul  2 14:55:48 2015 Thibaut Lopez
 */
 
 #include "utils.h"
@@ -69,14 +69,14 @@ int	sstrchr(char **tab, char *str)
   return (-1);
 }
 
-void	putsstr(int fd, char **str)
+void	putsstr(char **str)
 {
   int	i;
 
   i = 0;
   while (str != NULL && str[i] != NULL)
     {
-      dprintf(fd, "%s\n", str[i]);
+      printf("%s\n", str[i]);
       i++;
     }
 }

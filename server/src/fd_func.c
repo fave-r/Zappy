@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:51:15 2015 romaric
-** Last update Thu Jul  2 03:49:39 2015 Thibaut Lopez
+** Last update Thu Jul  2 19:48:50 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -56,6 +56,7 @@ void			new_client(int fd, t_user **user)
   new->type = UNKNOWN;
   new->info = NULL;
   new->nb_ncom = 0;
+  new->nb = -1;
   printf("new client\n");
   if (*user != NULL)
     push_back(user, new);
@@ -64,12 +65,13 @@ void			new_client(int fd, t_user **user)
   fill_cb(&new->wr, "BIENVENUE\n", strlen("BIENVENUE\n"));
 }
 
-t_user			*unit_user_free(t_user *user)
+t_user			*unit_user_free(t_user *user, t_zap *data)
 {
   t_user		*next;
 
   if (user == NULL)
     return (NULL);
+  verbose_death(user, data);
   next = user->next;
   close(user->fd);
   free_cb(&user->cb);
@@ -89,11 +91,11 @@ t_user			*unit_user_free(t_user *user)
   return (next);
 }
 
-void			data_free(t_user **data)
+void			data_free(t_user **usr, t_zap *data)
 {
   t_user		*tmp;
 
-  tmp = *data;
+  tmp = *usr;
   while (tmp != NULL)
-    tmp = unit_user_free(tmp);
+    send_death(usr, &tmp, data);
 }

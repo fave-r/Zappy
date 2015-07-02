@@ -5,19 +5,19 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 26 16:24:34 2015 Thibaut Lopez
-** Last update Tue Jun 30 11:56:48 2015 Thibaut Lopez
+** Last update Thu Jul  2 14:56:41 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
-void		put_team(t_team *teams, int fd)
+void		put_team(t_team *teams)
 {
   t_team	*cur;
 
   cur = teams;
   while (cur != NULL)
     {
-      dprintf(fd, "%s\n", cur->name);
+      printf("%s\n", cur->name);
       cur = cur->next;
     }
 }

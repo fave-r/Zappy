@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Mon Jun  1 11:28:59 2015 Thibaut Lopez
-** Last update Thu Jul  2 04:34:33 2015 Thibaut Lopez
+** Last update Thu Jul  2 19:41:22 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -103,10 +103,10 @@ int		end_game(t_zap *data, t_user **user)
 	fill_cb(&tmp->wr, "mort\n", 5);
       if (tmp->type != UNKNOWN)
 	while (cb_taken(&tmp->wr) > 0)
-	  write_cb(&tmp->wr, tmp->fd, NULL);
+	  write_cb(tmp, data, NULL);
       if (tmp->type == AI && *user == tmp)
 	*user = (*user)->next;
-      tmp = (tmp->type == AI) ? unit_user_free(tmp) : tmp->next;
+      tmp = (tmp->type == AI) ? unit_user_free(tmp, data) : tmp->next;
     }
   while (data->end != NULL)
     pop_q(&data->end);

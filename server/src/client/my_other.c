@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Wed Jul  1 21:30:12 2015 Thibaut Lopez
+** Last update Thu Jul  2 19:15:29 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -104,6 +104,7 @@ int		my_other(char **com, t_zap *data, t_user *usr)
   is_hatching = hatching_egg(&pos, usr, data, cur);
   usr->info = player_info(cur, &pos);
   usr->nb = find_nb(usr, AI);
+  verbose_new(usr, is_hatching, AI, data);
   usr->type = AI;
   GET_GHOST(usr) = (is_hatching != -1) ? 1 : 0;
   tmp = usr;

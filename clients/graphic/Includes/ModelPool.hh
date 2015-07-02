@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun Jun 21 02:21:07 2015 jean_c
-// Last update Sun Jun 21 02:25:35 2015 jean_c
+// Last update Thu Jul  2 13:50:52 2015 Leo Thevenet
 //
 
 #ifndef __MODELPOOL_HH__

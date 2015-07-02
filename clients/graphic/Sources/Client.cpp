@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 17:40:56 2015 Thibaut Lopez
-// Last update Wed Jul  1 14:07:31 2015 Leo Thevenet
+// Last update Thu Jul  2 15:36:53 2015 Leo Thevenet
 //
 
 #include "Client.hh"
@@ -54,9 +54,6 @@ void		quit_signal(int signo)
   signaled = 1;
 }
 
-#include <ctime>
-#include <cstdio>
-
 void		Client::run(Map &map)
 {
   std::string	str;
@@ -65,16 +62,10 @@ void		Client::run(Map &map)
   Graphic       *graphic = new Graphic(0, 0);
   size_t	x = 0, y = 0;
 
-  //std::clock_t start;
-  //double duration;
-
   signal(SIGINT, quit_signal);
   while (signaled == 0 && graphic->update() == true)
     {
-      //start = std::clock();
       this->_update();
-      //duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
-      //  std::cout << "time update : " << duration << std::endl;
       while ((str = this->_s.getLine()).size() > 0)
 	if (str.find_first_of("\n\r") > 0)
 	  try
@@ -92,10 +83,7 @@ void		Client::run(Map &map)
 	    }
 	  catch (std::out_of_range &err)
 	    {}
-      //start = std::clock();
       graphic->draw();
-      //duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
-      //std::cout << "time draw :" << duration << std::endl;
       map.handleKeys();
     }
 }

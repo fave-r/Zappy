@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun Jun 21 02:33:58 2015 jean_c
-// Last update Thu Jul  2 12:37:50 2015 Leo Thevenet
+// Last update Thu Jul  2 14:07:37 2015 Leo Thevenet
 //
 
 #include "TexturePool.hh"

@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 19:21:19 2015 Thibaut Lopez
-// Last update Wed Jul  1 18:34:53 2015 romaric
+// Last update Thu Jul  2 15:36:58 2015 Leo Thevenet
 //
 
 #include "Map.hh"
@@ -15,8 +15,7 @@ Map::Map() : _length(0), _width(0)
 }
 
 Map::~Map()
-{
-}
+{}
 
 void	Map::handleKeys()
 {

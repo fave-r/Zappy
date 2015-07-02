@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Thu Jun  4 17:54:38 2015 Thibaut Lopez
+** Last update Thu Jul  2 03:32:46 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -39,17 +39,25 @@ void		spl_data(t_user **usr, t_zap *data, t_ask *ask)
 void		spl_ok(t_ask *ask, t_user *usr, t_zap *data)
 {
   t_user	*tmp;
+  char		str[64];
 
   (void)data;
   tmp = get_by_nb(usr, my_strtol(ask->args[0] + 1), AI);
+  bzero(str, 64);
+  sprintf(str, "Player #%d is now level %d", tmp->nb, GET_LVL(tmp));
+  my_smg(usr, str);
   my_send_plv(usr, tmp);
 }
 
 void		spl_ko(t_ask *ask, t_user *usr, t_zap *data)
 {
-  (void)ask;
-  (void)usr;
+  char		str[64];
+
   (void)data;
+  bzero(str, 64);
+  sprintf(str, "Player #%d won't level up by the asking",
+	  my_strtol(ask->args[0] + 1));
+  my_smg(usr, str);
 }
 
 int		my_spl(char **com, t_zap *data, t_user *usr)
@@ -70,7 +78,7 @@ int		my_spl(char **com, t_zap *data, t_user *usr)
   if (count_type(usr, GRAPHIC) == 1)
     gettimeofday(&ask.wait, NULL);
   push_q((t_que **)&usr->info, &ask, clone_ask);
-  str = strflat(com, " ", usr->nb, q_len((t_que *)usr->info) - 1);
+  str = flat_ask(com, usr->nb, q_len((t_que *)usr->info) - 1);
   str[0] = 'a';
   alert_graphic(str, usr);
   free(str);

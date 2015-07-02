@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Wed Jul  1 13:39:24 2015 Thibaut Lopez
+** Last update Wed Jul  1 21:29:30 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -23,7 +23,7 @@ int	my_fork(char **com, t_zap *data, t_user *usr)
   egg.dad = usr->nb;
   egg.son = -1;
   bzero(tmp, 16);
-  sprintf(tmp, "pfk %d\n", usr->nb); // "pfk #%d\n"
+  sprintf(tmp, "pfk %d\n", usr->nb);
   send_to_graphic(tmp, usr);
   add_tv(&now, 42000000 / data->delay);
   egg.lay.tv_sec = now.tv_sec;

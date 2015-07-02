@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Wed Jul  1 13:54:22 2015 Thibaut Lopez
+** Last update Wed Jul  1 20:56:55 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -17,7 +17,7 @@ int		my_pnw(t_user *usr, t_user *player)
 
   bzero(str, 200);
   nbr = player->nb;
-  sprintf(str, "pnw %d %d %d %d %d %s\n", // "pnw #%d %d %d %d %d %s\n"
+  sprintf(str, "pnw #%d %d %d %d %d %s\n",
 	  nbr, GET_X(player), GET_Y(player), GET_DIR(player) + 1,
 	  GET_LVL(player), GET_TEAM(player)->name);
   fill_cb(&usr->wr, str, strlen(str));

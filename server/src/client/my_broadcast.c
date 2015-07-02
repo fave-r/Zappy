@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Wed Jul  1 20:07:46 2015 Thibaut Lopez
+** Last update Wed Jul  1 23:28:49 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -35,13 +35,13 @@ t_pair		get_closest(t_user *src, t_user *dest, t_zap *data)
 int		get_dir(t_pair dir, int *dirs)
 {
   if (dir.f < 0 && dir.s < 0 && dir.f == dir.s)
-    return (dirs[7]);
-  else if (dir.f > 0 && dir.s > 0 && dir.f == dir.s)
-    return (dirs[3]);
-  else if (dir.f < 0 && dir.s > 0 && ABS(dir.f) == ABS(dir.s))
     return (dirs[5]);
-  else if (dir.f > 0 && dir.s < 0 && ABS(dir.f) == ABS(dir.s))
+  else if (dir.f > 0 && dir.s > 0 && dir.f == dir.s)
     return (dirs[1]);
+  else if (dir.f < 0 && dir.s > 0 && ABS(dir.f) == ABS(dir.s))
+    return (dirs[7]);
+  else if (dir.f > 0 && dir.s < 0 && ABS(dir.f) == ABS(dir.s))
+    return (dirs[3]);
   else if (dir.s < 0 && ABS(dir.f) < ABS(dir.s))
     return (dirs[4]);
   else if (dir.s > 0 && ABS(dir.f) < ABS(dir.s))
@@ -80,7 +80,7 @@ void		broadcast_graphic(t_user *usr, char *msg)
 
   tmp = xmalloc((16 + strlen(msg)) * sizeof(char));
   bzero(tmp, 16 + strlen(msg));
-  sprintf(tmp, "pbc %d %s\n", usr->nb, msg); // "pbc #%d %s\n"
+  sprintf(tmp, "pbc %d %s\n", usr->nb, msg);
   send_to_graphic(tmp, usr);
   free(tmp);
 }

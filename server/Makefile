@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Tue May  5 14:40:23 2015 romaric
-## Last update Thu Jun 25 17:23:12 2015 Arnaud Lhomme
+## Last update Thu Jul  2 03:09:31 2015 Thibaut Lopez
 ##
 
 CC=		gcc
@@ -42,6 +42,7 @@ S_SRC=		src/asking.c					\
 		src/ptrs_to_function.c				\
 		src/read_com.c					\
 		src/setter.c					\
+		src/strflat.c					\
 		src/team.c					\
 		src/while_serv.c				\
 		src/x_tcp.c					\
@@ -77,6 +78,7 @@ S_SRC=		src/asking.c					\
 		src/graphic/my_sct.c				\
 		src/graphic/my_sgt.c				\
 		src/graphic/my_sms.c				\
+		src/graphic/my_smg.c				\
 		src/graphic/my_spi.c				\
 		src/graphic/my_spk.c				\
 		src/graphic/my_spl.c				\

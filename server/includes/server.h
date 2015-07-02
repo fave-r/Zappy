@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Wed Jul  1 18:38:13 2015 Thibaut Lopez
+** Last update Thu Jul  2 03:44:05 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -196,12 +196,16 @@ int		set_asking(t_zap *, char *, e_state *);
 t_user		*get_by_nb(t_user *, int, e_clt);
 t_egg		*get_egg_by_nb(t_team *, int);
 int		parse_com(char **, t_zap *);
+void		add_rand_food(t_zap *, int, t_user *);
 int		base_value(t_zap *);
 void		init_val(t_zap *);
 void		free_zap(t_zap *);
 void		send_inc_to_graph(t_user *, t_zap *);
 void		cast_loop(t_user *, t_tv *, int, t_tv *);
 void		send_elev_in(t_user *);
+char		*strflat(char **, char *);
+char		*flat_ask(char **, int, int);
+char		*teamflat(t_team *, char *);
 
 int		count_in_team(t_team *, t_user *);
 int		team_winning(t_user *, t_team *);
@@ -246,8 +250,8 @@ void		west_gole(t_pair *, int);
 int		my_voir(char **, t_zap *, t_user *);
 
 int		my_graphic(char **, t_zap *, t_user *);
-void		my_reset(t_user *, t_zap *);
-void		my_endgame(t_user *, t_zap *);
+void		my_reset(t_ask *, t_user *, t_zap *);
+void		my_endgame(t_ask *, t_user *, t_zap *);
 void		my_reset_map(t_user **, t_zap *, t_ask *);
 int		my_other(char **, t_zap *, t_user *);
 
@@ -286,5 +290,6 @@ t_ask		*get_asking(t_user *, int, int);
 int		my_apr(char **, t_zap *, t_user *);
 int		aeg_response(t_zap *, t_user *, e_rsp);
 int		my_anr(char **, t_zap *, t_user *);
+int		my_smg(t_user *, char *);
 
 #endif

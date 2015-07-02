@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 16:43:03 2015 romaric
-** Last update Wed Jul  1 18:41:33 2015 Thibaut Lopez
+** Last update Wed Jul  1 20:57:21 2015 Thibaut Lopez
 */
 
 #include "utils.h"
@@ -61,7 +61,6 @@ char		*xstrdup(const char *s)
     }
   return (str);
 }
-
 
 int		smod(int nb, int mod)
 {

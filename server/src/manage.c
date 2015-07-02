@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Mon Jun  1 11:28:59 2015 Thibaut Lopez
-** Last update Wed Jul  1 20:12:39 2015 Thibaut Lopez
+** Last update Thu Jul  2 00:23:51 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -26,7 +26,7 @@ int		check_food(t_user *usr, t_zap *data)
   if (cmp_tv(&tmp, &time) == 1 || cmp_tv(&tmp, &time) == 0)
     {
       GET_INV(usr).food -= 1;
-      data->map[rand() % data->length][rand() % data->width].food++;
+      add_rand_food(data, 1, usr);
       GET_TIME(usr) = tv;
       if (GET_INV(usr).food == 0)
 	{
@@ -46,7 +46,7 @@ void		check_egg_time(t_egg *egg, t_tv *now, t_user *usr, t_team *teams)
   if (!(egg->lay.tv_sec == 0 && egg->lay.tv_usec == 0) &&
       cmp_tv(&egg->lay, now) <= 0)
     {
-      sprintf(tmp, "enw %d %d %d %d\n", //"enw #%d #%d %d %d\n",
+      sprintf(tmp, "enw %d %d %d %d\n",
 	      egg->nb, egg->dad, egg->pos.f, egg->pos.s);
       send_to_graphic(tmp, usr);
       egg->lay.tv_sec = 0;
@@ -56,7 +56,7 @@ void		check_egg_time(t_egg *egg, t_tv *now, t_user *usr, t_team *teams)
   else if (cmp_tv(&egg->hatch, now) <= 0)
     {
       new = (egg->son == -1) ? NULL : get_by_nb(usr, egg->son, AI);
-      sprintf(tmp, (new == NULL) ? "edi %d\n" : "eht %d\n", egg->nb); // "edi #%d\n" : "eht #%d\n"
+      sprintf(tmp, (new == NULL) ? "edi %d\n" : "eht %d\n", egg->nb);
       if (new != NULL)
 	GET_GHOST(new) = 0;
       send_to_graphic(tmp, usr);

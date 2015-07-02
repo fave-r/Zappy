@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Thu Jun  4 19:47:34 2015 Thibaut Lopez
+** Last update Thu Jul  2 00:39:02 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -60,10 +60,11 @@ int		my_graphic(char **com, t_zap *data, t_user *usr)
   return (0);
 }
 
-void		my_reset(t_user *usr, t_zap *data)
+void		my_reset(t_ask *ask, t_user *usr, t_zap *data)
 {
   char		**com;
 
+  (void)ask;
   com = malloc(2 * sizeof(char *));
   com[0] = "GRAPHIC";
   com[1] = NULL;
@@ -71,10 +72,11 @@ void		my_reset(t_user *usr, t_zap *data)
   free(com);
 }
 
-void		my_endgame(t_user *usr, t_zap *data)
+void		my_endgame(t_ask *ask, t_user *usr, t_zap *data)
 {
   char		tmp[256];
 
+  (void)ask;
   bzero(tmp, 256);
   sprintf(tmp, "seg %s\n", data->winner->name);
   fill_cb(&usr->wr, tmp, strlen(tmp));

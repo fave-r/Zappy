@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Wed Jul  1 18:41:16 2015 Thibaut Lopez
+** Last update Wed Jul  1 21:29:26 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -29,7 +29,7 @@ int	my_avance(char **com, t_zap *data, t_user *usr)
   GET_Y(usr) = smod(pos.s, data->width);
   fill_cb(&usr->wr, "ok\n", 3);
   push_q(&usr->queue, add_tv(&now, 7000000 / data->delay), clone_tv);
-  sprintf(tmp + strlen(tmp), "ppo %d %d %d %d\n", usr->nb, // "ppo #%d %d %d %d\n"
+  sprintf(tmp + strlen(tmp), "ppo %d %d %d %d\n", usr->nb,
 	  GET_X(usr), GET_Y(usr), GET_DIR(usr) + 1);
   send_to_graphic(tmp, usr);
   GET_CAST(usr).tv_usec = 0;

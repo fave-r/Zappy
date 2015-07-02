@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 16:43:22 2015 Thibaut Lopez
-** Last update Mon Jun  1 16:57:40 2015 Thibaut Lopez
+** Last update Thu Jul  2 02:41:07 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -31,33 +31,6 @@ int		pars_error(char *arg, char **map, t_com *func)
     }
   fprintf(stderr, "Error: %s value without definition flag before.\n", arg);
   return (-1);
-}
-
-char		**map_state()
-{
-  int		i;
-  char		**map;
-
-  map = xmalloc(8 * sizeof(char *) + 7 * 3 * sizeof(char));
-  i = -1;
-  while (++i < 7)
-    map[i] = (char *)map + (8 * sizeof(char *)) + i * 3 * sizeof(char);
-  strcpy(map[0], "-p");
-  map[0][2] = 0;
-  strcpy(map[1], "-x");
-  map[1][2] = 0;
-  strcpy(map[2], "-y");
-  map[2][2] = 0;
-  strcpy(map[3], "-n");
-  map[3][2] = 0;
-  strcpy(map[4], "-c");
-  map[4][2] = 0;
-  strcpy(map[5], "-t");
-  map[5][2] = 0;
-  strcpy(map[6], "-a");
-  map[6][2] = 0;
-  map[7] = NULL;
-  return (map);
 }
 
 t_com		*map_func()
@@ -93,7 +66,7 @@ int		parse_com(char **argv, t_zap *data)
 
   i = 0;
   state = NONE;
-  map = map_state();
+  map = stwt("-p -x -y -n -c -t -a", " ", -1);
   func = map_func();
   while (argv[++i] != NULL)
     {

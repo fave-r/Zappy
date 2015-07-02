@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Wed Jul  1 18:41:17 2015 Thibaut Lopez
+** Last update Wed Jul  1 21:30:04 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -17,11 +17,11 @@ int	send_expulse(int *bool, t_user *usr, t_user *tmp)
   if (++(*bool) == 1)
     {
       bzero(str, 128);
-      sprintf(str, "pex %d\n", usr->nb); // "pex #%d\n"
+      sprintf(str, "pex %d\n", usr->nb);
       send_to_graphic(str, usr);
     }
   bzero(str, 256);
-  sprintf(str, "ppo %d %d %d %d\n", tmp->nb, // "ppo #%d %d %d %d\n"
+  sprintf(str, "ppo %d %d %d %d\n", tmp->nb,
           GET_X(tmp), GET_Y(tmp), GET_DIR(tmp) + 1);
   GET_CAST(tmp).tv_usec = 0;
   GET_CAST(tmp).tv_sec = 0;

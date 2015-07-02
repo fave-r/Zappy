@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Thu Jun  4 18:43:29 2015 Thibaut Lopez
+** Last update Thu Jul  2 03:23:25 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -27,14 +27,24 @@ void		sct_data(t_user **usr, t_zap *data, t_ask *ask)
 
 void		sct_ok(t_ask *ask, t_user *usr, t_zap *data)
 {
+  char		tmp[64];
+
+  bzero(tmp, 64);
+  sprintf(tmp, "Content of %dx%d cell successfully changed",
+	  my_strtol(ask->args[0]), my_strtol(ask->args[1]));
+  my_smg(usr, tmp);
   my_send_bct(data, usr, my_strtol(ask->args[0]), my_strtol(ask->args[1]));
 }
 
 void		sct_ko(t_ask *ask, t_user *usr, t_zap *data)
 {
-  (void)ask;
-  (void)usr;
+  char		tmp[64];
+
   (void)data;
+  bzero(tmp, 64);
+  sprintf(tmp, "Editing of content of %dx%d cell refused",
+	  my_strtol(ask->args[0]), my_strtol(ask->args[1]));
+  my_smg(usr, tmp);
 }
 
 int		check_sct(char **com, t_zap *data)
@@ -65,7 +75,7 @@ int		my_sct(char **com, t_zap *data, t_user *usr)
   if (count_type(usr, GRAPHIC) == 1)
     gettimeofday(&ask.wait, NULL);
   push_q((t_que **)&usr->info, &ask, clone_ask);
-  str = strflat(com, " ", usr->nb, q_len((t_que *)usr->info) - 1);
+  str = flat_ask(com, usr->nb, q_len((t_que *)usr->info) - 1);
   str[0] = 'a';
   alert_graphic(str, usr);
   free(str);

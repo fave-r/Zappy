@@ -5,10 +5,28 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 10:39:02 2015 Thibaut Lopez
-** Last update Tue Jun 30 20:07:06 2015 Thibaut Lopez
+** Last update Wed Jul  1 21:22:00 2015 Thibaut Lopez
 */
 
 #include "server.h"
+
+void	add_rand_food(t_zap *data, int nb, t_user *usr)
+{
+  int	x;
+  int	y;
+  char	tmp[150];
+
+  x = rand() % data->length;
+  y = rand() % data->width;
+  data->map[x][y].food += nb;
+  bzero(tmp, 150);
+  sprintf(tmp, "bct %d %d %d %d %d %d %d %d %d\n", x, y,
+	  (int)data->map[x][y].food, (int)data->map[x][y].linemate,
+	  (int)data->map[x][y].deraumere, (int)data->map[x][y].sibur,
+	  (int)data->map[x][y].mendiane, (int)data->map[x][y].phiras,
+	  (int)data->map[x][y].thystame);
+  send_to_graphic(tmp, usr);
+}
 
 void	init_map(t_zap *data)
 {

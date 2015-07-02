@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 10:23:22 2015 jean_c
-// Last update Wed Jul  1 16:20:40 2015 Leo Thevenet
+// Last update Thu Jul  2 12:38:25 2015 Leo Thevenet
 //
 
 #include "Graphic.hh"
@@ -152,10 +152,15 @@ void		Graphic::updateHUD()
       pos.x += 0.3;
       pos.x += (i % 2 == 1) ? 0.3 : 0;
     }
-  //this->_HUD[1]->setTexture(this->_texturePool->getNumber[this->_map[x][y]->getDeraumere()]);
+  this->_HUD[1]->setTexture(this->_texturePool->getNumber(this->_map[x][y]->getDeraumere()));
+  this->_HUD[3]->setTexture(this->_texturePool->getNumber(this->_map[x][y]->getLinemate()));
+  this->_HUD[5]->setTexture(this->_texturePool->getNumber(this->_map[x][y]->getSibur()));
+  this->_HUD[7]->setTexture(this->_texturePool->getNumber(this->_map[x][y]->getMendiane()));
+  this->_HUD[9]->setTexture(this->_texturePool->getNumber(this->_map[x][y]->getPhiras()));
+  this->_HUD[11]->setTexture(this->_texturePool->getNumber(this->_map[x][y]->getThystame()));
 
 
- std::cout << " Deraumere : " << this->_map[x][y]->getDeraumere();
+  std::cout << " Deraumere : " << this->_map[x][y]->getDeraumere();
   std::cout << " Limenate : " << this->_map[x][y]->getLinemate();
   std::cout << " Sibur : " << this->_map[x][y]->getSibur();
   std::cout << " Mendiane : " << this->_map[x][y]->getMendiane();
@@ -232,7 +237,7 @@ bool		Graphic::update()
 	  {
 	    Deraumere *de = new Deraumere((*it2).first, (*it2).second);
 	    de->setModel(this->_modelPool->getCrystalD());
-	    de->setTexture(this->_texturePool->getWhite());
+	    // de->setTexture(this->_texturePool->getWaterMelon());
 	    this->_objects.push_back(de);
 	    this->_map[(*it2).second][(*it2).first]->setBoolD(true);
 	  }

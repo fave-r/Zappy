@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Thu Jun  4 11:21:43 2015 Thibaut Lopez
+** Last update Thu Jul  2 19:59:40 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -17,7 +17,7 @@ int	my_send_plv(t_user *usr, t_user *player)
   if (player == NULL)
     return (my_sbp(usr));
   bzero(tmp, 50);
-  sprintf(tmp, "plv #%d %d\n", player->nb, GET_LVL(player));
+  sprintf(tmp, "plv %d %d\n", player->nb, GET_LVL(player));
   fill_cb(&usr->wr, tmp, strlen(tmp));
   return (0);
 }
@@ -28,9 +28,9 @@ int	my_plv(char **com, t_zap *data, t_user *usr)
   t_user	*player;
 
   (void)data;
-  if (sstrlen(com) != 2 || com[1][0] != '#')
+  if (sstrlen(com) != 2)
     return (my_sbp(usr));
-  nb = my_strtol(com[1] + 1);
+  nb = my_strtol(com[1]);
   if (nb == -1)
     return (my_sbp(usr));
   player = usr;

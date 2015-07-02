@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Thu Jul  2 04:21:35 2015 Thibaut Lopez
+** Last update Fri Jul  3 01:20:07 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -49,5 +49,6 @@ int		my_sst(char **com, t_zap *data, t_user *usr)
   str[0] = 'a';
   alert_graphic(str, usr);
   free(str);
+  verbose_ask(usr, "time delay editing", data);
   return (0);
 }

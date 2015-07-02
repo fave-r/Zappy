@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu Jul  2 15:51:33 2015 Thibaut Lopez
-** Last update Thu Jul  2 19:57:26 2015 Thibaut Lopez
+** Last update Fri Jul  3 01:38:12 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -40,12 +40,12 @@ void		verbose_base(t_user *usr, char *color)
   if (isatty(1))
     printf("\033[36m");
   printf("%s:%ld:\n", time, now.tv_usec);
+  if (isatty(1))
+    printf(color);
   if (usr != NULL)
-    {
-      if (isatty(1))
-	printf(color);
-      printf("User %d (type %s)", usr->nb, type);
-    }
+    printf("User %d (type %s)", usr->nb, type);
+  else
+    printf("Server");
 }
 
 int	set_verbose(t_zap *data, char *arg, e_state *state)
@@ -60,15 +60,27 @@ int	set_verbose(t_zap *data, char *arg, e_state *state)
   return (0);
 }
 
-void		verbose_ask(t_user *usr, char *demand, t_ask *ask)
+void		verbose_ask(t_user *usr, char *demand, t_zap *data)
 {
-  (void)usr;
-  (void)demand;
-  (void)ask;
+  if (data->verbose == 0)
+    return ;
+  verbose_base(usr, "\033[37m");
+  printf(" is asking for a %s\n", demand);
+  if (isatty(1))
+    printf("\033[0m");
+  printf("\n");
 }
 
-void		verbose_ask_result(t_user *usr, t_ask *ask)
+void		verbose_ask_result(t_ask *ask, t_zap *data)
 {
-  (void)usr;
-  (void)ask;
+  if (data->verbose == 0)
+    return ;
+  verbose_base(NULL, "\033[37m");
+  if (ask->res == APR)
+    printf(": ask successfull\n");
+  else
+    printf(": ask failed\n");
+  if (isatty(1))
+    printf("\033[0m");
+  printf("\n");
 }

@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Thu Jul  2 19:24:58 2015 Thibaut Lopez
+** Last update Fri Jul  3 00:58:10 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -25,7 +25,7 @@ void		my_enw(t_zap *data, t_user *usr)
 	{
 	  egg = front_q(eggs);
 	  bzero(str, 64);
-	  sprintf(str, "enw #%d #%d %d %d\n",
+	  sprintf(str, "enw %d %d %d %d\n",
 		  egg->nb, egg->dad, egg->pos.f, egg->pos.s);
 	  fill_cb(&usr->wr, str, strlen(str));
 	  eggs = eggs->next;

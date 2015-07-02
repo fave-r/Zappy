@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Thu Jul  2 04:24:57 2015 Thibaut Lopez
+** Last update Fri Jul  3 01:22:24 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -93,5 +93,6 @@ int		my_stn(char **com, t_zap *data, t_user *usr)
   str[0] = 'a';
   alert_graphic(str, usr);
   free(str);
+  verbose_ask(usr, "team name editing", data);
   return (0);
 }

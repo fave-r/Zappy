@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Thu Jun  4 10:43:44 2015 Thibaut Lopez
+** Last update Fri Jul  3 00:58:30 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -17,7 +17,7 @@ int	my_send_ppo(t_user *usr, t_user *player)
   if (player == NULL)
     return (0);
   bzero(tmp, 50);
-  sprintf(tmp, "ppo #%d %d %d %d\n", player->nb,
+  sprintf(tmp, "ppo %d %d %d %d\n", player->nb,
 	  GET_X(player), GET_Y(player), GET_DIR(player) + 1);
   fill_cb(&usr->wr, tmp, strlen(tmp));
   return (0);
@@ -29,9 +29,9 @@ int	my_ppo(char **com, t_zap *data, t_user *usr)
   t_user	*player;
 
   (void)data;
-  if (sstrlen(com) != 2 || com[1][0] != '#')
+  if (sstrlen(com) != 2)
     return (my_sbp(usr));
-  nb = my_strtol(com[1] + 1);
+  nb = my_strtol(com[1]);
   if (nb == -1)
     return (my_sbp(usr));
   player = usr;

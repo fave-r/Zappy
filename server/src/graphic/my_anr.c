@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Wed Jun  3 10:36:53 2015 Thibaut Lopez
+** Last update Fri Jul  3 00:47:46 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -24,13 +24,12 @@ int		my_anr(char **com, t_zap *data, t_user *usr)
   int		ask_nb;
   t_ask		*ask;
 
-  if (sstrlen(com) > 3 || sstrlen(com) == 2 ||
-      (sstrlen(com) == 3 && (com[1][0] != '#' || com[2][0] != '#')))
+  if (sstrlen(com) > 3 || sstrlen(com) == 1)
     return (my_sbp(usr));
   if (sstrlen(com) == 1)
     return (aeg_response(data, usr, ANR));
-  if ((ig = my_strtol(com[1] + 1)) == -1 ||
-      (ask_nb = my_strtol(com[2] + 1)) == -1)
+  if ((ig = my_strtol(com[1])) == -1 ||
+      (ask_nb = my_strtol(com[2])) == -1)
     return (my_sbp(usr));
   if ((ask = get_asking(usr, ig, ask_nb)) == NULL)
     return (my_sbp(usr));

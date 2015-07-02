@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Thu Jul  2 04:40:49 2015 Thibaut Lopez
+** Last update Fri Jul  3 01:19:36 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -15,7 +15,7 @@ void		spp_data(t_user **usr, t_zap *data, t_ask *ask)
   t_user	*tmp;
 
   (void)data;
-  tmp = get_by_nb(*usr, my_strtol(ask->args[0] + 1), AI);
+  tmp = get_by_nb(*usr, my_strtol(ask->args[0]), AI);
   GET_X(tmp) = my_strtol(ask->args[1]);
   GET_Y(tmp) = my_strtol(ask->args[2]);
   GET_DIR(tmp) = my_strtol(ask->args[3]);
@@ -28,7 +28,7 @@ void		spp_ok(t_ask *ask, t_user *usr, t_zap *data)
   char		*dir;
 
   (void)data;
-  tmp = get_by_nb(usr, my_strtol(ask->args[0] + 1), AI);
+  tmp = get_by_nb(usr, my_strtol(ask->args[0]), AI);
   dir = (GET_DIR(tmp) == 0) ? "north" : (GET_DIR(tmp) == 1) ? "east" :
     (GET_DIR(tmp) == 2) ? "south" : "west";
   sprintf(str, "The player #%d has been moved: %dx%d, looking at %s",
@@ -43,7 +43,7 @@ void		spp_ko(t_ask *ask, t_user *usr, t_zap *data)
 
   (void)data;
   bzero(str, 64);
-  sprintf(str, "The player #%d won't move", my_strtol(ask->args[0] + 1));
+  sprintf(str, "The player #%d won't move", my_strtol(ask->args[0]));
   my_smg(usr, str);
 }
 
@@ -53,8 +53,8 @@ int		my_spp(char **com, t_zap *data, t_user *usr)
   char		*str;
   t_ask		ask;
 
-  if (sstrlen(com) != 5 || com[1][0] != '#' ||
-      (val = my_strtol(com[1] + 1)) == -1 || get_by_nb(usr, val, AI) == NULL ||
+  if (sstrlen(com) != 5 ||
+      (val = my_strtol(com[1])) == -1 || get_by_nb(usr, val, AI) == NULL ||
       (val = my_strtol(com[2])) == -1 || val >= data->length ||
       (val = my_strtol(com[3])) == -1 || val >= data->width ||
       (val = my_strtol(com[4])) == -1 || val >= 4)
@@ -73,5 +73,6 @@ int		my_spp(char **com, t_zap *data, t_user *usr)
   str[0] = 'a';
   alert_graphic(str, usr);
   free(str);
+  verbose_ask(usr, "player position and/or editing", data);
   return (0);
 }

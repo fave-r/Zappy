@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Mon Jun  1 11:28:59 2015 Thibaut Lopez
-** Last update Thu Jul  2 19:41:22 2015 Thibaut Lopez
+** Last update Fri Jul  3 01:41:37 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -59,6 +59,8 @@ void		check_egg_time(t_egg *egg, t_tv *now, t_user *usr, t_team *teams)
       sprintf(tmp, (new == NULL) ? "edi %d\n" : "eht %d\n", egg->nb);
       if (new != NULL)
 	GET_GHOST(new) = 0;
+      if (new != NULL)
+	gettimeofday(&GET_TIME(new), NULL);
       send_to_graphic(tmp, usr);
       pop_q(&teams->eggs);
     }
@@ -101,9 +103,8 @@ int		end_game(t_zap *data, t_user **user)
 	fill_cb(&tmp->wr, s, strlen(s));
       else if (tmp->type == AI)
 	fill_cb(&tmp->wr, "mort\n", 5);
-      if (tmp->type != UNKNOWN)
-	while (cb_taken(&tmp->wr) > 0)
-	  write_cb(tmp, data, NULL);
+      while (tmp->type != UNKNOWN && cb_taken(&tmp->wr) > 0)
+	write_cb(tmp, data, NULL);
       if (tmp->type == AI && *user == tmp)
 	*user = (*user)->next;
       tmp = (tmp->type == AI) ? unit_user_free(tmp, data) : tmp->next;
@@ -113,6 +114,7 @@ int		end_game(t_zap *data, t_user **user)
   if (count_type(*user, GRAPHIC) == 0 || data->wait == 1)
     return (0);
   find_ask(&data->end_game, data->asking);
+  verbose_ask(NULL, "game restart", data);
   return (0);
 }
 

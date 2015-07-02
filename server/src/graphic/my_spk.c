@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Thu Jul  2 04:22:36 2015 Thibaut Lopez
+** Last update Fri Jul  3 01:20:37 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -14,7 +14,7 @@ void		spk_data(t_user **usr, t_zap *data, t_ask *ask)
 {
   t_user	*tmp;
 
-  tmp = get_by_nb(*usr, my_strtol(ask->args[0] + 1), AI);
+  tmp = get_by_nb(*usr, my_strtol(ask->args[0]), AI);
   send_death(usr, &tmp, data);
 }
 
@@ -24,7 +24,7 @@ void		spk_ok(t_ask *ask, t_user *usr, t_zap *data)
 
   (void)data;
   bzero(str, 64);
-  sprintf(str, "Player #%d successfuly killed", my_strtol(ask->args[0] + 1));
+  sprintf(str, "Player #%d successfuly killed", my_strtol(ask->args[0]));
   my_smg(usr, str);
 }
 
@@ -34,7 +34,7 @@ void		spk_ko(t_ask *ask, t_user *usr, t_zap *data)
 
   (void)data;
   bzero(str, 64);
-  sprintf(str, "Player #%d will stay alive", my_strtol(ask->args[0] + 1));
+  sprintf(str, "Player #%d will stay alive", my_strtol(ask->args[0]));
   my_smg(usr, str);
 }
 
@@ -44,8 +44,8 @@ int		my_spk(char **com, t_zap *data, t_user *usr)
   char		*str;
   t_ask		ask;
 
-  if (sstrlen(com) != 2 || com[1][0] != '#' ||
-      (val = my_strtol(com[1] + 1)) == -1 || get_by_nb(usr, val, AI) == NULL)
+  if (sstrlen(com) != 2 || (val = my_strtol(com[1])) == -1
+      || get_by_nb(usr, val, AI) == NULL)
     return (my_sbp(usr));
   ask.args = sstrdup(com + 1);
   ask.ok = spk_ok;
@@ -61,5 +61,6 @@ int		my_spk(char **com, t_zap *data, t_user *usr)
   str[0] = 'a';
   alert_graphic(str, usr);
   free(str);
+  verbose_ask(usr, "player killing", data);
   return (0);
 }

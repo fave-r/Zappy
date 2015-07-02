@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Thu Jul  2 04:32:31 2015 Thibaut Lopez
+** Last update Fri Jul  3 01:21:44 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -17,7 +17,7 @@ void		spl_data(t_user **usr, t_zap *data, t_ask *ask)
   t_tv		now;
   char		str[50];
 
-  tmp = get_by_nb(*usr, my_strtol(ask->args[0] + 1), AI);
+  tmp = get_by_nb(*usr, my_strtol(ask->args[0]), AI);
   GET_LVL(tmp) = my_strtol(ask->args[1]);
   if (IS_CASTING(tmp))
     {
@@ -42,7 +42,7 @@ void		spl_ok(t_ask *ask, t_user *usr, t_zap *data)
   char		str[64];
 
   (void)data;
-  tmp = get_by_nb(usr, my_strtol(ask->args[0] + 1), AI);
+  tmp = get_by_nb(usr, my_strtol(ask->args[0]), AI);
   bzero(str, 64);
   sprintf(str, "Player #%d is now level %d", tmp->nb, GET_LVL(tmp));
   my_smg(usr, str);
@@ -56,7 +56,7 @@ void		spl_ko(t_ask *ask, t_user *usr, t_zap *data)
   (void)data;
   bzero(str, 64);
   sprintf(str, "Player #%d won't level up by the asking",
-	  my_strtol(ask->args[0] + 1));
+	  my_strtol(ask->args[0]));
   my_smg(usr, str);
 }
 
@@ -66,8 +66,8 @@ int		my_spl(char **com, t_zap *data, t_user *usr)
   char		*str;
   t_ask		ask;
 
-  if (sstrlen(com) != 3 || com[1][0] != '#' ||
-      (val = my_strtol(com[1] + 1)) == -1 || get_by_nb(usr, val, AI) == NULL ||
+  if (sstrlen(com) != 3 || (val = my_strtol(com[1])) == -1 ||
+      get_by_nb(usr, val, AI) == NULL ||
       (val = my_strtol(com[2])) <= 0 || val > 8)
     return (my_sbp(usr));
   ask.args = sstrdup(com + 1);
@@ -84,5 +84,6 @@ int		my_spl(char **com, t_zap *data, t_user *usr)
   str[0] = 'a';
   alert_graphic(str, usr);
   free(str);
+  verbose_ask(usr, "player level editing", data);
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Thu Jul  2 19:42:57 2015 Thibaut Lopez
+** Last update Fri Jul  3 01:38:20 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -222,6 +222,8 @@ void		verbose_death(t_user *, t_zap *);
 void		print_data(t_zap *);
 void		verbose_base(t_user *, char *);
 int		set_verbose(t_zap *, char *, e_state *);
+void		verbose_ask(t_user *, char *, t_zap *);
+void		verbose_ask_result(t_ask *, t_zap *);
 
 int		count_in_team(t_team *, t_user *);
 int		team_winning(t_user *, t_team *);

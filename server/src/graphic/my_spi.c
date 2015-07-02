@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Thu Jul  2 04:22:23 2015 Thibaut Lopez
+** Last update Fri Jul  3 01:21:10 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -15,7 +15,7 @@ void		spi_data(t_user **usr, t_zap *data, t_ask *ask)
   t_user	*tmp;
 
   (void)data;
-  tmp = get_by_nb(*usr, my_strtol(ask->args[0] + 1), AI);
+  tmp = get_by_nb(*usr, my_strtol(ask->args[0]), AI);
   GET_INV(tmp).food = my_strtol(ask->args[3]);
   GET_INV(tmp).linemate = my_strtol(ask->args[4]);
   GET_INV(tmp).deraumere = my_strtol(ask->args[5]);
@@ -31,7 +31,7 @@ void		spi_ok(t_ask *ask, t_user *usr, t_zap *data)
   char		str[64];
 
   (void)data;
-  tmp = get_by_nb(usr, my_strtol(ask->args[0] + 1), AI);
+  tmp = get_by_nb(usr, my_strtol(ask->args[0]), AI);
   bzero(str, 64);
   sprintf(str, "Inventory of player #%d changed", tmp->nb);
   my_smg(usr, str);
@@ -45,7 +45,7 @@ void		spi_ko(t_ask *ask, t_user *usr, t_zap *data)
   (void)data;
   bzero(str, 64);
   sprintf(str, "Inventory of player #%d will stay the same",
-	  my_strtol(ask->args[0] + 1));
+	  my_strtol(ask->args[0]));
   my_smg(usr, str);
 }
 
@@ -53,8 +53,7 @@ int		check_spi(char **com, t_zap *data, t_user *usr)
 {
   int		val;
 
-  return (sstrlen(com) != 11 || com[1][0] != '#' ||
-	  (val = my_strtol(com[1] + 1)) == -1 ||
+  return (sstrlen(com) != 11 || (val = my_strtol(com[1])) == -1 ||
 	  get_by_nb(usr, val, AI) == NULL ||
 	  (val = my_strtol(com[2])) == -1 || val >= data->length ||
 	  (val = my_strtol(com[3])) == -1 || val >= data->width ||
@@ -85,5 +84,6 @@ int		my_spi(char **com, t_zap *data, t_user *usr)
   str[0] = 'a';
   alert_graphic(str, usr);
   free(str);
+  verbose_ask(usr, "player inventory editing", data);
   return (0);
 }

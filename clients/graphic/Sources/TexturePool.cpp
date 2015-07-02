@@ -24,10 +24,10 @@ void                    TexturePool::init()
     throw loading_error("TexturePool : Cannot load Ground texture");
   else if (this->_textureSelectedGround.load("./Ressources/Textures/selectedGround.tga", true) == false)
     throw loading_error("TexturePool : Cannot load Selected Ground texture");
-  else if (this->_textureWaterMelon.load("./Ressources/Textures/Watermelon_Cartoon.tga", true) == false)
+/*  else if (this->_textureWaterMelon.load("./Ressources/Textures/Watermelon_Cartoon.tga", true) == false)
     throw loading_error("TexturePool : Cannot load Selected WaterMelon texture");
       else if (this->_White.load("./Ressources/Textures/white.tga", true) == false)
-    throw loading_error("TexturePool : Cannot load Selected WaterMelon texture");
+    throw loading_error("TexturePool : Cannot load Selected WaterMelon texture");*/
 }
 
 const gdl::Texture      &TexturePool::getGround() const

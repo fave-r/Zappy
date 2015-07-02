@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:38:34 2015 romaric
-** Last update Thu Jul  2 00:05:51 2015 Thibaut Lopez
+** Last update Thu Jul  2 04:32:01 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -61,7 +61,7 @@ void		cast_result(t_zap *data, t_user **user, t_user *tmp, t_tv *now)
   send_inc_to_graph(tmp, data);
   if ((check = team_winning(tmp, GET_TEAM(tmp))) == 1)
     push_q(&data->end, now, clone_tv);
-  data->winner = (check == 1) ? GET_TEAM(tmp) : NULL;
+  data->win = (check == 1) ? GET_TEAM(tmp) : NULL;
 }
 
 void		check_client(t_user **user, t_bf *bf, t_zap *data)

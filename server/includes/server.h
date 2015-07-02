@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Thu Jul  2 03:44:05 2015 Thibaut Lopez
+** Last update Thu Jul  2 04:31:28 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -41,6 +41,7 @@ typedef	enum	e_state
     C,
     T,
     A,
+    W,
     NONE = -1
   }		e_state;
 
@@ -114,9 +115,10 @@ typedef struct	s_zap
   t_team	*teams;
   int		delay;
   t_que		*end;
-  t_team	*winner;
+  t_team	*win;
   float		asking;
   t_ask		end_game;
+  int		wait;
 }		t_zap;
 
 typedef struct	s_plr
@@ -193,6 +195,7 @@ int		set_team(t_zap *, char *, e_state *);
 int		set_count(t_zap *, char *, e_state *);
 int		set_delay(t_zap *, char *, e_state *);
 int		set_asking(t_zap *, char *, e_state *);
+int		set_wait(t_zap *, char *, e_state *);
 t_user		*get_by_nb(t_user *, int, e_clt);
 t_egg		*get_egg_by_nb(t_team *, int);
 int		parse_com(char **, t_zap *);

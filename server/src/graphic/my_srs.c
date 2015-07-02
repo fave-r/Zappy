@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Thu Jul  2 03:22:59 2015 Thibaut Lopez
+** Last update Thu Jul  2 04:37:53 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -29,7 +29,8 @@ void		srs_data(t_user **usr, t_zap *data, t_ask *ask)
 void		srs_ok(t_ask *ask, t_user *usr, t_zap *data)
 {
   (void)ask;
-  my_smg(usr, "The server is being reset: replacing ressources and kicking players");
+  my_smg(usr, "The server is being reset: replacing \
+ressources and kicking players");
   my_send_mct(data, usr);
 }
 
@@ -52,9 +53,11 @@ int		my_srs(char **com, t_zap *data, t_user *usr)
   ask.changes = srs_data;
   ask.ko = srs_ko;
   find_ask(&ask, data->asking);
-  if (count_type(usr, GRAPHIC) == 1)
+  if (count_type(usr, GRAPHIC) == 1 || data->wait == 1)
     gettimeofday(&ask.wait, NULL);
   push_q((t_que **)&usr->info, &ask, clone_ask);
+  if (data->wait == 1)
+    return (0);
   str = flat_ask(com, usr->nb, q_len((t_que *)usr->info) - 1);
   str[0] = 'a';
   alert_graphic(str, usr);

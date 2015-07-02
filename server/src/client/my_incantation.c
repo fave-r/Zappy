@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Wed Jul  1 02:28:38 2015 Thibaut Lopez
+** Last update Thu Jul  2 04:41:53 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -98,7 +98,6 @@ int		my_incantation(char **com, t_zap *data, t_user *usr)
     {
       if (GET_LVL(usr) == GET_LVL(tmp) && !IS_CASTING(tmp))
 	{
-	  //fill_cb(&tmp->wr, "elevation en cours\n", 19);
 	  GET_CAST(tmp).tv_sec = now.tv_sec;
 	  GET_CAST(tmp).tv_usec = now.tv_usec;
 	}

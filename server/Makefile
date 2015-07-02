@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Tue May  5 14:40:23 2015 romaric
-## Last update Thu Jul  2 03:09:31 2015 Thibaut Lopez
+## Last update Thu Jul  2 04:17:32 2015 Thibaut Lopez
 ##
 
 CC=		gcc
@@ -41,6 +41,7 @@ S_SRC=		src/asking.c					\
 		src/parser.c					\
 		src/ptrs_to_function.c				\
 		src/read_com.c					\
+		src/set_ask.c					\
 		src/setter.c					\
 		src/strflat.c					\
 		src/team.c					\

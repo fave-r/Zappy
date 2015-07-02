@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Mon Jun  1 11:28:59 2015 Thibaut Lopez
-** Last update Thu Jul  2 00:23:51 2015 Thibaut Lopez
+** Last update Thu Jul  2 04:34:33 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -89,16 +89,16 @@ void		check_eggs(t_team *teams, t_tv *now, t_user *usr)
 
 int		end_game(t_zap *data, t_user **user)
 {
-  char		str[256];
+  char		s[256];
   t_user	*tmp;
 
-  bzero(str, 256);
-  sprintf(str, "seg %s\naeg\n", data->winner->name);
+  bzero(s, 256);
+  sprintf(s, "seg %s\n%s", data->win->name, (data->wait == 0) ? "aeg\n" : "");
   tmp = *user;
   while (tmp != NULL)
     {
       if (tmp->type == GRAPHIC)
-	fill_cb(&tmp->wr, str, strlen(str));
+	fill_cb(&tmp->wr, s, strlen(s));
       else if (tmp->type == AI)
 	fill_cb(&tmp->wr, "mort\n", 5);
       if (tmp->type != UNKNOWN)
@@ -110,7 +110,7 @@ int		end_game(t_zap *data, t_user **user)
     }
   while (data->end != NULL)
     pop_q(&data->end);
-  if (count_type(*user, GRAPHIC) == 0)
+  if (count_type(*user, GRAPHIC) == 0 || data->wait == 1)
     return (0);
   find_ask(&data->end_game, data->asking);
   return (0);

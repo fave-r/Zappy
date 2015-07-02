@@ -5,26 +5,10 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 28 13:49:58 2015 Thibaut Lopez
-** Last update Thu Jul  2 00:37:44 2015 Thibaut Lopez
+** Last update Thu Jul  2 04:14:08 2015 Thibaut Lopez
 */
 
 #include "server.h"
-
-int	set_asking(t_zap *data, char *arg, e_state *state)
-{
-  if (data->asking == -1)
-    {
-      if ((data->asking = my_strtof(arg)) == -1)
-	fprintf(stderr, "Warning: '-a %s': wrong or negative value.\n", arg);
-    }
-  else
-    {
-      fprintf(stderr, "Error: '-a %s': redefinition of asking value.\n", arg);
-      return (-1);
-    }
-  *state = NONE;
-  return (0);
-}
 
 void		alert_graphic(char *com, t_user *usr)
 {

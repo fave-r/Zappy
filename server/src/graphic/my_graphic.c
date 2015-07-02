@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Thu Jul  2 00:39:02 2015 Thibaut Lopez
+** Last update Thu Jul  2 04:31:56 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -78,7 +78,7 @@ void		my_endgame(t_ask *ask, t_user *usr, t_zap *data)
 
   (void)ask;
   bzero(tmp, 256);
-  sprintf(tmp, "seg %s\n", data->winner->name);
+  sprintf(tmp, "seg %s\n", data->win->name);
   fill_cb(&usr->wr, tmp, strlen(tmp));
   while (cb_taken(&usr->wr) > 0)
     write_cb(&usr->wr, usr->fd, NULL);

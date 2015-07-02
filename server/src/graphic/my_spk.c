@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Thu Jul  2 03:24:16 2015 Thibaut Lopez
+** Last update Thu Jul  2 04:22:36 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -52,9 +52,11 @@ int		my_spk(char **com, t_zap *data, t_user *usr)
   ask.changes = spk_data;
   ask.ko = spk_ko;
   find_ask(&ask, data->asking);
-  if (count_type(usr, GRAPHIC) == 1)
+  if (count_type(usr, GRAPHIC) == 1 || data->wait == 1)
     gettimeofday(&ask.wait, NULL);
   push_q((t_que **)&usr->info, &ask, clone_ask);
+  if (data->wait == 1)
+    return (0);
   str = flat_ask(com, usr->nb, q_len((t_que *)usr->info) - 1);
   str[0] = 'a';
   alert_graphic(str, usr);

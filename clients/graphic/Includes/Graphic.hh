@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 09:08:50 2015 jean_c
-// Last update Wed Jul  1 16:06:35 2015 Leo Thevenet
+// Last update Thu Jul  2 15:11:53 2015 Leo Thevenet
 //
 
 #ifndef __GRAPHIC_HH__
@@ -76,6 +76,8 @@ private:
   Camera		*_cam;
 
   void			MoveCase(int);
+  template <typename T>void	erase(std::list<std::pair<int, int> >::const_iterator it2);
+
 };
 
 #endif

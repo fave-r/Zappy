@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun Jun 21 02:33:58 2015 jean_c
-// Last update Thu Jul  2 12:37:50 2015 Leo Thevenet
+// Last update Thu Jul  2 14:07:37 2015 Leo Thevenet
 //
 
 #include "TexturePool.hh"
@@ -24,8 +24,6 @@ void                    TexturePool::init()
     throw loading_error("TexturePool : Cannot load Ground texture");
   else if (this->_textureSelectedGround.load("./Ressources/Textures/selectedGround.tga", true) == false)
     throw loading_error("TexturePool : Cannot load Selected Ground texture");
-  else if (this->_textureWaterMelon.load("./Ressources/Textures/Watermelon_Cartoon.tga", true) == false)
-    throw loading_error("TexturePool : Cannot load Selected WaterMelon texture");
   else if (this->_number[0].load("./Ressources/Textures/0.tga", true) == false)
     throw loading_error("TexturePool : Cannot load Selected 0 texture");
   else if (this->_number[1].load("./Ressources/Textures/1.tga", true) == false)

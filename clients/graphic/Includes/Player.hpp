@@ -13,8 +13,10 @@
 
 #include <iostream>
 #include <string>
+#include "AObject.hh"
+#include <Model.hh>
 
-class	Player
+class	Player : virtual public AObject
 {
 private:
   int	      _nb;
@@ -32,10 +34,16 @@ private:
   int         _mendiane;
   int         _phiras;
   int         _thystame;
-
+  static gdl::Model  _model;
+  static int          _init;
+  
 public:
   Player(const int nb, const int x, const int y, const int dir, const int lev, const std::string &tn);
-  ~Player();
+  virtual ~Player();
+
+public:
+  virtual void          draw(gdl::AShader &shader);
+  virtual void		      setModel(const gdl::Geometry &);
 
 public:
   int	getNb(void) const

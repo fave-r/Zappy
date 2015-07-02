@@ -10,7 +10,11 @@
 
 #include "Player.hpp"
 
+gdl::Model  Player::_model;
+int         Player::_init = false;
+
 Player::Player(const int nb, const int x, const int y, const int dir, const int lev, const std::string &tn)
+  : AObject(x, y)
 {
   this->_nb = nb;
   this->_x = x;
@@ -27,8 +31,24 @@ Player::Player(const int nb, const int x, const int y, const int dir, const int 
   this->_thystame = 0;
   this->_x1 = x;
   this->_y1 = y;
+  if (this->_init == false)
+    {
+      if (this->_model.load("./Ressources/Assets/player.fbx") == false)
+        throw loading_error("Player model fail");
+      this->_init = true;
+    }
 }
 
 Player::~Player()
 {
+}
+
+void          Player::draw(gdl::AShader &shader)
+{
+    this->_model.draw(shader, getTransformation(), GL_QUADS);
+}
+
+void		      Player::setModel(const gdl::Geometry &geo)
+{
+  (void)geo;
 }

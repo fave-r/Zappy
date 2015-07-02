@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 19:21:19 2015 Thibaut Lopez
-// Last update Wed Jul  1 11:41:35 2015 romaric
+// Last update Wed Jul  1 18:34:53 2015 romaric
 //
 
 #include "Map.hh"
@@ -91,4 +91,10 @@ void	Map::putUser(const int nb, const int x, const int y, const int dir, const i
 {
   this->_play.push_back(nb);
   this->_user.putUser(nb, x, y, dir, lev, tn);
+}
+
+void	Map::movUser(const int nb, const int x, const int y, const int dir)
+{
+  this->_play.push_back(nb);
+  this->_user.movUser(nb, x, y, dir);
 }

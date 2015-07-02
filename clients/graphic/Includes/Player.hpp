@@ -5,7 +5,7 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun 29 12:15:40 2015 romaric
-// Last update Wed Jul  1 10:44:38 2015 romaric
+// Last update Thu Jul  2 10:17:44 2015 romaric
 //
 
 #ifndef	PLAYER_HH
@@ -20,6 +20,8 @@ private:
   int	      _nb;
   int         _x;
   int         _y;
+  int	      _x1;
+  int	      _y1;
   int         _dir;
   int         _level;
   std::string _tn;
@@ -49,6 +51,16 @@ public:
   int	getY(void) const
   {
     return _y;
+  };
+
+  int	getX1(void) const
+  {
+    return _x1;
+  };
+
+  int	getY1(void) const
+  {
+    return _y1;
   };
 
   int	getDir(void) const
@@ -99,6 +111,72 @@ public:
   int	getThystame(void) const
   {
     return _thystame;
+  };
+
+  void	setX(const int x)
+  {
+    _x = x;
+  };
+
+  void	setY(const int y)
+  {
+    _y = y;
+  };
+
+  void	setX1(const int x1)
+  {
+    _x1 = x1;
+  };
+
+  void	setY1(const int y1)
+  {
+    _y1 = y1;
+  };
+
+
+  void	setDir(const int dir)
+  {
+    _dir = dir;
+  };
+
+  void	setLevel(const int lvl)
+  {
+    _level = lvl;
+  };
+
+  void	setFood(const int fd)
+  {
+    _food = fd;
+  }
+
+  void	setLinemate(const int line)
+  {
+    _linemate = line;
+  };
+
+  void	setDeraumere(const int dera)
+  {
+    _deraumere = dera;
+  };
+
+  void	setSibur(const int sib)
+  {
+    _sibur = sib;
+  };
+
+  void	setMendiane(const int mend)
+  {
+    _mendiane = mend;
+  };
+
+  void	setPhiras(const int phi)
+  {
+    _phiras = phi;
+  };
+
+  void	setThystame(const int thy)
+  {
+    _thystame = thy;
   };
 };
 

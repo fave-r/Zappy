@@ -5,7 +5,7 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun  8 14:29:10 2015 romaric
-// Last update Wed Jul  1 11:41:04 2015 romaric
+// Last update Wed Jul  1 18:27:11 2015 romaric
 //
 
 #include <fstream>
@@ -125,23 +125,24 @@ void	Command::teamName(const std::string &com, Map &map, Socket &s) const
 void	Command::newPlayer(const std::string &com, Map &map, Socket &s) const
 {
   std::istringstream	ss(com);
-
   int                 id, x, y, dir, level;
   std::string         sa, tn;
 
   ss >> sa >> id >> x >> y >> dir >> level >> tn >> sa;
   if (ss.eof())
-    {
-      //map._user.putUser(id, x, y, dir, level, tn);
-      map.putUser(id, x, y, dir, level, tn);
-    }
+    map.putUser(id, x, y, dir, level, tn);
   (void)s;
 }
 
 void	Command::playerPos(const std::string &com, Map &map, Socket &s) const
 {
-  (void)com;
-  (void)map;
+  std::istringstream	ss(com);
+  int                 id, x, y, dir;
+  std::string         sa;
+
+  ss >> sa >> id >> x >> y >> dir >> sa;
+  if (ss.eof())
+    map.movUser(id, x, y, dir);
   (void)s;
 }
 

@@ -340,6 +340,11 @@ bool		Graphic::update()
 	  }
       }
       this->_update.clear();
+/*
+      std::list<int >::const_iterator it3;
+      for (it2 = this->_play.begin(); it3 != this->_play.end(); ++it3) {
+        this->_user._users[(*it3)];
+      }*/
     }
   // glm::vec4 final = inv * point;
   //     // std::cout << mouse.x << " " << mouse.y << std::endl;

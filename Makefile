@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Jun  8 13:24:05 2015 romaric
-## Last update Mon Jun 29 10:40:30 2015 romaric
+## Last update Fri Jul  3 04:54:28 2015 Thibaut Lopez
 ##
 
 SRV_N=		server/
@@ -31,7 +31,7 @@ clean:
 		make clean -C $(SRV_N)
 		make clean -C $(IG_N)
 
-fclean:		clean
+fclean:
 		make fclean -C $(SRV_N)
 		make fclean -C $(IG_N)
 		@rm -rf bin

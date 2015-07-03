@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 16:43:22 2015 Thibaut Lopez
-** Last update Thu Jul  2 17:15:12 2015 Thibaut Lopez
+** Last update Fri Jul  3 14:44:35 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -13,10 +13,17 @@
 int		set_team(t_zap *data, char *arg, e_state *state)
 {
   (void)state;
-  if (strlen(arg) < 200)
+  if (strlen(arg) < 200 && strcmp(arg, "GRAPHIC") != 0 &&
+      my_strchr(arg, ' ') == -1)
     data->teams = team_cat(data->teams, xstrdup(arg));
   else
-    fprintf(stderr, "Warning: %s: Team name too long\n", arg);
+    {
+      fprintf(stderr, "Warning: %s: ", arg);
+      if (strlen(arg) >= 200)
+	fprintf(stderr, "Team name too long\n");
+      else
+	fprintf(stderr, "Team name not allowed\n");
+    }
   return (0);
 }
 

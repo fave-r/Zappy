@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Fri Jul  3 01:22:24 2015 Thibaut Lopez
+** Last update Fri Jul  3 14:49:14 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -77,6 +77,8 @@ int		my_stn(char **com, t_zap *data, t_user *usr)
 
   if ((sstrlen(com) != 2 && sstrlen(com) != 3) ||
       (team_by_name(data->teams, com[1]) != NULL && team_len(data->teams) == 2)
+      || strcmp(com[1], "GRAPHIC") == 0
+      || (com[2] != NULL && strcmp(com[2], "GRAPHIC") == 0)
       || (sstrlen(com) == 3 && team_by_name(data->teams, com[2]) != NULL))
     return (my_sbp(usr));
   ask.args = sstrdup(com + 1);

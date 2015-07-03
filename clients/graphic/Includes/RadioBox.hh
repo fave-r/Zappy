@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 23 15:58:55 2015 Thibaut Lopez
-// Last update Wed Jun 24 03:31:11 2015 jean_c
+// Last update Fri Jul  3 13:53:48 2015 Thibaut Lopez
 //
 
 #ifndef	RADIOBOX_HH

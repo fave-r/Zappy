@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Mon Jun 22 16:21:13 2015 Leo Thevenet
-// Last update Fri Jun 26 16:30:45 2015 Leo Thevenet
+// Last update Thu Jul  2 20:12:37 2015 Leo Thevenet
 //
 
 #include "Camera.hh"
@@ -70,42 +70,43 @@ const glm::vec3 Camera::getPosHUD()
 bool	Camera::getKey(gdl::Input &input)
 {
   std::map<int, void(Camera::*)()>::const_iterator it;
+  bool	used = false;
 
   for (it = this->_keys.begin(); it != this->_keys.end(); ++it)
     if (input.getKey(it->first))
     {
       (this->*(*it).second)();
-      return true;
-  } 
-  return false;
+      used = true;
+  }
+  return used;
 }
 
 void	Camera::camLeft()
 {
-  this->_x -= 0.1;
+  this->_x -= 0.15;
 }
 
 void	Camera::camRight()
 {
-  this->_x += 0.1;
+  this->_x += 0.15;
 }
 
 void	Camera::camDown()
 {
-  this->_y += 0.1;
+  this->_y += 0.15;
 }
 
 void	Camera::camUp()
 {
-  this->_y -= 0.1;
+  this->_y -= 0.15;
 }
 
 void	Camera::camMinus()
 {
-  this->_z += (this->_z <= 4) ? 0 : -0.1;
+  this->_z += (this->_z <= 4) ? 0 : -0.15;
 }
 
 void	Camera::camPlus()
 {
-  this->_z += (this->_z > 25) ? 0 : 0.1;
+  this->_z += (this->_z > 25) ? 0 : 0.15;
 }

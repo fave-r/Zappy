@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 10:23:22 2015 jean_c
-// Last update Thu Jul  2 15:42:14 2015 Leo Thevenet
+// Last update Thu Jul  2 20:17:34 2015 Leo Thevenet
 //
 
 #include "Graphic.hh"
@@ -359,7 +359,7 @@ bool		Graphic::update()
 
 void		Graphic::draw()
 {
-  //  this->_needUpdate = true;
+  //this->_needUpdate = true;
   if (this->_update.size() > 0 || this->_needUpdate == true)
     {
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

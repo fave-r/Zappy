@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Thu Jun 18 13:09:15 2015 Thibaut Lopez
-// Last update Tue Jun 23 14:43:11 2015 Thibaut Lopez
+// Last update Fri Jul  3 04:19:53 2015 Thibaut Lopez
 //
 
 #include "Music.hh"
@@ -89,7 +89,8 @@ void		Music::createSound(const char* pFile, const char* id, bool type)
 
 void		Music::playSound(const char* id, bool bLoop)
 {
-
+  if (this->getPaused(this->_sons[id].second))
+    return ;
   if (!bLoop)
     this->_sons[id].first->setMode(FMOD_LOOP_OFF);
   else

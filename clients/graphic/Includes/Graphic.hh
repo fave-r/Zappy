@@ -36,6 +36,7 @@
 #include "Phiras.hh"
 #include "Sibur.hh"
 #include "Thystame.hh"
+#include "User.hpp"
 
 class		Graphic
 {
@@ -50,7 +51,7 @@ public:
   void			setHUD();
   void			updateHUD();
   void			changeSize(size_t, size_t, std::vector<std::vector <Content *> > &);
-  void			setMap(std::vector<std::vector <Content *> > &, std::list<std::pair<int, int> > &);
+  void			setMap(std::vector<std::vector <Content *> > &, std::list<std::pair<int, int> > &, std::list<int> &, User &);
   void			addNumberHUD();
 private:
   size_t		_width;
@@ -61,6 +62,8 @@ private:
 
   std::vector<std::vector <Content *> > _map;
   std::list<std::pair<int, int> >       _update;
+  std::list<int>                        _play;
+  User                                  _user;
 
   gdl::SdlContext	_context;
   gdl::BasicShader	_shader;

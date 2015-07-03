@@ -1,11 +1,11 @@
 /*
 ** verbose2.c for verbose2 in /home/lopez_t/Zappy/server
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <lopez_t@epitech.net>
-** 
+**
 ** Started on  Thu Jul  2 15:51:33 2015 Thibaut Lopez
-** Last update Fri Jul  3 01:38:12 2015 Thibaut Lopez
+** Last update Fri Jul  3 18:34:40 2015 romaric
 */
 
 #include "server.h"
@@ -14,7 +14,7 @@ void		print_data(t_zap *data)
 {
   printf("Information about the server:\n");
   printf("Port: %d\n", data->port);
-  printf("Map of %dx%d cells\n", data->length, data->width); 
+  printf("Map of %dx%d cells\n", data->length, data->width);
   printf("Player max per team: %d\n", data->count);
   printf("Delay for each action: %d\n", data->delay);
   printf("Name of each team\n");
@@ -41,7 +41,7 @@ void		verbose_base(t_user *usr, char *color)
     printf("\033[36m");
   printf("%s:%ld:\n", time, now.tv_usec);
   if (isatty(1))
-    printf(color);
+    printf("%s", color);
   if (usr != NULL)
     printf("User %d (type %s)", usr->nb, type);
   else

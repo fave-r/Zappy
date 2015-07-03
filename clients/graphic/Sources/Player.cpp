@@ -36,6 +36,8 @@ Player::Player(const int nb, const int x, const int y, const int dir, const int 
       if (this->_model.load("./Ressources/Assets/player.fbx") == false)
         throw loading_error("Player model fail");
       this->_init = true;
+      this->translate(glm::vec3(x, 1, y));
+      this->scale(glm::vec3(0.01, 0.01, 0.01));
     }
 }
 
@@ -45,7 +47,8 @@ Player::~Player()
 
 void          Player::draw(gdl::AShader &shader)
 {
-    this->_model.draw(shader, getTransformation(), GL_QUADS);
+  std::cout << "je Draw batard\n";
+  this->_model.draw(shader, getTransformation(), GL_QUADS);
 }
 
 void		      Player::setModel(const gdl::Geometry &geo)

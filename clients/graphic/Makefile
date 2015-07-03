@@ -15,7 +15,7 @@ CXXFLAGS +=	-I./Includes -I./Library/includes
 
 LDFLAGS =	-Wl,--rpath=./Library/libs -lgdl_gl -lrt -lfbxsdk -lSDL2 -lSDL2_ttf
 LDFLAGS +=	-lSDL2_image -ldl -lGLU -lX11 -lGLEW -lGL -lX11 -lXi -lXrandr
-LDFLAGS +=	-lXxf86vm -lXinerama -lXcursor -lrt -lm -pthread -Ofast
+LDFLAGS +=	-lXxf86vm -lXinerama -lXcursor -lrt -lm -pthread -Ofast -g -g3 -ggdb
 
 LDLIBS =	-L./Library/libs -Wl,--rpath=./Library/fmod
 LDLIBS +=	./Library/fmod/libfmod.so

@@ -33,9 +33,9 @@ public:
 
   void putUser(const int nb, const int x, const int y, const int dir, const int lev, const std::string &tn)
   {
-    Player tmp(nb, x, y, dir, lev, tn);
+    Player *tmp = new Player(nb, x, y, dir, lev, tn);
 
-    _users[nb] = &tmp;
+    _users[nb] = tmp;
   }
 
   void movUser(const int nb, const int x, const int y, const int dir)

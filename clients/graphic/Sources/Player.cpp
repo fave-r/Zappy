@@ -33,12 +33,12 @@ Player::Player(const int nb, const int x, const int y, const int dir, const int 
   this->_y1 = y;
   if (this->_init == false)
     {
-      if (this->_model.load("./Ressources/Assets/player.fbx") == false)
+      if (this->_model.load("./Ressources/Assets/player.dae") == false)
         throw loading_error("Player model fail");
       this->_init = true;
-      this->translate(glm::vec3(x, 1, y));
-      this->scale(glm::vec3(0.01, 0.01, 0.01));
     }
+      this->translate(glm::vec3(this->_x, 1, this->_y));
+      this->scale(glm::vec3(0.001, 0.001, 0.001));
 }
 
 Player::~Player()
@@ -47,7 +47,7 @@ Player::~Player()
 
 void          Player::draw(gdl::AShader &shader)
 {
-  std::cout << "je Draw batard\n";
+  std::cout << "je Draw batard" << this->_x << " " << this->_y << "\n";
   this->_model.draw(shader, getTransformation(), GL_QUADS);
 }
 

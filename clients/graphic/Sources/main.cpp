@@ -15,13 +15,13 @@ int	main()
   std::pair<std::string, std::string>	con;
   Client	clt;
   Map		map;
-  Menu		*menu;
+//  Menu		*menu;
 
   try
     {
-      menu = new Menu();
-      con = menu->run(map);
-      delete menu;
+  //    menu = new Menu();
+  //    con = menu->run(map);
+    //  delete menu;
       clt.Connect("127.0.0.1", "6667");//con.first, con.second);
     }
   catch (std::runtime_error &err)

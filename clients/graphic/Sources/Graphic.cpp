@@ -369,14 +369,9 @@ bool		Graphic::update()
 	     //erase<Food *>(it2);
 	}
 
-      //this->_update.clear();
+      this->_update.clear();
       this->_needUpdate = true;
 
-	     std::list<int >::const_iterator it3;
-	      for (it3 = this->_play.begin(); it3 != this->_play.end(); ++it3) {
-          std::cout << ">\n";
-	         this->_user.getUser()[(*it3)]->draw(this->_shader);
-         }
     }
   return true;
 }
@@ -389,7 +384,10 @@ void		Graphic::draw()
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
       for (std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it)
 	(*it)->draw(this->_shader);
-
+     std::list<int>::const_iterator it3;
+	      for (it3 = this->_play.begin(); it3 != this->_play.end(); ++it3) {
+	         this->_user.getUser()[(*it3)]->draw(this->_shader);
+         }
       if (this->_camType == 2)
 	for (size_t i = 0; i < this->_HUD.size(); ++i)
 	  if (i % 2 == 0)

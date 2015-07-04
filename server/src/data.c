@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 10:39:02 2015 Thibaut Lopez
-** Last update Thu Jul  2 18:17:59 2015 Thibaut Lopez
+** Last update Sat Jul  4 10:36:06 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -16,8 +16,8 @@ void	add_rand_food(t_zap *data, int nb, t_user *usr)
   int	y;
   char	tmp[150];
 
-  x = rand() % data->length;
-  y = rand() % data->width;
+  x = rand() % data->width;
+  y = rand() % data->length;
   data->map[x][y].food += nb;
   bzero(tmp, 150);
   sprintf(tmp, "bct %d %d %d %d %d %d %d %d %d\n", x, y,

@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Wed Jul  1 23:28:49 2015 Thibaut Lopez
+** Last update Sat Jul  4 10:56:57 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -22,8 +22,8 @@ t_pair		get_closest(t_user *src, t_user *dest, t_zap *data)
   sign.f = (dirs[0].f < 0) ? 1 : -1;
   sign.s = (dirs[0].s < 0) ? 1 : -1;
   dirs[1].f = dirs[0].f;
-  dirs[1].s = sign.s * (data->width - ABS(dirs[0].s));
-  dirs[2].f = sign.f * (data->length - ABS(dirs[0].f));
+  dirs[1].s = sign.s * (data->length - ABS(dirs[0].s));
+  dirs[2].f = sign.f * (data->width - ABS(dirs[0].f));
   dirs[2].s = dirs[0].s;
   p[0] = ABS(dirs[0].f) + ABS(dirs[0].s);
   p[1] = ABS(dirs[1].f) + ABS(dirs[1].s);
@@ -50,7 +50,7 @@ int		get_dir(t_pair dir, int *dirs)
     return (dirs[6]);
   else if (dir.f > 0 && ABS(dir.s) < ABS(dir.f))
     return (dirs[2]);
-  dprintf(2, "WTF ?!\n");
+  dprintf(2, "WTF ?! %d%d\n", dir.f, dir.s);
   exit(1);
   return (0);
 }

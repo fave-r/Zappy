@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Fri Jul  3 22:51:03 2015 Thibaut Lopez
+** Last update Sat Jul  4 10:35:22 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -70,8 +70,8 @@ int		hatching_egg(t_pair *pos, t_user *usr, t_zap *data, t_team *cur)
   frt = front_q(cur->eggs);
   if (frt == NULL || data->count > count_in_team(cur, usr))
     {
-      pos->f = rand() % data->length;
-      pos->s = rand() % data->width;
+      pos->f = rand() % data->width;
+      pos->s = rand() % data->length;
       return (-1);
     }
   pos->f = frt->pos.f;

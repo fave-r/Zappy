@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Wed Jul  1 21:30:04 2015 Thibaut Lopez
+** Last update Sat Jul  4 10:53:08 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -43,8 +43,8 @@ int     my_go(t_zap *data, t_user *tmp, t_user *usr)
   pos.f = GET_X(tmp);
   pos.s = GET_Y(tmp);
   gofo[GET_DIR(usr)](&pos, 1);
-  GET_X(tmp) = smod(pos.f, data->length);
-  GET_Y(tmp) = smod(pos.s, data->width);
+  GET_X(tmp) = smod(pos.f, data->width);
+  GET_Y(tmp) = smod(pos.s, data->length);
   bzero(str, 128);
   sprintf(str, "deplacement: %d\n", get_direction(usr, tmp, data));
   fill_cb(&tmp->wr, str, strlen(str));

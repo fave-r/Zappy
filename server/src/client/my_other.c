@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Sat Jul  4 17:07:27 2015 Thibaut Lopez
+** Last update Sat Jul  4 17:56:02 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -80,7 +80,7 @@ int		hatching_egg(t_pair *pos, t_user *usr, t_zap *data, t_team *cur)
   nb = frt->nb;
   sprintf(tmp, "ebo %d\n", nb);
   send_to_graphic(tmp, usr);
-  push_q(&usr->queue, &frt->hatch, clone_tv);
+  xpush_q(usr, &usr->queue, &frt->hatch, clone_tv);
   frt->son = find_nb(usr, AI);
   return (nb);
 }

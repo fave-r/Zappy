@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Sat Jul  4 16:41:44 2015 Thibaut Lopez
-** Last update Sat Jul  4 16:45:09 2015 Thibaut Lopez
+** Last update Sat Jul  4 17:39:22 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -13,5 +13,11 @@
 void	xfill_cb(t_user *usr, t_cb *cb, char *str)
 {
   if (usr->tokill == 0 && fill_cb(cb, str, strlen(str)) != 0)
+    usr->tokill = 1;
+}
+
+void	xpush_q(t_user *usr, t_que **q, void *e, void *(*clone)(void *))
+{
+  if (usr->tokill == 0 && push_q(q, e, clone) != 0)
     usr->tokill = 1;
 }

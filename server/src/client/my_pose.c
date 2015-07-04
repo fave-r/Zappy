@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Sat Jul  4 17:09:49 2015 Thibaut Lopez
+** Last update Sat Jul  4 17:57:14 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -77,6 +77,6 @@ int		my_pose(char **com, t_zap *data, t_user *usr)
       (*inv)--;
       (*cell)++;
     }
-  push_q(&usr->queue, add_tv(&now, 7000000 / data->delay), clone_tv);
+  xpush_q(usr, &usr->queue, add_tv(&now, 7000000 / data->delay), clone_tv);
   return (send_pose(usr, i, &data->map[GET_X(usr)][GET_Y(usr)]));
 }

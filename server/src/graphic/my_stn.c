@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Sat Jul  4 15:19:09 2015 Thibaut Lopez
+** Last update Sat Jul  4 17:45:33 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -39,7 +39,10 @@ void		stn_data(t_user **usr, t_zap *data, t_ask *ask)
 
   team = team_by_name(data->teams, ask->args[0]);
   if (team == NULL)
-    data->teams = team_cat(data->teams, strdup(ask->args[0]));
+    {
+      if ((data->teams = team_cat(data->teams, strdup(ask->args[0]))) == NULL)
+	quit_sig = 1;
+    }
   else if (ask->args[1] != NULL)
     {
       free(team->name);
@@ -88,7 +91,7 @@ int		my_stn(char **com, t_zap *data, t_user *usr)
   find_ask(&ask, data->asking);
   if (count_type(usr, GRAPHIC) == 1 || data->wait == 1)
     gettimeofday(&ask.wait, NULL);
-  push_q((t_que **)&usr->info, &ask, clone_ask);
+  xpush_q(usr, (t_que **)&usr->info, &ask, clone_ask);
   if (data->wait == 1)
     return (0);
   str = flat_ask(com, usr->nb, q_len((t_que *)usr->info) - 1);

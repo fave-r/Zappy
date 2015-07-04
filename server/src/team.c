@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 26 16:24:34 2015 Thibaut Lopez
-** Last update Sat Jul  4 15:18:19 2015 Thibaut Lopez
+** Last update Sat Jul  4 17:32:58 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -47,6 +47,7 @@ t_team		*team_cat(t_team *teams, char *team)
   if ((new = malloc(sizeof(t_team))) == NULL)
     {
       free(team);
+      team_free(teams);
       return (NULL);
     }
   new->name = team;
@@ -84,7 +85,8 @@ void		*clone_egg(void *to_clone)
   t_egg		*new;
 
   egg = (t_egg *)to_clone;
-  new = malloc(sizeof(t_egg));
+  if ((new = malloc(sizeof(t_egg))) == NULL)
+    return (NULL);
   new->nb = egg->nb;
   new->dad = egg->dad;
   new->son = egg->son;

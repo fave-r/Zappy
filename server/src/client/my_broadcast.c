@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Sat Jul  4 17:02:06 2015 Thibaut Lopez
+** Last update Sat Jul  4 17:47:56 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -104,12 +104,12 @@ int		my_broadcast(char **com, t_zap *data, t_user *usr)
 	{
 	  sprintf(str, "message %d,%s\n", get_direction(usr, tmp, data), com[1]);
 	  xfill_cb(tmp, &tmp->wr, str);
-	  push_q(&tmp->queue, &now, clone_tv);
+	  xpush_q(tmp, &tmp->queue, &now, clone_tv);
 	}
       tmp = tmp->next;
     }
   xfill_cb(usr, &usr->wr, "ok\n");
-  push_q(&usr->queue, &now, clone_tv);
+  xpush_q(usr, &usr->queue, &now, clone_tv);
   broadcast_graphic(usr, com[1]);
   return (0);
 }

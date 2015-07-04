@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Sat Jul  4 17:10:37 2015 Thibaut Lopez
+** Last update Sat Jul  4 17:57:30 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -32,6 +32,6 @@ int		my_inventaire(char **com, t_zap *data, t_user *usr)
 	  (int)cnt.phiras,
 	  (int)cnt.thystame);
   xfill_cb(usr, &usr->wr, tmp);
-  push_q(&usr->queue, add_tv(&now, 7000000 / data->delay), clone_tv);
+  xpush_q(usr, &usr->queue, add_tv(&now, 7000000 / data->delay), clone_tv);
   return (0);
 }

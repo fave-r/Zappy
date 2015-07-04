@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Sat Jul  4 17:16:52 2015 Thibaut Lopez
+** Last update Sat Jul  4 17:39:16 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -159,6 +159,7 @@ typedef struct	s_bf
   fd_set	wbf;
 }		t_bf;
 
+int		quit_sig;
 void		(*gofo[4])(t_pair *, int);
 
 int		clean_return(int, char *, t_zap *);
@@ -166,6 +167,7 @@ int		init_socket(void);
 int		init_bind(int, int *);
 int		init_connect(int, int, char *);
 void		xfill_cb(t_user *, t_cb *, char *);
+void		xpush_q(t_user *, t_que **, void *, void *(*)(void *));
 void		set_fd(int, t_bf *, t_user *);
 void		new_client(int, t_user **);
 t_user		*unit_user_free(t_user *, t_zap *);

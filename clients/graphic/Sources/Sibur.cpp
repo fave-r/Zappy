@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 27 01:11:21 2015 jean_c
-// Last update Sat Jun 27 09:57:45 2015 jean_c
+// Last update Sat Jul  4 22:40:27 2015 Leo Thevenet
 //
 
 #include "Sibur.hh"
@@ -20,7 +20,6 @@ Sibur::~Sibur()
 
 inline void		Sibur::draw(gdl::AShader &shader)
 {
-  //this->_geometry.draw(shader, getTransformation(), GL_TRIANGLES);
   glDisable(GL_TEXTURE_2D);
   this->_geometry.draw(shader, getTransformation(), GL_TRIANGLES);
   glEnable(GL_TEXTURE_2D);

@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 10:23:22 2015 jean_c
-// Last update Sat Jul  4 17:02:53 2015 Leo Thevenet
+// Last update Sat Jul  4 22:36:21 2015 Leo Thevenet
 //
 
 #include "Graphic.hh"
@@ -64,7 +64,6 @@ void		Graphic::Initialize()
   this->initMap();
   this->_shader.bind();
   this->_shader.setUniform("projection", projection);
-//  this->_shader.setUniform("view", this->_cam->getCam());
 }
 
 void		Graphic::changeSize(size_t width, size_t height, std::vector<std::vector <Content *> > &map)
@@ -294,16 +293,11 @@ bool		Graphic::update()
       if (this->_play.size() > 0)
 	{
 	  if (this->_input.getKey(SDLK_RIGHT))
-	    {
-	      this->_selectedP++;
-	      this->_selectedP = (this->_selectedP >= static_cast<int>(this->_play.size())) ? 0 : this->_selectedP;
-	    }
+	    this->_selectedP++;
 	  else if (this->_input.getKey(SDLK_LEFT))
-	    {
-	      this->_selectedP--;
-	      this->_selectedP = (this->_selectedP < 0 ) ? this->_play.size() - 1 : this->_selectedP;
-	    }
-
+	    this->_selectedP--;
+	  this->_selectedP = (this->_selectedP < 0 ) ? this->_play.size() - 1 : this->_selectedP;
+	  this->_selectedP = (this->_selectedP >= static_cast<int>(this->_play.size())) ? 0 : this->_selectedP;
 	  std::map<int, Player *>::iterator it = this->_user.getUser().begin();
 	  std::advance(it, this->_selectedP);
 	  Player *p = it->second;
@@ -355,12 +349,13 @@ bool		Graphic::update()
 
 void            Graphic::draw()
 {
-  //this->_needUpdate = true;
   if (this->_update.size() > 0 || this->_needUpdate == true)
     {
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
       for (std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it)
 	(*it)->draw(this->_shader);
+
       std::list<int>::const_iterator it3;
       for (it3 = this->_play.begin(); it3 != this->_play.end(); ++it3) {
 	this->_user.getUser()[(*it3)]->update();

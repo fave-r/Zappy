@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 09:08:50 2015 jean_c
-// Last update Sat Jul  4 16:11:23 2015 Leo Thevenet
+// Last update Sat Jul  4 22:38:12 2015 Leo Thevenet
 //
 
 #ifndef __GRAPHIC_HH__
@@ -70,7 +70,9 @@ private:
   User                                      _user;
 
   gdl::SdlContext	_context;
+public:
   gdl::BasicShader	_shader;
+private:
   gdl::Input		_input;
   gdl::Clock		_clock;
 

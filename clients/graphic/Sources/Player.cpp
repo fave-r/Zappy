@@ -5,7 +5,7 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun 29 12:15:56 2015 romaric
-// Last update Sat Jul  4 16:55:16 2015 Leo Thevenet
+// Last update Sat Jul  4 22:39:59 2015 Leo Thevenet
 //
 
 #include "Player.hpp"
@@ -49,19 +49,10 @@ Player::~Player()
 void          Player::update()
 {
   if (this->_x == this->_x1 && this->_y == this->_y1);
-  //std::cout << "" << "\n";
   else
     {
       this->_y = this->_y1;
       this->_x = this->_x1;
-      /*if (this->_x != this->_x1)
-        this->_x = this->_x1;*/
-      /*else if (this->_x < this->_x1)
-        this->_x++;*/
-      /*if (this->_y != this->_y1)
-        this->_y = this->_y1;*/
-      /*else if (this->_y < this->_y1)
-        this->_y++;*/
       this->translate(glm::vec3(this->_x, 1, this->_y));
     }
 }

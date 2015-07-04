@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Wed May  6 09:02:35 2015 Thibaut Lopez
-** Last update Thu Jul  2 17:42:49 2015 Thibaut Lopez
+** Last update Sat Jul  4 13:52:33 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -28,12 +28,12 @@ int	set_port(t_zap *data, char *arg, e_state *state)
 
 int	set_x(t_zap *data, char *arg, e_state *state)
 {
-  if (data->length == -1)
+  if (data->width == -1)
     {
-      if ((data->length = my_strtol(arg)) <= 0)
+      if ((data->width = my_strtol(arg)) <= 0)
 	{
 	  fprintf(stderr, "Warning: -x %s: wrong or negative value.\n", arg);
-	  data->length = -1;
+	  data->width = -1;
 	}
     }
   else
@@ -47,9 +47,9 @@ int	set_x(t_zap *data, char *arg, e_state *state)
 
 int	set_y(t_zap *data, char *arg, e_state *state)
 {
-  if (data->width == -1)
+  if (data->length == -1)
     {
-      if ((data->width = my_strtol(arg)) <= 0)
+      if ((data->length = my_strtol(arg)) <= 0)
 	{
 	  fprintf(stderr, "Warning: -y %s: wrong or negative value.\n", arg);
 	  data->width = -1;

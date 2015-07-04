@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Sat Jul  4 10:52:22 2015 Thibaut Lopez
+** Last update Sat Jul  4 17:05:14 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -27,7 +27,7 @@ int	my_avance(char **com, t_zap *data, t_user *usr)
   gofo[GET_DIR(usr)](&pos, 1);
   GET_X(usr) = smod(pos.f, data->width);
   GET_Y(usr) = smod(pos.s, data->length);
-  fill_cb(&usr->wr, "ok\n", 3);
+  xfill_cb(usr, &usr->wr, "ok\n");
   push_q(&usr->queue, add_tv(&now, 7000000 / data->delay), clone_tv);
   sprintf(tmp + strlen(tmp), "ppo %d %d %d %d\n", usr->nb,
 	  GET_X(usr), GET_Y(usr), GET_DIR(usr) + 1);

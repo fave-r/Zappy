@@ -5,18 +5,20 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 14:18:39 2015 Thibaut Lopez
-** Last update Sat Jul  4 15:15:00 2015 Thibaut Lopez
+** Last update Sat Jul  4 16:19:21 2015 Thibaut Lopez
 */
 
 #include "cb.h"
 
-void	init_cb(t_cb *cb, int cap, int sz)
+int	init_cb(t_cb *cb, int cap, int sz)
 {
-  cb->buff = malloc((cap + 1) * sz);
+  if ((cb->buff = malloc((cap + 1) * sz)) == NULL)
+    return (-1);
   cb->cap = cap + 1;
   cb->sz = sz;
   cb->beg = 0;
   cb->end = 0;
+  return (0);
 }
 
 void	free_cb(t_cb *cb)
@@ -32,7 +34,8 @@ void	*get_cb(t_cb *cb, int len)
     return (NULL);
   else if (cb_taken(cb) < len)
     len = cb_taken(cb);
-  buff = malloc((len + 1) * cb->sz);
+  if ((buff = malloc((len + 1) * cb->sz)) == NULL)
+    return (NULL);
   bzero(buff, (len + 1) * cb->sz);
   if (cb->beg < cb->end || cb->cap - cb->beg >= len)
     memcpy(buff, cb_begin(cb), len * cb->sz);
@@ -47,15 +50,16 @@ void	*get_cb(t_cb *cb, int len)
   return (buff);
 }
 
-void	extend_cb(t_cb *cb, int new)
+int	extend_cb(t_cb *cb, int new)
 {
   void	*buff;
   int	len;
 
   if (cb->cap >= new)
-    return ;
+    return (0);
   len = cb_taken(cb);
-  buff = malloc((new + 51) * cb->sz);
+  if ((buff = malloc((new + 51) * cb->sz)) == NULL)
+    return (-1);
   bzero(buff, (new + 51) * cb->sz);
   if (cb->beg < cb->end)
     memcpy(buff, cb_begin(cb), len * cb->sz);
@@ -70,12 +74,14 @@ void	extend_cb(t_cb *cb, int new)
   free(cb->buff);
   cb->buff = buff;
   cb->cap = new + 50;
+  return (0);
 }
 
-void	fill_cb(t_cb *cb, void *to_add, int len)
+int	fill_cb(t_cb *cb, void *to_add, int len)
 {
   if (cb_available(cb) < len)
-    extend_cb(cb, cb->cap + len);
+    if (extend_cb(cb, cb->cap + len) != 0)
+      return (-1);
   if (len < cb->cap - cb->end)
     memcpy(cb_end(cb), to_add, (len * cb->sz));
   else
@@ -86,4 +92,5 @@ void	fill_cb(t_cb *cb, void *to_add, int len)
     }
   cb->end += len;
   cb->end %= cb->cap;
+  return (0);
 }

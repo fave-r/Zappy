@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri Apr 10 10:17:56 2015 Thibaut Lopez
-** Last update Sat Jul  4 15:15:26 2015 Thibaut Lopez
+** Last update Sat Jul  4 17:00:40 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -40,22 +40,29 @@ char	*get_line_cb(t_cb *cb)
   if ((ret = cbchr(cb, "\r")) != -1 || (ret = cbchr(cb, "\n")) != -1)
     {
       str = get_cb(cb, ret + 1);
-      str[ret] = 0;
+      if (str != NULL)
+	str[ret] = 0;
+      if (strlen(str) == 0)
+	{
+	  free(str);
+	  str = NULL;
+	}
     }
   return (str);
 }
 
-int	read_cb(t_cb *cb, int fd)
+int	read_cb(t_user *usr, int fd)
 {
   int	rl;
   char	*str;
 
-  str = malloc(500 * sizeof(char));
+  if ((str = malloc(500 * sizeof(char))) == NULL)
+    return (-1);
   rl = read(fd, str, 499);
   if (rl > 0)
     {
       str[rl] = 0;
-      fill_cb(cb, str, rl);
+      xfill_cb(usr, &usr->cb, str);
     }
   free(str);
   return (rl);
@@ -71,12 +78,8 @@ int	write_cb(t_user *usr, t_zap *data, t_que **queue)
   gettimeofday(&now, NULL);
   if (queue == NULL || cmp_tv(front_q(*queue), &now) <= 0)
     {
-      if ((str = get_line_cb(&usr->wr)) == NULL || strlen(str) == 0)
-	{
-	  if (str != NULL)
-	    free(str);
-	  return (0);
-	}
+      if ((str = get_line_cb(&usr->wr)) == NULL)
+	return (0);
       verbose_send(usr, str, data);
       str[strlen(str)] = '\n';
       if ((tmp = (queue == NULL) ? NULL : front_q(*queue)) == NULL)
@@ -84,7 +87,7 @@ int	write_cb(t_user *usr, t_zap *data, t_que **queue)
       wl = write(usr->fd, str, strlen(str));
       if (wl == (int)strlen(str) && queue != NULL)
 	pop_q(queue);
-      fill_cb(&usr->wr, str + wl, strlen(str) - wl);
+      xfill_cb(usr, &usr->wr, str + wl);
       free(str);
     }
   return (0);

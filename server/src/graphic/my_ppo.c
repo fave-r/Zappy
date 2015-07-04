@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Fri Jul  3 00:58:30 2015 Thibaut Lopez
+** Last update Sat Jul  4 16:57:03 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -19,7 +19,7 @@ int	my_send_ppo(t_user *usr, t_user *player)
   bzero(tmp, 50);
   sprintf(tmp, "ppo %d %d %d %d\n", player->nb,
 	  GET_X(player), GET_Y(player), GET_DIR(player) + 1);
-  fill_cb(&usr->wr, tmp, strlen(tmp));
+  xfill_cb(usr, &usr->wr, tmp);
   return (0);
 }
 

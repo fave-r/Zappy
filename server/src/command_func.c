@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:12:11 2015 romaric
-** Last update Mon Jun 29 03:18:53 2015 Thibaut Lopez
+** Last update Sat Jul  4 17:11:30 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -30,7 +30,7 @@ void		send_to_graphic(char *com, t_user *usr)
     {
       if (usr->type == GRAPHIC)
 	{
-	  fill_cb(&usr->wr, com, strlen(com));
+	  xfill_cb(usr, &usr->wr, com);
 	  push_q(&usr->queue, NULL, clone_tv);
 	}
       usr = usr->next;

@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 18:07:00 2015 Thibaut Lopez
-** Last update Thu Jul  2 14:56:03 2015 Thibaut Lopez
+** Last update Sat Jul  4 16:17:02 2015 Thibaut Lopez
 */
 
 #ifndef	UTILS_H
@@ -43,10 +43,6 @@ typedef struct	s_que
   struct s_que	*next;
 }		t_que;
 
-int		xopen(const char *, int);
-ssize_t		xread(int, void *, size_t);
-void		*xmalloc(size_t);
-char		*xstrdup(const char *);
 int		smod(int, int);
 int		find_ptr(t_com *, char *);
 int		my_strtol(char *);
@@ -61,7 +57,7 @@ char		**sstrcat(char **, char *);
 void		putsstr(char **);
 int		sstrchr(char **, char *);
 char		**stwt(char *, char *, int);
-void		push_q(t_que **, void *, void *(*)(void *));
+int		push_q(t_que **, void *, void *(*)(void *));
 void		pop_q(t_que **);
 void		*front_q(t_que *);
 int		q_len(t_que *);

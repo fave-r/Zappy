@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Wed Jul  1 20:08:12 2015 Thibaut Lopez
+** Last update Sat Jul  4 17:04:24 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -26,14 +26,14 @@ static void	(*gole[4])(t_pair *, int) =
   west_gole
 };
 
-void		loop_ressource(t_cb *wr, uint16_t goal, char *str_to_add)
+void		loop_ressource(t_user *usr, uint16_t goal, char *str_to_add)
 {
   int		i;
 
   i = 0;
   while (i < goal)
     {
-      fill_cb(wr, str_to_add, strlen(str_to_add));
+      xfill_cb(usr, &usr->wr, str_to_add);
       i++;
     }
 }
@@ -47,16 +47,16 @@ void		analyse_cell(t_content **cnt, t_pair *cone, t_user *usr)
     tmp = tmp->prev;
   while ((tmp = in_this_cell(cone->f, cone->s, tmp)) != NULL)
     {
-      fill_cb(&usr->wr, " joueur", 7);
+      xfill_cb(usr, &usr->wr, " joueur");
       tmp = tmp->next;
     }
-  loop_ressource(&usr->wr, cnt[cone->f][cone->s].food, " nourriture");
-  loop_ressource(&usr->wr, cnt[cone->f][cone->s].linemate, " linemate");
-  loop_ressource(&usr->wr, cnt[cone->f][cone->s].deraumere, " deraumere");
-  loop_ressource(&usr->wr, cnt[cone->f][cone->s].sibur, " sibur");
-  loop_ressource(&usr->wr, cnt[cone->f][cone->s].mendiane, " mendiane");
-  loop_ressource(&usr->wr, cnt[cone->f][cone->s].phiras, " phiras");
-  loop_ressource(&usr->wr, cnt[cone->f][cone->s].thystame, " thystame");
+  loop_ressource(usr, cnt[cone->f][cone->s].food, " nourriture");
+  loop_ressource(usr, cnt[cone->f][cone->s].linemate, " linemate");
+  loop_ressource(usr, cnt[cone->f][cone->s].deraumere, " deraumere");
+  loop_ressource(usr, cnt[cone->f][cone->s].sibur, " sibur");
+  loop_ressource(usr, cnt[cone->f][cone->s].mendiane, " mendiane");
+  loop_ressource(usr, cnt[cone->f][cone->s].phiras, " phiras");
+  loop_ressource(usr, cnt[cone->f][cone->s].thystame, " thystame");
 }
 
 void		vert_view(int i, t_user *usr, t_pair *cone, t_zap *data)
@@ -68,7 +68,7 @@ void		vert_view(int i, t_user *usr, t_pair *cone, t_zap *data)
   while (j != -i)
     {
       if (j != i)
-	fill_cb(&usr->wr, ",", 1);
+	xfill_cb(usr, &usr->wr, ",");
       cone->f = smod(cone->f, data->width);
       cone->s = smod(cone->s, data->length);
       analyse_cell(data->map, cone, usr);
@@ -76,7 +76,7 @@ void		vert_view(int i, t_user *usr, t_pair *cone, t_zap *data)
       j--;
     }
   if (j != i)
-    fill_cb(&usr->wr, ",", 1);
+    xfill_cb(usr, &usr->wr, ",");
   cone->f = smod(cone->f, data->width);
   cone->s = smod(cone->s, data->length);
   analyse_cell(data->map, cone, usr);
@@ -94,17 +94,17 @@ int		my_voir(char **com, t_zap *data, t_user *usr)
   gettimeofday(&now, NULL);
   cone.f = GET_X(usr);
   cone.s = GET_Y(usr);
-  fill_cb(&usr->wr, "{", 1);
+  xfill_cb(usr, &usr->wr, "{");
   i = 0;
   while (i < GET_LVL(usr) + 1)
     {
       if (i > 0)
-	fill_cb(&usr->wr, ",", 1);
+	xfill_cb(usr, &usr->wr, ",");
       vert_view(i, usr, &cone, data);
       gofo[GET_DIR(usr)](&cone, 1);
       i++;
     }
-  fill_cb(&usr->wr, "}\n", 2);
+  xfill_cb(usr, &usr->wr, "}\n");
   push_q(&usr->queue, add_tv(&now, 7000000 / data->delay), clone_tv);
   return (0);
 }

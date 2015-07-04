@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Wed Jul  1 21:29:30 2015 Thibaut Lopez
+** Last update Sat Jul  4 17:05:01 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -34,7 +34,7 @@ int	my_fork(char **com, t_zap *data, t_user *usr)
   egg.hatch.tv_usec = now.tv_usec;
   add_tv(&egg.hatch, 600000000 / data->delay);
   push_q(&GET_TEAM(usr)->eggs, &egg, clone_egg);
-  fill_cb(&usr->wr, "ok\n", 3);
+  xfill_cb(usr, &usr->wr, "ok\n");
   push_q(&usr->queue, &now, clone_tv);
   return (0);
 }

@@ -5,13 +5,13 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Mon May 25 17:31:08 2015 Thibaut Lopez
-** Last update Mon May 25 18:09:44 2015 Thibaut Lopez
+** Last update Sat Jul  4 16:56:37 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
 int	my_sbp(t_user *usr)
 {
-  fill_cb(&usr->wr, "sbp\n", 4);
+  xfill_cb(usr, &usr->wr, "sbp\n");
   return (0);
 }

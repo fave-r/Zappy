@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May  5 14:14:46 2015 Thibaut Lopez
-** Last update Thu Jul  2 16:39:53 2015 Thibaut Lopez
+** Last update Sat Jul  4 16:17:26 2015 Thibaut Lopez
 */
 
 #ifndef	CB_H
@@ -23,11 +23,11 @@ typedef struct	s_cb
   int		end;
 }		t_cb;
 
-void	init_cb(t_cb *, int, int);
+int	init_cb(t_cb *, int, int);
 void	free_cb(t_cb *);
 void	*get_cb(t_cb *, int);
-void	extend_cb(t_cb *, int);
-void	fill_cb(t_cb *, void *, int);
+int	extend_cb(t_cb *, int);
+int	fill_cb(t_cb *, void *, int);
 int	cb_taken(t_cb *);
 int	cb_available(t_cb *);
 void	*cb_begin(t_cb *);

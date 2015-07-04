@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Fri Jul  3 00:58:10 2015 Thibaut Lopez
+** Last update Sat Jul  4 16:56:23 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -27,7 +27,7 @@ void		my_enw(t_zap *data, t_user *usr)
 	  bzero(str, 64);
 	  sprintf(str, "enw %d %d %d %d\n",
 		  egg->nb, egg->dad, egg->pos.f, egg->pos.s);
-	  fill_cb(&usr->wr, str, strlen(str));
+	  xfill_cb(usr, &usr->wr, str);
 	  eggs = eggs->next;
 	}
       tmp = tmp->next;
@@ -80,7 +80,7 @@ void		my_endgame(t_ask *ask, t_user *usr, t_zap *data)
   (void)ask;
   bzero(tmp, 256);
   sprintf(tmp, "seg %s\n", data->win->name);
-  fill_cb(&usr->wr, tmp, strlen(tmp));
+  xfill_cb(usr, &usr->wr, tmp);
   while (cb_taken(&usr->wr) > 0)
     write_cb(usr, data, NULL);
 }

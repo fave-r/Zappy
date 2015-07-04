@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Thu Jul  2 19:59:40 2015 Thibaut Lopez
+** Last update Sat Jul  4 16:48:55 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -18,7 +18,7 @@ int	my_send_plv(t_user *usr, t_user *player)
     return (my_sbp(usr));
   bzero(tmp, 50);
   sprintf(tmp, "plv %d %d\n", player->nb, GET_LVL(player));
-  fill_cb(&usr->wr, tmp, strlen(tmp));
+  xfill_cb(usr, &usr->wr, tmp);
   return (0);
 }
 

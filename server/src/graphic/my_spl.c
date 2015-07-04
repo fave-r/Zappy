@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Fri Jul  3 01:21:44 2015 Thibaut Lopez
+** Last update Sat Jul  4 16:58:50 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -26,7 +26,7 @@ void		spl_data(t_user **usr, t_zap *data, t_ask *ask)
     }
   bzero(str, 50);
   sprintf(str, "niveau actuel : %d\n", GET_LVL(tmp));
-  fill_cb(&tmp->wr, str, strlen(str));
+  xfill_cb(tmp, &tmp->wr, str);
   check = team_winning(tmp, GET_TEAM(tmp));
   if (check == 1)
     {

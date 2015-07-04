@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Thu Jul  2 19:15:29 2015 Thibaut Lopez
+** Last update Fri Jul  3 22:51:03 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -108,8 +108,7 @@ int		my_other(char **com, t_zap *data, t_user *usr)
   usr->type = AI;
   GET_GHOST(usr) = (is_hatching != -1) ? 1 : 0;
   tmp = usr;
-  while (tmp != NULL && tmp->prev != NULL)
-    tmp = tmp->prev;
+  while (tmp != NULL && tmp->prev != NULL && (tmp = tmp->prev) != NULL);
   send_client_info(cur, data, usr);
   send_new_player(usr);
   return (0);

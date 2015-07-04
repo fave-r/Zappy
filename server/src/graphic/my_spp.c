@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Fri Jul  3 01:19:36 2015 Thibaut Lopez
+** Last update Fri Jul  3 22:52:31 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -53,11 +53,10 @@ int		my_spp(char **com, t_zap *data, t_user *usr)
   char		*str;
   t_ask		ask;
 
-  if (sstrlen(com) != 5 ||
-      (val = my_strtol(com[1])) == -1 || get_by_nb(usr, val, AI) == NULL ||
-      (val = my_strtol(com[2])) == -1 || val >= data->length ||
-      (val = my_strtol(com[3])) == -1 || val >= data->width ||
-      (val = my_strtol(com[4])) == -1 || val >= 4)
+  if (sstrlen(com) != 5 || (val = my_strtol(com[1])) == -1 ||
+      get_by_nb(usr, val, AI) == NULL || (val = my_strtol(com[2])) == -1 ||
+      val >= data->length || (val = my_strtol(com[3])) == -1 ||
+      val >= data->width || (val = my_strtol(com[4])) == -1 || val >= 4)
     return (my_sbp(usr));
   ask.args = sstrdup(com + 1);
   ask.ok = spp_ok;

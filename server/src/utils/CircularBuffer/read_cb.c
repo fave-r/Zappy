@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri Apr 10 10:17:56 2015 Thibaut Lopez
-** Last update Thu Jul  2 17:04:22 2015 Thibaut Lopez
+** Last update Fri Jul  3 22:55:38 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -79,11 +79,10 @@ int	write_cb(t_user *usr, t_zap *data, t_que **queue)
 	}
       verbose_send(usr, str, data);
       str[strlen(str)] = '\n';
-      tmp = (queue == NULL) ? NULL : front_q(*queue);
-      if (tmp == NULL)
+      if ((tmp = (queue == NULL) ? NULL : front_q(*queue)) == NULL)
 	tmp = &now;
       wl = write(usr->fd, str, strlen(str));
-      if (queue != NULL && wl == (int)strlen(str))
+      if (wl == (int)strlen(str) && queue != NULL)
 	pop_q(queue);
       fill_cb(&usr->wr, str + wl, strlen(str) - wl);
       free(str);

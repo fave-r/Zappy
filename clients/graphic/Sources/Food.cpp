@@ -32,14 +32,10 @@ Food::~Food()
 
 inline void		Food::draw(gdl::AShader &shader)
 {
-  //this->_texture.bind();
   this->_model.draw(shader, getTransformation(), GL_QUADS);
 }
 
 inline void		Food::setModel(const gdl::Geometry &geo)
 {
   (void)geo;
-  /*this->_geometry = geo;
-  this->scale(glm::vec3(0.5, 0.5, 0.5));
-  this->translate(glm::vec3(this->_x, 2, this->_y));*/
 }

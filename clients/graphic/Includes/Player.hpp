@@ -19,11 +19,12 @@
 class	Player : virtual public AObject
 {
 private:
-  int	      _nb;
+  int	        _nb;
   int         _x;
   int         _y;
-  int	      _x1;
-  int	      _y1;
+  int	        _x1;
+  int	        _y1;
+  int         _casting;
   int         _dir;
   int         _level;
   std::string _tn;
@@ -122,6 +123,11 @@ public:
     return _thystame;
   };
 
+  int getCasting(void) const
+  {
+    return _casting;
+  };
+
   void	setX(const int x)
   {
     _x = x;
@@ -186,6 +192,11 @@ public:
   void	setThystame(const int thy)
   {
     _thystame = thy;
+  };
+
+  void setCasting(const int is)
+  {
+    _casting = is;
   };
 };
 

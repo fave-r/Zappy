@@ -19,6 +19,7 @@ Player::Player(const int nb, const int x, const int y, const int dir, const int 
   this->_nb = nb;
   this->_x = x;
   this->_y = y;
+  this->_casting = 0;
   this->_dir = dir;
   this->_level = lev;
   this->_tn = tn;

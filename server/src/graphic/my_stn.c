@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Sat Jul  4 20:28:37 2015 Thibaut Lopez
+** Last update Sat Jul  4 20:56:36 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -46,7 +46,8 @@ void		stn_data(t_user **usr, t_zap *data, t_ask *ask)
   else if (ask->args[1] != NULL)
     {
       free(team->name);
-      team->name = strdup(ask->args[1]);
+      if ((team->name = strdup(ask->args[1])) == NULL)
+	quit_sig = 1;
     }
   else
     delete_team(team, usr, data);

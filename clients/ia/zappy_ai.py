@@ -86,7 +86,7 @@ class IA:
             self.cli.move(dirPos[2], None)
             return self.survivor2(food)
            else:
-            self.cli.move(dirPos[2], None)
+            self.cli.move(dirPos[i], None)
             return self.survivor2(food)
           i += 1
 
@@ -254,7 +254,7 @@ class IA:
          inv = self.cli.inventaire(None)
          vue = self.cli.voir(None)
          if int(inv["nourriture"]) < int(food):
-          return self.survivor(food + 10, vue)
+          return self.survivor(food + 20, vue)
          else:
           return self.evolve(vue)
 
@@ -367,7 +367,6 @@ class Client:
           self.buffer += rep;
 
          try:
-#          while 1:
            msg = self.buffer[0:self.buffer.index("\n")]
            self.buffer = self.buffer[self.buffer.index("\n") + 1:]
 
@@ -421,7 +420,6 @@ class Client:
           del self.cmd_queue[:]
           return self.iaCallback((self.lvl + 1) * 10)
           
-
          if rep[:7] == "message":
           cont = rep.split(",")
           sound = cont[0].split(" ")[1]
@@ -455,7 +453,6 @@ class Client:
         def level_up(self, msg):
           print (self.id, msg)
           self.isIncant = False
-#          self.broadcast(str(self.lvl) + ":ok", None)
 
           msg = msg.replace(" ", "")
           self.lvl = int(msg.split(":")[1]) - 1
@@ -464,8 +461,8 @@ class Client:
           if self.lvl == 7:
            print ("LEVEL 8")
            self.handle_close()
-#          while self.buffer != "":
-#           self.handle_read()
+          while self.buffer != "":
+           self.handle_read(0)
           self.buffer = ""
           self.myLeader = self.getNewLeader()
           return self.iaCallback((self.lvl + 1) * 10)

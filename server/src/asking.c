@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 28 13:49:58 2015 Thibaut Lopez
-** Last update Fri Jul  3 01:37:33 2015 Thibaut Lopez
+** Last update Sat Jul  4 15:15:44 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -71,7 +71,7 @@ void		*clone_ask(void *to_clone)
   t_ask		*new;
 
   ask = (t_ask *)to_clone;
-  new = xmalloc(sizeof(t_ask));
+  new = malloc(sizeof(t_ask));
   new->wait.tv_sec = ask->wait.tv_sec;
   new->wait.tv_usec = ask->wait.tv_usec;
   new->res = ask->res;

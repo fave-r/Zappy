@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:02:45 2015 romaric
-** Last update Thu Jul  2 19:43:11 2015 Thibaut Lopez
+** Last update Sat Jul  4 14:01:28 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -101,11 +101,11 @@ int		main(int ac, char **av)
   if (parse_com(av, &data) != 0)
     return (1);
   if ((s = init_socket()) == -1)
-    return (1);
+    return (clean_return(-1, "Socket failed", &data));
   if (init_bind(s, &data.port) == -1)
-    return (clean_return(s, "Couldn't bind"));
+    return (clean_return(s, "Couldn't bind", &data));
   if (listen(s, 0) == -1)
-    return (clean_return(s, "Couldn't listen"));
+    return (clean_return(s, "Couldn't listen", &data));
   handle_fds(s, &user, &data);
   data_free(&user, &data);
   close(s);

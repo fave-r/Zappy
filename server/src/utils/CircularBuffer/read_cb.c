@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri Apr 10 10:17:56 2015 Thibaut Lopez
-** Last update Fri Jul  3 22:55:38 2015 Thibaut Lopez
+** Last update Sat Jul  4 15:15:26 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -50,7 +50,7 @@ int	read_cb(t_cb *cb, int fd)
   int	rl;
   char	*str;
 
-  str = xmalloc(500 * sizeof(char));
+  str = malloc(500 * sizeof(char));
   rl = read(fd, str, 499);
   if (rl > 0)
     {

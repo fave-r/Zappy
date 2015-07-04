@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Sat Jul  4 10:56:57 2015 Thibaut Lopez
+** Last update Sat Jul  4 15:17:59 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -78,7 +78,7 @@ void		broadcast_graphic(t_user *usr, char *msg)
 {
   char		*tmp;
 
-  tmp = xmalloc((16 + strlen(msg)) * sizeof(char));
+  tmp = malloc((16 + strlen(msg)) * sizeof(char));
   bzero(tmp, 16 + strlen(msg));
   sprintf(tmp, "pbc %d %s\n", usr->nb, msg);
   send_to_graphic(tmp, usr);

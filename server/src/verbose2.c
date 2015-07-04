@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Thu Jul  2 15:51:33 2015 Thibaut Lopez
-** Last update Sat Jul  4 13:53:17 2015 Thibaut Lopez
+** Last update Sat Jul  4 14:15:36 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -46,18 +46,6 @@ void		verbose_base(t_user *usr, char *color)
     printf("User %d (type %s)", usr->nb, type);
   else
     printf("Server");
-}
-
-int	set_verbose(t_zap *data, char *arg, e_state *state)
-{
-  if (strcmp(arg, "yes") == 0 || strcmp(arg, "y") == 0)
-    data->verbose = 1;
-  else if (strcmp(arg, "no") == 0 || strcmp(arg, "n") == 0)
-    data->verbose = 0;
-  else
-    fprintf(stderr, "Warning: '-v %s': %s not a good answer.\n", arg, arg);
-  *state = NONE;
-  return (0);
 }
 
 void		verbose_ask(t_user *usr, char *demand, t_zap *data)

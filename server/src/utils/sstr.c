@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Wed May  6 09:49:44 2015 Thibaut Lopez
-** Last update Thu Jul  2 14:55:48 2015 Thibaut Lopez
+** Last update Sat Jul  4 15:14:14 2015 Thibaut Lopez
 */
 
 #include "utils.h"
@@ -42,10 +42,10 @@ char	**sstrcat(char **str, char *ad)
   char	**ret;
 
   i = 0;
-  ret = xmalloc((sstrlen(str) + 2) * sizeof(char *));
+  ret = malloc((sstrlen(str) + 2) * sizeof(char *));
   while (str != NULL && str[i] != NULL)
     {
-      ret[i] = xstrdup(str[i]);
+      ret[i] = strdup(str[i]);
       i++;
     }
   ret[i] = ad;

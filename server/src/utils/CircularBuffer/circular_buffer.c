@@ -5,14 +5,14 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 14:18:39 2015 Thibaut Lopez
-** Last update Thu May 14 12:39:12 2015 Thibaut Lopez
+** Last update Sat Jul  4 15:15:00 2015 Thibaut Lopez
 */
 
 #include "cb.h"
 
 void	init_cb(t_cb *cb, int cap, int sz)
 {
-  cb->buff = xmalloc((cap + 1) * sz);
+  cb->buff = malloc((cap + 1) * sz);
   cb->cap = cap + 1;
   cb->sz = sz;
   cb->beg = 0;
@@ -32,7 +32,7 @@ void	*get_cb(t_cb *cb, int len)
     return (NULL);
   else if (cb_taken(cb) < len)
     len = cb_taken(cb);
-  buff = xmalloc((len + 1) * cb->sz);
+  buff = malloc((len + 1) * cb->sz);
   bzero(buff, (len + 1) * cb->sz);
   if (cb->beg < cb->end || cb->cap - cb->beg >= len)
     memcpy(buff, cb_begin(cb), len * cb->sz);
@@ -55,7 +55,7 @@ void	extend_cb(t_cb *cb, int new)
   if (cb->cap >= new)
     return ;
   len = cb_taken(cb);
-  buff = xmalloc((new + 51) * cb->sz);
+  buff = malloc((new + 51) * cb->sz);
   bzero(buff, (new + 51) * cb->sz);
   if (cb->beg < cb->end)
     memcpy(buff, cb_begin(cb), len * cb->sz);

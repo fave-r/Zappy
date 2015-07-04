@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Mon Jun 15 15:03:27 2015 Thibaut Lopez
+** Last update Sat Jul  4 15:18:12 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -32,7 +32,7 @@ t_com		*ptrs_get()
 {
   t_com	*ptrs;
 
-  ptrs = xmalloc(8 * sizeof(t_com));
+  ptrs = malloc(8 * sizeof(t_com));
   ptrs[0].com = "nourriture";
   ptrs[0].ptr = get_food;
   ptrs[1].com = "linemate";

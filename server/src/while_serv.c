@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:38:34 2015 romaric
-** Last update Thu Jul  2 19:45:00 2015 Thibaut Lopez
+** Last update Sat Jul  4 15:13:08 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -63,7 +63,7 @@ void		cast_result(t_zap *data, t_user **user, t_user *tmp, t_tv *now)
   data->win = (check == 1) ? GET_TEAM(tmp) : NULL;
 }
 
-void		check_client(t_user **user, t_bf *bf, t_zap *data)
+void		check_client(t_user **user, t_zap *data)
 {
   t_user	*tmp;
   t_tv		now;
@@ -72,7 +72,7 @@ void		check_client(t_user **user, t_bf *bf, t_zap *data)
   gettimeofday(&now, NULL);
   while (tmp != NULL)
     {
-      if (FD_ISSET(tmp->fd, &bf->rbf) || cb_taken(&tmp->cb) > 0)
+      if (tmp->tokill == 0)
 	read_com(tmp, data);
       if (tmp->type == AI && IS_CASTING(tmp) &&
 	  cmp_tv(&GET_CAST(tmp), &now) <= 0)
@@ -81,13 +81,6 @@ void		check_client(t_user **user, t_bf *bf, t_zap *data)
 	send_death(user, &tmp, data);
       else
 	tmp = tmp->next;
-    }
-  tmp = *user;
-  while (tmp != NULL)
-    {
-      if (cb_taken(&tmp->wr) > 0 && FD_ISSET(tmp->fd, &bf->wbf))
-	write_cb(tmp, data, &tmp->queue);
-      tmp = tmp->next;
     }
 }
 
@@ -110,7 +103,8 @@ int			handle_fds(int s, t_user **user, t_zap *data)
 	{
 	  if (FD_ISSET(s, &bf.rbf))
 	    new_client(s, user);
-	  check_client(user, &bf, data);
+	  write_read_client(user, &bf, data);
+	  check_client(user, data);
 	}
       bool = (quit_sig != 0) ? quit_sig : manage_server(user, data);
     }

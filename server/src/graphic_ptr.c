@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 14:54:42 2015 Thibaut Lopez
-** Last update Thu Jun  4 17:02:51 2015 Thibaut Lopez
+** Last update Sat Jul  4 15:17:26 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -55,7 +55,7 @@ t_com		*graphic_funcs()
 {
   t_com		*ptrs;
 
-  ptrs = xmalloc(22 * sizeof(t_com));
+  ptrs = malloc(22 * sizeof(t_com));
   ptrs[0].com = "msz";
   ptrs[1].com = "bct";
   ptrs[2].com = "mct";

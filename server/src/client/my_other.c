@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Sat Jul  4 10:35:22 2015 Thibaut Lopez
+** Last update Sat Jul  4 15:18:50 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -42,7 +42,7 @@ t_plr		*player_info(t_team *team, t_pair *pos)
 {
   t_plr		*plr;
 
-  plr = xmalloc(sizeof(t_plr));
+  plr = malloc(sizeof(t_plr));
   plr->team = team;
   plr->x = pos->f;
   plr->y = pos->s;

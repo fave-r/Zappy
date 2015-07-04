@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 14:56:37 2015 romaric
-** Last update Fri Jul  3 01:38:20 2015 Thibaut Lopez
+** Last update Sat Jul  4 15:12:54 2015 Thibaut Lopez
 */
 
 #ifndef	ZAPPY_H
@@ -161,7 +161,7 @@ typedef struct	s_bf
 
 void		(*gofo[4])(t_pair *, int);
 
-int		clean_return(int, char *);
+int		clean_return(int, char *, t_zap *);
 int		init_socket(void);
 int		init_bind(int, int *);
 int		init_connect(int, int, char *);
@@ -169,7 +169,6 @@ void		set_fd(int, t_bf *, t_user *);
 void		new_client(int, t_user **);
 t_user		*unit_user_free(t_user *, t_zap *);
 void		send_death(t_user **, t_user **, t_zap *);
-void		check_client(t_user **, t_bf *, t_zap *);
 int		manage_server(t_user **, t_zap *);
 int		handle_fds(int, t_user **, t_zap *);
 int		nb_client(t_user *);
@@ -177,6 +176,7 @@ t_com		*graphic_funcs();
 int		count_type(t_user *, e_clt);
 t_com		*ptr_to_function(e_clt);
 int		read_com(t_user *, t_zap *);
+int		write_read_client(t_user **, t_bf *, t_zap *);
 void		data_free(t_user **, t_zap *);
 void		put_team(t_team *);
 int		team_len(t_team *);

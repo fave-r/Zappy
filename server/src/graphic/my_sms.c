@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Fri Jul  3 01:22:13 2015 Thibaut Lopez
+** Last update Sat Jul  4 15:18:44 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -16,11 +16,11 @@ void		map_resize(t_zap *data, int x, int y)
   int		j;
   t_content	**map;
 
-  map = xmalloc(y * sizeof(t_content *));
+  map = malloc(y * sizeof(t_content *));
   i = -1;
   while (++i < y)
     {
-      map[i] = xmalloc(x * sizeof(t_content));
+      map[i] = malloc(x * sizeof(t_content));
       j = -1;
       while (++j < x)
 	fill_cell(i, j, map, data);

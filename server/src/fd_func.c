@@ -5,15 +5,17 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:51:15 2015 romaric
-** Last update Thu Jul  2 19:48:50 2015 Thibaut Lopez
+** Last update Sat Jul  4 15:16:38 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
 void			set_fd(int s, t_bf *bf, t_user *user)
 {
+  t_tv			now;
   t_user		*tmp;
 
+  gettimeofday(&now, NULL);
   FD_ZERO(&(bf->rbf));
   FD_ZERO(&(bf->wbf));
   FD_SET(s, &(bf->rbf));
@@ -21,7 +23,8 @@ void			set_fd(int s, t_bf *bf, t_user *user)
   while (tmp != NULL)
     {
       FD_SET(tmp->fd, &(bf->rbf));
-      FD_SET(tmp->fd, &(bf->wbf));
+      if (cmp_tv(front_q(tmp->queue), &now) <= 0)
+	FD_SET(tmp->fd, &(bf->wbf));
       tmp = tmp->next;
     }
 }
@@ -43,7 +46,7 @@ void			new_client(int fd, t_user **user)
   struct sockaddr_in	sin;
   socklen_t		len;
 
-  new = xmalloc(sizeof(t_user));
+  new = malloc(sizeof(t_user));
   len = sizeof(sin);
   new->fd = accept(fd, (struct sockaddr *)&sin, &len);
   new->ip = inet_ntoa(sin.sin_addr);

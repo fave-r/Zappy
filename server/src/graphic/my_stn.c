@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Fri Jul  3 14:49:14 2015 Thibaut Lopez
+** Last update Sat Jul  4 15:19:09 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -39,11 +39,11 @@ void		stn_data(t_user **usr, t_zap *data, t_ask *ask)
 
   team = team_by_name(data->teams, ask->args[0]);
   if (team == NULL)
-    data->teams = team_cat(data->teams, xstrdup(ask->args[0]));
+    data->teams = team_cat(data->teams, strdup(ask->args[0]));
   else if (ask->args[1] != NULL)
     {
       free(team->name);
-      team->name = xstrdup(ask->args[1]);
+      team->name = strdup(ask->args[1]);
     }
   else
     delete_team(team, usr, data);

@@ -5,27 +5,10 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 16:43:22 2015 Thibaut Lopez
-** Last update Fri Jul  3 14:44:35 2015 Thibaut Lopez
+** Last update Sat Jul  4 14:23:53 2015 Thibaut Lopez
 */
 
 #include "server.h"
-
-int		set_team(t_zap *data, char *arg, e_state *state)
-{
-  (void)state;
-  if (strlen(arg) < 200 && strcmp(arg, "GRAPHIC") != 0 &&
-      my_strchr(arg, ' ') == -1)
-    data->teams = team_cat(data->teams, xstrdup(arg));
-  else
-    {
-      fprintf(stderr, "Warning: %s: ", arg);
-      if (strlen(arg) >= 200)
-	fprintf(stderr, "Team name too long\n");
-      else
-	fprintf(stderr, "Team name not allowed\n");
-    }
-  return (0);
-}
 
 int		pars_error(char *arg, char **map, t_com *func)
 {
@@ -44,7 +27,8 @@ t_com		*map_func()
 {
   t_com		*func;
 
-  func = xmalloc(10 * sizeof(t_com));
+  if ((func = malloc(10 * sizeof(t_com))) == NULL)
+    return (NULL);
   func[0].com = "-p";
   func[1].com = "-x";
   func[2].com = "-y";
@@ -68,17 +52,13 @@ t_com		*map_func()
   return (func);
 }
 
-int		parse_com(char **argv, t_zap *data)
+int		parse_loop(char **argv, t_zap *data, char **map, t_com *func)
 {
   int		i;
   e_state	state;
-  char		**map;
-  t_com		*func;
 
   i = 0;
   state = NONE;
-  map = stwt("-p -x -y -n -c -t -a -w -v -h", " ", -1);
-  func = map_func();
   while (argv[++i] != NULL)
     {
       if (argv[i][0] == '-')
@@ -92,7 +72,24 @@ int		parse_com(char **argv, t_zap *data)
 	       ptr(data, argv[i], &state) == -1)
 	return (-1);
     }
+  return (0);
+}
+
+int		parse_com(char **argv, t_zap *data)
+{
+  char		**map;
+  t_com		*func;
+  int		ret;
+
+  if ((map = stwt("-p -x -y -n -c -t -a -w -v -h", " ", -1)) == NULL)
+    return (-1);
+  if ((func = map_func()) == NULL)
+    {
+      free(map);
+      return (-1);
+    }
+  ret = parse_loop(argv, data, map, func);
   free(map);
   free(func);
-  return (base_value(data));
+  return ((ret != 0) ? ret : base_value(data));
 }

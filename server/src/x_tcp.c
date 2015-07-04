@@ -5,15 +5,16 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:47:09 2015 romaric
-** Last update Tue Jun  9 13:47:37 2015 Thibaut Lopez
+** Last update Sat Jul  4 14:09:12 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
-int			clean_return(int fd, char *str)
+int			clean_return(int fd, char *str, t_zap *data)
 {
   if (fd > 2)
     close(fd);
+  free_zap(data);
   fprintf(stderr, "%s\n", str);
   return (1);
 }
@@ -54,4 +55,11 @@ int			init_connect(int s, int port, char *id)
   sin.sin_port = htons(port);
   sin.sin_addr.s_addr = inet_addr(id);
   return (connect(s, (const struct sockaddr *)&sin, sizeof(sin)));
+}
+
+int		smod(int nb, int mod)
+{
+  while (nb < 0)
+    nb += mod;
+  return (nb % mod);
 }

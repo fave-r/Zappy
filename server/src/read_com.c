@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:51:04 2015 romaric
-** Last update Thu Jul  2 15:43:21 2015 Thibaut Lopez
+** Last update Sat Jul  4 15:12:42 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -50,49 +50,52 @@ bct %d %d %d %d %d %d %d %d %d\n",
   return (0);
 }
 
-void	check_com(t_com *com, t_user *usr, int *ret, t_zap *data)
+int		read_com(t_user *usr, t_zap *data)
 {
-  int	i;
-  char	*gnl;
-  char	**tok;
+  int		i;
+  char		*gnl;
+  char		**tok;
+  t_com		*com;
+  int		ret;
 
+  ret = 0;
+  if ((com = ptr_to_function(usr->type)) == NULL)
+    return (-1);
   while (usr->queue == NULL && (gnl = get_line_cb(&usr->cb)) != NULL)
     {
       verbose_receive(usr, gnl, data);
-      if ((tok = stwt(gnl, " \t\n\r", usr->type)) == NULL)
-	{
-	  *ret = 0;
-	  free(gnl);
-	  return;
-	}
-      if ((i = find_ptr(com, tok[0])) != -1
-	  && (*ret = com[i].ptr(tok, data, usr)) != -1)
-	usr->nb_ncom = 0;
-      else
-	{
-	  usr->nb_ncom += 1;
-	  if (usr->nb_ncom == 10)
-	    usr->tokill = 1;
-	}
-      free(tok);
+      tok = stwt(gnl, " \t\n\r", usr->type);
       free(gnl);
+      if (tok == NULL)
+	return (0);
+      if ((i = find_ptr(com, tok[0])) != -1 &&
+	  (ret = com[i].ptr(tok, data, usr)) != -1)
+	usr->nb_ncom = 0;
+      else if (++usr->nb_ncom == 10)
+	usr->tokill = 1;
+      free(tok);
     }
-}
-
-int		read_com(t_user *usr, t_zap *data)
-{
-  t_com		*com;
-  int		ret;
-  int		rv;
-
-  ret = 0;
-  if (cb_taken(&usr->cb) == 0 && (rv = read_cb(&usr->cb, usr->fd)) <= 0)
-    {
-      usr->tokill = (rv <= 0) ? 2 : 1;
-      return (-1);
-    }
-  com = ptr_to_function(usr->type);
-  check_com(com, usr, &ret, data);
   free(com);
   return (ret);
+}
+
+int		write_read_client(t_user **user, t_bf *bf, t_zap *data)
+{
+  t_user	*tmp;
+  int		rv;
+
+  tmp = *user;
+  while (tmp != NULL)
+    {
+      if (FD_ISSET(tmp->fd, &bf->rbf) && cb_taken(&tmp->cb) == 0)
+	if ((rv = read_cb(&tmp->cb, tmp->fd)) <= 0)
+	  {
+	    tmp->tokill = (rv <= 0) ? 2 : 1;
+	    return (-1);
+	  }
+      if (cb_taken(&tmp->wr) > 0 && FD_ISSET(tmp->fd, &bf->wbf))
+	write_cb(tmp, data, &tmp->queue);
+      tmp = tmp->next;
+    }
+  return (0);
 }

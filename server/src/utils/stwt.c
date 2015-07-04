@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 18:33:45 2015 Thibaut Lopez
-** Last update Wed Jul  1 18:22:14 2015 Thibaut Lopez
+** Last update Sat Jul  4 15:14:36 2015 Thibaut Lopez
 */
 
 #include "utils.h"
@@ -74,7 +74,7 @@ char	**stwt(char *str, char *delim, int nb_word)
   nb_letters = strlen(str);
   if ((nb_word = lenword(str, &nb_letters, delim, nb_word)) == 0)
     return (NULL);
-  ret = xmalloc((nb_word + 1) * sizeof(char *) + nb_letters);
+  ret = malloc((nb_word + 1) * sizeof(char *) + nb_letters);
   nb_letters = 0;
   cur = (char *)ret + (nb_word + 1) * sizeof(char *);
   i = -1;

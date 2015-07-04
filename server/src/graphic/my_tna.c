@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Wed Jun  3 17:24:43 2015 Thibaut Lopez
+** Last update Sat Jul  4 16:58:18 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -17,9 +17,9 @@ int		my_send_tna(t_zap *data, t_user *usr)
   cur = data->teams;
   while (cur != NULL)
     {
-      fill_cb(&usr->wr, "tna ", 4);
-      fill_cb(&usr->wr, cur->name, strlen(cur->name));
-      fill_cb(&usr->wr, "\n", 1);
+      xfill_cb(usr, &usr->wr, "tna ");
+      xfill_cb(usr, &usr->wr, cur->name);
+      xfill_cb(usr, &usr->wr, "\n");
       cur = cur->next;
     }
   return (0);

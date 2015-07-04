@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Mon May 25 18:14:37 2015 Thibaut Lopez
+** Last update Sat Jul  4 16:49:18 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -16,7 +16,7 @@ int	my_send_sgt(t_zap *data, t_user *usr)
 
   bzero(tmp, 25);
   sprintf(tmp, "sgt %d\n", data->delay);
-  fill_cb(&usr->wr, tmp, strlen(tmp));
+  xfill_cb(usr, &usr->wr, tmp);
   return (0);
 }
 

@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu Jul  2 02:56:40 2015 Thibaut Lopez
-** Last update Sat Jul  4 15:17:45 2015 Thibaut Lopez
+** Last update Sat Jul  4 19:15:48 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -35,7 +35,8 @@ char	*strflat(char **tab, char *sep)
   if (tab == NULL)
     return (NULL);
   len = flatlen(tab, sep);
-  new = malloc(len * sizeof(char));
+  if ((new = malloc(len * sizeof(char))) == NULL)
+    return (NULL);
   bzero(new, len);
   i = 0;
   while (tab[i] != NULL)
@@ -85,7 +86,8 @@ char	*teamflat(t_team *teams, char *sep)
   int	len;
 
   len = teamflatlen(teams, sep);
-  new = malloc(len * sizeof(char));
+  if ((new = malloc(len * sizeof(char))) == NULL)
+    return (NULL);
   bzero(new, len);
   while (teams != NULL)
     {

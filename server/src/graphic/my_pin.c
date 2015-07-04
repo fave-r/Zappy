@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Fri Jul  3 00:56:59 2015 Thibaut Lopez
+** Last update Sat Jul  4 16:54:23 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -23,7 +23,7 @@ int	my_send_pin(t_user *usr, t_user *player)
 	  GET_INV(player).deraumere, GET_INV(player).sibur,
 	  GET_INV(player).mendiane, GET_INV(player).phiras,
 	  GET_INV(player).thystame);
-  fill_cb(&usr->wr, tmp, strlen(tmp));
+  xfill_cb(usr, &usr->wr, tmp);
   return (0);
 }
 

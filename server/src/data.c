@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Tue May 12 10:39:02 2015 Thibaut Lopez
-** Last update Sat Jul  4 15:16:23 2015 Thibaut Lopez
+** Last update Sat Jul  4 20:38:44 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -29,16 +29,18 @@ void	add_rand_food(t_zap *data, int nb, t_user *usr)
   verbose_eat(usr, x, y, data);
 }
 
-void	init_map(t_zap *data)
+int	init_map(t_zap *data)
 {
   int	i;
   int	j;
 
-  data->map = malloc(data->width * sizeof(t_content *));
+  if ((data->map = malloc(data->width * sizeof(t_content *))) == NULL)
+    return (1);
   i = -1;
   while (++i < data->width)
     {
-      data->map[i] = malloc(data->length * sizeof(t_content));
+      if ((data->map[i] = malloc(data->length * sizeof(t_content))) == NULL)
+	return (map_free(data->map, data->width));
       j = -1;
       while (++j < data->length)
 	{
@@ -52,6 +54,7 @@ void	init_map(t_zap *data)
 	}
     }
   print_data(data);
+  return (0);
 }
 
 int	base_value(t_zap *data)
@@ -63,13 +66,15 @@ int	base_value(t_zap *data)
     {
       if (data->teams != NULL)
 	team_free(data->teams);
-      data->teams = base_team();
+      if ((data->teams = base_team()) == NULL)
+	return (-1);
     }
   data->count = (data->count == -1) ? 10 : data->count;
   team_counts(data->teams, data->count);
   data->delay = (data->delay == -1) ? 100 : data->delay;
   data->asking = (data->asking == -1) ? 4.5 : data->asking;
-  init_map(data);
+  if ((init_map(data)) != 0)
+    return (-1);
   return (0);
 }
 
@@ -98,14 +103,7 @@ void	init_val(t_zap *data)
 
 void	free_zap(t_zap *data)
 {
-  int	i;
-
-  i = 0;
-  while (i < data->width)
-    {
-      free(data->map[i]);
-      i++;
-    }
+  map_free(data->map, data->width);
   free(data->map);
   team_free(data->teams);
 }

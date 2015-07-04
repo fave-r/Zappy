@@ -5,20 +5,25 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 15 14:41:50 2015 Thibaut Lopez
-** Last update Sat Jul  4 15:13:26 2015 Thibaut Lopez
+** Last update Sat Jul  4 17:16:23 2015 Thibaut Lopez
 */
 
 #include "utils.h"
 
-void	push_q(t_que **q, void *e, void *(*clone)(void *))
+int	push_q(t_que **q, void *e, void *(*clone)(void *))
 {
   t_que	*new;
   t_que	*tmp;
 
   if (e == NULL)
-    return ;
-  new = malloc(sizeof(t_que));
-  new->e = clone(e);
+    return (0);
+  if ((new = malloc(sizeof(t_que))) == NULL)
+    return (-1);
+  if ((new->e = clone(e)) == NULL)
+    {
+      free(new);
+      return (-1);
+    }
   new->next = NULL;
   tmp = *q;
   while (tmp != NULL && tmp->next != NULL)
@@ -27,6 +32,7 @@ void	push_q(t_que **q, void *e, void *(*clone)(void *))
     tmp->next = new;
   else
     *q = new;
+  return (0);
 }
 
 void	pop_q(t_que **q)

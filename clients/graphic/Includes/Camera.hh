@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Mon Jun 22 16:21:49 2015 Leo Thevenet
-// Last update Sat Jul  4 10:50:18 2015 Leo Thevenet
+// Last update Sat Jul  4 22:53:36 2015 Leo Thevenet
 //
 
 #ifndef __CAMERA_HH__
@@ -14,11 +14,7 @@
 #include <SdlContext.hh>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-//#include <AShader.hh>
-//#include <BasicShader.hh>
-//#include <stdexcept>
 #include <map>
-//#include <unistd.h>
 
 class	Camera
 {

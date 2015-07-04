@@ -5,7 +5,7 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun 29 12:15:40 2015 romaric
-// Last update Thu Jul  2 10:17:44 2015 romaric
+// Last update Sat Jul  4 16:56:35 2015 Leo Thevenet
 //
 
 #ifndef	PLAYER_HH
@@ -130,22 +130,22 @@ public:
 
   void	setX(const int x)
   {
-    _x = x;
+    _y = x;
   };
 
   void	setY(const int y)
   {
-    _y = y;
+    _x = y;
   };
 
   void	setX1(const int x1)
   {
-    _x1 = x1;
+    _y1 = x1;
   };
 
   void	setY1(const int y1)
   {
-    _y1 = y1;
+    _x1 = y1;
   };
 
 

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Mon May 18 11:16:04 2015 romaric
-** Last update Sat Jul  4 15:17:23 2015 Thibaut Lopez
+** Last update Sat Jul  4 19:19:49 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -14,7 +14,8 @@ t_com		*unknown_funcs()
 {
   t_com		*ptrs;
 
-  ptrs = malloc(3 * sizeof(t_com));
+  if ((ptrs = malloc(3 * sizeof(t_com))) == NULL)
+    return (NULL);
   ptrs[0].com = "GRAPHIC";
   ptrs[0].ptr = my_graphic;
   ptrs[1].com = "";
@@ -49,7 +50,8 @@ t_com		*ptr_to_function(e_clt type)
     return (unknown_funcs());
   else if (type == GRAPHIC)
     return (graphic_funcs());
-  ptrs = malloc(13 * sizeof(t_com));
+  if ((ptrs = malloc(13 * sizeof(t_com))) == NULL)
+    return (NULL);
   ptrs[0].com = "avance";
   ptrs[1].com = "broadcast";
   ptrs[2].com = "connect_nbr";

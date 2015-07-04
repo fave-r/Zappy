@@ -5,7 +5,7 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun 29 12:15:56 2015 romaric
-// Last update Wed Jul  1 18:20:27 2015 romaric
+// Last update Sat Jul  4 22:39:59 2015 Leo Thevenet
 //
 
 #include "Player.hpp"
@@ -38,8 +38,8 @@ Player::Player(const int nb, const int x, const int y, const int dir, const int 
         throw loading_error("Player model fail");
       this->_init = true;
     }
-      this->scale(glm::vec3(0.003, 0.003, 0.003));
-      this->translate(glm::vec3(this->_y, 1, this->_x));
+  this->translate(glm::vec3(this->_x, 1, this->_y));
+  this->scale(glm::vec3(0.007, 0.007, 0.007));
 }
 
 Player::~Player()
@@ -49,23 +49,10 @@ Player::~Player()
 void          Player::update()
 {
   if (this->_x == this->_x1 && this->_y == this->_y1);
-  //std::cout << "" << "\n";
   else
     {
-      this->_x = this->_y1;
-      this->_y = this->_x1;
-
-      //IF THIS->_CASTING == 1 -> ANIMATION INCANT
-      //ELSE ANIMATION IDDLE
-
-      /*if (this->_x != this->_x1)
-        this->_x = this->_x1;*/
-      /*else if (this->_x < this->_x1)
-        this->_x++;*/
-      /*if (this->_y != this->_y1)
-        this->_y = this->_y1;*/
-      /*else if (this->_y < this->_y1)
-        this->_y++;*/
+      this->_y = this->_y1;
+      this->_x = this->_x1;
       this->translate(glm::vec3(this->_x, 1, this->_y));
     }
 }

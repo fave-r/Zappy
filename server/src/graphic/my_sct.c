@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Fri Jul  3 01:18:51 2015 Thibaut Lopez
+** Last update Sat Jul  4 20:24:59 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -67,17 +67,22 @@ int		my_sct(char **com, t_zap *data, t_user *usr)
 
   if (check_sct(com, data))
     return (my_sbp(usr));
-  ask.args = sstrdup(com + 1);
+  if ((ask.args = sstrdup(com + 1)) == NULL)
+    {
+      usr->tokill = 1;
+      return (0);
+    }
   ask.ok = sct_ok;
   ask.changes = sct_data;
   ask.ko = sct_ko;
   find_ask(&ask, data->asking);
   if (count_type(usr, GRAPHIC) == 1 || data->wait == 1)
     gettimeofday(&ask.wait, NULL);
-  push_q((t_que **)&usr->info, &ask, clone_ask);
+  xpush_q(usr, (t_que **)&usr->info, &ask, clone_ask);
   if (data->wait == 1)
     return (0);
-  str = flat_ask(com, usr->nb, q_len((t_que *)usr->info) - 1);
+  if ((str = flat_ask(com, usr->nb, q_len((t_que *)usr->info) - 1)) == NULL)
+    return (0);
   str[0] = 'a';
   alert_graphic(str, usr);
   free(str);

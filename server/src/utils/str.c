@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 17:47:45 2015 romaric
-** Last update Sat Jul  4 15:13:50 2015 Thibaut Lopez
+** Last update Sat Jul  4 20:57:17 2015 Thibaut Lopez
 */
 
 #include "utils.h"
@@ -66,11 +66,16 @@ char	**sstrdup(char **tab)
 
   if (tab == NULL)
     return (NULL);
-  new = malloc((sstrlen(tab) + 1) * sizeof(char *));
+  if ((new = malloc((sstrlen(tab) + 1) * sizeof(char *))) == NULL)
+    return (NULL);
   i = 0;
   while (tab[i] != NULL)
     {
-      new[i] = strdup(tab[i]);
+      if ((new[i] = strdup(tab[i])) == NULL)
+	{
+	  sfree(new);
+	  return (NULL);
+	}
       i++;
     }
   new[i] = NULL;

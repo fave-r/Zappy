@@ -69,7 +69,6 @@ class IA:
          self.foodNeeded = 0
          self.cli.iaCallback = self.begin_ia
          self.cli.fork(None)
-#         self.cli.broadcast(str(self.cli.lvl) + ":new player", None)
          self.begin_ia((self.cli.lvl + 1) * 20)
 
 
@@ -86,7 +85,7 @@ class IA:
             self.cli.move(dirPos[2], None)
             return self.survivor2(food)
            else:
-            self.cli.move(dirPos[2], None)
+            self.cli.move(dirPos[i], None)
             return self.survivor2(food)
           i += 1
 
@@ -110,7 +109,6 @@ class IA:
 
          case = vue[0]
 
-#         if (int(evol[self.cli.lvl]["player"]) > int(levels[self.cli.lvl]) or self.cli.id != self.cli.myLeader):
          if self.cli.id != self.cli.myLeader:
           return self.survivor(int(self.cli.inv["nourriture"]) + 10, vue)
 
@@ -254,7 +252,7 @@ class IA:
          inv = self.cli.inventaire(None)
          vue = self.cli.voir(None)
          if int(inv["nourriture"]) < int(food):
-          return self.survivor(food + 10, vue)
+          return self.survivor(food + 20, vue)
          else:
           return self.evolve(vue)
 
@@ -361,20 +359,26 @@ class Client:
          return self.receive()
 
 
-        def handle_read(self, read):
-         if len(self.buffer) == 0 or read == 1:
+        def handle_read(self):
+         if len(self.buffer) == 0:
           rep = self.sock.recv(16384).decode()
           self.buffer += rep;
 
          try:
-#          while 1:
            msg = self.buffer[0:self.buffer.index("\n")]
            self.buffer = self.buffer[self.buffer.index("\n") + 1:]
 
            if msg == "elevation en cours":
             print (self.id, msg)
+           return msg
 
-           if msg[:7] == "message":
+           if msg[:6] == "niveau":
+            return msg
+
+           if self.isIncant == True:
+            return self.handle_read()
+            
+           if msg[:7] == "message" and int(self.inv["nourriture"]) < ((self.lvl + 1) * 10) / 2:
             cont = msg.split(",")
             sound = cont[0].split(" ")[1]
             cont = cont[1].split(";")
@@ -385,20 +389,20 @@ class Client:
             niv = int(infos2.split(":")[0])
             tmp = { "sound":int(sound), "message":infos2.split(":")[1] }
 
-            if niv != self.lvl or team != params[0] or leader != self.myLeader or int(self.inv["nourriture"]) < ((self.lvl + 1) * 10) / 2:
-             return self.handle_read(0)
+            if niv != self.lvl or team != params[0] or leader != self.myLeader:
+             return self.handle_read()
+            else:
+             return msg
 
-           if len(self.cmd_queue) > 0 and msg[:7] != "message" and msg[:6] != "niveau":
-            if self.checkValid(self.cmd_queue[0], msg) == False:
-             return self.handle_read(0)
-            self.cmd_queue.pop(0)
+           self.cmd_queue.pop(0)
            return msg
+
          except ValueError:
           pass
 
 
         def receive(self):
-         rep = self.handle_read(0)
+         rep = self.handle_read()
 
          if rep == None or rep == "mort":
           print (self.id, "I'M DEAD")
@@ -406,8 +410,8 @@ class Client:
 
          elif rep[:6] == "niveau":
           while len(self.cmd_queue) > 0:
-           rep = self.sock.recv(16384).decode()
-           if self.checkValid(self.cmd_queue[0], rep):
+           tmp = self.handle_read()
+           if tmp[:7] != "message":
             self.cmd_queue.pop(0)
           del self.rep_queue[:]
           del self.cmd_queue[:]
@@ -416,12 +420,13 @@ class Client:
          elif rep == "ko" and self.isIncant == True:
           self.isIncant = False
           while len(self.cmd_queue) > 0:
-           self.handle_read(0)
+           tmp = self.handle_read()
+           if tmp[:7] != "message":
+            self.cmd_queue.pop(0)
           del self.rep_queue[:]
           del self.cmd_queue[:]
           return self.iaCallback((self.lvl + 1) * 10)
           
-
          if rep[:7] == "message":
           cont = rep.split(",")
           sound = cont[0].split(" ")[1]
@@ -434,7 +439,11 @@ class Client:
           tmp = { "sound":int(sound), "message":infos2.split(":")[1] }
 
 
-          if niv == self.lvl and leader == self.myLeader and team == params[0]:
+          if niv == self.lvl and leader == self.myLeader and team == params[0] and self.isIncant == False:
+           while len(self.cmd_queue) > 0:
+            truc = self.handle_read()
+            if truc[:7] != "message":
+             self.cmd_queue.pop(0)
            del self.rep_queue[:]
            del self.msg_queue[:]
            del self.cmd_queue[:]
@@ -445,8 +454,11 @@ class Client:
            if tmp["message"] == "help":
             self.goTo(tmp["sound"], None)
             return self.receive()
+          else:
+           return self.receive()
 
          else:
+          self.cmd_queue.pop(0)
           return rep
 
 
@@ -455,7 +467,6 @@ class Client:
         def level_up(self, msg):
           print (self.id, msg)
           self.isIncant = False
-#          self.broadcast(str(self.lvl) + ":ok", None)
 
           msg = msg.replace(" ", "")
           self.lvl = int(msg.split(":")[1]) - 1
@@ -464,8 +475,8 @@ class Client:
           if self.lvl == 7:
            print ("LEVEL 8")
            self.handle_close()
-#          while self.buffer != "":
-#           self.handle_read()
+          while self.buffer != "":
+           self.handle_read()
           self.buffer = ""
           self.myLeader = self.getNewLeader()
           return self.iaCallback((self.lvl + 1) * 10)
@@ -528,8 +539,6 @@ class Client:
          if len(self.rep_list) % 3 == 0:
           answer = self.rep_list[1].split("\n")
           self.id = nbClis
-#          if nbClis == 1 and int(answer[0]) + 1 > maxPlayers:
-#           maxPlayers = int(answer[0]) + 1
           if len(self.rep_list) > 2:
            map = self.rep_list[2].split(" ")
            self.mapX = int(map[0])
@@ -720,8 +729,6 @@ class Client:
 
 
         def goTo(self, sound, cb):
-
-#         print (self.id, "goTo", sound)
 
          if (sound == 0):
           return

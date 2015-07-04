@@ -5,7 +5,7 @@
 ## Login   <fave_r@epitech.net>
 ##
 ## Started on  Mon Jun  8 12:54:25 2015 romaric
-## Last update Mon Jun 29 15:43:57 2015 romaric
+## Last update Sat Jul  4 22:43:46 2015 Leo Thevenet
 ##
 
 CXX =		g++
@@ -49,7 +49,6 @@ SRCS =		$(SRC)/Button.cpp		\
                 $(SRC)/ModelPool.cpp          	\
                 $(SRC)/TexturePool.cpp        	\
                 $(SRC)/Camera.cpp             	\
-                $(SRC)/APlayer.cpp            	\
 		$(SRC)/TextBox.cpp		\
 		$(SRC)/Food.cpp			\
 		$(SRC)/Linemate.cpp		\

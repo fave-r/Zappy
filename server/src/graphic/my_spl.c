@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Fri Jul  3 01:21:44 2015 Thibaut Lopez
+** Last update Sat Jul  4 20:27:38 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -26,12 +26,13 @@ void		spl_data(t_user **usr, t_zap *data, t_ask *ask)
     }
   bzero(str, 50);
   sprintf(str, "niveau actuel : %d\n", GET_LVL(tmp));
-  fill_cb(&tmp->wr, str, strlen(str));
+  xfill_cb(tmp, &tmp->wr, str);
   check = team_winning(tmp, GET_TEAM(tmp));
   if (check == 1)
     {
       gettimeofday(&now, NULL);
-      push_q(&data->end, &now, clone_tv);
+      if (push_q(&data->end, &now, clone_tv) != 0)
+	quit_sig = 1;
       data->win = GET_TEAM(tmp);
     }
 }
@@ -70,17 +71,22 @@ int		my_spl(char **com, t_zap *data, t_user *usr)
       get_by_nb(usr, val, AI) == NULL ||
       (val = my_strtol(com[2])) <= 0 || val > 8)
     return (my_sbp(usr));
-  ask.args = sstrdup(com + 1);
+  if ((ask.args = sstrdup(com + 1)) == NULL)
+    {
+      usr->tokill = 1;
+      return (0);
+    }
   ask.ok = spl_ok;
   ask.changes = spl_data;
   ask.ko = spl_ko;
   find_ask(&ask, data->asking);
   if (count_type(usr, GRAPHIC) == 1 || data->wait == 1)
     gettimeofday(&ask.wait, NULL);
-  push_q((t_que **)&usr->info, &ask, clone_ask);
+  xpush_q(usr, (t_que **)&usr->info, &ask, clone_ask);
   if (data->wait == 1)
     return (0);
-  str = flat_ask(com, usr->nb, q_len((t_que *)usr->info) - 1);
+  if ((str = flat_ask(com, usr->nb, q_len((t_que *)usr->info) - 1)) == NULL)
+    return (0);
   str[0] = 'a';
   alert_graphic(str, usr);
   free(str);

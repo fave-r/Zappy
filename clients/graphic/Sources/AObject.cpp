@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sun Jun 21 02:02:59 2015 jean_c
-// Last update Mon Jun 29 10:23:18 2015 jean_c
+// Last update Sat Jul  4 22:43:32 2015 Leo Thevenet
 //
 
 #include "AObject.hh"
@@ -26,7 +26,6 @@ void                    AObject::scale(const glm::vec3 &scale)
 
 void                    AObject::translate(const glm::vec3 &v)
 {
-  //this->_position += v;
   this->_position = v;
 }
 

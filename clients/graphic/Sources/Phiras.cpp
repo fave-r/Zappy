@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 27 01:11:21 2015 jean_c
-// Last update Sat Jun 27 09:57:31 2015 jean_c
+// Last update Sat Jul  4 22:41:55 2015 Leo Thevenet
 //
 
 #include "Phiras.hh"
@@ -20,7 +20,6 @@ Phiras::~Phiras()
 
 inline void		Phiras::draw(gdl::AShader &shader)
 {
-  //this->_geometry.draw(shader, getTransformation(), GL_TRIANGLES);
   glDisable(GL_TEXTURE_2D);
   this->_geometry.draw(shader, getTransformation(), GL_TRIANGLES);
   glEnable(GL_TEXTURE_2D);

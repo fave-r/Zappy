@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 09:08:50 2015 jean_c
-// Last update Sat Jul  4 10:36:44 2015 Leo Thevenet
+// Last update Sat Jul  4 22:38:12 2015 Leo Thevenet
 //
 
 #ifndef __GRAPHIC_HH__
@@ -37,6 +37,7 @@
 #include "Sibur.hh"
 #include "Thystame.hh"
 #include "User.hpp"
+#include "Map.hh"
 
 class		Graphic
 {
@@ -52,7 +53,7 @@ public:
   void			setHUD();
   void			updateHUD();
   void			changeSize(size_t, size_t, std::vector<std::vector <Content *> > &);
-  void			setMap(std::vector<std::vector <Content *> > &, std::list<std::pair<int, int> > &, std::list<int> &, User &);
+  void			setMap(std::vector<std::vector <Content *> > &, std::list<std::pair<int, int> > &, std::list<int> &, User &,   std::list<std::string> &_teamnames);
   void			addNumberHUD();
 private:
   int		_width;
@@ -61,6 +62,7 @@ private:
   int			_actualCase;
   bool		        _needUpdate;
   int			_selectedP;
+  std::list<std::string> _teamnames;
 
   std::vector<std::vector <Content *> >     _map;
   std::list<std::pair<int, int> >           _update;
@@ -68,7 +70,9 @@ private:
   User                                      _user;
 
   gdl::SdlContext	_context;
+public:
   gdl::BasicShader	_shader;
+private:
   gdl::Input		_input;
   gdl::Clock		_clock;
 

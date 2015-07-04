@@ -5,7 +5,7 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun  8 14:29:10 2015 romaric
-// Last update Wed Jul  1 18:27:11 2015 romaric
+// Last update Sat Jul  4 22:41:34 2015 Leo Thevenet
 //
 
 #include <fstream>
@@ -66,7 +66,6 @@ void	Command::thiscom(const std::string &com, Map &map, Socket &s)
   std::string	key;
 
   key = com.substr(0, com.find_first_of(" \n\r"));
-  //std::cout << key << std::endl;
   return (this->*_foncs.at(key.c_str()))(com, map, s);
 }
 
@@ -117,8 +116,14 @@ void	Command::cellInfo(const std::string &com, Map &map, Socket &s) const
 
 void	Command::teamName(const std::string &com, Map &map, Socket &s) const
 {
-  (void)com;
-  (void)map;
+  std::istringstream	ss(com);
+  std::string         sa, tn;
+
+  ss >> sa >> tn >> sa;
+  if (ss.eof())
+  {
+    map.putTeam(tn);
+  }
   (void)s;
 }
 

@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Sat Jul  4 15:18:12 2015 Thibaut Lopez
+** Last update Sat Jul  4 20:42:02 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -32,7 +32,8 @@ t_com		*ptrs_get()
 {
   t_com	*ptrs;
 
-  ptrs = malloc(8 * sizeof(t_com));
+  if ((ptrs = malloc(8 * sizeof(t_com))) == NULL)
+    return (NULL);
   ptrs[0].com = "nourriture";
   ptrs[0].ptr = get_food;
   ptrs[1].com = "linemate";
@@ -65,18 +66,18 @@ int		my_pose(char **com, t_zap *data, t_user *usr)
       (i = find_ptr(ptr, com[1])) == -1)
     {
       free(ptr);
-      fill_cb(&usr->wr, "ko\n", 3);
+      xfill_cb(usr, &usr->wr, "ko\n");
       return ((sstrlen(com) != 2) ? -1 : 0);
     }
   ptr[i].ptr(&(GET_INV(usr)), &inv);
   ptr[i].ptr(&(data->map[GET_X(usr)][GET_Y(usr)]), &cell);
   free(ptr);
-  fill_cb(&usr->wr, (*inv > 0) ? "ok\n" : "ko\n", 3);
+  xfill_cb(usr, &usr->wr, (*inv > 0) ? "ok\n" : "ko\n");
   if (*inv > 0)
     {
       (*inv)--;
       (*cell)++;
     }
-  push_q(&usr->queue, add_tv(&now, 7000000 / data->delay), clone_tv);
+  xpush_q(usr, &usr->queue, add_tv(&now, 7000000 / data->delay), clone_tv);
   return (send_pose(usr, i, &data->map[GET_X(usr)][GET_Y(usr)]));
 }

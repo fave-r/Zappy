@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Mon Jun  1 11:28:59 2015 Thibaut Lopez
-** Last update Fri Jul  3 01:41:37 2015 Thibaut Lopez
+** Last update Sat Jul  4 16:46:17 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -100,9 +100,9 @@ int		end_game(t_zap *data, t_user **user)
   while (tmp != NULL)
     {
       if (tmp->type == GRAPHIC)
-	fill_cb(&tmp->wr, s, strlen(s));
+	xfill_cb(tmp, &tmp->wr, s);
       else if (tmp->type == AI)
-	fill_cb(&tmp->wr, "mort\n", 5);
+	xfill_cb(tmp, &tmp->wr, "mort\n");
       while (tmp->type != UNKNOWN && cb_taken(&tmp->wr) > 0)
 	write_cb(tmp, data, NULL);
       if (tmp->type == AI && *user == tmp)

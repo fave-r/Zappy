@@ -5,39 +5,48 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Sat Jul  4 15:18:44 2015 Thibaut Lopez
+** Last update Sat Jul  4 20:28:10 2015 Thibaut Lopez
 */
 
 #include "server.h"
 
-void		map_resize(t_zap *data, int x, int y)
+int		map_resize(t_zap *data, int x, int y)
 {
   int		i;
-  int		j;
   t_content	**map;
 
-  map = malloc(y * sizeof(t_content *));
+  if ((map = malloc(y * sizeof(t_content *))) == NULL)
+    return (-1);
   i = -1;
   while (++i < y)
     {
-      map[i] = malloc(x * sizeof(t_content));
-      j = -1;
-      while (++j < x)
-	fill_cell(i, j, map, data);
+      if ((map[i] = malloc(x * sizeof(t_content))) == NULL)
+	{
+	  map_free(map, data->width);
+	  map_free(data->map, data->width);
+	  return (-1);
+	}
+      fill_cell(i, x, map, data);
       if (i < data->width)
 	free(data->map[i]);
     }
-  free(data->map);
+  map_free(data->map, data->width);
   data->map = map;
   data->length = x;
   data->width = y;
+  return (0);
 }
 
 void		sms_data(t_user **usr, t_zap *data, t_ask *ask)
 {
   t_user	*tmp;
 
-  map_resize(data, my_strtol(ask->args[0]), my_strtol(ask->args[1]));
+  if ((map_resize(data, my_strtol(ask->args[0]),
+		  my_strtol(ask->args[1]))) != 0)
+    {
+      ask->res = ANR;
+      return ;
+    }
   tmp = *usr;
   while (tmp != NULL)
     {
@@ -85,17 +94,22 @@ int		my_sms(char **com, t_zap *data, t_user *usr)
   if (sstrlen(com) != 3 || (val = my_strtol(com[1])) <= 0 ||
       (val = my_strtol(com[2])) <= 0)
     return (my_sbp(usr));
-  ask.args = sstrdup(com + 1);
+  if ((ask.args = sstrdup(com + 1)) == NULL)
+    {
+      usr->tokill = 1;
+      return (0);
+    }
   ask.ok = sms_ok;
   ask.changes = sms_data;
   ask.ko = sms_ko;
   find_ask(&ask, data->asking);
   if (count_type(usr, GRAPHIC) == 1 || data->wait == 1)
     gettimeofday(&ask.wait, NULL);
-  push_q((t_que **)&usr->info, &ask, clone_ask);
+  xpush_q(usr, (t_que **)&usr->info, &ask, clone_ask);
   if (data->wait == 1)
     return (0);
-  str = flat_ask(com, usr->nb, q_len((t_que *)usr->info) - 1);
+  if ((str = flat_ask(com, usr->nb, q_len((t_que *)usr->info) - 1)) == NULL)
+    return (0);
   str[0] = 'a';
   alert_graphic(str, usr);
   free(str);

@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 26 18:31:09 2015 Thibaut Lopez
-** Last update Sat Jul  4 15:15:13 2015 Thibaut Lopez
+** Last update Sat Jul  4 20:16:41 2015 Thibaut Lopez
 */
 
 #include "utils.h"
@@ -16,7 +16,8 @@ void	*clone_tv(void *to_clone)
   t_tv	*new;
 
   tv = (t_tv *)to_clone;
-  new = malloc(sizeof(t_tv));
+  if ((new = malloc(sizeof(t_tv))) == NULL)
+    return (NULL);
   new->tv_sec = tv->tv_sec;
   new->tv_usec = tv->tv_usec;
   return ((void *)new);

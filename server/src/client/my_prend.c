@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Mon Jun 15 15:03:36 2015 Thibaut Lopez
+** Last update Sat Jul  4 17:55:21 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -47,18 +47,18 @@ int	my_prend(char **com, t_zap *data, t_user *usr)
       (i = find_ptr(ptr, com[1])) == -1)
     {
       free(ptr);
-      fill_cb(&usr->wr, "ko\n", 3);
+      xfill_cb(usr, &usr->wr, "ko\n");
       return ((sstrlen(com) != 2) ? -1 : 0);
     }
   ptr[i].ptr(&(GET_INV(usr)), &inv);
   ptr[i].ptr(&(data->map[GET_X(usr)][GET_Y(usr)]), &cell);
   free(ptr);
-  fill_cb(&usr->wr, (*cell > 0) ? "ok\n" : "ko\n", 3);
+  xfill_cb(usr, &usr->wr, (*cell > 0) ? "ok\n" : "ko\n");
   if (*cell > 0)
     {
       (*cell)--;
       (*inv)++;
     }
-  push_q(&usr->queue, add_tv(&now, 7000000 / data->delay), clone_tv);
+  xpush_q(usr, &usr->queue, add_tv(&now, 7000000 / data->delay), clone_tv);
   return (send_prend(usr, i, &data->map[GET_X(usr)][GET_Y(usr)]));
 }

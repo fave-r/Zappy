@@ -103,3 +103,8 @@ void  Map::nplayerCast(const int tmp)
   this->_play.push_back(tmp);
   this->_user.pCast(tmp);
 }
+
+void Map::putTeam(const std::string str)
+{
+  this->_teamnames.push_back(str);
+}

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:51:04 2015 romaric
-** Last update Sat Jul  4 15:12:42 2015 Thibaut Lopez
+** Last update Sat Jul  4 17:17:21 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -88,7 +88,7 @@ int		write_read_client(t_user **user, t_bf *bf, t_zap *data)
   while (tmp != NULL)
     {
       if (FD_ISSET(tmp->fd, &bf->rbf) && cb_taken(&tmp->cb) == 0)
-	if ((rv = read_cb(&tmp->cb, tmp->fd)) <= 0)
+	if ((rv = read_cb(tmp, tmp->fd)) <= 0)
 	  {
 	    tmp->tokill = (rv <= 0) ? 2 : 1;
 	    return (-1);

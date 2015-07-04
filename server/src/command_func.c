@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May 12 17:12:11 2015 romaric
-** Last update Mon Jun 29 03:18:53 2015 Thibaut Lopez
+** Last update Sat Jul  4 19:34:16 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -30,8 +30,8 @@ void		send_to_graphic(char *com, t_user *usr)
     {
       if (usr->type == GRAPHIC)
 	{
-	  fill_cb(&usr->wr, com, strlen(com));
-	  push_q(&usr->queue, NULL, clone_tv);
+	  xfill_cb(usr, &usr->wr, com);
+	  xpush_q(usr, &usr->queue, NULL, clone_tv);
 	}
       usr = usr->next;
     }
@@ -90,24 +90,30 @@ int		find_egg_nb(t_team *teams)
   return (nbr);
 }
 
-void		fill_cell(int x, int y, t_content **map, t_zap *data)
+void		fill_cell(int i, int x, t_content **map, t_zap *data)
 {
-  if (x < data->length && y < data->width)
+  int		j;
+
+  j = -1;
+  while (++j < x)
     {
-      map[x][y].food = data->map[x][y].food;
-      map[x][y].linemate = data->map[x][y].linemate;
-      map[x][y].deraumere = data->map[x][y].deraumere;
-      map[x][y].sibur = data->map[x][y].sibur;
-      map[x][y].mendiane = data->map[x][y].mendiane;
-      map[x][y].phiras = data->map[x][y].phiras;
-      map[x][y].thystame = data->map[x][y].thystame;
-      return ;
+      if (i < data->length && j < data->width)
+	{
+	  map[i][j].food = data->map[i][j].food;
+	  map[i][j].linemate = data->map[i][j].linemate;
+	  map[i][j].deraumere = data->map[i][j].deraumere;
+	  map[i][j].sibur = data->map[i][j].sibur;
+	  map[i][j].mendiane = data->map[i][j].mendiane;
+	  map[i][j].phiras = data->map[i][j].phiras;
+	  map[i][j].thystame = data->map[i][j].thystame;
+	  return ;
+	}
+      map[i][j].food = rand() % 10;
+      map[i][j].linemate = rand() % 8;
+      map[i][j].deraumere = rand() % 8;
+      map[i][j].sibur = rand() % 6;
+      map[i][j].mendiane = rand() % 5;
+      map[i][j].phiras = rand() % 4;
+      map[i][j].thystame = rand() % 2;
     }
-  map[x][y].food = rand() % 10;
-  map[x][y].linemate = rand() % 8;
-  map[x][y].deraumere = rand() % 8;
-  map[x][y].sibur = rand() % 6;
-  map[x][y].mendiane = rand() % 5;
-  map[x][y].phiras = rand() % 4;
-  map[x][y].thystame = rand() % 2;
 }

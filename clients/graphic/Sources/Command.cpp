@@ -5,7 +5,7 @@
 // Login   <fave_r@epitech.net>
 //
 // Started on  Mon Jun  8 14:29:10 2015 romaric
-// Last update Sat Jul  4 22:41:34 2015 Leo Thevenet
+// Last update Wed Jul  1 18:27:11 2015 romaric
 //
 
 #include <fstream>
@@ -66,6 +66,7 @@ void	Command::thiscom(const std::string &com, Map &map, Socket &s)
   std::string	key;
 
   key = com.substr(0, com.find_first_of(" \n\r"));
+  //std::cout << key << std::endl;
   return (this->*_foncs.at(key.c_str()))(com, map, s);
 }
 
@@ -250,14 +251,23 @@ void	Command::playerStarve(const std::string &com, Map &map, Socket &s) const
 void	Command::eggLayed(const std::string &com, Map &map, Socket &s) const
 {
   //<Egg number> <Player number> <X> <Y>
-  (void)com;
-  (void)map;
+  std::istringstream	ss(com);
+  int                 x, y, egg, nb;
+  std::string         sa;
+
+  ss >> sa >> egg >> nb >> x >> y >> sa;
+  if (ss.eof())
+  {
+    std::pair<int, int> tmp;
+    tmp.first = x;
+    tmp.second = y;
+    map._eggs[egg] = tmp;
+  }
   (void)s;
 }
 
 void	Command::eggHatch(const std::string &com, Map &map, Socket &s) const
 {
-  //<Egg number>
   (void)com;
   (void)map;
   (void)s;
@@ -266,16 +276,30 @@ void	Command::eggHatch(const std::string &com, Map &map, Socket &s) const
 void	Command::playerOnEgg(const std::string &com, Map &map, Socket &s) const
 {
   // <Egg number>
-  (void)com;
-  (void)map;
+  std::istringstream	ss(com);
+  int                 egg;
+  std::string         sa;
+
+  ss >> sa >> egg >> sa;
+  if (ss.eof())
+  {
+    map._eggs.erase(egg);
+  }
   (void)s;
 }
 
 void	Command::hatchedEggStarv(const std::string &com, Map &map, Socket &s) const
 {
   // <Egg number>
-  (void)com;
-  (void)map;
+  std::istringstream	ss(com);
+  int                 egg;
+  std::string         sa;
+
+  ss >> sa >> egg >> sa;
+  if (ss.eof())
+  {
+    map._eggs.erase(egg);
+  }
   (void)s;
 }
 

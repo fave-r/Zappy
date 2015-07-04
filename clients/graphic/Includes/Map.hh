@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 19:21:19 2015 Thibaut Lopez
-// Last update Wed Jul  1 18:28:44 2015 romaric
+// Last update Sat Jul  4 16:12:12 2015 Leo Thevenet
 //
 
 #ifndef	MAP_HH
@@ -36,7 +36,6 @@ private:
   size_t	_length;
   size_t	_width;
   std::vector<std::vector <Content *> > _map;
-  std::list<std::string> _teamnames;
 
 public:
   Map();
@@ -62,6 +61,7 @@ public:
   std::list<std::pair<int, int>> _update;
   std::list<int> _play;
   User    _user;
+  std::list<std::string> _teamnames;
 
   void    userUp(const int nb)
   {

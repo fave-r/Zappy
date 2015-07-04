@@ -1,1 +1,1 @@
-make -j4 && ./graphic
+make fclean; make -j4 && ./graphic

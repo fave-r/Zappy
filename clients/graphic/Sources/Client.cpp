@@ -5,7 +5,7 @@
 // Login   <lopez_t@epitech.net>
 //
 // Started on  Tue Jun 09 17:40:56 2015 Thibaut Lopez
-// Last update Thu Jul  2 15:36:53 2015 Leo Thevenet
+// Last update Sat Jul  4 16:11:44 2015 Leo Thevenet
 //
 
 #include "Client.hh"
@@ -79,7 +79,7 @@ void		Client::run(Map &map)
 		  m = map.getMap();
 		  graphic->changeSize(y, x, m);
 		}
-	      graphic->setMap(m, map._update, map._play, map._user);
+	      graphic->setMap(m, map._update, map._play, map._user, map._teamnames);
 	    }
 	  catch (std::out_of_range &err)
 	    {}

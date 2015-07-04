@@ -36,6 +36,7 @@ private:
   size_t	_length;
   size_t	_width;
   std::vector<std::vector <Content *> > _map;
+  std::list<std::string> _teamnames;
 
 public:
   Map();
@@ -66,6 +67,7 @@ public:
   {
     _play.push_back(nb);
   };
+  void putTeam(const std::string str);
 };
 
 #endif

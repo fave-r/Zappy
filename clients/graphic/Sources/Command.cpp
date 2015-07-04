@@ -117,8 +117,14 @@ void	Command::cellInfo(const std::string &com, Map &map, Socket &s) const
 
 void	Command::teamName(const std::string &com, Map &map, Socket &s) const
 {
-  (void)com;
-  (void)map;
+  std::istringstream	ss(com);
+  std::string         sa, tn;
+
+  ss >> sa >> tn >> sa;
+  if (ss.eof())
+  {
+    map.putTeam(tn);
+  }
   (void)s;
 }
 

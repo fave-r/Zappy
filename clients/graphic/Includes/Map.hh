@@ -62,11 +62,13 @@ public:
   std::list<int> _play;
   User    _user;
   std::list<std::string> _teamnames;
+  std::map<int, std::pair<int, int>> _eggs;
 
   void    userUp(const int nb)
   {
     _play.push_back(nb);
   };
+
   void putTeam(const std::string str);
 };
 

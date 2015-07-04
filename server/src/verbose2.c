@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 **
 ** Started on  Thu Jul  2 15:51:33 2015 Thibaut Lopez
-** Last update Fri Jul  3 18:34:40 2015 romaric
+** Last update Sat Jul  4 13:53:17 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -14,7 +14,7 @@ void		print_data(t_zap *data)
 {
   printf("Information about the server:\n");
   printf("Port: %d\n", data->port);
-  printf("Map of %dx%d cells\n", data->length, data->width);
+  printf("Map of %dx%d cells\n", data->width, data->length);
   printf("Player max per team: %d\n", data->count);
   printf("Delay for each action: %d\n", data->delay);
   printf("Name of each team\n");

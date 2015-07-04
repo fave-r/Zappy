@@ -39,7 +39,7 @@ Player::Player(const int nb, const int x, const int y, const int dir, const int 
       this->_init = true;
     }
   this->translate(glm::vec3(this->_x, 1, this->_y));
-  this->scale(glm::vec3(0.007, 0.007, 0.007));
+  this->scale(glm::vec3(0.003, 0.003, 0.003));
 }
 
 Player::~Player()

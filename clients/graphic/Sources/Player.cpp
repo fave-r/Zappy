@@ -38,8 +38,8 @@ Player::Player(const int nb, const int x, const int y, const int dir, const int 
         throw loading_error("Player model fail");
       this->_init = true;
     }
-      this->scale(glm::vec3(0.007, 0.007, 0.007));
-      this->translate(glm::vec3(this->_x, 1, this->_y));
+      this->scale(glm::vec3(0.003, 0.003, 0.003));
+      this->translate(glm::vec3(this->_y, 1, this->_x));
 }
 
 Player::~Player()
@@ -52,8 +52,12 @@ void          Player::update()
   //std::cout << "" << "\n";
   else
     {
-      this->_x = this->_x1;
-      this->_y = this->_y1;
+      this->_x = this->_y1;
+      this->_y = this->_x1;
+
+      //IF THIS->_CASTING == 1 -> ANIMATION INCANT
+      //ELSE ANIMATION IDDLE
+
       /*if (this->_x != this->_x1)
         this->_x = this->_x1;*/
       /*else if (this->_x < this->_x1)

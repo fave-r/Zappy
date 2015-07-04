@@ -59,7 +59,8 @@ SRCS =		$(SRC)/Button.cpp		\
 		$(SRC)/Phiras.cpp		\
 		$(SRC)/Thystame.cpp		\
 		$(SRC)/Player.cpp		\
-		$(SRC)/User.cpp
+		$(SRC)/User.cpp	\
+		$(SRC)/Egg.cpp
 
 OBJS =		$(SRCS:.cpp=.o)
 

@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Tue May  5 15:51:15 2015 romaric
-** Last update Sat Jul  4 16:47:35 2015 Thibaut Lopez
+** Last update Sat Jul  4 18:55:25 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -46,7 +46,8 @@ void			new_client(int fd, t_user **user)
   struct sockaddr_in	sin;
   socklen_t		len;
 
-  new = malloc(sizeof(t_user));
+  if ((new = malloc(sizeof(t_user))) == NULL)
+    return ;
   len = sizeof(sin);
   new->fd = accept(fd, (struct sockaddr *)&sin, &len);
   new->ip = inet_ntoa(sin.sin_addr);

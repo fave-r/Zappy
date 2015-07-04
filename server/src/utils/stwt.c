@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May  5 18:33:45 2015 Thibaut Lopez
-** Last update Sat Jul  4 15:14:36 2015 Thibaut Lopez
+** Last update Sat Jul  4 20:19:56 2015 Thibaut Lopez
 */
 
 #include "utils.h"
@@ -35,6 +35,7 @@ int	lenword(char *str, int *nb_letters, char *delim, int nb_word)
 {
   int	len;
 
+  *nb_letters = strlen(str);
   len = 0;
   while (str != NULL && (str = skip_delim(str, delim))[0] != 0
 	 && (nb_word == -1 || len < nb_word))
@@ -71,10 +72,10 @@ char	**stwt(char *str, char *delim, int nb_word)
   char	**ret;
   char	*cur;
 
-  nb_letters = strlen(str);
   if ((nb_word = lenword(str, &nb_letters, delim, nb_word)) == 0)
     return (NULL);
-  ret = malloc((nb_word + 1) * sizeof(char *) + nb_letters);
+  if ((ret = malloc((nb_word + 1) * sizeof(char *) + nb_letters)) == NULL)
+    return (NULL);
   nb_letters = 0;
   cur = (char *)ret + (nb_word + 1) * sizeof(char *);
   i = -1;

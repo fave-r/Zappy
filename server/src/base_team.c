@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Wed May 27 10:54:50 2015 Thibaut Lopez
-** Last update Sat Jul  4 15:16:03 2015 Thibaut Lopez
+** Last update Sat Jul  4 20:36:37 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -15,13 +15,24 @@ t_team		*base_team()
   t_team	*teama;
   t_team	*teamb;
 
-  teama = malloc(sizeof(t_team));
-  teamb = malloc(sizeof(t_team));
-  teama->name = strdup("TeamA");
+  if ((teama = malloc(sizeof(t_team))) == NULL ||
+      (teamb = malloc(sizeof(t_team))) == NULL ||
+      (teama->name = strdup("TeamA")) == NULL ||
+      (teamb->name = strdup("TeamB")) == NULL)
+    {
+      if (teama != NULL)
+	{
+	  if (teama->name != NULL)
+	    free(teama->name);
+	  free(teama);
+	}
+      if (teamb != NULL)
+	free(teamb);
+      return (NULL);
+    }
   teama->count = -1;
   teama->eggs = NULL;
   teama->next = teamb;
-  teamb->name = strdup("TeamB");
   teamb->count = -1;
   teamb->eggs = NULL;
   teamb->next = NULL;

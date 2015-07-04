@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Wed May  6 09:49:44 2015 Thibaut Lopez
-** Last update Sat Jul  4 15:14:14 2015 Thibaut Lopez
+** Last update Sat Jul  4 20:30:06 2015 Thibaut Lopez
 */
 
 #include "utils.h"
@@ -34,25 +34,6 @@ int	sstrlen(char **str)
   while (str[i] != NULL)
     i++;
   return (i);
-}
-
-char	**sstrcat(char **str, char *ad)
-{
-  int	i;
-  char	**ret;
-
-  i = 0;
-  ret = malloc((sstrlen(str) + 2) * sizeof(char *));
-  while (str != NULL && str[i] != NULL)
-    {
-      ret[i] = strdup(str[i]);
-      i++;
-    }
-  ret[i] = ad;
-  ret[i + 1] = NULL;
-  if (str != NULL)
-    sfree(str);
-  return (ret);
 }
 
 int	sstrchr(char **tab, char *str)

@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Sat Jul  4 17:45:33 2015 Thibaut Lopez
+** Last update Sat Jul  4 20:28:37 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -58,11 +58,17 @@ void		stn_ok(t_ask *ask, t_user *usr, t_zap *data)
   char		*result;
 
   (void)ask;
-  flat = teamflat(data->teams, ", ");
-  result = my_strcat("The team name are now ", flat);
-  my_smg(usr, result);
-  free(result);
-  free(flat);
+  if ((flat = teamflat(data->teams, ", ")) == NULL)
+    result = NULL;
+  else
+    result = my_strcat("The team name are now ", flat);
+  my_smg(usr, (result == NULL) ? "The team have changed" : result);
+  if (flat != NULL)
+    {
+      if (result != NULL)
+	free(result);
+      free(flat);
+    }
   my_send_tna(data, usr);
 }
 
@@ -84,7 +90,11 @@ int		my_stn(char **com, t_zap *data, t_user *usr)
       || (com[2] != NULL && strcmp(com[2], "GRAPHIC") == 0)
       || (sstrlen(com) == 3 && team_by_name(data->teams, com[2]) != NULL))
     return (my_sbp(usr));
-  ask.args = sstrdup(com + 1);
+  if ((ask.args = sstrdup(com + 1)) == NULL)
+    {
+      usr->tokill = 1;
+      return (0);
+    }
   ask.ok = stn_ok;
   ask.changes = stn_data;
   ask.ko = stn_ko;
@@ -94,7 +104,8 @@ int		my_stn(char **com, t_zap *data, t_user *usr)
   xpush_q(usr, (t_que **)&usr->info, &ask, clone_ask);
   if (data->wait == 1)
     return (0);
-  str = flat_ask(com, usr->nb, q_len((t_que *)usr->info) - 1);
+  if ((str = flat_ask(com, usr->nb, q_len((t_que *)usr->info) - 1)) == NULL)
+    return (0);
   str[0] = 'a';
   alert_graphic(str, usr);
   free(str);

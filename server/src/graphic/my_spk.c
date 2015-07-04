@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Fri May 29 15:07:54 2015 Thibaut Lopez
-** Last update Sat Jul  4 17:58:39 2015 Thibaut Lopez
+** Last update Sat Jul  4 20:26:43 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -47,7 +47,11 @@ int		my_spk(char **com, t_zap *data, t_user *usr)
   if (sstrlen(com) != 2 || (val = my_strtol(com[1])) == -1
       || get_by_nb(usr, val, AI) == NULL)
     return (my_sbp(usr));
-  ask.args = sstrdup(com + 1);
+  if ((ask.args = sstrdup(com + 1)) == NULL)
+    {
+      usr->tokill = 1;
+      return (0);
+    }
   ask.ok = spk_ok;
   ask.changes = spk_data;
   ask.ko = spk_ko;
@@ -57,7 +61,8 @@ int		my_spk(char **com, t_zap *data, t_user *usr)
   xpush_q(usr, (t_que **)&usr->info, &ask, clone_ask);
   if (data->wait == 1)
     return (0);
-  str = flat_ask(com, usr->nb, q_len((t_que *)usr->info) - 1);
+  if ((str = flat_ask(com, usr->nb, q_len((t_que *)usr->info) - 1)) == NULL)
+    return (0);
   str[0] = 'a';
   alert_graphic(str, usr);
   free(str);

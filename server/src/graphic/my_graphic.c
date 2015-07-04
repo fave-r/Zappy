@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Thu May 14 01:07:32 2015 Thibaut Lopez
-** Last update Sat Jul  4 16:56:23 2015 Thibaut Lopez
+** Last update Sat Jul  4 19:22:41 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -66,7 +66,11 @@ void		my_reset(t_ask *ask, t_user *usr, t_zap *data)
   char		**com;
 
   (void)ask;
-  com = malloc(2 * sizeof(char *));
+  if ((com = malloc(2 * sizeof(char *))) == NULL)
+    {
+      ask->res = ANR;
+      return ;
+    }
   com[0] = "GRAPHIC";
   com[1] = NULL;
   my_graphic(com, data, usr);

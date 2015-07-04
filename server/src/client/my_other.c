@@ -5,7 +5,7 @@
 ** Login   <lopez_t@epitech.net>
 ** 
 ** Started on  Tue May 12 14:56:11 2015 Thibaut Lopez
-** Last update Sat Jul  4 17:56:02 2015 Thibaut Lopez
+** Last update Sat Jul  4 20:43:16 2015 Thibaut Lopez
 */
 
 #include "server.h"
@@ -42,7 +42,8 @@ t_plr		*player_info(t_team *team, t_pair *pos)
 {
   t_plr		*plr;
 
-  plr = malloc(sizeof(t_plr));
+  if ((plr = malloc(sizeof(t_plr))) == NULL)
+    return (NULL);
   plr->team = team;
   plr->x = pos->f;
   plr->y = pos->s;
@@ -102,7 +103,11 @@ int		my_other(char **com, t_zap *data, t_user *usr)
       return (-1);
     }
   is_hatching = hatching_egg(&pos, usr, data, cur);
-  usr->info = player_info(cur, &pos);
+  if ((usr->info = player_info(cur, &pos)) == NULL)
+    {
+      usr->tokill = 1;
+      return (0);
+    }
   usr->nb = find_nb(usr, AI);
   verbose_new(usr, is_hatching, AI, data);
   usr->type = AI;

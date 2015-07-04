@@ -54,12 +54,18 @@ public:
   void		putUser(const int nb, const int x, const int y, const int dir, const int lev, const std::string &tn);
   void		setMap(const int x, const int y, const Type type, const int number);
   void		movUser(const int nb, const int x, const int y, const int dir);
+  void    nplayerCast(const int tmp);
 
 public:
   std::vector<std::vector <Content *> > getMap() const;
   std::list<std::pair<int, int>> _update;
   std::list<int> _play;
   User    _user;
+
+  void    userUp(const int nb)
+  {
+    _play.push_back(nb);
+  };
 };
 
 #endif

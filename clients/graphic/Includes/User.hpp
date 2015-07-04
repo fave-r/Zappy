@@ -43,7 +43,12 @@ public:
     _users[nb]->setX1(x);
     _users[nb]->setY1(y);
     _users[nb]->setDir(dir);
-   }
+  }
+
+  void pCast(const int nb)
+  {
+    _users[nb]->setCasting(1);
+  }
 };
 
 #endif

@@ -79,7 +79,7 @@ void		Client::run(Map &map)
 		  m = map.getMap();
 		  graphic->changeSize(y, x, m);
 		}
-	      graphic->setMap(m, map._update, map._play, map._user, map._teamnames);
+	      graphic->setMap(m, map._update, map._play, map._user, map._teamnames, map._eggs);
 	    }
 	  catch (std::out_of_range &err)
 	    {}

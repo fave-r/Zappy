@@ -31,13 +31,15 @@ Graphic::~Graphic()
   this->_context.stop();
 }
 
-void		Graphic::setMap(std::vector<std::vector <Content *> > &map, std::list<std::pair<int, int> > &update, std::list<int> &play, User &user, std::list<std::string> &_teamnames)
+void		Graphic::setMap(std::vector<std::vector <Content *> > &map, std::list<std::pair<int, int> > &update,
+                        std::list<int> &play, User &user, std::list<std::string> &_teamnames, std::map<int, std::pair<int, int> > &eggs)
 {
   this->_map = map;
   this->_update = update;
   this->_play = play;
   this->_user = user;
   this->_teamnames = _teamnames;
+  this->_eggs = eggs;
 }
 
 void		Graphic::Initialize()
@@ -339,6 +341,38 @@ bool		Graphic::update()
 	    }
 	  else if (this->_map[(*it2).second][(*it2).first]->getFood() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolF() == true)
 	    erase<Food *>(it2);
+
+      for (std::map<int, std::pair<int, int> >::iterator it = this->_eggs.begin(); it != this->_eggs.end(); ++it)
+        {
+          bool test = false;
+          for (std::list<Egg *>::iterator it2 = this->_listOfEggs.begin(); it2 != this->_listOfEggs.end(); ++it2)
+            {
+              std::cout << "a" << std::endl;
+              if ((*it2)->getX() == (*it).second.first && (*it2)->getY() == (*it).second.second)
+                test = true;
+            }
+          if (test == false)
+          {
+            std::cout << (*it).second.first << "        " << (*it).second.second << "\n";
+            Egg *egg = new Egg((*it).second.first, (*it).second.second);
+            this->_listOfEggs.push_back(egg);
+          }
+        }
+
+    for (std::list<Egg *>::iterator it2 = this->_listOfEggs.begin(); it2 != this->_listOfEggs.end();)
+      {
+        bool test = false;
+        for (std::map<int, std::pair<int, int> >::iterator it = this->_eggs.begin(); it != this->_eggs.end(); ++it)
+          {
+            std::cout << "b" << std::endl;
+            if ((*it2)->getX() == (*it).second.first && (*it2)->getY() == (*it).second.second)
+              test = true;
+          }
+        if (test == false)
+          it2 = this->_listOfEggs.erase(it2);
+        else
+          ++it2;
+      }
 	}
       this->_update.clear();
       this->_needUpdate = true;
@@ -353,6 +387,8 @@ void            Graphic::draw()
     {
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+      for (std::list<Egg *>::iterator it4 = this->_listOfEggs.begin(); it4 != this->_listOfEggs.end(); ++it4)
+        (*it4)->draw(this->_shader);
       for (std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it)
 	(*it)->draw(this->_shader);
 

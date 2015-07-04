@@ -23,6 +23,8 @@ public:
 public:
   virtual void          draw(gdl::AShader &shader);
   virtual void		      setModel(const gdl::Geometry &);
+  int                   getX() { return this->_x;}
+  int                   getY() { return this->_y;}
 
 private:
   static gdl::Model  _model;

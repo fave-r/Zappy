@@ -21,7 +21,7 @@ Egg::Egg(int x, int y) : AObject(x, y)
         throw loading_error("Egg model fail");
       this->_init = true;
     }
-    this->scale(glm::vec3(0.01, 0.01, 0.01));
+    this->scale(glm::vec3(0.003, 0.003, 0.003));
     this->translate(glm::vec3(this->_y, 1, this->_x));
 }
 

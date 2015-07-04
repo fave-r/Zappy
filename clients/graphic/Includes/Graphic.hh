@@ -38,6 +38,7 @@
 #include "Thystame.hh"
 #include "User.hpp"
 #include "Map.hh"
+#include "Egg.hh"
 
 class		Graphic
 {
@@ -53,7 +54,8 @@ public:
   void			setHUD();
   void			updateHUD();
   void			changeSize(size_t, size_t, std::vector<std::vector <Content *> > &);
-  void			setMap(std::vector<std::vector <Content *> > &, std::list<std::pair<int, int> > &, std::list<int> &, User &,   std::list<std::string> &_teamnames);
+  void			setMap(std::vector<std::vector <Content *> > &, std::list<std::pair<int, int> > &,
+                    std::list<int> &, User &, std::list<std::string> &_teamnames, std::map<int, std::pair<int, int> > &);
   void			addNumberHUD();
 private:
   int		_width;
@@ -66,6 +68,7 @@ private:
 
   std::vector<std::vector <Content *> >     _map;
   std::list<std::pair<int, int> >           _update;
+  std::list<Egg *>                          _listOfEggs;
   std::list<int>                            _play;
   User                                      _user;
 
@@ -81,7 +84,7 @@ private:
 
   ModelPool		*_modelPool;
   TexturePool		*_texturePool;
-
+  std::map<int, std::pair<int, int> > _eggs;
   Camera		*_cam;
 
   void			MoveCase(int);

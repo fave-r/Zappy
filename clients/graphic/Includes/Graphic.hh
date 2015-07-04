@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 09:08:50 2015 jean_c
-// Last update Thu Jul  2 15:11:53 2015 Leo Thevenet
+// Last update Sat Jul  4 10:36:44 2015 Leo Thevenet
 //
 
 #ifndef __GRAPHIC_HH__
@@ -59,6 +59,7 @@ private:
   size_t		_camType;
   int			_actualCase;
   bool		        _needUpdate;
+  int			_selectedP;
 
   std::vector<std::vector <Content *> > _map;
   std::list<std::pair<int, int> >       _update;

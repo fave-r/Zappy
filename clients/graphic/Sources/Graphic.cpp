@@ -5,7 +5,7 @@
 // Login   <jean_c@epitech.net>
 //
 // Started on  Sat Jun 20 10:23:22 2015 jean_c
-// Last update Thu Jul  2 20:17:34 2015 Leo Thevenet
+// Last update Sat Jul  4 11:53:08 2015 Leo Thevenet
 //
 
 #include "Graphic.hh"
@@ -16,6 +16,7 @@ Graphic::Graphic(size_t width, size_t height) : _width(width), _height(height)
   this->_actualCase = 0;
   this->_needUpdate = false;
   this->Initialize();
+  this->_selectedP = 0;
 }
 
 Graphic::~Graphic()
@@ -71,6 +72,7 @@ void		Graphic::changeSize(size_t width, size_t height, std::vector<std::vector <
   this->_width = width;
   this->_height = height;
   this->_actualCase = 0;
+  this->_selectedP = 0;
   this->initMap();
   this->_cam->setCam(this->_width / 2, this->_height / 2.2, 22);
   this->_cam->setCam2(0, 0, 5);
@@ -228,14 +230,34 @@ bool		Graphic::update()
       this->_shader.setUniform("view", this->_cam->getCam2());
       updateHUD();
     }
-  // else if (this->_camType == 3)
-  // vue sur un perso, catch de droite gauche
+  else if (this->_camType == 3)
+    {
+      if (this->_play.size() > 0)
+	{
+	  if (this->_input.getKey(SDLK_RIGHT))
+	    {
+	      this->_selectedP++;
+	      this->_selectedP = (this->_selectedP >= static_cast<int>(this->_play.size())) ? 0 : this->_selectedP;
+	    }
+	  else if (this->_input.getKey(SDLK_LEFT))
+	    {
+	      this->_selectedP--;
+	      this->_selectedP = (this->_selectedP < 0 ) ? this->_play.size() - 1 : this->_selectedP;
+	    }
+	  std::list<int>::const_iterator it = this->_play.begin();
+	  std::advance(it, this->_selectedP);
+	  this->_shader.setUniform("view", this->_cam->getCamP(this->_user.getUser()[(*it)]->getX(), this->_user.getUser()[(*it)]->getY()));
+	  std::cout << this->_selectedP << std::endl;
+	}
+      else
+	this->_camType = 1;
+    }
 
   if (this->_update.size() > 0)
     {
       std::list<std::pair<int, int> >::const_iterator it2;
       for (it2 = this->_update.begin(); it2 != this->_update.end(); ++it2)
-	       {
+	{
 	  if (this->_map[(*it2).second][(*it2).first]->getDeraumere() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolD() == false)
 	    {
 	      Deraumere *de = new Deraumere((*it2).first, (*it2).second);
@@ -245,7 +267,7 @@ bool		Graphic::update()
 	      this->_map[(*it2).second][(*it2).first]->setBoolD(true);
 	    }
 	  else if (this->_map[(*it2).second][(*it2).first]->getDeraumere() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolD() == true)
-	     erase<Deraumere *>(it2);
+	    erase<Deraumere *>(it2);
 
 	  if (this->_map[(*it2).second][(*it2).first]->getLinemate() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolL() == false)
 	    {
@@ -306,7 +328,7 @@ bool		Graphic::update()
 	      this->_map[(*it2).second][(*it2).first]->setBoolF(true);
 	    }
 	  else if (this->_map[(*it2).second][(*it2).first]->getFood() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolF() == true)
-	     erase<Food *>(it2);
+	    erase<Food *>(it2);
 	}
       this->_update.clear();
       this->_needUpdate = true;
@@ -322,20 +344,20 @@ void		Graphic::draw()
     {
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
       for (std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it)
-	       (*it)->draw(this->_shader);
-     std::list<int>::const_iterator it3;
-	   for (it3 = this->_play.begin(); it3 != this->_play.end(); ++it3) {
+	(*it)->draw(this->_shader);
+      std::list<int>::const_iterator it3;
+      for (it3 = this->_play.begin(); it3 != this->_play.end(); ++it3) {
         this->_user.getUser()[(*it3)]->update();
-	      this->_user.getUser()[(*it3)]->draw(this->_shader);
+	this->_user.getUser()[(*it3)]->draw(this->_shader);
       }
       if (this->_camType == 2)
 	for (size_t i = 0; i < this->_HUD.size(); ++i)
 	  if (i % 2 == 0)
 	    this->_HUD[i]->draw(this->_shader);
       if (this->_camType == 2)
-	for (size_t i = 0; i < this->_HUD.size(); ++i)
-	  if (i % 2 == 1)
-	    this->_HUD[i]->draw(this->_shader);
+      	for (size_t i = 0; i < this->_HUD.size(); ++i)
+      	  if (i % 2 == 1)
+      	    this->_HUD[i]->draw(this->_shader);
       this->_needUpdate = false;
       this->_context.flush();
     }

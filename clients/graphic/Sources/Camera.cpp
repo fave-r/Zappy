@@ -5,7 +5,7 @@
 // Login   <theven_l@epitech.net>
 //
 // Started on  Mon Jun 22 16:21:13 2015 Leo Thevenet
-// Last update Thu Jul  2 20:12:37 2015 Leo Thevenet
+// Last update Sat Jul  4 11:21:24 2015 Leo Thevenet
 //
 
 #include "Camera.hh"
@@ -39,6 +39,16 @@ const glm::mat4 Camera::getCam2()
 
   transformation = glm::lookAt(glm::vec3(this->_x2, this->_z2, this->_y2 + 4),
 			       glm::vec3(this->_x2, 0, this->_y2 + 2),
+			       glm::vec3(0, 1, 0));
+  return transformation;
+}
+
+const glm::mat4 Camera::getCamP(float x, float y)
+{
+  glm::mat4 transformation;
+
+  transformation = glm::lookAt(glm::vec3(x, 5, y + 2),
+			       glm::vec3(x, 0, y),
 			       glm::vec3(0, 1, 0));
   return transformation;
 }

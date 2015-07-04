@@ -26,7 +26,8 @@ void                    AObject::scale(const glm::vec3 &scale)
 
 void                    AObject::translate(const glm::vec3 &v)
 {
-  this->_position += v;
+  //this->_position += v;
+  this->_position = v;
 }
 
 void                    AObject::setPos(const glm::vec3 &v)

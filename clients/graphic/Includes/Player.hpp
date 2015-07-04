@@ -36,7 +36,7 @@ private:
   int         _thystame;
   static gdl::Model  _model;
   static int          _init;
-  
+
 public:
   Player(const int nb, const int x, const int y, const int dir, const int lev, const std::string &tn);
   virtual ~Player();
@@ -44,6 +44,7 @@ public:
 public:
   virtual void          draw(gdl::AShader &shader);
   virtual void		      setModel(const gdl::Geometry &);
+  void                  update();
 
 public:
   int	getNb(void) const

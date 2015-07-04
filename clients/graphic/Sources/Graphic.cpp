@@ -62,7 +62,7 @@ void		Graphic::Initialize()
   this->initMap();
   this->_shader.bind();
   this->_shader.setUniform("projection", projection);
-  this->_shader.setUniform("view", this->_cam->getCam());
+//  this->_shader.setUniform("view", this->_cam->getCam());
 }
 
 void		Graphic::changeSize(size_t width, size_t height, std::vector<std::vector <Content *> > &map)
@@ -186,9 +186,11 @@ void		Graphic::MoveCase(int nb)
 
 template <typename T>void	Graphic::erase(std::list<std::pair<int, int> >::const_iterator it2)
 {
-  for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it)
-    if ((*it)->getX() == (*it2).second && (*it)->getY() == (*it2).first && dynamic_cast<T>((*it)) != NULL)
-      this->_objects.erase(it);
+  for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end();)
+    if (dynamic_cast<T>((*it)) != NULL && (*it)->getX() == (*it2).second && (*it)->getY() == (*it2).first)
+      it = this->_objects.erase(it);
+    else
+      it++;
 }
 
 bool		Graphic::update()
@@ -233,7 +235,7 @@ bool		Graphic::update()
     {
       std::list<std::pair<int, int> >::const_iterator it2;
       for (it2 = this->_update.begin(); it2 != this->_update.end(); ++it2)
-	{
+	       {
 	  if (this->_map[(*it2).second][(*it2).first]->getDeraumere() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolD() == false)
 	    {
 	      Deraumere *de = new Deraumere((*it2).first, (*it2).second);
@@ -243,16 +245,8 @@ bool		Graphic::update()
 	      this->_map[(*it2).second][(*it2).first]->setBoolD(true);
 	    }
 	  else if (this->_map[(*it2).second][(*it2).first]->getDeraumere() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolD() == true)
-	    {
-	       for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end();) {
-	         if (dynamic_cast<Deraumere *>((*it)) != NULL && (*it)->getX() == (*it2).second && (*it)->getY() == (*it2).first)
-	    	     it = this->_objects.erase(it);
-          else
-            it++;
-	      }
-	    }
-      //if (dynamic_cast<Deraumere *>((*it2)) != NULL)
-	     //erase<Deraumere *>(it2);
+	     erase<Deraumere *>(it2);
+
 	  if (this->_map[(*it2).second][(*it2).first]->getLinemate() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolL() == false)
 	    {
 	      Linemate *li = new Linemate((*it2).first, (*it2).second);
@@ -261,16 +255,7 @@ bool		Graphic::update()
 	      this->_map[(*it2).second][(*it2).first]->setBoolL(true);
 	    }
 	  else if (this->_map[(*it2).second][(*it2).first]->getLinemate() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolL() == true)
-	     {
-	       for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it) {
-	         if (dynamic_cast<Linemate *>((*it)) != NULL && (*it)->getX() == (*it2).second && (*it)->getY() == (*it2).first)
-	    	     it = this->_objects.erase(it);
-            else
-              it++;
-	       }
-	    }
-      //if (dynamic_cast<Linemate *>((*it2)) != NULL)
-	     //erase<Linemate *>(it2);
+	    erase<Linemate *>(it2);
 
 	  if (this->_map[(*it2).second][(*it2).first]->getMendiane() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolM() == false)
 	    {
@@ -280,16 +265,7 @@ bool		Graphic::update()
 	      this->_map[(*it2).second][(*it2).first]->setBoolM(true);
 	    }
 	  else if (this->_map[(*it2).second][(*it2).first]->getMendiane() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolM() == true)
-	    {
-	        for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end();) {
-	           if (dynamic_cast<Mendiane *>((*it)) != NULL && (*it)->getX() == (*it2).second && (*it)->getY() == (*it2).first)
-	             it = this->_objects.erase(it);
-              else
-                it++;
-	        }
-	    }
-      //if (dynamic_cast<Mendiane *>((*it2)) != NULL)
-	     //erase<Mendiane *>(it2);
+	    erase<Mendiane *>(it2);
 
 	  if (this->_map[(*it2).second][(*it2).first]->getPhiras() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolP() == false)
 	    {
@@ -299,16 +275,7 @@ bool		Graphic::update()
 	      this->_map[(*it2).second][(*it2).first]->setBoolP(true);
 	    }
 	  else if (this->_map[(*it2).second][(*it2).first]->getPhiras() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolP() == true)
-	     {
-	        for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end();) {
-	           if (dynamic_cast<Phiras *>((*it)) != NULL && (*it)->getX() == (*it2).second && (*it)->getY() == (*it2).first)
-	    	       it = this->_objects.erase(it);
-              else
-                it++;
-	       }
-	    }
-      //if (dynamic_cast<Phiras *>((*it2)) != NULL)
-	     //erase<Phiras *>(it2);
+	    erase<Phiras *>(it2);
 
 	  if (this->_map[(*it2).second][(*it2).first]->getSibur() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolS() == false)
 	    {
@@ -318,16 +285,7 @@ bool		Graphic::update()
 	      this->_map[(*it2).second][(*it2).first]->setBoolS(true);
 	    }
 	  else if (this->_map[(*it2).second][(*it2).first]->getSibur() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolS() == true)
-	     {
-	      for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end();) {
-	         if (dynamic_cast<Sibur *>((*it)) != NULL && (*it)->getX() == (*it2).second && (*it)->getY() == (*it2).first)
-	    	     it = this->_objects.erase(it);
-            else
-              it++;
-	      }
-	    }
-      //if (dynamic_cast<Sibur *>((*it2)) != NULL)
-	     //erase<Sibur *>(it2);
+	    erase<Sibur *>(it2);
 
 	  if (this->_map[(*it2).second][(*it2).first]->getThystame() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolT() == false)
 	    {
@@ -337,16 +295,7 @@ bool		Graphic::update()
 	      this->_map[(*it2).second][(*it2).first]->setBoolT(true);
 	    }
 	  else if (this->_map[(*it2).second][(*it2).first]->getThystame() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolT() == true)
-	   {
-	       for(std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end();) {
-	         if (dynamic_cast<Thystame *>((*it)) != NULL && (*it)->getX() == (*it2).second && (*it)->getY() == (*it2).first)
-	    	     it = this->_objects.erase(it);
-            else
-              it++;
-          }
-	    }
-      //if (dynamic_cast<Thystame *>((*it2)) != NULL)
-	     //erase<Thystame *>(it2);
+	    erase<Thystame *>(it2);
 
 	  if (this->_map[(*it2).second][(*it2).first]->getFood() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolF() == false)
 	    {
@@ -357,18 +306,8 @@ bool		Graphic::update()
 	      this->_map[(*it2).second][(*it2).first]->setBoolF(true);
 	    }
 	  else if (this->_map[(*it2).second][(*it2).first]->getFood() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolF() == true)
-	    {
-	    	  for (std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end();) {
-	    	    if (dynamic_cast<Food *>((*it)) != NULL && (*it)->getX() == (*it2).second && (*it)->getY() == (*it2).first)
-	    		      it = this->_objects.erase(it);
-            else
-              it++;
-	    	    }
-	    	}
-      //if (dynamic_cast<Food *>((*it2)) != NULL)
-	     //erase<Food *>(it2);
+	     erase<Food *>(it2);
 	}
-
       this->_update.clear();
       this->_needUpdate = true;
 
@@ -383,11 +322,12 @@ void		Graphic::draw()
     {
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
       for (std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it)
-	(*it)->draw(this->_shader);
+	       (*it)->draw(this->_shader);
      std::list<int>::const_iterator it3;
-	      for (it3 = this->_play.begin(); it3 != this->_play.end(); ++it3) {
-	         this->_user.getUser()[(*it3)]->draw(this->_shader);
-         }
+	   for (it3 = this->_play.begin(); it3 != this->_play.end(); ++it3) {
+        this->_user.getUser()[(*it3)]->update();
+	      this->_user.getUser()[(*it3)]->draw(this->_shader);
+      }
       if (this->_camType == 2)
 	for (size_t i = 0; i < this->_HUD.size(); ++i)
 	  if (i % 2 == 0)

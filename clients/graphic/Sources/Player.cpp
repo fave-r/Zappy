@@ -33,21 +33,38 @@ Player::Player(const int nb, const int x, const int y, const int dir, const int 
   this->_y1 = y;
   if (this->_init == false)
     {
-      if (this->_model.load("./Ressources/Assets/player.dae") == false)
+      if (this->_model.load("./Ressources/Assets/Vivi.fbx") == false)
         throw loading_error("Player model fail");
       this->_init = true;
     }
       this->translate(glm::vec3(this->_x, 1, this->_y));
-      this->scale(glm::vec3(0.001, 0.001, 0.001));
+      this->scale(glm::vec3(0.007, 0.007, 0.007));
 }
 
 Player::~Player()
 {
 }
 
+void          Player::update()
+{
+  if (this->_x == this->_x1 && this->_y == this->_y1);
+  //std::cout << "" << "\n";
+  else
+    {
+      if (this->_x != this->_x1)
+        this->_x = this->_x1;
+      /*else if (this->_x < this->_x1)
+        this->_x++;*/
+      if (this->_y != this->_y1)
+        this->_y = this->_y1;
+      /*else if (this->_y < this->_y1)
+        this->_y++;*/
+      this->translate(glm::vec3(this->_x, 1, this->_y));
+    }
+}
+
 void          Player::draw(gdl::AShader &shader)
 {
-  std::cout << "je Draw batard" << this->_x << " " << this->_y << "\n";
   this->_model.draw(shader, getTransformation(), GL_QUADS);
 }
 

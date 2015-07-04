@@ -301,71 +301,7 @@ bool		Graphic::update()
            this->Elements<Phiras>(4, this->_modelPool->getCrystalP(), it2, this->_map[(*it2).second][(*it2).first]->getPhiras(), this->_map[(*it2).second][(*it2).first]->getBoolP());
            this->Elements<Sibur>(5, this->_modelPool->getCrystalS(), it2, this->_map[(*it2).second][(*it2).first]->getSibur(), this->_map[(*it2).second][(*it2).first]->getBoolS());
            this->Elements<Thystame>(6, this->_modelPool->getCrystalT(), it2, this->_map[(*it2).second][(*it2).first]->getThystame(), this->_map[(*it2).second][(*it2).first]->getBoolT());
-           //this->Elements<Deraumere *>(7, this->_modelPool->getFood(), it2, this->_map[(*it2).second][(*it2).first]->getFood(), this->_map[(*it2).second][(*it2).first]->getBoolF());
-	  /*if (this->_map[(*it2).second][(*it2).first]->getDeraumere() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolD() == false)
-	{
-	  if (this->_map[(*it2).second][(*it2).first]->getDeraumere() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolD() == false)
 
-	    {
-	      Deraumere *de = new Deraumere((*it2).first, (*it2).second);
-	      de->setModel(this->_modelPool->getCrystalD());
-	      this->_objects.push_back(de);
-	      this->_map[(*it2).second][(*it2).first]->setBoolD(true);
-	    }
-	  else if (this->_map[(*it2).second][(*it2).first]->getDeraumere() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolD() == true)
-
-	     erase<Deraumere *>(it2);*/
-
-	  /*if (this->_map[(*it2).second][(*it2).first]->getLinemate() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolL() == false)
-	    {
-	      Linemate *li = new Linemate((*it2).first, (*it2).second);
-	      li->setModel(this->_modelPool->getCrystalL());
-	      this->_objects.push_back(li);
-	      this->_map[(*it2).second][(*it2).first]->setBoolL(true);
-	    }
-	  else if (this->_map[(*it2).second][(*it2).first]->getLinemate() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolL() == true)
-	    erase<Linemate *>(it2);*/
-
-	  /*if (this->_map[(*it2).second][(*it2).first]->getMendiane() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolM() == false)
-	    {
-	      Mendiane *me = new Mendiane((*it2).first, (*it2).second);
-	      me->setModel(this->_modelPool->getCrystalM());
-	      this->_objects.push_back(me);
-	      this->_map[(*it2).second][(*it2).first]->setBoolM(true);
-	    }
-	  else if (this->_map[(*it2).second][(*it2).first]->getMendiane() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolM() == true)
-	    erase<Mendiane *>(it2);*/
-
-	  /*if (this->_map[(*it2).second][(*it2).first]->getPhiras() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolP() == false)
-	    {
-	      Phiras *ph = new Phiras((*it2).first, (*it2).second);
-	      ph->setModel(this->_modelPool->getCrystalP());
-	      this->_objects.push_back(ph);
-	      this->_map[(*it2).second][(*it2).first]->setBoolP(true);
-	    }
-	  else if (this->_map[(*it2).second][(*it2).first]->getPhiras() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolP() == true)
-	    erase<Phiras *>(it2);
-*/
-	  /*if (this->_map[(*it2).second][(*it2).first]->getSibur() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolS() == false)
-	    {
-	      Sibur *si = new Sibur((*it2).first, (*it2).second);
-	      si->setModel(this->_modelPool->getCrystalS());
-	      this->_objects.push_back(si);
-	      this->_map[(*it2).second][(*it2).first]->setBoolS(true);
-	    }
-	  else if (this->_map[(*it2).second][(*it2).first]->getSibur() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolS() == true)
-	    erase<Sibur *>(it2);
-*/
-	  /*if (this->_map[(*it2).second][(*it2).first]->getThystame() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolT() == false)
-	    {
-	      Thystame *th = new Thystame((*it2).first, (*it2).second);
-	      th->setModel(this->_modelPool->getCrystalT());
-	      this->_objects.push_back(th);
-	      this->_map[(*it2).second][(*it2).first]->setBoolT(true);
-	    }
-	  else if (this->_map[(*it2).second][(*it2).first]->getThystame() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolT() == true)
-	    erase<Thystame *>(it2);
-*/
 	  if (this->_map[(*it2).second][(*it2).first]->getFood() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolF() == false)
 	    {
 	      Food *fd = new Food((*it2).first, (*it2).second);

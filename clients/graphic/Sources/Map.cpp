@@ -97,3 +97,9 @@ void	Map::movUser(const int nb, const int x, const int y, const int dir)
   this->_play.push_back(nb);
   this->_user.movUser(nb, x, y, dir);
 }
+
+void  Map::nplayerCast(const int tmp)
+{
+  this->_play.push_back(tmp);
+  this->_user.pCast(tmp);
+}

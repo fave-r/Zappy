@@ -21,8 +21,8 @@ Graphic::Graphic(size_t width, size_t height) : _width(width), _height(height)
 
 Graphic::~Graphic()
 {
-  /*for (std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it)
-    delete (*it);*/
+  for (std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it)
+    delete (*it);
   for (size_t i = 0; i < this->_HUD.size(); ++i)
     delete this->_HUD[i];
   delete this->_texturePool;
@@ -83,8 +83,8 @@ void		Graphic::initMap()
 {
   Ground        *model;
 
-  for (size_t i = 0; i < this->_height; ++i)
-    for (size_t j = 0; j < this->_width; ++j)
+  for (int i = 0; i < this->_height; ++i)
+    for (int j = 0; j < this->_width; ++j)
       {
 	model = new Ground(i, j);
 	model->setModel(this->_modelPool->getGround());
@@ -174,13 +174,13 @@ void		Graphic::MoveCase(int nb)
     {
       x += nb;
       x += (x < 0) ? this->_width : 0;
-      x -= (x >= static_cast<int>(this->_width)) ? this->_width : 0;
+      x -= (x >= this->_width) ? this->_width : 0;
     }
   else
     {
       y += (nb < 0) ? -1 : 1;
       y += (y < 0) ? this->_height : 0;
-      y -= (y >= static_cast<int>(this->_height)) ? this->_height : 0;
+      y -= (y >= this->_height) ? this->_height : 0;
     }
   this->_actualCase = x + y * this->_width;
   this->_needUpdate = true;
@@ -193,6 +193,43 @@ template <typename T>void	Graphic::erase(std::list<std::pair<int, int> >::const_
       it = this->_objects.erase(it);
     else
       it++;
+}
+
+template <typename T> void Graphic::Elements(int mode, const gdl::Geometry &model, std::list<std::pair<int, int> >::const_iterator &it2, int one, bool two)
+{
+  if (one > 0 && two == false)
+    {
+      T *de = new T((*it2).first, (*it2).second);
+      de->setModel(model);
+      this->_objects.push_back(de);
+      switch (mode) {
+        case 1:
+          this->_map[(*it2).second][(*it2).first]->setBoolD(true);
+          break;
+        case 2:
+          this->_map[(*it2).second][(*it2).first]->setBoolL(true);
+          break;
+        case 3:
+          this->_map[(*it2).second][(*it2).first]->setBoolM(true);
+          break;
+        case 4:
+          this->_map[(*it2).second][(*it2).first]->setBoolP(true);
+          break;
+        case 5:
+          this->_map[(*it2).second][(*it2).first]->setBoolS(true);
+          break;
+        case 6:
+          this->_map[(*it2).second][(*it2).first]->setBoolT(true);
+          break;
+        case 7:
+          this->_map[(*it2).second][(*it2).first]->setBoolF(true);
+          break;
+        default:
+          break;
+        }
+    }
+  else if (one == 0 && two == true)
+     erase<T *>(it2);
 }
 
 bool		Graphic::update()
@@ -257,67 +294,13 @@ bool		Graphic::update()
     {
       std::list<std::pair<int, int> >::const_iterator it2;
       for (it2 = this->_update.begin(); it2 != this->_update.end(); ++it2)
-	{
-	  if (this->_map[(*it2).second][(*it2).first]->getDeraumere() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolD() == false)
-	    {
-	      Deraumere *de = new Deraumere((*it2).first, (*it2).second);
-	      de->setModel(this->_modelPool->getCrystalD());
-	      // de->setTexture(this->_texturePool->getWaterMelon());
-	      this->_objects.push_back(de);
-	      this->_map[(*it2).second][(*it2).first]->setBoolD(true);
-	    }
-	  else if (this->_map[(*it2).second][(*it2).first]->getDeraumere() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolD() == true)
-	    erase<Deraumere *>(it2);
-
-	  if (this->_map[(*it2).second][(*it2).first]->getLinemate() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolL() == false)
-	    {
-	      Linemate *li = new Linemate((*it2).first, (*it2).second);
-	      li->setModel(this->_modelPool->getCrystalL());
-	      this->_objects.push_back(li);
-	      this->_map[(*it2).second][(*it2).first]->setBoolL(true);
-	    }
-	  else if (this->_map[(*it2).second][(*it2).first]->getLinemate() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolL() == true)
-	    erase<Linemate *>(it2);
-
-	  if (this->_map[(*it2).second][(*it2).first]->getMendiane() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolM() == false)
-	    {
-	      Mendiane *me = new Mendiane((*it2).first, (*it2).second);
-	      me->setModel(this->_modelPool->getCrystalM());
-	      this->_objects.push_back(me);
-	      this->_map[(*it2).second][(*it2).first]->setBoolM(true);
-	    }
-	  else if (this->_map[(*it2).second][(*it2).first]->getMendiane() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolM() == true)
-	    erase<Mendiane *>(it2);
-
-	  if (this->_map[(*it2).second][(*it2).first]->getPhiras() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolP() == false)
-	    {
-	      Phiras *ph = new Phiras((*it2).first, (*it2).second);
-	      ph->setModel(this->_modelPool->getCrystalP());
-	      this->_objects.push_back(ph);
-	      this->_map[(*it2).second][(*it2).first]->setBoolP(true);
-	    }
-	  else if (this->_map[(*it2).second][(*it2).first]->getPhiras() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolP() == true)
-	    erase<Phiras *>(it2);
-
-	  if (this->_map[(*it2).second][(*it2).first]->getSibur() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolS() == false)
-	    {
-	      Sibur *si = new Sibur((*it2).first, (*it2).second);
-	      si->setModel(this->_modelPool->getCrystalS());
-	      this->_objects.push_back(si);
-	      this->_map[(*it2).second][(*it2).first]->setBoolS(true);
-	    }
-	  else if (this->_map[(*it2).second][(*it2).first]->getSibur() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolS() == true)
-	    erase<Sibur *>(it2);
-
-	  if (this->_map[(*it2).second][(*it2).first]->getThystame() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolT() == false)
-	    {
-	      Thystame *th = new Thystame((*it2).first, (*it2).second);
-	      th->setModel(this->_modelPool->getCrystalT());
-	      this->_objects.push_back(th);
-	      this->_map[(*it2).second][(*it2).first]->setBoolT(true);
-	    }
-	  else if (this->_map[(*it2).second][(*it2).first]->getThystame() == 0 && this->_map[(*it2).second][(*it2).first]->getBoolT() == true)
-	    erase<Thystame *>(it2);
+	       {
+           this->Elements<Deraumere>(1, this->_modelPool->getCrystalD(), it2, this->_map[(*it2).second][(*it2).first]->getDeraumere(), this->_map[(*it2).second][(*it2).first]->getBoolD());
+           this->Elements<Linemate>(2, this->_modelPool->getCrystalL(), it2, this->_map[(*it2).second][(*it2).first]->getLinemate(), this->_map[(*it2).second][(*it2).first]->getBoolL());
+           this->Elements<Mendiane>(3, this->_modelPool->getCrystalM(), it2, this->_map[(*it2).second][(*it2).first]->getMendiane(), this->_map[(*it2).second][(*it2).first]->getBoolM());
+           this->Elements<Phiras>(4, this->_modelPool->getCrystalP(), it2, this->_map[(*it2).second][(*it2).first]->getPhiras(), this->_map[(*it2).second][(*it2).first]->getBoolP());
+           this->Elements<Sibur>(5, this->_modelPool->getCrystalS(), it2, this->_map[(*it2).second][(*it2).first]->getSibur(), this->_map[(*it2).second][(*it2).first]->getBoolS());
+           this->Elements<Thystame>(6, this->_modelPool->getCrystalT(), it2, this->_map[(*it2).second][(*it2).first]->getThystame(), this->_map[(*it2).second][(*it2).first]->getBoolT());
 
 	  if (this->_map[(*it2).second][(*it2).first]->getFood() > 0 && this->_map[(*it2).second][(*it2).first]->getBoolF() == false)
 	    {
@@ -337,27 +320,27 @@ bool		Graphic::update()
   return true;
 }
 
-void		Graphic::draw()
+void            Graphic::draw()
 {
   //this->_needUpdate = true;
   if (this->_update.size() > 0 || this->_needUpdate == true)
     {
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
       for (std::vector<AObject *>::iterator it = this->_objects.begin(); it != this->_objects.end(); ++it)
-	(*it)->draw(this->_shader);
+        (*it)->draw(this->_shader);
       std::list<int>::const_iterator it3;
       for (it3 = this->_play.begin(); it3 != this->_play.end(); ++it3) {
         this->_user.getUser()[(*it3)]->update();
-	this->_user.getUser()[(*it3)]->draw(this->_shader);
+        this->_user.getUser()[(*it3)]->draw(this->_shader);
       }
       if (this->_camType == 2)
-	for (size_t i = 0; i < this->_HUD.size(); ++i)
-	  if (i % 2 == 0)
-	    this->_HUD[i]->draw(this->_shader);
+        for (size_t i = 0; i < this->_HUD.size(); ++i)
+          if (i % 2 == 0)
+            this->_HUD[i]->draw(this->_shader);
       if (this->_camType == 2)
-      	for (size_t i = 0; i < this->_HUD.size(); ++i)
-      	  if (i % 2 == 1)
-      	    this->_HUD[i]->draw(this->_shader);
+        for (size_t i = 0; i < this->_HUD.size(); ++i)
+          if (i % 2 == 1)
+            this->_HUD[i]->draw(this->_shader);
       this->_needUpdate = false;
       this->_context.flush();
     }

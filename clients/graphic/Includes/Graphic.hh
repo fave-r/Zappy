@@ -40,6 +40,7 @@
 
 class		Graphic
 {
+
 public:
   Graphic(size_t, size_t);
   ~Graphic();
@@ -54,17 +55,17 @@ public:
   void			setMap(std::vector<std::vector <Content *> > &, std::list<std::pair<int, int> > &, std::list<int> &, User &);
   void			addNumberHUD();
 private:
-  size_t		_width;
-  size_t		_height;
+  int		_width;
+  int		_height;
   size_t		_camType;
   int			_actualCase;
   bool		        _needUpdate;
   int			_selectedP;
 
-  std::vector<std::vector <Content *> > _map;
-  std::list<std::pair<int, int> >       _update;
-  std::list<int>                        _play;
-  User                                  _user;
+  std::vector<std::vector <Content *> >     _map;
+  std::list<std::pair<int, int> >           _update;
+  std::list<int>                            _play;
+  User                                      _user;
 
   gdl::SdlContext	_context;
   gdl::BasicShader	_shader;
@@ -81,7 +82,7 @@ private:
 
   void			MoveCase(int);
   template <typename T>void	erase(std::list<std::pair<int, int> >::const_iterator it2);
-
+template <typename T> void Elements(int mode, const gdl::Geometry &model, std::list<std::pair<int, int> >::const_iterator &it2, int one, bool two);
 };
 
 #endif

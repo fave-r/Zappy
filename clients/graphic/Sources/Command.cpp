@@ -176,15 +176,41 @@ void	Command::playerBroad(const std::string &com, Map &map, Socket &s) const
 
 void	Command::playerCastb(const std::string &com, Map &map, Socket &s) const
 {
-  (void)com;
-  (void)map;
+  //<X> <Y> <Player number> <Player number> ...
+  std::istringstream	ss(com);
+  int                 x, y, tmp = -1;
+  std::string         sa;
+
+  ss >> sa >> x >> y >> tmp >> sa;
+  if (tmp != -1)
+    map.nplayerCast(tmp);
+  while (!ss.eof())
+  {
+    ss >> tmp >> sa;
+    map.nplayerCast(tmp);
+  }
   (void)s;
 }
 
 void	Command::playerCaste(const std::string &com, Map &map, Socket &s) const
 {
-  (void)com;
-  (void)map;
+  //<X> <Y> <Result>
+  std::istringstream	ss(com);
+  int                 x, y, resu;
+  std::string         sa;
+
+  ss >> sa >> x >> y >> resu >> sa;
+  if (ss.eof())
+  {
+    for (std::map<int, Player *>::iterator it = map._user.getUser().begin(); it != map._user.getUser().end(); ++it)
+    {
+      if (it->second->getX() == x && it->second->getY() == y && it->second->getCasting() == 1)
+      {
+        it->second->setCasting(0);
+        map.userUp(it->second->getNb());
+      }
+    }
+  }
   (void)s;
 }
 
@@ -218,6 +244,7 @@ void	Command::playerStarve(const std::string &com, Map &map, Socket &s) const
 
 void	Command::eggLayed(const std::string &com, Map &map, Socket &s) const
 {
+  //<Egg number> <Player number> <X> <Y>
   (void)com;
   (void)map;
   (void)s;
@@ -225,6 +252,7 @@ void	Command::eggLayed(const std::string &com, Map &map, Socket &s) const
 
 void	Command::eggHatch(const std::string &com, Map &map, Socket &s) const
 {
+  //<Egg number>
   (void)com;
   (void)map;
   (void)s;
@@ -232,6 +260,7 @@ void	Command::eggHatch(const std::string &com, Map &map, Socket &s) const
 
 void	Command::playerOnEgg(const std::string &com, Map &map, Socket &s) const
 {
+  // <Egg number>
   (void)com;
   (void)map;
   (void)s;
@@ -239,6 +268,7 @@ void	Command::playerOnEgg(const std::string &com, Map &map, Socket &s) const
 
 void	Command::hatchedEggStarv(const std::string &com, Map &map, Socket &s) const
 {
+  // <Egg number>
   (void)com;
   (void)map;
   (void)s;
@@ -246,6 +276,7 @@ void	Command::hatchedEggStarv(const std::string &com, Map &map, Socket &s) const
 
 void	Command::timeNotif(const std::string &com, Map &map, Socket &s) const
 {
+  //<Time unit>
   (void)com;
   (void)map;
   (void)s;
@@ -253,6 +284,7 @@ void	Command::timeNotif(const std::string &com, Map &map, Socket &s) const
 
 void	Command::eog(const std::string &com, Map &map, Socket &s) const
 {
+  //<name>
   (void)com;
   (void)map;
   (void)s;

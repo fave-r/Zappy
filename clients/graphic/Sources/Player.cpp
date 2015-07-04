@@ -19,6 +19,7 @@ Player::Player(const int nb, const int x, const int y, const int dir, const int 
   this->_nb = nb;
   this->_x = x;
   this->_y = y;
+  this->_casting = 0;
   this->_dir = dir;
   this->_level = lev;
   this->_tn = tn;
@@ -37,8 +38,8 @@ Player::Player(const int nb, const int x, const int y, const int dir, const int 
         throw loading_error("Player model fail");
       this->_init = true;
     }
-      this->translate(glm::vec3(this->_x, 1, this->_y));
       this->scale(glm::vec3(0.007, 0.007, 0.007));
+      this->translate(glm::vec3(this->_x, 1, this->_y));
 }
 
 Player::~Player()
@@ -51,21 +52,23 @@ void          Player::update()
   //std::cout << "" << "\n";
   else
     {
-      if (this->_x != this->_x1)
-        this->_x = this->_x1;
+      this->_x = this->_x1;
+      this->_y = this->_y1;
+      /*if (this->_x != this->_x1)
+        this->_x = this->_x1;*/
       /*else if (this->_x < this->_x1)
         this->_x++;*/
-      if (this->_y != this->_y1)
-        this->_y = this->_y1;
+      /*if (this->_y != this->_y1)
+        this->_y = this->_y1;*/
       /*else if (this->_y < this->_y1)
         this->_y++;*/
       this->translate(glm::vec3(this->_x, 1, this->_y));
     }
 }
 
-void          Player::draw(gdl::AShader &shader)
+inline void          Player::draw(gdl::AShader &shader)
 {
-  this->_model.draw(shader, getTransformation(), GL_QUADS);
+  this->_model.draw(shader, getTransformation(), GL_TRIANGLES);
 }
 
 void		      Player::setModel(const gdl::Geometry &geo)
